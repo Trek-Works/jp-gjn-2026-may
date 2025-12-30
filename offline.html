@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>You’re offline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: #05060b;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .card {
+      max-width: 420px;
+      padding: 28px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      opacity: 0.85;
+      line-height: 1.5;
+      margin: 0.75em 0;
+    }
+
+    .actions {
+      margin-top: 20px;
+    }
+
+    a.button {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="icon">📴</div>
+    <h1>You’re offline</h1>
+
+    <p>
+      This Japan trip app is available offline, but some sections need an
+      internet connection to load.
+    </p>
+
+    <p>
+      Reconnect when you can and the app will refresh automatically.
+    </p>
+
+    <p>
+      If you were trying to open an external website and lost connection,
+      go back to Trip Home and switch Trip Mode to Offline to continue using the app.
+    </p>
+
+    <div class="actions">
+      <a class="button" href="./index.html">Back to Trip Home</a>
+    </div>
+
+    <p style="margin-top: 18px; font-size: 0.9rem; opacity: 0.6;">
+      JP · GJN-2026-May · Japan
+    </p>
+  </div>
+
+</body>
+</html>

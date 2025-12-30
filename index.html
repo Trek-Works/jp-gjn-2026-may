@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GJN-JP-2026-May · Trip Home</title>
+
+  <style>
+    :root {
+      --bg-main:#050816;
+      --bg-card:#0b1020;
+      --bg-card-soft:#111827;
+      --border-soft:rgba(148,163,184,.35);
+      --text-main:#e5e7eb;
+      --text-muted:#9ca3af;
+      --accent-blue:#60a5fa;
+      --radius-card:18px;
+      --radius-pill:999px;
+      --shadow-card:0 20px 40px rgba(15,23,42,.8);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; padding:0; min-height:100vh;
+      font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+      background:radial-gradient(circle at top,#111827 0,#020617 45%,#020617 100%);
+      color:var(--text-main); display:flex; justify-content:center;
+    }
+    .page{width:100%; max-width:960px; padding:26px 14px 80px;}
+    header{text-align:center; margin-bottom:26px;}
+    .trip-flag{font-size:13px; letter-spacing:.18em; color:var(--text-muted); margin-bottom:4px;}
+    h1{margin:0; font-size:clamp(24px,3.2vw,30px);}
+    .trip-dates{margin-top:4px; font-size:13px; color:var(--text-muted);}
+
+    /* ===== Trip Mode pills (additive, matched to 2024-Sep) ===== */
+    .pill-row{margin-top:14px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;}
+    .pill{
+      border-radius:var(--radius-pill);
+      padding:6px 12px;
+      font-size:12px;
+      border:1px solid var(--border-soft);
+      background:radial-gradient(circle at top left,#1f2937,#020617);
+      color:var(--text-muted);
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .pill.trip-offline{
+      color:#fbbf24;
+      border-color:#fbbf24;
+    }
+
+    .grid{
+      margin-top:24px;
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+    .card{
+      background:radial-gradient(circle at top,var(--bg-card),var(--bg-card-soft));
+      border:1px solid var(--border-soft);
+      border-radius:var(--radius-card);
+      box-shadow:var(--shadow-card);
+      padding:16px 17px 14px;
+      display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .card-header{display:flex; gap:10px; align-items:center; margin-bottom:10px;}
+    .card-emoji{font-size:26px;}
+    .card-title{font-size:16px; font-weight:600;}
+    .card-tag{
+      font-size:11px; text-transform:uppercase; letter-spacing:.18em;
+      color:var(--text-muted); margin-bottom:6px;
+    }
+    .card-text{font-size:13px; color:var(--text-muted); margin-bottom:12px;}
+    .card-footer{display:flex; justify-content:space-between; align-items:center;}
+    .secure-label{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:3px 9px; border-radius:var(--radius-pill);
+      border:1px solid rgba(148,163,184,.55);
+      background:rgba(15,23,42,.95); color:var(--text-muted);
+    }
+    .secure-dot{width:7px; height:7px; border-radius:999px; background:#22c55e;}
+    .card-link{text-decoration:none; color:var(--accent-blue); font-size:13px;}
+    .card-link span{font-size:14px;}
+
+    .hub-btn {
+      margin-top:40px;
+      display:inline-block;
+      padding:10px 22px;
+      border-radius:var(--radius-pill);
+      background:radial-gradient(circle at top left,#1f2937,#020617);
+      border:1px solid var(--border-soft);
+      color:var(--text-main);
+      font-size:14px;
+      text-decoration:none;
+      letter-spacing:0.3px;
+    }
+    .hub-btn:hover {
+      background:radial-gradient(circle at top left,#263445,#0b0f19);
+      border-color:#4b5563;
+    }
+
+    .hub-container { text-align:center; margin-top:36px; }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <header>
+    <div class="trip-flag">JP · GJN-JP-2026-May</div>
+    <h1>Trip Home</h1>
+    <p class="trip-dates">Japan · May 2026 · Secure trip guide</p>
+
+    <!-- Trip Mode pills (additive only) -->
+    <div class="pill-row">
+      <div class="pill" id="tripModePill">Trip Mode: Online</div>
+      <div class="pill" id="tripModeHelp">?</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid">
+
+      <!-- A -->
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">🏨</div><div class="card-title">Accommodation</div></div>
+          <div class="card-text">Hotel details, confirmations and stay information for May 2026.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/accommodation.html">Open <span>↗</span></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">🎡</div><div class="card-title">Activities</div></div>
+          <div class="card-text">Tours, experiences, timings and booking confirmations.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/activities.html">Open <span>↗</span></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">🚌</div><div class="card-title">Airport Limousine Bus</div></div>
+          <div class="card-text">Timetables, boarding locations and drop-off arrangements.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/airport-limousine-bus.html">Open <span>↗</span></a>
+        </div>
+      </article>
+
+      <!-- F -->
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">✈️</div><div class="card-title">Flights</div></div>
+          <div class="card-text">Flight schedules, terminals and booking detail.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/flights.html">Open <span>↗</span></a>
+        </div>
+      </article>
+
+      <!-- G -->
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">📘</div><div class="card-title">Guides</div></div>
+          <div class="card-text">Reference guides and essential Japan travel information.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/guides.html">Open <span>↗</span></a>
+        </div>
+      </article>
+
+      <!-- S -->
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">🛍️</div><div class="card-title">Shopping</div></div>
+          <div class="card-text">Shopping plans, destinations and budget considerations.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/shopping.html">Open <span>↗</span></a>
+        </div>
+      </article>
+
+      <!-- T -->
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">📝</div><div class="card-title">Task List</div></div>
+          <div class="card-text">Trip organisation and preparation checklists.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/task-list-guide.html">Open <span>↗</span></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">🚄</div><div class="card-title">Trains</div></div>
+          <div class="card-text">Rail movements and bookings for the May 2026 itinerary.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/trains.html">Open <span>↗</span></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">🎒</div><div class="card-title">Travel Packing Guide</div></div>
+          <div class="card-text">Packing checklist for Sema & Gavin.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/travel-packing-guide.html">Open <span>↗</span></a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="hub-container">
+      <a href="https://trekworks.org/" class="hub-btn">← Back to TrekWorks Hub</a>
+    </div>
+
+  </main>
+
+</div>
+
+<script>
+/* ===============================
+   TrekWorks Trip Mode – identical to GJN-2024-Sep
+   =============================== */
+const TRIP_MODE_LS_KEY="trekworks.tripMode";
+const DEFAULT_TRIP_MODE="online";
+
+const tripPill=document.getElementById("tripModePill");
+const helpPill=document.getElementById("tripModeHelp");
+
+function getTripMode(){
+  return localStorage.getItem(TRIP_MODE_LS_KEY)||DEFAULT_TRIP_MODE;
+}
+
+function setTripMode(mode){
+  localStorage.setItem(TRIP_MODE_LS_KEY,mode);
+}
+
+function refreshTripModeUI(){
+  const mode=getTripMode();
+  if(mode==="offline"){
+    tripPill.textContent="Trip Mode: Offline";
+    tripPill.classList.add("trip-offline");
+  }else{
+    tripPill.textContent="Trip Mode: Online";
+    tripPill.classList.remove("trip-offline");
+  }
+}
+
+tripPill.addEventListener("click",()=>{
+  setTripMode(getTripMode()==="offline"?"online":"offline");
+  refreshTripModeUI();
+});
+
+helpPill.addEventListener("click",()=>{
+  alert(
+    "Trip Mode controls how external links behave while travelling.\n\n"+
+    "Offline: keeps you inside the app.\n"+
+    "Online: allows external sites."
+  );
+});
+
+refreshTripModeUI();
+
+/* Existing service worker refresh logic preserved */
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.getRegistrations().then(regs=>{
+    for (let reg of regs) reg.update();
+  });
+}
+</script>
+
+</body>
+</html>

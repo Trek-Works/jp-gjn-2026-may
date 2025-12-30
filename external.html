@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>External link unavailable</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: #05060b;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .card {
+      max-width: 420px;
+      padding: 28px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    h1 { font-size: 1.3rem; margin-bottom: 12px; }
+    p { opacity: 0.85; line-height: 1.5; }
+    .actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    a.button {
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-weight: 500;
+    }
+    .footer { margin-top: 18px; font-size: 0.9rem; opacity: 0.6; }
+  </style>
+</head>
+<body>
+
+<div class="card" id="card">
+  <h1>External link unavailable</h1>
+  <p id="message">Checking connection…</p>
+
+  <div class="actions">
+    <a class="button" href="./">Back to Trip Home</a>
+<a class="button" id="goBack" href="#"
+   onclick="if (history.length > 1) { history.back(); } else { window.location.href = './'; } return false;">Go Back</a>
+  </div>
+
+  <div class="footer">
+    JP · GJN-2026-May · Japan
+  </div>
+</div>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const target = params.get("url");
+  const back = params.get("back");
+
+  if (back && /^[a-z0-9\-\/]+\.html$/i.test(back)) {
+    document.getElementById("goBack").href = "./" + back;
+  }
+
+  // Trip Mode (primary): localStorage, to match index.html
+  const TRIP_MODE_LS_KEY = "trekworks.tripMode";
+  const DEFAULT_TRIP_MODE = "online";
+
+  function getTripModeFromLocalStorage() {
+    try {
+      const v = localStorage.getItem(TRIP_MODE_LS_KEY);
+      return v || DEFAULT_TRIP_MODE;
+    } catch {
+      return DEFAULT_TRIP_MODE;
+    }
+  }
+
+  // Trip Mode (legacy fallback): IndexedDB
+  function openDB() {
+    return new Promise((resolve, reject) => {
+      const req = indexedDB.open("trekworks", 1);
+      req.onupgradeneeded = () => {
+        const db = req.result;
+        if (!db.objectStoreNames.contains("settings")) {
+          db.createObjectStore("settings");
+        }
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  }
+
+  async function getTripModeFromIDB() {
+    try {
+      const db = await openDB();
+      return new Promise((resolve) => {
+        const tx = db.transaction("settings", "readonly");
+        const store = tx.objectStore("settings");
+        const r = store.get("tripMode");
+        r.onsuccess = () => resolve(r.result || "");
+        r.onerror = () => resolve("");
+      });
+    } catch {
+      return "";
+    }
+  }
+
+  async function getTripMode() {
+    const lsMode = getTripModeFromLocalStorage();
+    if (lsMode === "online" || lsMode === "offline") return lsMode;
+
+    const idbMode = await getTripModeFromIDB();
+    if (idbMode === "online" || idbMode === "offline") return idbMode;
+
+    return DEFAULT_TRIP_MODE;
+  }
+
+  async function hasData() {
+    try {
+      await fetch("https://www.google.com/generate_204", {
+        method: "GET",
+        mode: "no-cors",
+        cache: "no-store"
+      });
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  (async () => {
+    if (!target) {
+      document.getElementById("message").textContent = "Invalid external link.";
+      return;
+    }
+
+    const online = await hasData();
+    const tripMode = await getTripMode();
+
+    if (!online || tripMode !== "online") {
+      document.getElementById("message").textContent =
+        "You are currently in Offline Trip Mode. External websites are unavailable.";
+      return;
+    }
+
+    location.replace(target);
+  })();
+</script>
+
+</body>
+</html>

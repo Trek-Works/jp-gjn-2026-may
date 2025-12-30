@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Task List Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-gradient-top: #020617;
+      --bg-gradient-mid: #0b1225;
+      --bg-gradient-bot: #050814;
+
+      --text: #e5e7eb;
+      --text-soft: #a7b0c0;
+      --text-muted: #7c879c;
+
+      --card-bg: #0b1020;
+      --card-bg-alt: #0b1326;
+
+      --border: rgba(148, 163, 184, 0.22);
+      --border-strong: rgba(148, 163, 184, 0.30);
+
+      --pill-bg: rgba(148, 163, 184, 0.10);
+      --pill-bg-strong: rgba(59, 130, 246, 0.22);
+
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(1100px 600px at 50% -10%, rgba(59,130,246,0.20), transparent 55%),
+        radial-gradient(900px 520px at 50% 8%, rgba(124,58,237,0.10), transparent 60%),
+        radial-gradient(900px 650px at 50% 55%, rgba(16,185,129,0.06), transparent 62%),
+        linear-gradient(180deg, var(--bg-gradient-top), var(--bg-gradient-mid) 45%, var(--bg-gradient-bot));
+      color: var(--text);
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 22px 70px;
+    }
+
+    header {
+      text-align: center;
+      padding: 18px 12px 26px;
+    }
+
+    .trip-flag {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .trip-dates {
+      margin: 10px 0 0;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      text-decoration: none;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    .pill-btn.primary {
+      background: rgba(59, 130, 246, 0.18);
+      border-color: rgba(59, 130, 246, 0.35);
+    }
+
+    .pill-btn span {
+      display: inline-flex;
+      width: 18px;
+      justify-content: center;
+      opacity: 0.95;
+    }
+
+    main {
+      margin-top: 18px;
+    }
+
+    section {
+      margin: 18px 0 26px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 6px 6px 12px;
+    }
+
+    .section-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .section-subtitle {
+      color: var(--text-soft);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      margin: 0;
+    }
+
+    .sub-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text-soft);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .tasks {
+      background: rgba(11, 16, 32, 0.70);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 14px 14px 10px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    ul.task-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .task-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 10px;
+      border-radius: 14px;
+    }
+
+    .task-item + .task-item {
+      margin-top: 8px;
+    }
+
+    .task-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .task-checkbox {
+      display: flex;
+      align-items: flex-start;
+      padding-top: 4px;
+    }
+
+    input[type="checkbox"]{
+      width: 18px;
+      height: 18px;
+      accent-color: #22c55e;
+      cursor: pointer;
+    }
+
+    .task-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .task-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .task-title {
+      font-weight: 800;
+      font-size: 14px;
+      margin: 0;
+      color: var(--text);
+    }
+
+    .task-note {
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .task-tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.30);
+      color: rgba(245, 158, 11, 0.92);
+      white-space: nowrap;
+    }
+
+    .task-tag.blue {
+      background: rgba(59, 130, 246, 0.12);
+      border-color: rgba(59, 130, 246, 0.30);
+      color: rgba(147, 197, 253, 0.92);
+    }
+
+    .task-tag.green {
+      background: rgba(16, 185, 129, 0.10);
+      border-color: rgba(16, 185, 129, 0.28);
+      color: rgba(52, 211, 153, 0.92);
+    }
+
+    .task-tag.gray {
+      background: rgba(148, 163, 184, 0.10);
+      border-color: rgba(148, 163, 184, 0.28);
+      color: rgba(148, 163, 184, 0.92);
+    }
+
+    .task-tag.purple {
+      background: rgba(124, 58, 237, 0.10);
+      border-color: rgba(124, 58, 237, 0.28);
+      color: rgba(196, 181, 253, 0.92);
+    }
+
+    .section-hint {
+      margin-top: 10px;
+      color: var(--text-muted);
+      font-size: 12px;
+      padding: 4px 2px 0;
+    }
+
+    @media (max-width: 760px) {
+      .page { padding: 22px 14px 60px; }
+      h1 { font-size: 34px; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .task-title-row { flex-direction: column; align-items: flex-start; }
+      .task-tag { margin-top: 8px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="trip-flag">JP · GJN-JP-2026-May · Japan Trip</div>
+      <h1>Task List Guide</h1>
+      <p class="trip-dates">Pre-trip and on-trip checklist</p>
+
+      <div class="top-bar">
+        <a href="https://trekworks.org/JP/GJN-2026-May/" class="pill-btn primary">
+          <span>←</span>
+          Back to Trip Home
+        </a>
+        <div class="pill-btn">
+          <span>✅</span>
+          Personal checklist for this trip
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- Pre-trip admin -->
+      <section>
+        <div class="section-head">
+          <h2 class="section-title">📁 Pre-trip admin</h2>
+          <p class="section-subtitle">Bookings, approvals, and key logistics</p>
+        </div>
+
+        <div class="tasks">
+          <div class="sub-pill">● Core planning</div>
+
+          <ul class="task-list">
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Confirm all hotel bookings</div>
+                  <div class="task-tag">Accommodation &amp; Flights</div>
+                </div>
+                <div class="task-note">
+                  Check dates and room types for Osaka, Okinawa, Fukuoka, and final Osaka stay.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Review international flights (JQ001 / JQ002)</div>
+                  <div class="task-tag">Flights</div>
+                </div>
+                <div class="task-note">
+                  Outbound: JQ001 SYD → KIX (14 May 2026). Return: JQ002 KIX → SYD (29 May 2026). Domestic: JAL JL2087 ITM → OKA (17 May 2026) and JAL JL054 OKA → FUK (22 May 2026). Confirm departure and arrival times, baggage allowance, and any seat or meal selections.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Complete Visit Japan Web steps</div>
+                  <div class="task-tag">Border entry</div>
+                </div>
+                <div class="task-note">
+                  Ensure customs and immigration details are submitted and QR codes are saved to the phone and printed.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Confirm travel insurance is active</div>
+                  <div class="task-tag">Insurance</div>
+                </div>
+                <div class="task-note">
+                  Check policy period covers 14 May 2026 to 30 May 2026 (insure4less Excel Plus, Certificate TI-251025-0005) and store emergency numbers in phone contacts.
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="section-hint">
+            Tip: once these are complete, the rest of the list becomes simple packing and on-trip checks.
+          </div>
+        </div>
+      </section>
+
+      <!-- Money and payment -->
+      <section>
+        <div class="section-head">
+          <h2 class="section-title">💳 Money and payment</h2>
+          <p class="section-subtitle">Cards, cash, and budgeting</p>
+        </div>
+
+        <div class="tasks">
+          <div class="sub-pill">● Payment ready</div>
+
+          <ul class="task-list">
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Check debit and credit cards are unlocked for Japan</div>
+                  <div class="task-tag">Banking</div>
+                </div>
+                <div class="task-note">
+                  Confirm Wise, Up Bank, and credit cards are active and have sufficient limits for hotels and trains.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Prepare starting cash in yen for arrival</div>
+                  <div class="task-tag">Cash</div>
+                </div>
+                <div class="task-note">
+                  Small notes make it easier for local trains, snacks, and vending machines on the first day.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Confirm budget for trains and attractions</div>
+                  <div class="task-tag">Trip budget</div>
+                </div>
+                <div class="task-note">
+                  Cross-check estimated totals from the Train Transport Guide and Attractions Guide against the overall budget.
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Tech and connectivity -->
+      <section>
+        <div class="section-head">
+          <h2 class="section-title">🧩 Tech and connectivity</h2>
+          <p class="section-subtitle">Phones, eSIM, and charging</p>
+        </div>
+
+        <div class="tasks">
+          <div class="sub-pill">● Connected</div>
+
+          <ul class="task-list">
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Purchase and download Japan eSIM</div>
+                  <div class="task-tag">eSIM</div>
+                </div>
+                <div class="task-note">
+                  Use the chosen unlimited data plan; save QR code and activation instructions offline.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Pack power adapters and USB chargers</div>
+                  <div class="task-tag">Power</div>
+                </div>
+                <div class="task-note">
+                  Include at least two Japanese plug adapters, multi-port USB charger, and power bank with cable set.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Download offline copies of key documents</div>
+                  <div class="task-tag">Offline access</div>
+                </div>
+                <div class="task-note">
+                  Save PDFs or screenshots of hotel confirmations, train bookings, insurance, and Visit Japan Web QR codes.
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Documents and IDs -->
+      <section>
+        <div class="section-head">
+          <h2 class="section-title">📄 Documents and IDs</h2>
+          <p class="section-subtitle">What must be in the carry-on</p>
+        </div>
+
+        <div class="tasks">
+          <div class="sub-pill">● Documents</div>
+
+          <ul class="task-list">
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Check passports and validity</div>
+                  <div class="task-tag">ID</div>
+                </div>
+                <div class="task-note">
+                  Confirm passports are valid for the full trip plus the usual extra validity buffer.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Print key confirmations</div>
+                  <div class="task-tag">Paper copies</div>
+                </div>
+                <div class="task-note">
+                  Print hotels, flights, train confirmations, and insurance summary, and keep them together in a document wallet.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Prepare emergency contact sheet</div>
+                  <div class="task-tag">Safety</div>
+                </div>
+                <div class="task-note">
+                  Include Australian contacts, insurance emergency numbers, and any airline or hotel support numbers.
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Packing overview -->
+      <section>
+        <div class="section-head">
+          <h2 class="section-title">🧳 Packing overview</h2>
+          <p class="section-subtitle">High level checks before closing the suitcases</p>
+        </div>
+
+        <div class="tasks">
+          <div class="sub-pill">● Packing</div>
+
+          <ul class="task-list">
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Confirm main suitcase weight and size</div>
+                  <div class="task-tag">Baggage</div>
+                </div>
+                <div class="task-note">
+                  Use luggage scales to check against airline limits; adjust if necessary to avoid fees.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Prepare carry-on essentials</div>
+                  <div class="task-tag">Carry-on</div>
+                </div>
+                <div class="task-note">
+                  Include medications, one change of clothes, chargers, travel documents, and comfort items for the flight.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Review detailed packing guide</div>
+                  <div class="task-tag">Travel Packing Guide</div>
+                </div>
+                <div class="task-note">
+                  Cross-check against the dedicated Travel Packing Guide so nothing from the master list is missed.
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Home and wrap-up -->
+      <section>
+        <div class="section-head">
+          <h2 class="section-title">🏠 Home and wrap-up</h2>
+          <p class="section-subtitle">Final checks before leaving for the airport</p>
+        </div>
+
+        <div class="tasks">
+          <div class="sub-pill">● Final checks</div>
+
+          <ul class="task-list">
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Secure home and handover keys if needed</div>
+                  <div class="task-tag">Home</div>
+                </div>
+                <div class="task-note">
+                  Check windows, doors, lights, bins, and any arrangements for mail or plant care.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Set up travel notifications and roaming controls</div>
+                  <div class="task-tag">Phones</div>
+                </div>
+                <div class="task-note">
+                  Disable unneeded roaming where the eSIM will be used, and check device backup settings.
+                </div>
+              </div>
+            </li>
+
+            <li class="task-item">
+              <div class="task-checkbox">
+                <input type="checkbox" />
+              </div>
+              <div class="task-content">
+                <div class="task-title-row">
+                  <div class="task-title">Final review on the way to the airport</div>
+                  <div class="task-tag">Last sweep</div>
+                </div>
+                <div class="task-note">
+                  Use this page as a final skim in the taxi or train to the airport to confirm nothing critical has been missed.
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>
