@@ -1,14 +1,13 @@
 // =====================================================
 // TrekWorks Trip Mode (TTM) Service Worker
 // Trip: JP / GJN-2026-May
-// Scope: subdomain root (./)
 // =====================================================
 
-const CACHE_VERSION = "tw-jp-gjn-2026-may-2025-01-fallbackfix";
+const CACHE_VERSION = "tw-jp-gjn-2026-may-2025-02-indexfix";
 const CACHE_NAME = `trekworks-${CACHE_VERSION}`;
 
 // -----------------------------------------------------
-// Trip Mode storage (IndexedDB)
+// IndexedDB Trip Mode
 // -----------------------------------------------------
 const DB_NAME = "trekworks";
 const DB_VERSION = 1;
@@ -46,10 +45,9 @@ async function getTripMode() {
 }
 
 // -----------------------------------------------------
-// Core assets (FULL TRIP PRECACHE)
+// Core assets (NO "./" app shell lock)
 // -----------------------------------------------------
 const CORE_ASSETS = [
-  "./",
   "./index.html",
   "./offline.html",
   "./manifest.json",
@@ -98,7 +96,7 @@ self.addEventListener("activate", (event) => {
 });
 
 // -----------------------------------------------------
-// Fetch handling (navigation only)
+// Fetch handling
 // -----------------------------------------------------
 self.addEventListener("fetch", (event) => {
   if (event.request.mode !== "navigate") return;
@@ -106,58 +104,42 @@ self.addEventListener("fetch", (event) => {
 });
 
 // -----------------------------------------------------
-// Navigation strategy (FIXED FALLBACK ORDER)
+// Navigation strategy
 // -----------------------------------------------------
 async function handleNavigation(request) {
   const url = new URL(request.url);
   const cache = await caches.open(CACHE_NAME);
-
-  const isExternalRouter =
-    url.pathname.endsWith("/external.html") ||
-    url.pathname === "/external.html";
-
-  const isTripDocument =
-    request.destination === "document" && !isExternalRouter;
-
-  const canonicalExternalRequest = new Request("./external.html");
-
   const tripMode = await getTripMode();
 
-  // =====================================================
-  // Trip Mode: OFFLINE
-  // =====================================================
+  const isIndex =
+    url.pathname.endsWith("/index.html") ||
+    url.pathname.endsWith("/GJN-2026-May/");
+
+  const isExternalRouter =
+    url.pathname.endsWith("/external.html");
+
+  // ================= OFFLINE =================
   if (tripMode === "offline") {
-
-    if (isExternalRouter) {
-      return (
-        (await cache.match(canonicalExternalRequest)) ||
-        (await cache.match("./offline.html"))
-      );
-    }
-
-    if (isTripDocument) {
-      return (
-        (await cache.match(request)) ||
-        (await cache.match("./index.html")) ||
-        (await cache.match("./offline.html"))
-      );
-    }
+    return (
+      (await cache.match(request)) ||
+      (await cache.match("./index.html")) ||
+      (await cache.match("./offline.html"))
+    );
   }
 
-  // =====================================================
-  // Trip Mode: ONLINE
-  // =====================================================
+  // ================= ONLINE =================
   try {
-    const response = await fetch(request);
-
-    if (response && response.ok) {
-      if (isExternalRouter) {
-        cache.put(canonicalExternalRequest, response.clone());
-      } else {
-        cache.put(request, response.clone());
-      }
+    // 🔑 CRITICAL FIX: network-first for index.html
+    if (isIndex) {
+      const fresh = await fetch(request);
+      cache.put("./index.html", fresh.clone());
+      return fresh;
     }
 
+    const response = await fetch(request);
+    if (response && response.ok) {
+      cache.put(request, response.clone());
+    }
     return response;
   } catch {
     return (
