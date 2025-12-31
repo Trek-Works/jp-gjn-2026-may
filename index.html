@@ -31,7 +31,6 @@
     h1{margin:0; font-size:clamp(24px,3.2vw,30px);}
     .trip-dates{margin-top:4px; font-size:13px; color:var(--text-muted);}
 
-    /* ===== Trip Mode pills (additive, matched to 2024-Sep) ===== */
     .pill-row{margin-top:14px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;}
     .pill{
       border-radius:var(--radius-pill);
@@ -95,160 +94,144 @@
       text-decoration:none;
       letter-spacing:0.3px;
     }
-    .hub-btn:hover {
-      background:radial-gradient(circle at top left,#263445,#0b0f19);
-      border-color:#4b5563;
-    }
 
     .hub-container { text-align:center; margin-top:36px; }
   </style>
 </head>
-
 <body>
 <div class="page">
 
-  <header>
-    <div class="trip-flag">JP · GJN-JP-2026-May</div>
-    <h1>Trip Home</h1>
-    <p class="trip-dates">Japan · May 2026 · Secure trip guide</p>
+<header>
+  <div class="trip-flag">JP · GJN-JP-2026-May</div>
+  <h1>Trip Home</h1>
+  <p class="trip-dates">Japan · May 2026 · Secure trip guide</p>
 
-    <!-- Trip Mode pills (additive only) -->
-    <div class="pill-row">
-      <div class="pill" id="tripModePill">Trip Mode: Online</div>
-      <div class="pill" id="tripModeHelp">?</div>
-    </div>
-  </header>
+  <div class="pill-row">
+    <div class="pill" id="tripModePill">Trip Mode: Online</div>
+    <div class="pill" id="tripModeHelp">?</div>
+  </div>
+</header>
 
-  <main>
-    <div class="grid">
+<main>
+<div class="grid">
+<article class="card">
+  <div>
+    <div class="card-tag">TRIP ELEMENT</div>
+    <div class="card-header"><div class="card-emoji">🏨</div><div class="card-title">Accommodation</div></div>
+    <div class="card-text">Hotel details, confirmations and stay information for May 2026.</div>
+  </div>
+  <div class="card-footer">
+    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+    <a class="card-link" href="./accommodation.html">Open <span>↗</span></a>
+  </div>
+</article>
 
-      <!-- A -->
-      <article class="card">
-        <div>
-          <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">🏨</div><div class="card-title">Accommodation</div></div>
-          <div class="card-text">Hotel details, confirmations and stay information for May 2026.</div>
-        </div>
-        <div class="card-footer">
-          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/accommodation.html">Open <span>↗</span></a>
-        </div>
-      </article>
+<article class="card">
+  <div>
+    <div class="card-tag">TRIP ELEMENT</div>
+    <div class="card-header"><div class="card-emoji">🎡</div><div class="card-title">Activities</div></div>
+    <div class="card-text">Tours, experiences, timings and booking confirmations.</div>
+  </div>
+  <div class="card-footer">
+    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+    <a class="card-link" href="./activities.html">Open <span>↗</span></a>
+  </div>
+</article>
 
-      <article class="card">
-        <div>
-          <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">🎡</div><div class="card-title">Activities</div></div>
-          <div class="card-text">Tours, experiences, timings and booking confirmations.</div>
-        </div>
-        <div class="card-footer">
-          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/activities.html">Open <span>↗</span></a>
-        </div>
-      </article>
+<article class="card">
+  <div>
+    <div class="card-tag">TRIP ELEMENT</div>
+    <div class="card-header"><div class="card-emoji">🚌</div><div class="card-title">Airport Limousine Bus</div></div>
+    <div class="card-text">Timetables, boarding locations and drop-off arrangements.</div>
+  </div>
+  <div class="card-footer">
+    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+    <a class="card-link" href="./airport-limousine-bus.html">Open <span>↗</span></a>
+  </div>
+</article>
 
-      <article class="card">
-        <div>
-          <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">🚌</div><div class="card-title">Airport Limousine Bus</div></div>
-          <div class="card-text">Timetables, boarding locations and drop-off arrangements.</div>
-        </div>
-        <div class="card-footer">
-          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/airport-limousine-bus.html">Open <span>↗</span></a>
-        </div>
-      </article>
+<article class="card">
+  <div>
+    <div class="card-tag">TRIP ELEMENT</div>
+    <div class="card-header"><div class="card-emoji">✈️</div><div class="card-title">Flights</div></div>
+    <div class="card-text">Flight schedules, terminals and booking detail.</div>
+  </div>
+  <div class="card-footer">
+    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+    <a class="card-link" href="./flights.html">Open <span>↗</span></a>
+  </div>
+</article>
 
-      <!-- F -->
-      <article class="card">
-        <div>
-          <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">✈️</div><div class="card-title">Flights</div></div>
-          <div class="card-text">Flight schedules, terminals and booking detail.</div>
-        </div>
-        <div class="card-footer">
-          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/flights.html">Open <span>↗</span></a>
-        </div>
-      </article>
+<article class="card">
+  <div>
+    <div class="card-tag">TRIP ELEMENT</div>
+    <div class="card-header"><div class="card-emoji">📘</div><div class="card-title">Guides</div></div>
+    <div class="card-text">Reference guides and essential Japan travel information.</div>
+  </div>
+  <div class="card-footer">
+    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+    <a class="card-link" href="./guides.html">Open <span>↗</span></a>
+  </div>
+</article>
 
-      <!-- G -->
-      <article class="card">
-        <div>
-          <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">📘</div><div class="card-title">Guides</div></div>
-          <div class="card-text">Reference guides and essential Japan travel information.</div>
-        </div>
-        <div class="card-footer">
-          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/guides.html">Open <span>↗</span></a>
-        </div>
-      </article>
+<article class="card">
+  <div>
+    <div class="card-tag">TRIP ELEMENT</div>
+    <div class="card-header"><div class="card-emoji">🛍️</div><div class="card-title">Shopping</div></div>
+    <div class="card-text">Shopping plans, destinations and budget considerations.</div>
+  </div>
+  <div class="card-footer">
+    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+    <a class="card-link" href="./shopping.html">Open <span>↗</span></a>
+  </div>
+</article>
 
-      <!-- S -->
-      <article class="card">
-        <div>
-          <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">🛍️</div><div class="card-title">Shopping</div></div>
-          <div class="card-text">Shopping plans, destinations and budget considerations.</div>
-        </div>
-        <div class="card-footer">
-          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/shopping.html">Open <span>↗</span></a>
-        </div>
-      </article>
+<article class="card">
+  <div>
+    <div class="card-tag">TRIP ELEMENT</div>
+    <div class="card-header"><div class="card-emoji">📝</div><div class="card-title">Task List</div></div>
+    <div class="card-text">Trip organisation and preparation checklists.</div>
+  </div>
+  <div class="card-footer">
+    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+    <a class="card-link" href="./task-list-guide.html">Open <span>↗</span></a>
+  </div>
+</article>
 
-      <!-- T -->
-      <article class="card">
-        <div>
-          <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">📝</div><div class="card-title">Task List</div></div>
-          <div class="card-text">Trip organisation and preparation checklists.</div>
-        </div>
-        <div class="card-footer">
-          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/task-list-guide.html">Open <span>↗</span></a>
-        </div>
-      </article>
+<article class="card">
+  <div>
+    <div class="card-tag">TRIP ELEMENT</div>
+    <div class="card-header"><div class="card-emoji">🚄</div><div class="card-title">Trains</div></div>
+    <div class="card-text">Rail movements and bookings for the May 2026 itinerary.</div>
+  </div>
+  <div class="card-footer">
+    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+    <a class="card-link" href="./trains.html">Open <span>↗</span></a>
+  </div>
+</article>
 
-      <article class="card">
-        <div>
-          <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">🚄</div><div class="card-title">Trains</div></div>
-          <div class="card-text">Rail movements and bookings for the May 2026 itinerary.</div>
-        </div>
-        <div class="card-footer">
-          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/trains.html">Open <span>↗</span></a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div>
-          <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">🎒</div><div class="card-title">Travel Packing Guide</div></div>
-          <div class="card-text">Packing checklist for Sema & Gavin.</div>
-        </div>
-        <div class="card-footer">
-          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/travel-packing-guide.html">Open <span>↗</span></a>
-        </div>
-      </article>
-
-    </div>
-
-    <div class="hub-container">
-      <a href="https://trekworks.org/" class="hub-btn">← Back to TrekWorks Hub</a>
-    </div>
-
-  </main>
+<article class="card">
+  <div>
+    <div class="card-tag">TRIP ELEMENT</div>
+    <div class="card-header"><div class="card-emoji">🎒</div><div class="card-title">Travel Packing Guide</div></div>
+    <div class="card-text">Packing checklist for Sema & Gavin.</div>
+  </div>
+  <div class="card-footer">
+    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+    <a class="card-link" href="./travel-packing-guide.html">Open <span>↗</span></a>
+  </div>
+</article>
 
 </div>
 
+<div class="hub-container">
+  <a href="https://trekworks.org/" class="hub-btn">← Back to TrekWorks Hub</a>
+</div>
+
+</main>
+</div>
+
 <script>
-/* ===============================
-   TrekWorks Trip Mode – identical to GJN-2024-Sep
-   =============================== */
 const TRIP_MODE_LS_KEY="trekworks.tripMode";
 const DEFAULT_TRIP_MODE="online";
 
@@ -289,13 +272,11 @@ helpPill.addEventListener("click",()=>{
 
 refreshTripModeUI();
 
-/* Existing service worker refresh logic preserved */
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.getRegistrations().then(regs=>{
     for (let reg of regs) reg.update();
   });
 }
 </script>
-
 </body>
 </html>
