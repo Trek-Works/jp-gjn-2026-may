@@ -9,16 +9,16 @@
 
   <style>
     :root {
-      --bg-main:#050816;
-      --bg-card:#0b1020;
-      --bg-card-soft:#111827;
-      --border-soft:rgba(148,163,184,.35);
-      --text-main:#e5e7eb;
-      --text-muted:#9ca3af;
-      --accent-blue:#60a5fa;
-      --radius-card:18px;
-      --radius-pill:999px;
-      --shadow-card:0 20px 40px rgba(15,23,42,.8);
+      --bg-main: #050816;
+      --bg-card: #0b1020;
+      --bg-card-soft: #111827;
+      --border-soft: rgba(148,163,184,0.35);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --accent-blue: #60a5fa;
+      --radius-card: 18px;
+      --radius-pill: 999px;
+      --shadow-card: 0 20px 40px rgba(15,23,42,0.8);
     }
     *{box-sizing:border-box}
     body{
@@ -32,7 +32,6 @@
     .trip-flag{font-size:13px; letter-spacing:.18em; color:var(--text-muted); margin-bottom:4px;}
     h1{margin:0; font-size:clamp(24px,3.2vw,30px);}
     .trip-dates{margin-top:4px; font-size:13px; color:var(--text-muted);}
-
     .pill-row{margin-top:14px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;}
     .pill{
       border-radius:var(--radius-pill);
@@ -52,10 +51,10 @@
       color:#fbbf24;
       border-color:#fbbf24;
     }
-
     .grid{
       margin-top:24px;
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
       gap:18px;
     }
     .card{
@@ -64,15 +63,14 @@
       border-radius:var(--radius-card);
       box-shadow:var(--shadow-card);
       padding:16px 17px 14px;
-      display:flex; flex-direction:column; justify-content:space-between;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
     }
     .card-header{display:flex; gap:10px; align-items:center; margin-bottom:10px;}
     .card-emoji{font-size:26px;}
     .card-title{font-size:16px; font-weight:600;}
-    .card-tag{
-      font-size:11px; text-transform:uppercase; letter-spacing:.18em;
-      color:var(--text-muted); margin-bottom:6px;
-    }
+    .card-tag{font-size:11px; text-transform:uppercase; letter-spacing:.18em; color:var(--text-muted); margin-bottom:6px;}
     .card-text{font-size:13px; color:var(--text-muted); margin-bottom:12px;}
     .card-footer{display:flex; justify-content:space-between; align-items:center;}
     .secure-label{
@@ -85,7 +83,7 @@
     .card-link{text-decoration:none; color:var(--accent-blue); font-size:13px;}
     .card-link span{font-size:14px;}
 
-    .hub-btn {
+    .hub-btn{
       margin-top:40px;
       display:inline-block;
       padding:10px 22px;
@@ -97,8 +95,12 @@
       text-decoration:none;
       letter-spacing:0.3px;
     }
+    .hub-btn:hover{
+      background:radial-gradient(circle at top left,#263445,#0b0f19);
+      border-color:#4b5563;
+    }
 
-    .hub-container { text-align:center; margin-top:36px; }
+    .hub-container{text-align:center; margin-top:36px;}
 
     /* ===============================
        iOS Install Helper (additive)
@@ -144,137 +146,138 @@
 <body>
 <div class="page">
 
-<header>
-  <div class="trip-flag">JP · GJN-JP-2026-May</div>
-  <h1>Trip Home</h1>
-  <p class="trip-dates">Japan · May 2026 · Secure trip guide</p>
+  <header>
+    <div class="trip-flag">JP · GJN-JP-2026-May</div>
+    <h1>Trip Home</h1>
+    <p class="trip-dates">Japan · May 2026 · Secure trip guide</p>
 
-  <div class="pill-row">
-    <div class="pill" id="tripModePill">Trip Mode: Online</div>
-    <div class="pill" id="tripModeHelp">?</div>
-    <div class="pill install" id="installPill" style="display:none;">
-      <span>⬇️</span>Install App
+    <div class="pill-row">
+      <div class="pill" id="tripModePill">Trip Mode: Online</div>
+      <div class="pill" id="tripModeHelp">?</div>
+      <div class="pill install" id="installPill" style="display:none;">
+        <span>⬇️</span>Install App
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<main>
-<div class="grid">
-<article class="card">
-  <div>
-    <div class="card-tag">TRIP ELEMENT</div>
-    <div class="card-header"><div class="card-emoji">🏨</div><div class="card-title">Accommodation</div></div>
-    <div class="card-text">Hotel details, confirmations and stay information for May 2026.</div>
-  </div>
-  <div class="card-footer">
-    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-    <a class="card-link" href="./accommodation.html">Open <span>↗</span></a>
-  </div>
-</article>
+  <main>
+    <div class="grid">
 
-<article class="card">
-  <div>
-    <div class="card-tag">TRIP ELEMENT</div>
-    <div class="card-header"><div class="card-emoji">🎡</div><div class="card-title">Activities</div></div>
-    <div class="card-text">Tours, experiences, timings and booking confirmations.</div>
-  </div>
-  <div class="card-footer">
-    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-    <a class="card-link" href="./activities.html">Open <span>↗</span></a>
-  </div>
-</article>
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">🏨</div><div class="card-title">Accommodation</div></div>
+          <div class="card-text">Hotel details, confirmations and stay information for May 2026.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="./accommodation.html">Open <span>↗</span></a>
+        </div>
+      </article>
 
-<article class="card">
-  <div>
-    <div class="card-tag">TRIP ELEMENT</div>
-    <div class="card-header"><div class="card-emoji">🚌</div><div class="card-title">Airport Limousine Bus</div></div>
-    <div class="card-text">Timetables, boarding locations and drop-off arrangements.</div>
-  </div>
-  <div class="card-footer">
-    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-    <a class="card-link" href="./airport-limousine-bus.html">Open <span>↗</span></a>
-  </div>
-</article>
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">🎡</div><div class="card-title">Activities</div></div>
+          <div class="card-text">Tours, experiences, timings and booking confirmations.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="./activities.html">Open <span>↗</span></a>
+        </div>
+      </article>
 
-<article class="card">
-  <div>
-    <div class="card-tag">TRIP ELEMENT</div>
-    <div class="card-header"><div class="card-emoji">✈️</div><div class="card-title">Flights</div></div>
-    <div class="card-text">Flight schedules, terminals and booking detail.</div>
-  </div>
-  <div class="card-footer">
-    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-    <a class="card-link" href="./flights.html">Open <span>↗</span></a>
-  </div>
-</article>
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">🚌</div><div class="card-title">Airport Limousine Bus</div></div>
+          <div class="card-text">Timetables, boarding locations and drop-off arrangements.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="./airport-limousine-bus.html">Open <span>↗</span></a>
+        </div>
+      </article>
 
-<article class="card">
-  <div>
-    <div class="card-tag">TRIP ELEMENT</div>
-    <div class="card-header"><div class="card-emoji">📘</div><div class="card-title">Guides</div></div>
-    <div class="card-text">Reference guides and essential Japan travel information.</div>
-  </div>
-  <div class="card-footer">
-    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-    <a class="card-link" href="./guides.html">Open <span>↗</span></a>
-  </div>
-</article>
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">✈️</div><div class="card-title">Flights</div></div>
+          <div class="card-text">Flight schedules, terminals and booking detail.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="./flights.html">Open <span>↗</span></a>
+        </div>
+      </article>
 
-<article class="card">
-  <div>
-    <div class="card-tag">TRIP ELEMENT</div>
-    <div class="card-header"><div class="card-emoji">🛍️</div><div class="card-title">Shopping</div></div>
-    <div class="card-text">Shopping plans, destinations and budget considerations.</div>
-  </div>
-  <div class="card-footer">
-    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-    <a class="card-link" href="./shopping.html">Open <span>↗</span></a>
-  </div>
-</article>
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">📘</div><div class="card-title">Guides</div></div>
+          <div class="card-text">Reference guides and essential Japan travel information.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="./guides.html">Open <span>↗</span></a>
+        </div>
+      </article>
 
-<article class="card">
-  <div>
-    <div class="card-tag">TRIP ELEMENT</div>
-    <div class="card-header"><div class="card-emoji">📝</div><div class="card-title">Task List</div></div>
-    <div class="card-text">Trip organisation and preparation checklists.</div>
-  </div>
-  <div class="card-footer">
-    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-    <a class="card-link" href="./task-list-guide.html">Open <span>↗</span></a>
-  </div>
-</article>
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">🛍️</div><div class="card-title">Shopping</div></div>
+          <div class="card-text">Shopping plans, destinations and budget considerations.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="./shopping.html">Open <span>↗</span></a>
+        </div>
+      </article>
 
-<article class="card">
-  <div>
-    <div class="card-tag">TRIP ELEMENT</div>
-    <div class="card-header"><div class="card-emoji">🚄</div><div class="card-title">Trains</div></div>
-    <div class="card-text">Rail movements and bookings for the May 2026 itinerary.</div>
-  </div>
-  <div class="card-footer">
-    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-    <a class="card-link" href="./trains.html">Open <span>↗</span></a>
-  </div>
-</article>
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">📝</div><div class="card-title">Task List</div></div>
+          <div class="card-text">Trip organisation and preparation checklists.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="./task-list-guide.html">Open <span>↗</span></a>
+        </div>
+      </article>
 
-<article class="card">
-  <div>
-    <div class="card-tag">TRIP ELEMENT</div>
-    <div class="card-header"><div class="card-emoji">🎒</div><div class="card-title">Travel Packing Guide</div></div>
-    <div class="card-text">Packing checklist for Sema & Gavin.</div>
-  </div>
-  <div class="card-footer">
-    <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-    <a class="card-link" href="./travel-packing-guide.html">Open <span>↗</span></a>
-  </div>
-</article>
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">🚄</div><div class="card-title">Trains</div></div>
+          <div class="card-text">Rail movements and bookings for the May 2026 itinerary.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="./trains.html">Open <span>↗</span></a>
+        </div>
+      </article>
 
-</div>
+      <article class="card">
+        <div>
+          <div class="card-tag">TRIP ELEMENT</div>
+          <div class="card-header"><div class="card-emoji">🎒</div><div class="card-title">Travel Packing Guide</div></div>
+          <div class="card-text">Packing checklist for Sema & Gavin.</div>
+        </div>
+        <div class="card-footer">
+          <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
+          <a class="card-link" href="./travel-packing-guide.html">Open <span>↗</span></a>
+        </div>
+      </article>
 
-<div class="hub-container">
-  <a href="https://trekworks.org/" class="hub-btn">← Back to TrekWorks Hub</a>
-</div>
+    </div>
 
-</main>
+    <div class="hub-container">
+      <a href="https://trekworks.org/" class="hub-btn">← Back to TrekWorks Hub</a>
+    </div>
+  </main>
+
 </div>
 
 <!-- iOS Install Helper -->
@@ -287,10 +290,9 @@
     <span class="ios-install-dismiss" id="iosInstallDismiss">Dismiss</span>
   </div>
 </div>
-
 <script>
 // ===============================
-// TrekWorks Trip Mode – localStorage + IndexedDB (aligned to 2024 model)
+// TrekWorks Trip Mode – localStorage + IndexedDB
 // ===============================
 const TRIP_ID = "GJN-2026-May";
 const TRIP_MODE_LS_KEY = "trekworks.tripMode:GJN-2026-May";
@@ -379,7 +381,7 @@ helpPill.addEventListener("click", () => {
 refreshTripModeUI();
 
 // ===============================
-// Install App logic (aligned to 2024)
+// Install App logic
 // ===============================
 let deferredInstallPrompt = null;
 
@@ -402,7 +404,7 @@ document.getElementById("installPill").addEventListener("click", async () => {
 });
 
 // ===============================
-// Service Worker (register + update refresh) (aligned to 2024)
+// Service Worker (with update refresh)
 // ===============================
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./service-worker.js", { scope: "./" })
@@ -414,7 +416,7 @@ if ("serviceWorker" in navigator) {
 }
 
 // ===============================
-// iOS Install Helper logic (aligned to 2024)
+// iOS Install Helper logic
 // ===============================
 (function () {
   const DISMISS_KEY = "trekworks.iosInstallDismissed";
@@ -442,5 +444,7 @@ if ("serviceWorker" in navigator) {
   });
 })();
 </script>
+
 </body>
 </html>
+
