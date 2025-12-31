@@ -1,7 +1,8 @@
 // =====================================================
 // TrekWorks Trip Mode (TTM) Service Worker
 // Trip: JP / GJN-2026-May
-// Scope: /JP/GJN-2026-May/
+// Host: jp-gjn-2026-may.trekworks.org (subdomain root)
+// Scope: /
 // =====================================================
 
 const CACHE_VERSION = "tw-jp-gjn-2026-may-2025-01-01";
@@ -46,28 +47,28 @@ async function getTripMode() {
 }
 
 // -----------------------------------------------------
-// Core assets (EXPLICIT PRE-CACHE)
+// Core assets (EXPLICIT PRE-CACHE) - subdomain root
 // -----------------------------------------------------
 const CORE_ASSETS = [
-  "/JP/GJN-2026-May/",
-  "/JP/GJN-2026-May/index.html",
+  "/",
+  "/index.html",
 
-  "/JP/GJN-2026-May/accommodation.html",
-  "/JP/GJN-2026-May/activities.html",
-  "/JP/GJN-2026-May/airport-limousine-bus.html",
-  "/JP/GJN-2026-May/flights.html",
-  "/JP/GJN-2026-May/guides.html",
-  "/JP/GJN-2026-May/shopping.html",
-  "/JP/GJN-2026-May/task-list-guide.html",
-  "/JP/GJN-2026-May/trains.html",
-  "/JP/GJN-2026-May/travel-packing-guide.html",
+  "/accommodation.html",
+  "/activities.html",
+  "/airport-limousine-bus.html",
+  "/flights.html",
+  "/guides.html",
+  "/shopping.html",
+  "/task-list-guide.html",
+  "/trains.html",
+  "/travel-packing-guide.html",
 
-  "/JP/GJN-2026-May/external.html",
-  "/JP/GJN-2026-May/offline.html",
+  "/external.html",
+  "/offline.html",
 
-  "/JP/GJN-2026-May/manifest.json",
-  "/JP/GJN-2026-May/assets/icons/icon-192x192.png",
-  "/JP/GJN-2026-May/assets/icons/icon-512x512.png"
+  "/manifest.json",
+  "/assets/icons/icon-192x192.png",
+  "/assets/icons/icon-512x512.png"
 ];
 
 // -----------------------------------------------------
@@ -106,24 +107,41 @@ self.addEventListener("fetch", (event) => {
 });
 
 // -----------------------------------------------------
+// Helpers
+// -----------------------------------------------------
+function isRedirectResponse(response) {
+  if (!response) return false;
+  // response.redirected can be true even when status is 200 in some cases,
+  // but for navigations we treat any redirected response as "do not follow".
+  if (response.redirected) return true;
+  return response.status >= 300 && response.status < 400;
+}
+
+function normalisePathname(pathname) {
+  // Ensure "/" and "/index.html" behave consistently.
+  if (pathname === "/") return "/index.html";
+  return pathname;
+}
+
+// -----------------------------------------------------
 // Navigation strategy
 // -----------------------------------------------------
 async function handleNavigation(request) {
   const url = new URL(request.url);
   const cache = await caches.open(CACHE_NAME);
 
-  const inTripScope = url.pathname.startsWith("/JP/GJN-2026-May/");
-  const isExternalRouter =
-    url.pathname === "/JP/GJN-2026-May/external.html";
+  const isSameOrigin = url.origin === self.location.origin;
+  const pathname = url.pathname;
 
+  const isExternalRouter = isSameOrigin && pathname === "/external.html";
+
+  // Any same-origin document except the external router
   const isTripDocument =
-    inTripScope &&
+    isSameOrigin &&
     request.destination === "document" &&
     !isExternalRouter;
 
-  const canonicalExternalRequest = new Request(
-    "/JP/GJN-2026-May/external.html"
-  );
+  const canonicalExternalRequest = new Request("/external.html");
 
   const tripMode = await getTripMode();
 
@@ -131,19 +149,23 @@ async function handleNavigation(request) {
   // Trip Mode: OFFLINE
   // =====================================================
   if (tripMode === "offline") {
-
     if (isExternalRouter) {
       const cached = await cache.match(canonicalExternalRequest);
       if (cached) return cached;
-      return cache.match("/JP/GJN-2026-May/offline.html");
+      return cache.match("/offline.html");
     }
 
     if (isTripDocument) {
-      const cached = await cache.match(request);
+      const normalised = new Request(normalisePathname(pathname));
+      const cached = await cache.match(normalised);
       if (cached) return cached;
+
+      // If the user requested "/" and we only have "/index.html" cached
+      const indexFallback = await cache.match("/index.html");
+      if (indexFallback) return indexFallback;
     }
 
-    return cache.match("/JP/GJN-2026-May/offline.html");
+    return cache.match("/offline.html");
   }
 
   // =====================================================
@@ -152,11 +174,33 @@ async function handleNavigation(request) {
   try {
     const response = await fetch(request);
 
-    if (response && response.ok && inTripScope) {
+    // IMPORTANT:
+    // If the server (or Cloudflare) returns a redirect that points to trekworks.org,
+    // we do NOT want the browser to follow it. Serve cached content instead.
+    if (isTripDocument && isRedirectResponse(response)) {
+      const normalised = new Request(normalisePathname(pathname));
+      const cached = await cache.match(normalised);
+      if (cached) return cached;
+
+      const indexFallback = await cache.match("/index.html");
+      if (indexFallback) return indexFallback;
+
+      return cache.match("/offline.html");
+    }
+
+    // Cache successful, same-origin navigations
+    if (response && response.ok && isTripDocument) {
+      const normalisedPath = normalisePathname(pathname);
+
       if (isExternalRouter) {
         cache.put(canonicalExternalRequest, response.clone());
       } else {
-        cache.put(request, response.clone());
+        cache.put(new Request(normalisedPath), response.clone());
+
+        // Also keep "/" effectively cached by ensuring index is cached
+        if (normalisedPath === "/index.html") {
+          cache.put(new Request("/"), response.clone());
+        }
       }
     }
 
@@ -165,11 +209,18 @@ async function handleNavigation(request) {
     if (isExternalRouter) {
       const cached = await cache.match(canonicalExternalRequest);
       if (cached) return cached;
+      return cache.match("/offline.html");
     }
 
-    const cached = await cache.match(request);
-    if (cached) return cached;
+    if (isTripDocument) {
+      const normalised = new Request(normalisePathname(pathname));
+      const cached = await cache.match(normalised);
+      if (cached) return cached;
 
-    return cache.match("/JP/GJN-2026-May/offline.html");
+      const indexFallback = await cache.match("/index.html");
+      if (indexFallback) return indexFallback;
+    }
+
+    return cache.match("/offline.html");
   }
 }
