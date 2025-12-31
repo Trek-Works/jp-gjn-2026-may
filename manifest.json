@@ -2,12 +2,13 @@
   "name": "JP · GJN-2026-May",
   "short_name": "GJN 2026",
   "description": "Unified trip app for JP GJN-2026-May (Japan) with quick access to secure trip sections.",
-  "start_url": "/?app=2026",
+  "id": "/",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
   "background_color": "#0b1220",
   "theme_color": "#0b1220",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/assets/icons/icon-192x192.png",
