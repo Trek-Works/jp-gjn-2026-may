@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GJN-JP-2026-May · Trip Home</title>
 
+  <!-- PWA manifest -->
+  <link rel="manifest" href="./manifest.json">
+
   <style>
     :root {
       --bg-main:#050816;
@@ -114,6 +117,7 @@
 
 <main>
 <div class="grid">
+
 <article class="card">
   <div>
     <div class="card-tag">TRIP ELEMENT</div>
@@ -230,7 +234,6 @@
 
 </main>
 </div>
-
 <script>
 const TRIP_MODE_LS_KEY="trekworks.tripMode";
 const DEFAULT_TRIP_MODE="online";
@@ -272,9 +275,10 @@ helpPill.addEventListener("click",()=>{
 
 refreshTripModeUI();
 
+/* PWA service worker registration */
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.getRegistrations().then(regs=>{
-    for (let reg of regs) reg.update();
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js");
   });
 }
 </script>
