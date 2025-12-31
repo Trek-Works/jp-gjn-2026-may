@@ -4,7 +4,7 @@
 // Scope: /JP/GJN-2026-May/
 // =====================================================
 
-const CACHE_VERSION = "tw-jp-gjn-2026-may-2024-12-22";
+const CACHE_VERSION = "tw-jp-gjn-2026-may-2025-01-01";
 const CACHE_NAME = `trekworks-${CACHE_VERSION}`;
 
 // -----------------------------------------------------
@@ -132,14 +132,12 @@ async function handleNavigation(request) {
   // =====================================================
   if (tripMode === "offline") {
 
-    // External router stays special
     if (isExternalRouter) {
       const cached = await cache.match(canonicalExternalRequest);
       if (cached) return cached;
       return cache.match("/JP/GJN-2026-May/offline.html");
     }
 
-    // Any normal trip HTML page → serve from cache if available
     if (isTripDocument) {
       const cached = await cache.match(request);
       if (cached) return cached;
