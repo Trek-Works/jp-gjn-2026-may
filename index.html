@@ -31,6 +31,7 @@
     h1{margin:0; font-size:clamp(24px,3.2vw,30px);}
     .trip-dates{margin-top:4px; font-size:13px; color:var(--text-muted);}
 
+    /* ===== Trip Mode pills (additive, matched to 2024-Sep) ===== */
     .pill-row{margin-top:14px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;}
     .pill{
       border-radius:var(--radius-pill);
@@ -94,6 +95,10 @@
       text-decoration:none;
       letter-spacing:0.3px;
     }
+    .hub-btn:hover {
+      background:radial-gradient(circle at top left,#263445,#0b0f19);
+      border-color:#4b5563;
+    }
 
     .hub-container { text-align:center; margin-top:36px; }
   </style>
@@ -107,6 +112,7 @@
     <h1>Trip Home</h1>
     <p class="trip-dates">Japan · May 2026 · Secure trip guide</p>
 
+    <!-- Trip Mode pills (additive only) -->
     <div class="pill-row">
       <div class="pill" id="tripModePill">Trip Mode: Online</div>
       <div class="pill" id="tripModeHelp">?</div>
@@ -116,6 +122,7 @@
   <main>
     <div class="grid">
 
+      <!-- A -->
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
@@ -124,7 +131,7 @@
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/accommodation.html?v=2026-05">Open <span>↗</span></a>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/accommodation.html">Open <span>↗</span></a>
         </div>
       </article>
 
@@ -136,7 +143,7 @@
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/activities.html?v=2026-05">Open <span>↗</span></a>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/activities.html">Open <span>↗</span></a>
         </div>
       </article>
 
@@ -148,10 +155,11 @@
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/airport-limousine-bus.html?v=2026-05">Open <span>↗</span></a>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/airport-limousine-bus.html">Open <span>↗</span></a>
         </div>
       </article>
 
+      <!-- F -->
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
@@ -160,10 +168,11 @@
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/flights.html?v=2026-05">Open <span>↗</span></a>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/flights.html">Open <span>↗</span></a>
         </div>
       </article>
 
+      <!-- G -->
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
@@ -172,10 +181,11 @@
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/guides.html?v=2026-05">Open <span>↗</span></a>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/guides.html">Open <span>↗</span></a>
         </div>
       </article>
 
+      <!-- S -->
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
@@ -184,10 +194,11 @@
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/shopping.html?v=2026-05">Open <span>↗</span></a>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/shopping.html">Open <span>↗</span></a>
         </div>
       </article>
 
+      <!-- T -->
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
@@ -196,7 +207,7 @@
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/task-list-guide.html?v=2026-05">Open <span>↗</span></a>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/task-list-guide.html">Open <span>↗</span></a>
         </div>
       </article>
 
@@ -208,7 +219,7 @@
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/trains.html?v=2026-05">Open <span>↗</span></a>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/trains.html">Open <span>↗</span></a>
         </div>
       </article>
 
@@ -220,7 +231,7 @@
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/travel-packing-guide.html?v=2026-05">Open <span>↗</span></a>
+          <a class="card-link" href="https://trekworks.org/JP/GJN-2026-May/travel-packing-guide.html">Open <span>↗</span></a>
         </div>
       </article>
 
@@ -229,11 +240,15 @@
     <div class="hub-container">
       <a href="https://trekworks.org/" class="hub-btn">← Back to TrekWorks Hub</a>
     </div>
+
   </main>
 
 </div>
 
 <script>
+/* ===============================
+   TrekWorks Trip Mode – identical to GJN-2024-Sep
+   =============================== */
 const TRIP_MODE_LS_KEY="trekworks.tripMode";
 const DEFAULT_TRIP_MODE="online";
 
@@ -243,9 +258,11 @@ const helpPill=document.getElementById("tripModeHelp");
 function getTripMode(){
   return localStorage.getItem(TRIP_MODE_LS_KEY)||DEFAULT_TRIP_MODE;
 }
+
 function setTripMode(mode){
   localStorage.setItem(TRIP_MODE_LS_KEY,mode);
 }
+
 function refreshTripModeUI(){
   const mode=getTripMode();
   if(mode==="offline"){
@@ -256,10 +273,12 @@ function refreshTripModeUI(){
     tripPill.classList.remove("trip-offline");
   }
 }
+
 tripPill.addEventListener("click",()=>{
   setTripMode(getTripMode()==="offline"?"online":"offline");
   refreshTripModeUI();
 });
+
 helpPill.addEventListener("click",()=>{
   alert(
     "Trip Mode controls how external links behave while travelling.\n\n"+
@@ -267,8 +286,10 @@ helpPill.addEventListener("click",()=>{
     "Online: allows external sites."
   );
 });
+
 refreshTripModeUI();
 
+/* Existing service worker refresh logic preserved */
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.getRegistrations().then(regs=>{
     for (let reg of regs) reg.update();
