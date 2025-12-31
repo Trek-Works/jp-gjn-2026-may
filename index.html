@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GJN-JP-2026-May · Trip Home</title>
 
-  <!-- PWA manifest -->
-  <link rel="manifest" href="./manifest.json">
+  <link rel="manifest" href="./manifest.json" />
 
   <style>
     :root {
@@ -48,6 +47,7 @@
       cursor:pointer;
       user-select:none;
     }
+    .pill.install{ color:var(--text-main); }
     .pill.trip-offline{
       color:#fbbf24;
       border-color:#fbbf24;
@@ -99,6 +99,46 @@
     }
 
     .hub-container { text-align:center; margin-top:36px; }
+
+    /* ===============================
+       iOS Install Helper (additive)
+       =============================== */
+    .ios-install-helper{
+      position:fixed;
+      bottom:14px;
+      left:50%;
+      transform:translateX(-50%);
+      max-width:520px;
+      width:calc(100% - 28px);
+      background:rgba(15,23,42,.97);
+      border:1px solid var(--border-soft);
+      border-radius:14px;
+      padding:12px 14px;
+      display:none;
+      z-index:999;
+      box-shadow:0 20px 40px rgba(0,0,0,.6);
+    }
+    .ios-install-helper p{
+      margin:0;
+      font-size:13px;
+      color:var(--text-muted);
+      line-height:1.4;
+    }
+    .ios-install-helper strong{
+      color:var(--text-main);
+      font-weight:600;
+    }
+    .ios-install-actions{
+      margin-top:8px;
+      display:flex;
+      justify-content:flex-end;
+    }
+    .ios-install-dismiss{
+      font-size:12px;
+      color:var(--accent-blue);
+      cursor:pointer;
+      user-select:none;
+    }
   </style>
 </head>
 <body>
@@ -112,12 +152,14 @@
   <div class="pill-row">
     <div class="pill" id="tripModePill">Trip Mode: Online</div>
     <div class="pill" id="tripModeHelp">?</div>
+    <div class="pill install" id="installPill" style="display:none;">
+      <span>⬇️</span>Install App
+    </div>
   </div>
 </header>
 
 <main>
 <div class="grid">
-
 <article class="card">
   <div>
     <div class="card-tag">TRIP ELEMENT</div>
@@ -234,53 +276,171 @@
 
 </main>
 </div>
+
+<!-- iOS Install Helper -->
+<div class="ios-install-helper" id="iosInstallHelper">
+  <p>
+    <strong>Install this trip for offline use</strong><br>
+    Tap <strong>Share</strong> then <strong>Add to Home Screen</strong> in Safari.
+  </p>
+  <div class="ios-install-actions">
+    <span class="ios-install-dismiss" id="iosInstallDismiss">Dismiss</span>
+  </div>
+</div>
+
 <script>
-const TRIP_MODE_LS_KEY="trekworks.tripMode";
-const DEFAULT_TRIP_MODE="online";
+// ===============================
+// TrekWorks Trip Mode – localStorage + IndexedDB (aligned to 2024 model)
+// ===============================
+const TRIP_ID = "GJN-2026-May";
+const TRIP_MODE_LS_KEY = "trekworks.tripMode:GJN-2026-May";
+const DEFAULT_TRIP_MODE = "online";
 
-const tripPill=document.getElementById("tripModePill");
-const helpPill=document.getElementById("tripModeHelp");
+const DB_NAME = "trekworks";
+const DB_VERSION = 1;
+const STORE_NAME = "settings";
+const TRIP_MODE_KEY = "tripMode:GJN-2026-May";
 
-function getTripMode(){
-  return localStorage.getItem(TRIP_MODE_LS_KEY)||DEFAULT_TRIP_MODE;
+function openTripDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = () => {
+      const db = req.result;
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        db.createObjectStore(STORE_NAME);
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
 }
 
-function setTripMode(mode){
-  localStorage.setItem(TRIP_MODE_LS_KEY,mode);
+async function persistTripModeToDB(mode) {
+  try {
+    const db = await openTripDB();
+    const tx = db.transaction(STORE_NAME, "readwrite");
+    tx.objectStore(STORE_NAME).put(mode, TRIP_MODE_KEY);
+  } catch {}
 }
 
-function refreshTripModeUI(){
-  const mode=getTripMode();
-  if(mode==="offline"){
-    tripPill.textContent="Trip Mode: Offline";
+(async () => {
+  try {
+    const db = await openTripDB();
+    const tx = db.transaction(STORE_NAME, "readonly");
+    const store = tx.objectStore(STORE_NAME);
+    const req = store.get(TRIP_MODE_KEY);
+    req.onsuccess = () => {
+      if (req.result === undefined) {
+        const mode =
+          localStorage.getItem(TRIP_MODE_LS_KEY) || DEFAULT_TRIP_MODE;
+        persistTripModeToDB(mode);
+      }
+    };
+  } catch {}
+})();
+
+function getTripMode() {
+  return localStorage.getItem(TRIP_MODE_LS_KEY) || DEFAULT_TRIP_MODE;
+}
+
+function setTripMode(mode) {
+  localStorage.setItem(TRIP_MODE_LS_KEY, mode);
+  persistTripModeToDB(mode);
+}
+
+const tripPill = document.getElementById("tripModePill");
+const helpPill = document.getElementById("tripModeHelp");
+
+function refreshTripModeUI() {
+  const mode = getTripMode();
+  if (mode === "offline") {
+    tripPill.textContent = "Trip Mode: Offline";
     tripPill.classList.add("trip-offline");
-  }else{
-    tripPill.textContent="Trip Mode: Online";
+  } else {
+    tripPill.textContent = "Trip Mode: Online";
     tripPill.classList.remove("trip-offline");
   }
 }
 
-tripPill.addEventListener("click",()=>{
-  setTripMode(getTripMode()==="offline"?"online":"offline");
+tripPill.addEventListener("click", () => {
+  const next = getTripMode() === "offline" ? "online" : "offline";
+  setTripMode(next);
   refreshTripModeUI();
 });
 
-helpPill.addEventListener("click",()=>{
+helpPill.addEventListener("click", () => {
   alert(
-    "Trip Mode controls how external links behave while travelling.\n\n"+
-    "Offline: keeps you inside the app.\n"+
+    "Trip Mode controls how external links behave while travelling.\n\n" +
+    "Offline: keeps you inside the app.\n" +
     "Online: allows external sites."
   );
 });
 
 refreshTripModeUI();
 
-/* PWA service worker registration */
+// ===============================
+// Install App logic (aligned to 2024)
+// ===============================
+let deferredInstallPrompt = null;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  document.getElementById("installPill").style.display = "inline-flex";
+});
+
+window.addEventListener("appinstalled", () => {
+  document.getElementById("installPill").style.display = "none";
+  deferredInstallPrompt = null;
+});
+
+document.getElementById("installPill").addEventListener("click", async () => {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+});
+
+// ===============================
+// Service Worker (register + update refresh) (aligned to 2024)
+// ===============================
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./service-worker.js");
-  });
+  navigator.serviceWorker.register("./service-worker.js", { scope: "./" })
+    .then(() => {
+      navigator.serviceWorker.getRegistrations().then(regs => {
+        for (let reg of regs) reg.update();
+      });
+    });
 }
+
+// ===============================
+// iOS Install Helper logic (aligned to 2024)
+// ===============================
+(function () {
+  const DISMISS_KEY = "trekworks.iosInstallDismissed";
+  const helper = document.getElementById("iosInstallHelper");
+  const dismissBtn = document.getElementById("iosInstallDismiss");
+
+  if (!helper || !dismissBtn) return;
+
+  const ua = navigator.userAgent;
+  const isIOS = /iPad|iPhone|iPod/.test(ua);
+  const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+  const isStandalone =
+    navigator.standalone === true ||
+    window.matchMedia("(display-mode: standalone)").matches;
+
+  const dismissed = localStorage.getItem(DISMISS_KEY) === "true";
+
+  if (isIOS && isSafari && !isStandalone && !dismissed) {
+    helper.style.display = "block";
+  }
+
+  dismissBtn.addEventListener("click", () => {
+    localStorage.setItem(DISMISS_KEY, "true");
+    helper.style.display = "none";
+  });
+})();
 </script>
 </body>
 </html>
