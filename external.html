@@ -69,7 +69,7 @@
   const target = params.get("url");
 
   // ===============================
-  // Trip Mode (IDENTICAL TO 2024)
+  // Trip Mode (LOCALSTORAGE FIRST)
   // ===============================
   const TRIP_ID = "GJN-2026-May";
   const TRIP_MODE_KEY = "tripMode:GJN-2026-May";
@@ -77,6 +77,14 @@
 
   function getTripMode() {
     return new Promise((resolve) => {
+      // 1️⃣ localStorage is authoritative (immediate, no race condition)
+      const lsMode = localStorage.getItem(TRIP_MODE_LS_KEY);
+      if (lsMode === "online" || lsMode === "offline") {
+        resolve(lsMode);
+        return;
+      }
+
+      // 2️⃣ Fallback to IndexedDB
       const req = indexedDB.open("trekworks", 1);
 
       req.onerror = () => resolve("offline");
@@ -95,13 +103,7 @@
           const store = tx.objectStore("settings");
           const r = store.get(TRIP_MODE_KEY);
 
-          r.onsuccess = () => {
-            if (r.result === undefined && localStorage.getItem(TRIP_MODE_LS_KEY)) {
-              store.put(localStorage.getItem(TRIP_MODE_LS_KEY), TRIP_MODE_KEY);
-            }
-            resolve(r.result || "offline");
-          };
-
+          r.onsuccess = () => resolve(r.result || "offline");
           r.onerror = () => resolve("offline");
         } catch {
           resolve("offline");
