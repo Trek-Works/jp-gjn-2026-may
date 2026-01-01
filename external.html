@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <title>External link unavailable</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
     body {
       margin: 0;
@@ -40,89 +41,107 @@
       color: #fff;
       font-weight: 500;
     }
-    .footer { margin-top: 18px; font-size: 0.9rem; opacity: 0.6; }
+    .offline-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+    .offline-footer {
+      margin-top: 18px;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
   </style>
 </head>
 <body>
 
 <div class="card" id="card">
-  <h1>External link unavailable</h1>
+  <h1 id="title">External link unavailable</h1>
   <p id="message">Checking connection…</p>
 
   <div class="actions">
-    <a class="button" href="./">Back to Trip Home</a>
-<a class="button" id="goBack" href="#"
-   onclick="if (history.length > 1) { history.back(); } else { window.location.href = './'; } return false;">Go Back</a>
-  </div>
-
-  <div class="footer">
-    JP · GJN-2026-May · Japan
+    <a class="button" href="./index.html">Back to Trip Home</a>
+    <a class="button" href="./attractions-guide.html">Go Back</a>
   </div>
 </div>
 
 <script>
   const params = new URLSearchParams(location.search);
   const target = params.get("url");
-  const back = params.get("back");
 
-  if (back && /^[a-z0-9\-\/]+\.html$/i.test(back)) {
-    document.getElementById("goBack").href = "./" + back;
-  }
+  // ===============================
+  // Trip Mode (IDENTICAL TO 2024)
+  // ===============================
+  const TRIP_ID = "GJN-2026-May";
+  const TRIP_MODE_KEY = "tripMode:GJN-2026-May";
+  const TRIP_MODE_LS_KEY = "trekworks.tripMode:GJN-2026-May";
 
-  // Trip Mode (primary): localStorage, to match index.html
-  const TRIP_MODE_LS_KEY = "trekworks.tripMode";
-  const DEFAULT_TRIP_MODE = "online";
-
-  function getTripModeFromLocalStorage() {
-    try {
-      const v = localStorage.getItem(TRIP_MODE_LS_KEY);
-      return v || DEFAULT_TRIP_MODE;
-    } catch {
-      return DEFAULT_TRIP_MODE;
-    }
-  }
-
-  // Trip Mode (legacy fallback): IndexedDB
-  function openDB() {
-    return new Promise((resolve, reject) => {
+  function getTripMode() {
+    return new Promise((resolve) => {
       const req = indexedDB.open("trekworks", 1);
+
+      req.onerror = () => resolve("offline");
+
       req.onupgradeneeded = () => {
         const db = req.result;
         if (!db.objectStoreNames.contains("settings")) {
           db.createObjectStore("settings");
         }
       };
-      req.onsuccess = () => resolve(req.result);
-      req.onerror = () => reject(req.error);
+
+      req.onsuccess = () => {
+        try {
+          const db = req.result;
+          const tx = db.transaction("settings", "readonly");
+          const store = tx.objectStore("settings");
+          const r = store.get(TRIP_MODE_KEY);
+
+          r.onsuccess = () => {
+            if (r.result === undefined && localStorage.getItem(TRIP_MODE_LS_KEY)) {
+              store.put(localStorage.getItem(TRIP_MODE_LS_KEY), TRIP_MODE_KEY);
+            }
+            resolve(r.result || "offline");
+          };
+
+          r.onerror = () => resolve("offline");
+        } catch {
+          resolve("offline");
+        }
+      };
     });
   }
 
-  async function getTripModeFromIDB() {
-    try {
-      const db = await openDB();
-      return new Promise((resolve) => {
-        const tx = db.transaction("settings", "readonly");
-        const store = tx.objectStore("settings");
-        const r = store.get("tripMode");
-        r.onsuccess = () => resolve(r.result || "");
-        r.onerror = () => resolve("");
-      });
-    } catch {
-      return "";
-    }
+  function renderOfflineScreen() {
+    const card = document.getElementById("card");
+    card.innerHTML = `
+      <div class="offline-icon">📴</div>
+      <h1>You’re offline</h1>
+
+      <p>
+        This Japan trip app is available offline, but some sections need an
+        internet connection to load.
+      </p>
+
+      <p>
+        Reconnect when you can and the app will refresh automatically.
+      </p>
+
+      <p>
+        If you were trying to open an external website and lost connection,
+        go back to Trip Home and switch Trip Mode to Offline to continue using the app.
+      </p>
+
+      <div class="actions">
+        <a class="button" href="./index.html">Back to Trip Home</a>
+        <a class="button" href="./attractions-guide.html">Go Back</a>
+      </div>
+
+      <div class="offline-footer">
+        JP · GJN-2026-May · Japan
+      </div>
+    `;
   }
 
-  async function getTripMode() {
-    const lsMode = getTripModeFromLocalStorage();
-    if (lsMode === "online" || lsMode === "offline") return lsMode;
-
-    const idbMode = await getTripModeFromIDB();
-    if (idbMode === "online" || idbMode === "offline") return idbMode;
-
-    return DEFAULT_TRIP_MODE;
-  }
-
-  async function hasData() {
+  async function hasUsableData() {
     try {
       await fetch("https://www.google.com/generate_204", {
         method: "GET",
@@ -141,16 +160,27 @@
       return;
     }
 
-    const online = await hasData();
+    const online = await hasUsableData();
+    if (!online) {
+      renderOfflineScreen();
+      return;
+    }
+
     const tripMode = await getTripMode();
 
-    if (!online || tripMode !== "online") {
+    if (tripMode !== "online") {
+      document.getElementById("title").textContent = "External link unavailable";
       document.getElementById("message").textContent =
         "You are currently in Offline Trip Mode. External websites are unavailable.";
       return;
     }
 
-    location.replace(target);
+    try {
+      await fetch(target, { mode: "no-cors", cache: "no-store" });
+      location.replace(target);
+    } catch {
+      renderOfflineScreen();
+    }
   })();
 </script>
 
