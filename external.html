@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>External link unavailable</title>
+  <title>Leaving TrekWorks</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <style>
     body {
       margin: 0;
@@ -24,8 +23,14 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.5);
       text-align: center;
     }
-    h1 { font-size: 1.3rem; margin-bottom: 12px; }
-    p { opacity: 0.85; line-height: 1.5; }
+    h1 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+    p {
+      opacity: 0.85;
+      line-height: 1.5;
+    }
     .actions {
       margin-top: 20px;
       display: flex;
@@ -37,10 +42,14 @@
       text-decoration: none;
       padding: 10px 16px;
       border-radius: 10px;
-      background: rgba(255,255,255,0.1);
+      background: #2563eb;
       color: #fff;
       font-weight: 500;
     }
+    a.secondary {
+      background: rgba(255,255,255,0.1);
+    }
+
     .offline-icon {
       font-size: 48px;
       margin-bottom: 12px;
@@ -59,8 +68,14 @@
   <p id="message">Checking connection…</p>
 
   <div class="actions">
-    <a class="button" href="./index.html">Back to Trip Home</a>
-    <a class="button" href="./attractions-guide.html">Go Back</a>
+    <a class="button secondary" href="./index.html">
+      Back to Trip Home
+    </a>
+
+    <a class="button secondary"
+       href="./accommodation.html">
+      Go Back
+    </a>
   </div>
 </div>
 
@@ -68,23 +83,12 @@
   const params = new URLSearchParams(location.search);
   const target = params.get("url");
 
-  // ===============================
-  // Trip Mode (LOCALSTORAGE FIRST)
-  // ===============================
   const TRIP_ID = "GJN-2026-May";
   const TRIP_MODE_KEY = "tripMode:GJN-2026-May";
   const TRIP_MODE_LS_KEY = "trekworks.tripMode:GJN-2026-May";
 
   function getTripMode() {
     return new Promise((resolve) => {
-      // 1️⃣ localStorage is authoritative (immediate, no race condition)
-      const lsMode = localStorage.getItem(TRIP_MODE_LS_KEY);
-      if (lsMode === "online" || lsMode === "offline") {
-        resolve(lsMode);
-        return;
-      }
-
-      // 2️⃣ Fallback to IndexedDB
       const req = indexedDB.open("trekworks", 1);
 
       req.onerror = () => resolve("offline");
@@ -103,7 +107,13 @@
           const store = tx.objectStore("settings");
           const r = store.get(TRIP_MODE_KEY);
 
-          r.onsuccess = () => resolve(r.result || "offline");
+          r.onsuccess = () => {
+            if (r.result === undefined && localStorage.getItem(TRIP_MODE_LS_KEY)) {
+              store.put(localStorage.getItem(TRIP_MODE_LS_KEY), TRIP_MODE_KEY);
+            }
+            resolve(r.result || "offline");
+          };
+
           r.onerror = () => resolve("offline");
         } catch {
           resolve("offline");
@@ -133,8 +143,14 @@
       </p>
 
       <div class="actions">
-        <a class="button" href="./index.html">Back to Trip Home</a>
-        <a class="button" href="./attractions-guide.html">Go Back</a>
+        <a class="button secondary" href="./index.html">
+          Back to Trip Home
+        </a>
+
+        <a class="button secondary"
+           href="./accommodation.html">
+          Go Back
+        </a>
       </div>
 
       <div class="offline-footer">
