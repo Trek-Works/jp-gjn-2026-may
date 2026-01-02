@@ -50,8 +50,11 @@
     .subtitle { margin-top: 4px; font-size: 14px; color: var(--text-soft); }
 
     .toolbar {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      margin: 18px 0 26px; align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 26px;
+      align-items: center;
     }
     .pill-button {
       border-radius: var(--radius-pill);
@@ -65,34 +68,29 @@
       align-items: center;
       gap: 6px;
     }
-    .pill-button:hover { border-color:#4b5563; background:#020617; }
-    .chip {
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--chip-border);
-      background: var(--chip-bg);
-      padding: 4px 10px;
-      font-size: 11px;
-      color: var(--text-soft);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .chip-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: #22c55e;
-    }
 
     .section-header {
-      display: flex; justify-content: space-between;
-      align-items: center; margin: 12px 0 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 12px 0 10px;
     }
     .section-header-left {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 15px; font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
     }
     .section-header-left .emoji { font-size: 18px; }
     .section-header-meta { font-size: 12px; color: var(--text-soft); }
-    .cards { margin-top: 8px; display: flex; flex-direction: column; gap: 12px; }
+
+    .cards {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
     .card {
       background: linear-gradient(145deg, var(--card), #050816 80%);
       border-radius: var(--radius-xl);
@@ -101,96 +99,59 @@
       box-shadow: var(--shadow-soft);
     }
     .card-header {
-      display: flex; justify-content: space-between;
-      align-items: baseline; gap: 8px; margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
     }
-    .card-title { font-size:15px; font-weight:600; }
+    .card-title { font-size: 15px; font-weight: 600; }
     .card-city {
-      font-size:11px; text-transform:uppercase;
-      letter-spacing:0.14em; color:var(--text-soft);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
     }
     .badge-nights {
       background: var(--accent-soft);
       border-radius: var(--radius-pill);
-      padding: 3px 10px; font-size: 11px;
-      color:#e5e7eb;
+      padding: 3px 10px;
+      font-size: 11px;
+      color: #e5e7eb;
     }
     .meta-row {
-      display:flex; flex-wrap:wrap; gap:20px;
-      font-size:12px; color:var(--text-soft); margin-top:6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-top: 6px;
     }
-    .meta-label { font-weight:500; color:#d1d5db; margin-right:4px; }
-    .detail-row { margin-top:4px; font-size:12px; }
-    .detail-row a { color:#93c5fd; text-decoration:none; cursor:pointer; }
-    .detail-row a:hover { text-decoration:underline; }
-    .card-footer { margin-top:10px; display:flex; gap:8px; }
+    .meta-label {
+      font-weight: 500;
+      color: #d1d5db;
+      margin-right: 4px;
+    }
+    .detail-row { margin-top: 4px; font-size: 12px; }
+    .detail-row a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+    .detail-row a:hover { text-decoration: underline; }
+
+    .card-footer {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+    }
     .link-pill {
       border-radius: var(--radius-pill);
       border: 1px solid #4b5563;
       padding: 4px 10px;
-      font-size:11px;
-      text-decoration:none;
-      color:#e5e7eb;
-      background:#020617;
-      cursor:pointer;
-    }
-    .link-pill:hover { border-color:#9ca3af; background:#030712; }
-
-    /* ===== State overlays (aligned to GJN-2024-Sep behaviour) ===== */
-    .tw-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(5,6,11,0.88);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-    .tw-box {
-      max-width: 520px;
-      width: calc(100% - 40px);
-      margin: 20px;
-      padding: 26px 26px 22px;
-      background: linear-gradient(145deg, #11141f, #181b26);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.65);
-      text-align: center;
-    }
-    .tw-box h2 {
-      margin: 0 0 10px;
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
-    .tw-box p {
-      margin: 0 0 18px;
-      font-size: 16px;
-      color: #b5bed5;
-      line-height: 1.45;
-    }
-    .tw-actions {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .tw-btn {
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.06);
-      color: #f5f7ff;
-      font-size: 18px;
-      padding: 12px 22px;
-      cursor: pointer;
-      min-width: 170px;
-    }
-    .tw-btn:hover { background: rgba(255,255,255,0.08); }
-    .tw-footer {
-      margin-top: 16px;
-      font-size: 18px;
-      color: rgba(181,190,213,0.65);
-      letter-spacing: 0.02em;
+      font-size: 11px;
+      text-decoration: none;
+      color: #e5e7eb;
+      background: #020617;
     }
   </style>
 </head>
@@ -202,7 +163,6 @@
     <div class="breadcrumb">JP · GJN-2026-May · Japan Trip</div>
     <h1 class="title">Accommodation</h1>
     <p class="subtitle">Stays for the May 2026 Japan trip.</p>
-
     <div class="toolbar">
       <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
         ← Back to Trip Home
@@ -238,18 +198,14 @@
 
         <div class="detail-row">
           <span class="meta-label">Address:</span>
-          <a onclick="handleExternal('https://maps.app.goo.gl/QoCZwH2kaJSm8evs6')">
+          <a href="external.html?url=https://maps.app.goo.gl/QoCZwH2kaJSm8evs6">
             2-2-5 Higashishinsaibashi, Chuo, Osaka, 542-0083 Japan
           </a>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" onclick="handleExternal('https://www.candeohotels.com/en/osaka-namba/')">
-            Hotel Website
-          </a>
-          <a class="link-pill" onclick="handleExternal('https://maps.app.goo.gl/QoCZwH2kaJSm8evs6')">
-            View Map
-          </a>
+          <a class="link-pill" href="external.html?url=https://www.candeohotels.com/en/osaka-namba/">Hotel Website</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/QoCZwH2kaJSm8evs6">View Map</a>
         </div>
       </article>
     </div>
@@ -283,23 +239,18 @@
 
         <div class="detail-row">
           <span class="meta-label">Address:</span>
-          <a onclick="handleExternal('https://maps.app.goo.gl/ikVv3HbnEFsGvH4u6')">
+          <a href="external.html?url=https://maps.app.goo.gl/ikVv3HbnEFsGvH4u6">
             600 Gima, Yomitan-son, Nakagami-gun, Okinawa Main island, 904-0393
           </a>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" onclick="handleExternal('https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/')">
-            Hotel Website
-          </a>
-          <a class="link-pill" onclick="handleExternal('https://maps.app.goo.gl/ikVv3HbnEFsGvH4u6')">
-            View Map
-          </a>
+          <a class="link-pill" href="external.html?url=https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/">Hotel Website</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/ikVv3HbnEFsGvH4u6">View Map</a>
         </div>
       </article>
     </div>
   </section>
-
   <!-- FUKUOKA -->
   <section>
     <div class="section-header">
@@ -328,18 +279,14 @@
 
         <div class="detail-row">
           <span class="meta-label">Address:</span>
-          <a onclick="handleExternal('https://maps.app.goo.gl/YvCAb1XRoGWbq8km6')">
+          <a href="external.html?url=https://maps.app.goo.gl/YvCAb1XRoGWbq8km6">
             3-4-13 Watanabe-dori, Chuo-ku, Fukuoka, 810-0004
           </a>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" onclick="handleExternal('https://www.hotelmonterey.co.jp/en/fukuoka/')">
-            Hotel Website
-          </a>
-          <a class="link-pill" onclick="handleExternal('https://maps.app.goo.gl/YvCAb1XRoGWbq8km6')">
-            View Map
-          </a>
+          <a class="link-pill" href="external.html?url=https://www.hotelmonterey.co.jp/en/fukuoka/">Hotel Website</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/YvCAb1XRoGWbq8km6">View Map</a>
         </div>
       </article>
     </div>
@@ -373,86 +320,75 @@
 
         <div class="detail-row">
           <span class="meta-label">Address:</span>
-          <a onclick="handleExternal('https://maps.app.goo.gl/P8XDFfP9AA4sywxt9')">
+          <a href="external.html?url=https://maps.app.goo.gl/P8XDFfP9AA4sywxt9">
             1-8-7 Kitakyuhoujimachi Chuo-ku, Osaka, 541-0057
           </a>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" onclick="handleExternal('https://en.miyakohotels.ne.jp/hommachi/')">
-            Hotel Website
-          </a>
-          <a class="link-pill" onclick="handleExternal('https://maps.app.goo.gl/P8XDFfP9AA4sywxt9')">
-            View Map
-          </a>
+          <a class="link-pill" href="external.html?url=https://en.miyakohotels.ne.jp/hommachi/">Hotel Website</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/P8XDFfP9AA4sywxt9">View Map</a>
         </div>
       </article>
     </div>
   </section>
-
 </main>
 
-<!-- ===== Overlay: Trip Mode (external blocked) ===== -->
-<div class="tw-overlay" id="twTripModeOverlay" aria-hidden="true">
-  <div class="tw-box">
-    <h2>External access blocked</h2>
-    <p>You are currently in Offline Trip Mode.</p>
-    <div class="tw-actions">
-      <button class="tw-btn" onclick="twBackToTripHome()">Back to Trip Home</button>
-      <button class="tw-btn" onclick="twGoBack()">Go Back</button>
-    </div>
-    <div class="tw-footer">JP · GJN-2026-May · Japan</div>
-  </div>
-</div>
-
-<!-- ===== Overlay: No data (you’re offline) ===== -->
-<div class="tw-overlay" id="twOfflineOverlay" aria-hidden="true">
-  <div class="tw-box">
+<div class="offline-overlay" id="offlineOverlay" style="display:none; position:fixed; inset:0; background:rgba(5,6,11,0.88); align-items:center; justify-content:center; z-index:9999;">
+  <div style="max-width:420px; margin:20px; padding:20px 22px; background:linear-gradient(145deg,#11141f,#181b26); border-radius:18px; text-align:center;">
     <h2>You’re offline</h2>
-    <p>
+    <p style="color:#b5bed5;">
       This content requires an internet connection.<br>
       You can continue using other parts of the app while offline.
     </p>
-    <div class="tw-actions">
-      <button class="tw-btn" onclick="twCloseOverlays()">OK</button>
-    </div>
+    <button onclick="closeOffline()" style="margin-top:10px;">OK</button>
   </div>
 </div>
 
 <script>
-/* ===== State-aware external handling (anchor reset implementation) ===== */
+(function () {
+  function verifyConnectivity() {
+    return new Promise(function (resolve, reject) {
+      const controller = new AbortController();
+      const timeout = setTimeout(function () {
+        controller.abort();
+        reject();
+      }, 800);
 
-function handleExternal(url) {
-  verifyConnectivity()
-    .then(function () {
-      if (isTripModeOffline()) throw 'trip';
-      const target =
-        'external.html?url=' + encodeURIComponent(url) +
-        '&back=' + encodeURIComponent('accommodation.html');
-      window.location.href = target;
-    })
-    .catch(function (state) {
-      if (state === 'trip') {
-        showTripModeOverlay();
-      } else {
-        showOfflineOverlay();
-      }
+      fetch('external.html', { cache: 'no-store', signal: controller.signal })
+        .then(function () {
+          clearTimeout(timeout);
+          resolve();
+        })
+        .catch(function () {
+          clearTimeout(timeout);
+          reject();
+        });
     });
-}
+  }
 
-/* Same-origin probe to confirm the app can reach its own external.html */
-function verifyConnectivity() {
-  return new Promise(function (resolve, reject) {
-    const controller = new AbortController();
-    const timeout = setTimeout(function () {
-      controller.abort();
-      reject('offline');
-    }, 800);
+  function showOffline() {
+    document.getElementById('offlineOverlay').style.display = 'flex';
+  }
 
-    fetch('external.html', { cache: 'no-store', signal: controller.signal })
+  window.closeOffline = function () {
+    document.getElementById('offlineOverlay').style.display = 'none';
+  };
+
+  document.addEventListener('click', function (e) {
+    const link = e.target.closest('a[href^="external.html?url="]');
+    if (!link) return;
+
+    e.preventDefault();
+
+    verifyConnectivity()
       .then(function () {
-        clearTimeout(timeout);
-        resolve();
+        window.location.href = link.getAttribute('href');
       })
-      .catch(function () {
-        clearTimeout(timeout);
+      .catch(showOffline);
+  });
+})();
+</script>
+
+</body>
+</html>
