@@ -36,7 +36,6 @@
       padding: 32px 16px 40px;
     }
 
-    /* === Header alignment (ONLY change) — match GJN-2024-Sep === */
     .page-header { text-align: center; }
     .page-header .toolbar { justify-content: center; }
 
@@ -122,7 +121,7 @@
     }
     .meta-label { font-weight:500; color:#d1d5db; margin-right:4px; }
     .detail-row { margin-top:4px; font-size:12px; }
-    .detail-row a { color:#93c5fd; text-decoration:none; }
+    .detail-row a { color:#93c5fd; text-decoration:none; cursor:pointer; }
     .detail-row a:hover { text-decoration:underline; }
     .card-footer { margin-top:10px; display:flex; gap:8px; }
     .link-pill {
@@ -133,9 +132,18 @@
       text-decoration:none;
       color:#e5e7eb;
       background:#020617;
+      cursor:pointer;
     }
     .link-pill:hover { border-color:#9ca3af; background:#030712; }
   </style>
+
+  <script>
+    function handleExternal(url) {
+      const back = 'accommodation.html';
+      const target = 'external.html?url=' + encodeURIComponent(url) + '&back=' + back;
+      window.location.href = target;
+    }
+  </script>
 </head>
 
 <body>
@@ -181,16 +189,16 @@
 
         <div class="detail-row">
           <span class="meta-label">Address:</span>
-          <a href="external.html?url=https://maps.app.goo.gl/QoCZwH2kaJSm8evs6">
+          <a onclick="handleExternal('https://maps.app.goo.gl/QoCZwH2kaJSm8evs6')">
             2-2-5 Higashishinsaibashi, Chuo, Osaka, 542-0083 Japan
           </a>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.candeohotels.com/en/osaka-namba/">
+          <a class="link-pill" onclick="handleExternal('https://www.candeohotels.com/en/osaka-namba/')">
             Hotel Website
           </a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/QoCZwH2kaJSm8evs6">
+          <a class="link-pill" onclick="handleExternal('https://maps.app.goo.gl/QoCZwH2kaJSm8evs6')">
             View Map
           </a>
         </div>
@@ -226,16 +234,16 @@
 
         <div class="detail-row">
           <span class="meta-label">Address:</span>
-          <a href="external.html?url=https://maps.app.goo.gl/ikVv3HbnEFsGvH4u6">
+          <a onclick="handleExternal('https://maps.app.goo.gl/ikVv3HbnEFsGvH4u6')">
             600 Gima, Yomitan-son, Nakagami-gun, Okinawa Main island, 904-0393
           </a>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/">
+          <a class="link-pill" onclick="handleExternal('https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/')">
             Hotel Website
           </a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/ikVv3HbnEFsGvH4u6">
+          <a class="link-pill" onclick="handleExternal('https://maps.app.goo.gl/ikVv3HbnEFsGvH4u6')">
             View Map
           </a>
         </div>
@@ -271,16 +279,16 @@
 
         <div class="detail-row">
           <span class="meta-label">Address:</span>
-          <a href="external.html?url=https://maps.app.goo.gl/YvCAb1XRoGWbq8km6">
+          <a onclick="handleExternal('https://maps.app.goo.gl/YvCAb1XRoGWbq8km6')">
             3-4-13 Watanabe-dori, Chuo-ku, Fukuoka, 810-0004
           </a>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.hotelmonterey.co.jp/en/fukuoka/">
+          <a class="link-pill" onclick="handleExternal('https://www.hotelmonterey.co.jp/en/fukuoka/')">
             Hotel Website
           </a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/YvCAb1XRoGWbq8km6">
+          <a class="link-pill" onclick="handleExternal('https://maps.app.goo.gl/YvCAb1XRoGWbq8km6')">
             View Map
           </a>
         </div>
@@ -316,16 +324,16 @@
 
         <div class="detail-row">
           <span class="meta-label">Address:</span>
-          <a href="external.html?url=https://maps.app.goo.gl/P8XDFfP9AA4sywxt9">
+          <a onclick="handleExternal('https://maps.app.goo.gl/P8XDFfP9AA4sywxt9')">
             1-8-7 Kitakyuhoujimachi Chuo-ku, Osaka, 541-0057
           </a>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://en.miyakohotels.ne.jp/hommachi/">
+          <a class="link-pill" onclick="handleExternal('https://en.miyakohotels.ne.jp/hommachi/')">
             Hotel Website
           </a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/P8XDFfP9AA4sywxt9">
+          <a class="link-pill" onclick="handleExternal('https://maps.app.goo.gl/P8XDFfP9AA4sywxt9')">
             View Map
           </a>
         </div>
