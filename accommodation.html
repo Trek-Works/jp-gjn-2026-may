@@ -135,15 +135,64 @@
       cursor:pointer;
     }
     .link-pill:hover { border-color:#9ca3af; background:#030712; }
-  </style>
 
-  <script>
-    function handleExternal(url) {
-      const back = 'accommodation.html';
-      const target = 'external.html?url=' + encodeURIComponent(url) + '&back=' + back;
-      window.location.href = target;
+    /* ===== State overlays (aligned to GJN-2024-Sep behaviour) ===== */
+    .tw-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5,6,11,0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
     }
-  </script>
+    .tw-box {
+      max-width: 520px;
+      width: calc(100% - 40px);
+      margin: 20px;
+      padding: 26px 26px 22px;
+      background: linear-gradient(145deg, #11141f, #181b26);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.65);
+      text-align: center;
+    }
+    .tw-box h2 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .tw-box p {
+      margin: 0 0 18px;
+      font-size: 16px;
+      color: #b5bed5;
+      line-height: 1.45;
+    }
+    .tw-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .tw-btn {
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.06);
+      color: #f5f7ff;
+      font-size: 18px;
+      padding: 12px 22px;
+      cursor: pointer;
+      min-width: 170px;
+    }
+    .tw-btn:hover { background: rgba(255,255,255,0.08); }
+    .tw-footer {
+      margin-top: 16px;
+      font-size: 18px;
+      color: rgba(181,190,213,0.65);
+      letter-spacing: 0.02em;
+    }
+  </style>
 </head>
 
 <body>
@@ -342,5 +391,68 @@
   </section>
 
 </main>
-</body>
-</html>
+
+<!-- ===== Overlay: Trip Mode (external blocked) ===== -->
+<div class="tw-overlay" id="twTripModeOverlay" aria-hidden="true">
+  <div class="tw-box">
+    <h2>External access blocked</h2>
+    <p>You are currently in Offline Trip Mode.</p>
+    <div class="tw-actions">
+      <button class="tw-btn" onclick="twBackToTripHome()">Back to Trip Home</button>
+      <button class="tw-btn" onclick="twGoBack()">Go Back</button>
+    </div>
+    <div class="tw-footer">JP · GJN-2026-May · Japan</div>
+  </div>
+</div>
+
+<!-- ===== Overlay: No data (you’re offline) ===== -->
+<div class="tw-overlay" id="twOfflineOverlay" aria-hidden="true">
+  <div class="tw-box">
+    <h2>You’re offline</h2>
+    <p>
+      This content requires an internet connection.<br>
+      You can continue using other parts of the app while offline.
+    </p>
+    <div class="tw-actions">
+      <button class="tw-btn" onclick="twCloseOverlays()">OK</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== State-aware external handling (anchor reset implementation) ===== */
+
+function handleExternal(url) {
+  verifyConnectivity()
+    .then(function () {
+      if (isTripModeOffline()) throw 'trip';
+      const target =
+        'external.html?url=' + encodeURIComponent(url) +
+        '&back=' + encodeURIComponent('accommodation.html');
+      window.location.href = target;
+    })
+    .catch(function (state) {
+      if (state === 'trip') {
+        showTripModeOverlay();
+      } else {
+        showOfflineOverlay();
+      }
+    });
+}
+
+/* Same-origin probe to confirm the app can reach its own external.html */
+function verifyConnectivity() {
+  return new Promise(function (resolve, reject) {
+    const controller = new AbortController();
+    const timeout = setTimeout(function () {
+      controller.abort();
+      reject('offline');
+    }, 800);
+
+    fetch('external.html', { cache: 'no-store', signal: controller.signal })
+      .then(function () {
+        clearTimeout(timeout);
+        resolve();
+      })
+      .catch(function () {
+        clearTimeout(timeout);
