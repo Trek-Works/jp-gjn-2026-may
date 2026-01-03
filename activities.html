@@ -24,15 +24,63 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1b2540 0, #050814 55%, #02040a 100%);
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
       color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
     }
 
     .page {
       max-width: 920px;
       margin: 0 auto;
       padding: 36px 18px 56px;
+      width: 100%;
+      background: transparent;
+    }
+
+    /* === HEADER — REBASED VERBATIM TO accommodation.html === */
+    .page-header { text-align: center; }
+    .page-header .toolbar { justify-content: center; }
+
+    .breadcrumb {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
+
+    .title { font-size: 30px; font-weight: 700; margin: 0; }
+
+    .subtitle {
+      margin-top: 4px;
+      font-size: 14px;
+      color: #9ca3af;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 26px;
+      align-items: center;
+    }
+
+    .pill-button {
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: rgba(15,23,42,0.9);
+      color: var(--text-main);
+      font-size: 13px;
+      padding: 6px 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     header {
@@ -88,7 +136,7 @@
     }
 
     .section-title {
-      font-size: 24px;
+      font-size: 17px;
       font-weight: 600;
     }
 
@@ -102,14 +150,14 @@
       font-size: 12px;
       padding: 5px 12px;
       border-radius: var(--radius-sm);
-      background: #151c30;
-      border: 1px solid rgba(255,255,255,0.05);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.08);
       color: var(--text-muted);
       white-space: nowrap;
     }
 
     .card {
-      background: var(--bg-card);
+      background: linear-gradient(145deg, #0b1020, #020617 80%);
       border-radius: var(--radius-lg);
       padding: 18px 20px;
       border: 1px solid var(--border-soft);
@@ -131,7 +179,7 @@
     }
 
     .card-title {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 600;
     }
 
@@ -167,7 +215,7 @@
     ul.planned-list {
       list-style: none;
       margin-top: 10px;
-      font-size: 15px;
+      font-size: 13px;
       line-height: 1.55;
       color: var(--text-muted);
     }
@@ -297,14 +345,15 @@
 
 <body>
 <div class="page">
-<header>
-  <div class="trip-code">JP · GJN-2026-May · Japan Trip</div>
-  <h1>Activities Guide</h1>
-  <div class="dates">14 May 2026 → 29 May 2026</div>
-</header>
-
-<div class="nav-row">
-  <a href="https://jp-gjn-2026-may.trekworks.org/">← Back to Trip Home</a>
+<div class="page-header">
+  <div class="breadcrumb">JP · GJN-2026-May · Japan Trip</div>
+  <h1 class="title">Activities</h1>
+  <p class="subtitle">Activities for Japan trip (14 May 2026 → 29 May 2026).</p>
+  <div class="toolbar">
+    <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
+      ← Back to Trip Home
+    </a>
+  </div>
 </div>
 
 <!-- Osaka (Honshu) -->
