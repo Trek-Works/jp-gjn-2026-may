@@ -198,7 +198,7 @@
       cursor: pointer;
     }
 
-    /* MOBILE-ONLY subtitle layout */
+/* MOBILE-ONLY subtitle layout */
 @media (max-width: 640px) {
 
   /* Subtitle layout (already working) */
@@ -216,16 +216,13 @@
 
   /* Meta rows: Arrival / Depart / Check-in / Check-out */
   .meta-row {
-    gap: 10px;          /* uniform spacing between all meta items */
+    flex-direction: column;
+    gap: 8px;
   }
 
-  /* Ensure consistent gap before Phone (same as meta-row gap) */
+  /* Reset default margins */
   .detail-row {
-    margin-top: 0;
-  }
-
-  .detail-row.phone-row {
-    margin-top: 10px;
+    margin-top: 8px;
   }
 
 }
