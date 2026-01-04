@@ -200,18 +200,28 @@
 
     /* MOBILE-ONLY subtitle layout */
     @media (max-width: 640px) {
-      .subtitle {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2px;
-        text-align: center;
-      }
+    .subtitle {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 2px;
+     	text-align: center;
+  }
 
-      .subtitle-dates {
-        font-size: 13px;
-      }
-    }
+  .subtitle-dates {
+    font-size: 13px;
+  }
+
+  /* Tighter meta spacing on mobile */
+  .meta-row {
+    gap: 10px; /* was 20px on desktop */
+  }
+
+  /* Extra breathing room after Check-out */
+  .detail-row:first-of-type {
+    margin-top: 12px;
+  }
+}
   </style>
 
 </head>
