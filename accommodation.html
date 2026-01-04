@@ -197,7 +197,23 @@
       font-size: 14px;
       cursor: pointer;
     }
+
+    /* MOBILE-ONLY subtitle layout */
+    @media (max-width: 640px) {
+      .subtitle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        text-align: center;
+      }
+
+      .subtitle-dates {
+        font-size: 13px;
+      }
+    }
   </style>
+
 </head>
 
 <body>
