@@ -199,27 +199,35 @@
     }
 
     /* MOBILE-ONLY subtitle layout */
-    @media (max-width: 640px) {
-    .subtitle {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     gap: 2px;
-     	text-align: center;
+@media (max-width: 640px) {
+
+  /* Subtitle layout (already working) */
+  .subtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
   }
 
   .subtitle-dates {
     font-size: 13px;
   }
 
-/* Normalised vertical rhythm on mobile */
-.meta-row {
-  gap: 10px;
-}
+  /* Meta rows: Arrival / Depart / Check-in / Check-out */
+  .meta-row {
+    gap: 10px;          /* uniform spacing between all meta items */
+  }
 
-.detail-row:first-of-type {
-  margin-top: 10px;
-}
+  /* Ensure consistent gap before Phone (same as meta-row gap) */
+  .detail-row {
+    margin-top: 0;
+  }
+
+  .detail-row.phone-row {
+    margin-top: 10px;
+  }
+
 }
   </style>
 
@@ -263,7 +271,7 @@
           <div><span class="meta-label">Check-out:</span> 11:00 AM</div>
         </div>
 
-        <div class="detail-row"><span class="meta-label">Phone:</span> +81 6-6212-2200</div>
+        <div class="detail-row phone-row"><span class="meta-label">Phone:</span> +81 6-6212-2200</div>
 
         <div class="detail-row">
           <span class="meta-label">Address:</span>
@@ -302,7 +310,7 @@
           <div><span class="meta-label">Check-out:</span> 11:00 AM</div>
         </div>
 
-        <div class="detail-row"><span class="meta-label">Phone:</span> +81 98-982-9111</div>
+        <div class="detail-row phone-row"><span class="meta-label">Phone:</span> +81 98-982-9111</div>
 
         <div class="detail-row">
           <span class="meta-label">Address:</span>
@@ -341,7 +349,7 @@
           <div><span class="meta-label">Check-out:</span> 11:00 AM</div>
         </div>
 
-        <div class="detail-row"><span class="meta-label">Phone:</span> +81 92-734-7111</div>
+        <div class="detail-row phone-row"><span class="meta-label">Phone:</span> +81 92-734-7111</div>
 
         <div class="detail-row">
           <span class="meta-label">Address:</span>
@@ -380,7 +388,7 @@
           <div><span class="meta-label">Check-out:</span> 11:00 AM</div>
         </div>
 
-        <div class="detail-row"><span class="meta-label">Phone:</span> +81 6-6263-0385</div>
+        <div class="detail-row phone-row"><span class="meta-label">Phone:</span> +81 6-6263-0385</div>
 
         <div class="detail-row">
           <span class="meta-label">Address:</span>
