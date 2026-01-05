@@ -299,7 +299,23 @@
       transform: rotate(90deg);
     }
 
-    /* OFFLINE OVERLAY — REBASED VERBATIM TO attractions-guide.html */
+    /* MOBILE-ONLY subtitle layout — matched to accommodation */
+@media (max-width: 640px) {
+
+  .subtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
+  }
+
+  .subtitle-dates {
+    font-size: 13px;
+  }
+
+}
+
     .offline-overlay {
       position: fixed;
       inset: 0;
@@ -348,7 +364,11 @@
 <div class="page-header">
   <div class="breadcrumb">JP · GJN-2026-May · Japan Trip</div>
   <h1 class="title">Activities</h1>
-  <p class="subtitle">Activities for Japan trip (14 May 2026 → 29 May 2026).</p>
+  <p class="subtitle">
+  <span class="subtitle-main">Activities for Japan trip</span>
+  <span class="subtitle-dates">(14 May 2026 → 29 May 2026)</span>
+</p>
+
   <div class="toolbar">
     <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
       ← Back to Trip Home
