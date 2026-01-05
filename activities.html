@@ -314,7 +314,6 @@
     font-size: 13px;
   }
 
-  /* MOBILE — section header layout fix */
   .section-header {
     flex-direction: column;
     align-items: flex-start;
@@ -330,6 +329,20 @@
     align-self: flex-start;
   }
 
+  /* ✅ Dates / Base stacked + centred (mobile only) */
+  .section-subtitle.split {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+    width: 100%;
+  }
+
+  .section-subtitle.split span {
+    display: block;
+    width: 100%;
+  }
 }
 
     .offline-overlay {
@@ -399,7 +412,7 @@
       <div class="section-title">🏯 Osaka (Honshu)</div>
       <div class="section-subtitle split">
   <span>Dates: 14 → 17 May</span>
-  <span>Base: Namba and Umeday</span>
+  <span>Base: Namba and Umeda</span>
 </div>
 
     </div>
@@ -708,7 +721,7 @@
       <div class="section-title">🏙 Osaka (Return)</div>
       <div class="section-subtitle split">
   <span>Dates: 26 → 29 May</span>
-  <span>Base: Namba and Umeday</span>
+  <span>Base: Namba and Umeda</span>
 </div>
     </div>
     <div class="pill">Wrap-up days &amp; flexible options</div>
