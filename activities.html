@@ -329,15 +329,20 @@
     align-self: flex-start;
   }
 
-  /* ✅ Dates / Base stacked + centred (mobile only) */
-  .section-subtitle.split {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 4px;
-    width: 100%;
-  }
+/* ✅ Dates / Base stacked + LEFT aligned (mobile only) */
+.section-subtitle.split {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* ← key fix */
+  text-align: left;          /* ← key fix */
+  gap: 4px;                  /* tight vertical spacing */
+  width: 100%;
+}
+
+.section-subtitle.split span {
+  display: block;
+  width: 100%;
+}
 
   .section-subtitle.split span {
     display: block;
