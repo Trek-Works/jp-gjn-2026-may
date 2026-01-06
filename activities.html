@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Activities Guide – JP GJN-2026-May</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
     :root {
       --bg: #050814;
@@ -18,13 +19,16 @@
       --text-soft: #8a95c5;
       --radius-lg: 18px;
       --radius-sm: 999px;
-      --shadow-soft: 0 10px 28px rgba(0,0,0,0.45);
+      --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.45);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      margin: 0;
       min-height: 100vh;
       font-family: system-ui, sans-serif;
       background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
@@ -36,15 +40,21 @@
 
     .page {
       max-width: 920px;
+      width: 100%;
       margin: 0 auto;
       padding: 36px 18px 56px;
-      width: 100%;
       background: transparent;
     }
 
-    /* === HEADER — REBASED VERBATIM TO accommodation.html === */
-    .page-header { text-align: center; }
-    .page-header .toolbar { justify-content: center; }
+    /* ===== Header ===== */
+
+    .page-header {
+      text-align: center;
+    }
+
+    .page-header .toolbar {
+      justify-content: center;
+    }
 
     .breadcrumb {
       text-transform: uppercase;
@@ -54,7 +64,10 @@
       margin-bottom: 6px;
     }
 
-    .title { font-size: 30px; font-weight: 700; margin: 0; }
+    .title {
+      font-size: 30px;
+      font-weight: 700;
+    }
 
     .subtitle {
       margin-top: 4px;
@@ -73,7 +86,7 @@
     .pill-button {
       border-radius: 999px;
       border: 1px solid #374151;
-      background: rgba(15,23,42,0.9);
+      background: rgba(15, 23, 42, 0.9);
       color: var(--text-main);
       font-size: 13px;
       padding: 6px 14px;
@@ -83,45 +96,7 @@
       gap: 6px;
     }
 
-    header {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .trip-code {
-      font-size: 13px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-soft);
-      margin-bottom: 6px;
-    }
-
-    h1 {
-      font-size: 34px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .dates {
-      font-size: 15px;
-      color: var(--text-soft);
-    }
-
-    .nav-row {
-      text-align: center;
-      margin-top: 16px;
-    }
-
-    .nav-row a {
-      display: inline-block;
-      padding: 7px 14px;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--accent);
-      font-size: 14px;
-    }
+    /* ===== Sections ===== */
 
     .section {
       margin-top: 48px;
@@ -151,10 +126,12 @@
       padding: 5px 12px;
       border-radius: var(--radius-sm);
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       color: var(--text-muted);
       white-space: nowrap;
     }
+
+    /* ===== Cards ===== */
 
     .card {
       background: linear-gradient(145deg, #0b1020, #020617 80%);
@@ -186,16 +163,6 @@
     .card-meta {
       font-size: 13px;
       color: var(--text-soft);
-    }
-
-    .badge {
-      font-size: 12px;
-      padding: 5px 12px;
-      border-radius: var(--radius-sm);
-      background: var(--accent-soft);
-      border: 1px solid rgba(79,140,255,0.45);
-      color: var(--accent);
-      white-space: nowrap;
     }
 
     .meta-row {
@@ -249,7 +216,12 @@
 
     .divider {
       height: 1px;
-      background: linear-gradient(to right, rgba(255,255,255,0.05), rgba(255,255,255,0.02), transparent);
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.02),
+        transparent
+      );
       margin: 14px 0;
     }
 
@@ -258,7 +230,7 @@
       padding: 6px 12px;
       border-radius: var(--radius-sm);
       background: #141b31;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       color: var(--text-main);
       text-decoration: none;
       display: inline-block;
@@ -277,7 +249,8 @@
       text-decoration: none;
     }
 
-    /* Chevron style for <details> */
+    /* ===== <details> Chevron ===== */
+
     details summary {
       list-style: none;
       cursor: pointer;
@@ -299,514 +272,765 @@
       transform: rotate(90deg);
     }
 
-    /* MOBILE-ONLY subtitle layout — matched to accommodation */
-@media (max-width: 640px) {
+    /* ===== Mobile ===== */
 
-  .subtitle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    text-align: center;
-  }
+    @media (max-width: 640px) {
+      .subtitle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        text-align: center;
+      }
 
-  .subtitle-dates {
-    font-size: 13px;
-  }
+      .subtitle-dates {
+        font-size: 13px;
+      }
 
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
 
-  .section-title {
-    width: 100%;
-    white-space: normal;
-  }
+      .section-title {
+        width: 100%;
+        white-space: normal;
+      }
 
-  .pill {
-    align-self: flex-start;
-  }
+      .pill {
+        align-self: flex-start;
+      }
 
-/* ✅ Dates / Base stacked + LEFT aligned (mobile only) */
-.section-subtitle.split {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;   /* ← key fix */
-  text-align: left;          /* ← key fix */
-  gap: 4px;                  /* tight vertical spacing */
-  width: 100%;
-}
+      .section-subtitle.split {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 4px;
+        width: 100%;
+      }
 
-.section-subtitle.split span {
-  display: block;
-  width: 100%;
-}
+      .section-subtitle.split span {
+        display: block;
+        width: 100%;
+      }
+    }
 
-  .section-subtitle.split span {
-    display: block;
-    width: 100%;
-  }
-}
+    /* ===== Offline Overlay ===== */
 
     .offline-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(5,6,11,0.88);
+      background: rgba(5, 6, 11, 0.88);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 9999;
     }
+
     .offline-box {
       max-width: 420px;
       margin: 20px;
       padding: 20px 22px;
-      background: linear-gradient(145deg,var(--bg-card, #11141f),var(--bg-soft, #181b26));
-      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(
+        145deg,
+        var(--bg-card, #11141f),
+        var(--bg-soft, #181b26)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 18px;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.65);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
       text-align: center;
-      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
+
     .offline-box h2 {
       margin: 0 0 10px;
       font-size: 20px;
     }
+
     .offline-box p {
       margin: 0 0 16px;
       font-size: 14px;
       color: #b5bed5;
       line-height: 1.4;
     }
+
     .offline-box button {
       padding: 8px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(78,168,255,0.15);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(78, 168, 255, 0.15);
       color: #4ea8ff;
       font-size: 14px;
       cursor: pointer;
     }
   </style>
-
 </head>
-
 <body>
-<div class="page">
-<div class="page-header">
-  <div class="breadcrumb">JP · GJN-2026-May · Japan Trip</div>
-  <h1 class="title">Activities</h1>
-  <p class="subtitle">
-  <span class="subtitle-main">Activities for Japan trip</span>
-  <span class="subtitle-dates">(14 May 2026 → 29 May 2026)</span>
-</p>
+  <div class="page">
+    <div class="page-header">
+      <div class="breadcrumb">JP · GJN-2026-May · Japan Trip</div>
+      <h1 class="title">Activities</h1>
+      <p class="subtitle">
+        <span class="subtitle-main">Activities for Japan trip</span>
+        <span class="subtitle-dates">(14 May 2026 → 29 May 2026)</span>
+      </p>
 
-  <div class="toolbar">
-    <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
-      ← Back to Trip Home
-    </a>
-  </div>
-</div>
-
-<!-- Osaka (Honshu) -->
-<section class="section">
-  <div class="section-header">
-    <div>
-      <div class="section-title">🏯 Osaka (Honshu)</div>
-      <div class="section-subtitle split">
-  <span>Dates: 14 → 17 May</span>
-  <span>Base: Namba and Umeda</span>
-</div>
-    </div>
-  </div>
-
-  <div class="two-column">
-    <!-- Planned activities -->
-    <div class="card">
-      <div class="card-inner">
-        <div class="card-header">
-          <div>
-            <div class="card-title">Planned Activities</div>
-            <div class="card-meta">From itinerary · Days 1–4</div>
-          </div>
-        </div>
-
-        <div class="meta-row">
-          <div><span class="label">Base:</span> Osaka (Namba / Umeda)</div>
-          <div><span class="label">Nights:</span> 3</div>
-        </div>
-
-        <ul class="planned-list">
-          <li><strong>14 May (Thu)</strong> — Land at Kansai Airport around 21:00 → train (~45 min) → hotel check-in, rest.</li>
-          <li><strong>15 May (Fri)</strong> — Explore Dotonbori &amp; Shinsaibashi, visit Osaka Castle, Kuromon Market food crawl.</li>
-          <li><strong>16 May (Sat)</strong> — Day trip to Kyoto: Fushimi Inari Shrine &amp; Arashiyama Bamboo Grove. Return to Osaka in the evening.</li>
-          <li><strong>17 May (Sun)</strong> — Morning flight from Osaka to Okinawa (~2 hours). Arrive mid-afternoon and continue itinerary there.</li>
-        </ul>
+      <div class="toolbar">
+        <a
+          href="https://jp-gjn-2026-may.trekworks.org/"
+          class="pill-button"
+          style="color: #93c5fd"
+        >
+          ← Back to Trip Home
+        </a>
       </div>
     </div>
 
-    <!-- Optional activities -->
-    <details class="card">
-      <summary class="card-inner">
-        <div class="optional-label">Optional activities</div>
-        <div class="optional-note">
-          Extra ideas near your Osaka bases if you have spare time or reshuffle days.
-        </div>
-      </summary>
-      <div class="card-inner">
-        <!-- Umeda Sky Building -->
-        <div class="card-header">
-          <div>
-            <div class="card-title">Umeda Sky Building &amp; Kuchu Teien Observatory</div>
-            <div class="card-meta">Evening city views over Osaka</div>
+    <!-- Osaka (Honshu) -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">🏯 Osaka (Honshu)</div>
+          <div class="section-subtitle split">
+            <span>Dates: 14 → 17 May</span>
+            <span>Base: Namba and Umeda</span>
           </div>
-        </div>
-        <div class="meta-row">
-          <div><span class="label">Best time:</span> Sunset → evening</div>
-          <div><span class="label">Area:</span> Umeda</div>
-        </div>
-        <div class="card-footer">
-          <a class="btn-small" href="#" onclick="handleExternal('https://www.skybldg.co.jp/en/'); return false;">Official site</a>
-          <a class="btn-small secondary" href="#" onclick="handleExternal('https://maps.app.goo.gl/D18XhLFRaUsPJYsL9'); return false;">View Map</a>
-          <a class="btn-small" href="#" onclick="handleExternal('https://www.klook.com/en-US/activity/35861-umeda-sky-building-kuchu-teien-observatory-ticket/?source_channel=googlettd&_language=en&_currency=AUD&_activity_id=35861&package_id=110718'); return false;">Booking</a>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Osaka Aquarium -->
-        <div class="card-header">
-          <div>
-            <div class="card-title">Osaka Aquarium Kaiyukan</div>
-            <div class="card-meta">One of Japan’s largest aquariums</div>
-          </div>
-        </div>
-        <div class="meta-row">
-          <div><span class="label">Best for:</span> Afternoon / wet-weather backup</div>
-          <div><span class="label">Area:</span> Tempozan Harbor Village</div>
-        </div>
-        <div class="card-footer">
-          <a class="btn-small" href="#" onclick="handleExternal('https://www.kaiyukan.com/language/eng/'); return false;">Official site</a>
-          <a class="btn-small secondary" href="#" onclick="handleExternal('https://maps.app.goo.gl/FDnwHnapEKAbXMrNA'); return false;">View Map</a>
-          <a class="btn-small" href="#" onclick="handleExternal('https://www.kaiyukan.com/info/ticket/kaiyukan/#'); return false;">Booking</a>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Spa World / Shinsekai -->
-        <div class="card-header">
-          <div>
-            <div class="card-title">Spa World &amp; Shinsekai Area</div>
-            <div class="card-meta">Onsen theme park plus classic retro Osaka streets</div>
-          </div>
-        </div>
-        <div class="meta-row">
-          <div><span class="label">Best time:</span> Evening</div>
-          <div><span class="label">Note:</span> Good pairing with Kuromon / Dotonbori days</div>
-        </div>
-        <div class="card-footer">
-          <a class="btn-small" href="#" onclick="handleExternal('https://www.spaworld.co.jp/english/'); return false;">Official Site</a>
-          <a class="btn-small secondary" href="#" onclick="handleExternal('https://maps.app.goo.gl/8K8rTqiTZEecMmKn8'); return false;">View Map</a>
-          <a class="btn-small" href="#" onclick="handleExternal('https://www.spaworld.co.jp/english/info/ryokin/'); return false;">Booking</a>
         </div>
       </div>
-    </details>
-  </div>
-</section>
-<!-- Okinawa -->
-<section class="section">
-  <div class="section-header">
-    <div>
-      <div class="section-title">🏝️ Okinawa (Naha / Onna Village)</div>
-      <div class="section-subtitle split">
-  <span>Dates: 17 → 22 May</span>
-  <span>Base: Naha and Onna</span>
-</div>
-    </div>
-  </div>
 
-  <div class="two-column">
-    <!-- Planned -->
-    <div class="card">
-      <div class="card-inner">
-        <div class="card-header">
-          <div>
-            <div class="card-title">Planned Activities</div>
-            <div class="card-meta">From itinerary · Days 4–9</div>
+      <div class="two-column">
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Planned Activities</div>
+                <div class="card-meta">From itinerary · Days 1–4</div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div><span class="label">Base:</span> Osaka (Namba / Umeda)</div>
+              <div><span class="label">Nights:</span> 3</div>
+            </div>
+
+            <ul class="planned-list">
+              <li>
+                <strong>14 May (Thu)</strong> — Land at Kansai Airport around
+                21:00 → train (~45 min) → hotel check-in, rest.
+              </li>
+              <li>
+                <strong>15 May (Fri)</strong> — Explore Dotonbori &amp;
+                Shinsaibashi, visit Osaka Castle, Kuromon Market food crawl.
+              </li>
+              <li>
+                <strong>16 May (Sat)</strong> — Day trip to Kyoto: Fushimi Inari
+                Shrine &amp; Arashiyama Bamboo Grove. Return to Osaka in the
+                evening.
+              </li>
+              <li>
+                <strong>17 May (Sun)</strong> — Morning flight from Osaka to
+                Okinawa (~2 hours). Arrive mid-afternoon and continue itinerary
+                there.
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div class="meta-row">
-          <div><span class="label">Base:</span> Naha (city) &amp; Onna (beach resort)</div>
-          <div><span class="label">Nights:</span> 5</div>
-        </div>
+        <details class="card">
+          <summary class="card-inner">
+            <div class="optional-label">Optional activities</div>
+            <div class="optional-note">
+              Extra ideas near your Osaka bases if you have spare time or
+              reshuffle days.
+            </div>
+          </summary>
 
-        <ul class="planned-list">
-          <li><strong>17 May (Sun)</strong> — Arrive mid-afternoon → Kokusai Dori evening walk.</li>
-          <li><strong>18 May (Mon)</strong> — Shuri Castle, Chura Sun Beach, Tsuboya Pottery Street.</li>
-          <li><strong>19 May (Tue)</strong> — Northern drive: Churaumi Aquarium, Cape Manzamo, Nago Pineapple Park.</li>
-          <li><strong>20 May (Wed)</strong> — Kerama Islands (Zamami / Tokashiki) for snorkelling &amp; island time.</li>
-          <li><strong>21 May (Thu)</strong> — Free day: Onna Beach, Okinawa World caves &amp; craft village, or extra shopping in Naha.</li>
-          <li><strong>22 May (Fri)</strong> — Morning flight to Fukuoka (~1 h 45 min).</li>
-        </ul>
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-title">
+                  Umeda Sky Building &amp; Kuchu Teien Observatory
+                </div>
+                <div class="card-meta">
+                  Evening city views over Osaka
+                </div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Best time:</span> Sunset → evening
+              </div>
+              <div><span class="label">Area:</span> Umeda</div>
+            </div>
+
+            <div class="card-footer">
+              <a
+                class="btn-small"
+                href="#"
+                onclick="handleExternal('https://www.skybldg.co.jp/en/'); return false;"
+                >Official site</a
+              >
+              <a
+                class="btn-small secondary"
+                href="#"
+                onclick="handleExternal('https://maps.app.goo.gl/D18XhLFRaUsPJYsL9'); return false;"
+                >View Map</a
+              >
+              <a
+                class="btn-small"
+                href="#"
+                onclick="handleExternal('https://www.klook.com/en-US/activity/35861-umeda-sky-building-kuchu-teien-observatory-ticket/?source_channel=googlettd&_language=en&_currency=AUD&_activity_id=35861&package_id=110718'); return false;"
+                >Booking</a
+              >
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="card-header">
+              <div>
+                <div class="card-title">Osaka Aquarium Kaiyukan</div>
+                <div class="card-meta">
+                  One of Japan’s largest aquariums
+                </div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Best for:</span> Afternoon / wet-weather
+                backup
+              </div>
+              <div>
+                <span class="label">Area:</span> Tempozan Harbor Village
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <a
+                class="btn-small"
+                href="#"
+                onclick="handleExternal('https://www.kaiyukan.com/language/eng/'); return false;"
+                >Official site</a
+              >
+              <a
+                class="btn-small secondary"
+                href="#"
+                onclick="handleExternal('https://maps.app.goo.gl/FDnwHnapEKAbXMrNA'); return false;"
+                >View Map</a
+              >
+              <a
+                class="btn-small"
+                href="#"
+                onclick="handleExternal('https://www.kaiyukan.com/info/ticket/kaiyukan/#'); return false;"
+                >Booking</a
+              >
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="card-header">
+              <div>
+                <div class="card-title">
+                  Spa World &amp; Shinsekai Area
+                </div>
+                <div class="card-meta">
+                  Onsen theme park plus classic retro Osaka streets
+                </div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div><span class="label">Best time:</span> Evening</div>
+              <div>
+                <span class="label">Note:</span> Good pairing with Kuromon /
+                Dotonbori days
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <a
+                class="btn-small"
+                href="#"
+                onclick="handleExternal('https://www.spaworld.co.jp/english/'); return false;"
+                >Official Site</a
+              >
+              <a
+                class="btn-small secondary"
+                href="#"
+                onclick="handleExternal('https://maps.app.goo.gl/8K8rTqiTZEecMmKn8'); return false;"
+                >View Map</a
+              >
+              <a
+                class="btn-small"
+                href="#"
+                onclick="handleExternal('https://www.spaworld.co.jp/english/info/ryokin/'); return false;"
+                >Booking</a
+              >
+            </div>
+          </div>
+        </details>
       </div>
-    </div>
+    </section>
 
-    <!-- Optional -->
-    <details class="card">
-      <summary class="card-inner">
-        <div class="optional-label">Optional activities</div>
-        <div class="optional-note">
-          Flexible add-ons based around your north-coast drive and free day.
-        </div>
-      </summary>
-      <div class="card-inner">
-        <!-- Cape Zanpa -->
-        <div class="card-header">
-          <div>
-            <div class="card-title">Cape Zanpa &amp; Lighthouse</div>
-            <div class="card-meta">Clifftop coastal views near Yomitan</div>
+    <!-- Okinawa -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">
+            🏝️ Okinawa (Naha / Onna Village)
           </div>
-        </div>
-        <div class="meta-row">
-          <div><span class="label">Best time:</span> Late afternoon → sunset</div>
-          <div><span class="label">Pair with:</span> Northern drive / Onna Beach day</div>
-        </div>
-        <div class="card-footer">
-          <a class="btn-small secondary" href="#" onclick="handleExternal('https://maps.app.goo.gl/57qo2yPfTS9vAgii9'); return false;">View Map</a>
-          <a class="btn-small" href="#" onclick="handleExternal('https://www.klook.com/en-US/activity/184264-okinawa-sunsettour-naminoue-shrine-american-village-illumination/'); return false;">Booking</a>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Blue Cave -->
-        <div class="card-header">
-          <div>
-            <div class="card-title">Blue Cave Snorkelling or Diving</div>
-            <div class="card-meta">Popular marine experience close to Onna Village</div>
+          <div class="section-subtitle split">
+            <span>Dates: 17 → 22 May</span>
+            <span>Base: Naha and Onna</span>
           </div>
-        </div>
-        <div class="meta-row">
-          <div><span class="label">Best for:</span> Confident swimmers · calm-sea days</div>
-          <div><span class="label">Note:</span> Advance booking recommended</div>
-        </div>
-        <div class="card-footer">
-          <a class="btn-small secondary" href="#" onclick="handleExternal('https://maps.app.goo.gl/LghdCsUD3eBzkJM4A'); return false;">View Map</a>
-          <a class="btn-small" href="#" onclick="handleExternal('https://www.klook.com/en-US/activity/30585-blue-cave-snorkeling-diving-experience-okinawa/?spm=SearchResult.SearchResult_LIST&clickId=7928709049'); return false;">Booking</a>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Senagajima Umikaji Terrace -->
-        <div class="card-header">
-          <div>
-            <div class="card-title">Senagajima Umikaji Terrace</div>
-            <div class="card-meta">Cafés &amp; plane-spotting near Naha Airport</div>
-          </div>
-        </div>
-        <div class="meta-row">
-          <div><span class="label">Best time:</span> Late afternoon / early evening</div>
-          <div><span class="label">Idea:</span> Use on arrival or departure day if timing fits</div>
-        </div>
-        <div class="card-footer">
-          <a class="btn-small secondary" href="#" onclick="handleExternal('https://maps.app.goo.gl/Mx9qbdmxtC8Kikwi6'); return false;">View Map</a>
-          
-        </div>
-      </div>
-    </details>
-  </div>
-</section>
-<!-- Fukuoka / Kyushu -->
-<section class="section">
-  <div class="section-header">
-    <div>
-      <div class="section-title">🎎 Fukuoka (Kyushu)</div>
-      <div class="section-subtitle split">
-  <span>Dates: 22 → 26 May</span>
-  <span>Base: Hakata Station and Nakasu</span>
-</div>
-    </div>
-  </div>
-
-  <div class="two-column">
-    <!-- Planned -->
-    <div class="card">
-      <div class="card-inner">
-        <div class="card-header">
-          <div>
-            <div class="card-title">Planned Activities</div>
-            <div class="card-meta">From itinerary · Days 9–13</div>
-          </div>
-        </div>
-
-        <div class="meta-row">
-          <div><span class="label">Base:</span> Fukuoka (Hakata / Tenjin)</div>
-          <div><span class="label">Nights:</span> 4</div>
-        </div>
-
-        <ul class="planned-list">
-          <li><strong>22 May (Fri)</strong> — Arrive afternoon → Yatai food stalls dinner.</li>
-          <li><strong>23 May (Sat)</strong> — Day trip to Nagasaki (~2 h 10 m each way): Peace Park, Dejima, Glover Garden, Mt Inasa sunset.</li>
-          <li><strong>24 May (Sun)</strong> — Dazaifu Tenmangu Shrine &amp; Ohori Park.</li>
-          <li><strong>25 May (Mon)</strong> — Day trip to Kumamoto (~45 min Shinkansen): Kumamoto Castle &amp; Suizenji Garden.</li>
-          <li><strong>26 May (Tue)</strong> — Late-morning Shinkansen to Osaka (~2 h 30 m). Evening free.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Optional -->
-    <details class="card">
-      <summary class="card-inner">
-        <div class="optional-label">Optional activities</div>
-        <div class="optional-note">
-          Light extras if you adjust day trips or add time around Hakata / Tenjin.
-        </div>
-      </summary>
-      <div class="card-inner">
-        <!-- Canal City -->
-        <div class="card-header">
-          <div>
-            <div class="card-title">Canal City Hakata</div>
-            <div class="card-meta">Shopping, dining &amp; light shows</div>
-          </div>
-        </div>
-        <div class="meta-row">
-          <div><span class="label">Best for:</span> Evenings or wet-weather backup</div>
-        </div>
-        <div class="card-footer">
-          <a class="btn-small secondary" href="#" onclick="handleExternal('https://maps.app.goo.gl/KVS8CmJ1RyUQAvZQ8'); return false;">View Map</a>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Ohori Park Boat / Museum -->
-        <div class="card-header">
-          <div>
-            <div class="card-title">Ohori Park Extras</div>
-            <div class="card-meta">Rowboats, gardens &amp; Fukuoka Art Museum</div>
-          </div>
-        </div>
-        <div class="meta-row">
-          <div><span class="label">Pair with:</span> Dazaifu &amp; Ohori day</div>
-        </div>
-        <div class="card-footer">
-          <a class="btn-small secondary" href="#" onclick="handleExternal('https://maps.app.goo.gl/PwiNFcDba4iieRSC6'); return false;">View Map</a>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Nakasu night walk -->
-        <div class="card-header">
-          <div>
-            <div class="card-title">Nakasu Kawabata Night Walk</div>
-            <div class="card-meta">Riverside lights &amp; food streets</div>
-          </div>
-        </div>
-        <div class="meta-row">
-          <div><span class="label">Best time:</span> After dinner at Yatai or Canal City</div>
-        </div>
-        <div class="card-footer">
-          <a class="btn-small secondary" href="#" onclick="handleExternal('https://maps.app.goo.gl/HAsbZtpA19v7dxrj6'); return false;">View Map</a>
-          <a class="btn-small" href="#" onclick="handleExternal('https://www.klook.com/en-US/activity/78047-fukuoka-night-tour-yatai-dinner/'); return false;">Booking</a>
         </div>
       </div>
-    </details>
-  </div>
-</section>
-<!-- Osaka Return -->
-<section class="section">
-  <div class="section-header">
-    <div>
-      <div class="section-title">🏙 Osaka (Return)</div>
-      <div class="section-subtitle split">
-  <span>Dates: 26 → 29 May</span>
-  <span>Base: Namba and Umeda</span>
-</div>
-    </div>
-  </div>
 
-  <div class="two-column">
-    <!-- Planned -->
-    <div class="card">
-      <div class="card-inner">
-        <div class="card-header">
-          <div>
-            <div class="card-title">Planned Activities</div>
-            <div class="card-meta">From itinerary · Days 13–16</div>
+      <div class="two-column">
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Planned Activities</div>
+                <div class="card-meta">From itinerary · Days 4–9</div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Base:</span> Naha (city) &amp; Onna (beach
+                resort)
+              </div>
+              <div><span class="label">Nights:</span> 5</div>
+            </div>
+
+            <ul class="planned-list">
+              <li>
+                <strong>17 May (Sun)</strong> — Arrive mid-afternoon → Kokusai
+                Dori evening walk.
+              </li>
+              <li>
+                <strong>18 May (Mon)</strong> — Shuri Castle, Chura Sun Beach,
+                Tsuboya Pottery Street.
+              </li>
+              <li>
+                <strong>19 May (Tue)</strong> — Northern drive: Churaumi
+                Aquarium, Cape Manzamo, Nago Pineapple Park.
+              </li>
+              <li>
+                <strong>20 May (Wed)</strong> — Kerama Islands (Zamami /
+                Tokashiki) for snorkelling &amp; island time.
+              </li>
+              <li>
+                <strong>21 May (Thu)</strong> — Free day: Onna Beach, Okinawa
+                World caves &amp; craft village, or extra shopping in Naha.
+              </li>
+              <li>
+                <strong>22 May (Fri)</strong> — Morning flight to Fukuoka (~1 h
+                45 min).
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div class="meta-row">
-          <div><span class="label">Base:</span> Osaka (Namba / Umeda)</div>
-          <div><span class="label">Nights:</span> 3</div>
-        </div>
+        <details class="card">
+          <summary class="card-inner">
+            <div class="optional-label">Optional activities</div>
+            <div class="optional-note">
+              Flexible add-ons based around your north-coast drive and free day.
+            </div>
+          </summary>
 
-        <ul class="planned-list">
-          <li><strong>26 May (Tue)</strong> — Arrive afternoon → Spa World or Umeda Sky Building evening.</li>
-          <li><strong>27 May (Wed)</strong> — Shopping in Shinsaibashi; food crawl in Dotonbori &amp; Kuromon Market.</li>
-          <li><strong>28 May (Thu)</strong> — Free morning for souvenirs, pack &amp; relax. Optional side trip to Kyoto or Kobe before flight day.</li>
-          <li><strong>29 May (Fri)</strong> — Check-out around 15:00 → train (~45 min) to Kansai Airport → evening departure.</li>
-        </ul>
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Cape Zanpa &amp; Lighthouse</div>
+                <div class="card-meta">
+                  Clifftop coastal views near Yomitan
+                </div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Best time:</span> Late afternoon → sunset
+              </div>
+              <div>
+                <span class="label">Pair with:</span> Northern drive / Onna
+                Beach day
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <a
+                class="btn-small secondary"
+                href="#"
+                onclick="handleExternal('https://maps.app.goo.gl/57qo2yPfTS9vAgii9'); return false;"
+                >View Map</a
+              >
+              <a
+                class="btn-small"
+                href="#"
+                onclick="handleExternal('https://www.klook.com/en-US/activity/184264-okinawa-sunsettour-naminoue-shrine-american-village-illumination/'); return false;"
+                >Booking</a
+              >
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="card-header">
+              <div>
+                <div class="card-title">
+                  Blue Cave Snorkelling or Diving
+                </div>
+                <div class="card-meta">
+                  Popular marine experience close to Onna Village
+                </div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Best for:</span> Confident swimmers ·
+                calm-sea days
+              </div>
+              <div>
+                <span class="label">Note:</span> Advance booking recommended
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <a
+                class="btn-small secondary"
+                href="#"
+                onclick="handleExternal('https://maps.app.goo.gl/LghdCsUD3eBzkJM4A'); return false;"
+                >View Map</a
+              >
+              <a
+                class="btn-small"
+                href="#"
+                onclick="handleExternal('https://www.klook.com/en-US/activity/30585-blue-cave-snorkeling-diving-experience-okinawa/?spm=SearchResult.SearchResult_LIST&clickId=7928709049'); return false;"
+                >Booking</a
+              >
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="card-header">
+              <div>
+                <div class="card-title">Senagajima Umikaji Terrace</div>
+                <div class="card-meta">
+                  Cafés &amp; plane-spotting near Naha Airport
+                </div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Best time:</span> Late afternoon / early
+                evening
+              </div>
+              <div>
+                <span class="label">Idea:</span> Use on arrival or departure day
+                if timing fits
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <a
+                class="btn-small secondary"
+                href="#"
+                onclick="handleExternal('https://maps.app.goo.gl/Mx9qbdmxtC8Kikwi6'); return false;"
+                >View Map</a
+              >
+            </div>
+          </div>
+        </details>
       </div>
-    </div>
+    </section>
 
-    <!-- Optional -->
-    <details class="card">
-      <summary class="card-inner">
-        <div class="optional-label">Optional activities</div>
-        <div class="optional-note">
-          Extra ideas if you keep one more Osaka day or skip a side trip.
-        </div>
-      </summary>
-      <div class="card-inner">
-        <!-- Kyoto side trip -->
-        <div class="card-header">
-          <div>
-            <div class="card-title">Kyoto Side Trip (Flexible)</div>
-            <div class="card-meta">Return to favourite spots or explore a new district</div>
+    <!-- Fukuoka / Kyushu -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">🎎 Fukuoka (Kyushu)</div>
+          <div class="section-subtitle split">
+            <span>Dates: 22 → 26 May</span>
+            <span>Base: Hakata Station and Nakasu</span>
           </div>
         </div>
-        <div class="meta-row">
-          <div><span class="label">Ideas:</span> Philosopher’s Path, Nishiki Market, Gion backstreets</div>
-        </div>
-        <div class="card-footer">
-          <a class="btn-small secondary" href="#" onclick="handleExternal('https://maps.app.goo.gl/aQTm75dKLaLqcDzA8'); return false;">Kyoto central map</a>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Kobe side trip -->
-        <div class="card-header">
-          <div>
-            <div class="card-title">Kobe Side Trip</div>
-            <div class="card-meta">Harbourfront, Chinatown &amp; optional steak dinner</div>
-          </div>
-        </div>
-        <div class="meta-row">
-          <div><span class="label">Travel:</span> ~30 min from Osaka by train</div>
-        </div>
-        <div class="card-footer">
-          <a class="btn-small secondary" href="#" onclick="handleExternal('https://maps.app.goo.gl/jcUcg8barfBRyE9QA'); return false;">Kobe Sannomiya map</a>
-        </div>
-
       </div>
-    </details>
-  </div>
-</section>
 
-<footer>
-  For trains and other ground transport, see the
-  <a href="./trains.html">Train Guide</a>.
-  For accommodation details, see the
-  <a href="./accommodation.html">Accommodation module</a>.
-</footer>
-</div>
+      <div class="two-column">
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Planned Activities</div>
+                <div class="card-meta">From itinerary · Days 9–13</div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Base:</span> Fukuoka (Hakata / Tenjin)
+              </div>
+              <div><span class="label">Nights:</span> 4</div>
+            </div>
+
+            <ul class="planned-list">
+              <li>
+                <strong>22 May (Fri)</strong> — Arrive afternoon → Yatai food
+                stalls dinner.
+              </li>
+              <li>
+                <strong>23 May (Sat)</strong> — Day trip to Nagasaki (~2 h 10 m
+                each way): Peace Park, Dejima, Glover Garden, Mt Inasa sunset.
+              </li>
+              <li>
+                <strong>24 May (Sun)</strong> — Dazaifu Tenmangu Shrine &amp;
+                Ohori Park.
+              </li>
+              <li>
+                <strong>25 May (Mon)</strong> — Day trip to Kumamoto (~45 min
+                Shinkansen): Kumamoto Castle &amp; Suizenji Garden.
+              </li>
+              <li>
+                <strong>26 May (Tue)</strong> — Late-morning Shinkansen to Osaka
+                (~2 h 30 m). Evening free.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <details class="card">
+          <summary class="card-inner">
+            <div class="optional-label">Optional activities</div>
+            <div class="optional-note">
+              Light extras if you adjust day trips or add time around Hakata /
+              Tenjin.
+            </div>
+          </summary>
+
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Canal City Hakata</div>
+                <div class="card-meta">
+                  Shopping, dining &amp; light shows
+                </div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Best for:</span> Evenings or wet-weather
+                backup
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <a
+                class="btn-small secondary"
+                href="#"
+                onclick="handleExternal('https://maps.app.goo.gl/KVS8CmJ1RyUQAvZQ8'); return false;"
+                >View Map</a
+              >
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="card-header">
+              <div>
+                <div class="card-title">Ohori Park Extras</div>
+                <div class="card-meta">
+                  Rowboats, gardens &amp; Fukuoka Art Museum
+                </div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Pair with:</span> Dazaifu &amp; Ohori day
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <a
+                class="btn-small secondary"
+                href="#"
+                onclick="handleExternal('https://maps.app.goo.gl/PwiNFcDba4iieRSC6'); return false;"
+                >View Map</a
+              >
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="card-header">
+              <div>
+                <div class="card-title">Nakasu Kawabata Night Walk</div>
+                <div class="card-meta">
+                  Riverside lights &amp; food streets
+                </div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Best time:</span> After dinner at Yatai or
+                Canal City
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <a
+                class="btn-small secondary"
+                href="#"
+                onclick="handleExternal('https://maps.app.goo.gl/HAsbZtpA19v7dxrj6'); return false;"
+                >View Map</a
+              >
+              <a
+                class="btn-small"
+                href="#"
+                onclick="handleExternal('https://www.klook.com/en-US/activity/78047-fukuoka-night-tour-yatai-dinner/'); return false;"
+                >Booking</a
+              >
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Osaka Return -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">🏙 Osaka (Return)</div>
+          <div class="section-subtitle split">
+            <span>Dates: 26 → 29 May</span>
+            <span>Base: Namba and Umeda</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-column">
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Planned Activities</div>
+                <div class="card-meta">From itinerary · Days 13–16</div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Base:</span> Osaka (Namba / Umeda)
+              </div>
+              <div><span class="label">Nights:</span> 3</div>
+            </div>
+
+            <ul class="planned-list">
+              <li>
+                <strong>26 May (Tue)</strong> — Arrive afternoon → Spa World or
+                Umeda Sky Building evening.
+              </li>
+              <li>
+                <strong>27 May (Wed)</strong> — Shopping in Shinsaibashi; food
+                crawl in Dotonbori &amp; Kuromon Market.
+              </li>
+              <li>
+                <strong>28 May (Thu)</strong> — Free morning for souvenirs, pack
+                &amp; relax. Optional side trip to Kyoto or Kobe before flight
+                day.
+              </li>
+              <li>
+                <strong>29 May (Fri)</strong> — Check-out around 15:00 → train
+                (~45 min) to Kansai Airport → evening departure.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <details class="card">
+          <summary class="card-inner">
+            <div class="optional-label">Optional activities</div>
+            <div class="optional-note">
+              Extra ideas if you keep one more Osaka day or skip a side trip.
+            </div>
+          </summary>
+
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Kyoto Side Trip (Flexible)</div>
+                <div class="card-meta">
+                  Return to favourite spots or explore a new district
+                </div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Ideas:</span> Philosopher’s Path, Nishiki
+                Market, Gion backstreets
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <a
+                class="btn-small secondary"
+                href="#"
+                onclick="handleExternal('https://maps.app.goo.gl/aQTm75dKLaLqcDzA8'); return false;"
+                >Kyoto central map</a
+              >
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="card-header">
+              <div>
+                <div class="card-title">Kobe Side Trip</div>
+                <div class="card-meta">
+                  Harbourfront, Chinatown &amp; optional steak dinner
+                </div>
+              </div>
+            </div>
+
+            <div class="meta-row">
+              <div>
+                <span class="label">Travel:</span> ~30 min from Osaka by train
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <a
+                class="btn-small secondary"
+                href="#"
+                onclick="handleExternal('https://maps.app.goo.gl/jcUcg8barfBRyE9QA'); return false;"
+                >Kobe Sannomiya map</a
+              >
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      For trains and other ground transport, see the
+      <a href="./trains.html">Train Guide</a>. For accommodation details, see
+      the <a href="./accommodation.html">Accommodation module</a>.
+    </footer>
+  </div>
 <div class="offline-overlay" id="offlineOverlay">
   <div class="offline-box">
     <h2>You’re offline</h2>
     <p>
-      This content requires an internet connection.<br>
+      This content requires an internet connection.<br />
       You can continue using other parts of the app while offline.
     </p>
     <button onclick="closeOffline()">OK</button>
@@ -814,44 +1038,45 @@
 </div>
 
 <script>
-function handleExternal(url) {
-  verifyConnectivity()
-    .then(function () {
-      window.location.href = 'external.html?url=' + encodeURIComponent(url);
-    })
-    .catch(showOffline);
-}
-
-function verifyConnectivity() {
-  return new Promise(function (resolve, reject) {
-    const controller = new AbortController();
-    const timeout = setTimeout(function () {
-      controller.abort();
-      reject();
-    }, 800);
-
-    fetch('external.html', {
-      cache: 'no-store',
-      signal: controller.signal
-    })
+  function handleExternal(url) {
+    verifyConnectivity()
       .then(function () {
-        clearTimeout(timeout);
-        resolve();
+        window.location.href =
+          "external.html?url=" + encodeURIComponent(url);
       })
-      .catch(function () {
-        clearTimeout(timeout);
+      .catch(showOffline);
+  }
+
+  function verifyConnectivity() {
+    return new Promise(function (resolve, reject) {
+      const controller = new AbortController();
+      const timeout = setTimeout(function () {
+        controller.abort();
         reject();
-      });
-  });
-}
+      }, 800);
 
-function showOffline() {
-  document.getElementById('offlineOverlay').style.display = 'flex';
-}
+      fetch("external.html", {
+        cache: "no-store",
+        signal: controller.signal
+      })
+        .then(function () {
+          clearTimeout(timeout);
+          resolve();
+        })
+        .catch(function () {
+          clearTimeout(timeout);
+          reject();
+        });
+    });
+  }
 
-function closeOffline() {
-  document.getElementById('offlineOverlay').style.display = 'none';
-}
+  function showOffline() {
+    document.getElementById("offlineOverlay").style.display = "flex";
+  }
+
+  function closeOffline() {
+    document.getElementById("offlineOverlay").style.display = "none";
+  }
 </script>
 
 </body>
