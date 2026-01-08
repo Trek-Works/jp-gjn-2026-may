@@ -19,6 +19,7 @@
       --text-soft: #8a95c5;
       --radius-lg: 18px;
       --radius-sm: 999px;
+      --radius-pill: 999px;
       --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.45);
     }
 
@@ -229,16 +230,19 @@
       margin: 14px 0;
     }
 
-    .btn-small {
-      font-size: 13px;
-      padding: 6px 12px;
-      border-radius: var(--radius-sm);
-      background: #141b31;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text-main);
+    .card-footer {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+    }
+    .link-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid #4b5563;
+      padding: 4px 10px;
+      font-size: 11px;
       text-decoration: none;
-      display: inline-block;
-      margin-right: 6px;
+      color: #e5e7eb;
+      background: #020617;
     }
 
     footer {
@@ -473,19 +477,19 @@
 
             <div class="card-footer">
               <a
-                class="btn-small"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://www.skybldg.co.jp/en/'); return false;"
                 >Official site</a
               >
               <a
-                class="btn-small secondary"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://maps.app.goo.gl/D18XhLFRaUsPJYsL9'); return false;"
                 >View Map</a
               >
               <a
-                class="btn-small"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://www.klook.com/en-US/activity/35861-umeda-sky-building-kuchu-teien-observatory-ticket/?source_channel=googlettd&_language=en&_currency=AUD&_activity_id=35861&package_id=110718'); return false;"
                 >Booking</a
@@ -515,19 +519,19 @@
 
             <div class="card-footer">
               <a
-                class="btn-small"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://www.kaiyukan.com/language/eng/'); return false;"
                 >Official site</a
               >
               <a
-                class="btn-small secondary"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://maps.app.goo.gl/FDnwHnapEKAbXMrNA'); return false;"
                 >View Map</a
               >
               <a
-                class="btn-small"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://www.kaiyukan.com/info/ticket/kaiyukan/#'); return false;"
                 >Booking</a
@@ -557,19 +561,19 @@
 
             <div class="card-footer">
               <a
-                class="btn-small"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://www.spaworld.co.jp/english/'); return false;"
                 >Official Site</a
               >
               <a
-                class="btn-small secondary"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://maps.app.goo.gl/8K8rTqiTZEecMmKn8'); return false;"
                 >View Map</a
               >
               <a
-                class="btn-small"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://www.spaworld.co.jp/english/info/ryokin/'); return false;"
                 >Booking</a
@@ -671,13 +675,13 @@
 
             <div class="card-footer">
               <a
-                class="btn-small secondary"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://maps.app.goo.gl/57qo2yPfTS9vAgii9'); return false;"
                 >View Map</a
               >
               <a
-                class="btn-small"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://www.klook.com/en-US/activity/184264-okinawa-sunsettour-naminoue-shrine-american-village-illumination/'); return false;"
                 >Booking</a
@@ -709,13 +713,13 @@
 
             <div class="card-footer">
               <a
-                class="btn-small secondary"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://maps.app.goo.gl/LghdCsUD3eBzkJM4A'); return false;"
                 >View Map</a
               >
               <a
-                class="btn-small"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://www.klook.com/en-US/activity/30585-blue-cave-snorkeling-diving-experience-okinawa/?spm=SearchResult.SearchResult_LIST&clickId=7928709049'); return false;"
                 >Booking</a
@@ -746,7 +750,7 @@
 
             <div class="card-footer">
               <a
-                class="btn-small secondary"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://maps.app.goo.gl/Mx9qbdmxtC8Kikwi6'); return false;"
                 >View Map</a
@@ -839,7 +843,7 @@
 
             <div class="card-footer">
               <a
-                class="btn-small secondary"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://maps.app.goo.gl/KVS8CmJ1RyUQAvZQ8'); return false;"
                 >View Map</a
@@ -865,7 +869,7 @@
 
             <div class="card-footer">
               <a
-                class="btn-small secondary"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://maps.app.goo.gl/PwiNFcDba4iieRSC6'); return false;"
                 >View Map</a
@@ -892,13 +896,13 @@
 
             <div class="card-footer">
               <a
-                class="btn-small secondary"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://maps.app.goo.gl/HAsbZtpA19v7dxrj6'); return false;"
                 >View Map</a
               >
               <a
-                class="btn-small"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://www.klook.com/en-US/activity/78047-fukuoka-night-tour-yatai-dinner/'); return false;"
                 >Booking</a
@@ -987,7 +991,7 @@
 
             <div class="card-footer">
               <a
-                class="btn-small secondary"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://maps.app.goo.gl/aQTm75dKLaLqcDzA8'); return false;"
                 >Kyoto central map</a
@@ -1013,7 +1017,7 @@
 
             <div class="card-footer">
               <a
-                class="btn-small secondary"
+                class="link-pill"
                 href="#"
                 onclick="handleExternal('https://maps.app.goo.gl/jcUcg8barfBRyE9QA'); return false;"
                 >Kobe Sannomiya map</a
