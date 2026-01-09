@@ -16,7 +16,7 @@
       --accent-soft: rgba(79, 140, 255, 0.15);
       --text-main: #f5f7ff;
       --text-muted: #b3bde6;
-      --text-soft: #8a95c5;
+      --text-soft: #9ca3af;
       --radius-lg: 18px;
       --radius-sm: 999px;
       --radius-pill: 999px;
@@ -117,7 +117,7 @@
     }
 
     .section-subtitle {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-soft);
       margin-top: 4px;
     }
@@ -169,15 +169,25 @@
     .meta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 20px;
       font-size: 13px;
-      color: var(--text-muted);
+      color: var(--text-soft);
+      margin-top: 6px;
       margin-bottom: 10px;
     }
 
-    .meta-row .label {
-      color: var(--text-soft);
+    /* Accommodation metadata contract */
+    .meta-label {
       font-weight: 500;
+      color: #d1d5db;
+      margin-right: 4px;
+    }
+
+    /* Backwards-compatible alias for existing Activities markup */
+    .meta-row .label {
+      font-weight: 500;
+      color: #d1d5db;
+      margin-right: 4px;
     }
 
     ul.planned-list {
@@ -185,7 +195,7 @@
       margin-top: 10px;
       font-size: 13px;
       line-height: 1.55;
-      color: var(--text-muted);
+      color: #dbe3ff;
     }
 
     ul.planned-list li {
@@ -295,6 +305,12 @@
         font-size: 13px;
       }
 
+      /* Meta rows (Dates/Base, Base/Nights, Optional meta) — align with Accommodation */
+      .meta-row {
+        flex-direction: column;
+        gap: 6px;
+      }
+
       .section-header {
         flex-direction: column;
         align-items: flex-start;
@@ -308,20 +324,6 @@
 
       .pill {
         align-self: flex-start;
-      }
-
-      .section-subtitle.split {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-        gap: 4px;
-        width: 100%;
-      }
-
-      .section-subtitle.split span {
-        display: block;
-        width: 100%;
       }
     }
 
@@ -379,7 +381,7 @@
 <body>
   <div class="page">
     <div class="page-header">
-      <div class="breadcrumb">JP · GJN-2026-May · Japan Trip</div>
+      <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
       <h1 class="title">Activities</h1>
       <p class="subtitle">
         <span class="subtitle-main">Activities for Japan trip</span>
@@ -402,9 +404,9 @@
       <div class="section-header">
         <div>
           <div class="section-title">🏯 Osaka (Honshu)</div>
-          <div class="section-subtitle split">
-            <span>Dates: 14 → 17 May</span>
-            <span>Base: Namba and Umeda</span>
+          <div class="meta-row">
+            <div><span class="meta-label">Dates:</span> 14 → 17 May</div>
+            <div><span class="meta-label">Base:</span> Namba and Umeda</div>
           </div>
         </div>
       </div>
@@ -550,7 +552,6 @@
                 </div>
               </div>
             </div>
-
             <div class="meta-row">
               <div><span class="label">Best time:</span> Evening</div>
               <div>
@@ -591,9 +592,9 @@
           <div class="section-title">
             🏝️ Okinawa (Naha / Onna Village)
           </div>
-          <div class="section-subtitle split">
-            <span>Dates: 17 → 22 May</span>
-            <span>Base: Naha and Onna</span>
+          <div class="meta-row">
+            <div><span class="meta-label">Dates:</span> 17 → 22 May</div>
+            <div><span class="meta-label">Base:</span> Naha and Onna</div>
           </div>
         </div>
       </div>
@@ -760,15 +761,14 @@
         </details>
       </div>
     </section>
-
     <!-- Fukuoka / Kyushu -->
     <section class="section">
       <div class="section-header">
         <div>
           <div class="section-title">🎎 Fukuoka (Kyushu)</div>
-          <div class="section-subtitle split">
-            <span>Dates: 22 → 26 May</span>
-            <span>Base: Hakata Station and Nakasu</span>
+          <div class="meta-row">
+            <div><span class="meta-label">Dates:</span> 22 → 26 May</div>
+            <div><span class="meta-label">Base:</span> Hakata Station and Nakasu</div>
           </div>
         </div>
       </div>
@@ -918,9 +918,9 @@
       <div class="section-header">
         <div>
           <div class="section-title">🏙 Osaka (Return)</div>
-          <div class="section-subtitle split">
-            <span>Dates: 26 → 29 May</span>
-            <span>Base: Namba and Umeda</span>
+          <div class="meta-row">
+            <div><span class="meta-label">Dates:</span> 26 → 29 May</div>
+            <div><span class="meta-label">Base:</span> Namba and Umeda</div>
           </div>
         </div>
       </div>
@@ -963,7 +963,6 @@
             </ul>
           </div>
         </div>
-
         <details class="card">
           <summary class="card-inner">
             <div class="optional-label">Optional activities</div>
