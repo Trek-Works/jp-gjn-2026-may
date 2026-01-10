@@ -124,6 +124,17 @@ body {
     flex-direction: column;
     gap: 6px;
   }
+
+  /* MOBILE FIX: make footer pills wrap nicely when there are 4 */
+  .card-footer {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .card-footer .link-pill {
+    flex: 1 1 calc(50% - 6px);
+    text-align: center;
+  }
 }
 
 .Suggested-pill {
@@ -140,6 +151,7 @@ body {
 .card-footer {
   margin-top: 12px;
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -151,6 +163,8 @@ body {
   text-decoration: none;
   color: #e5e7eb;
   background: #020617;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 </style>
 </head>
