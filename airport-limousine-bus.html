@@ -108,10 +108,11 @@ body {
   margin-top: 8px;
 }
 
-.meta-label {
-  font-weight: 500;
-  color: #d1d5db;
-  margin-right: 4px;
+@media (max-width: 640px) {
+  .meta-row {
+    flex-direction: column;
+    gap: 6px;
+  }
 }
 
 .Suggested-pill {
