@@ -4,157 +4,275 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Airport Limousine Bus Guide – May 2026</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-    body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        background: #0d1117;
-        color: #e6edf3;
-        margin: 0;
-        padding: 0;
-    }
-    h1, h2 {
-        text-align: center;
-        margin-top: 20px;
-        font-weight: 700;
-    }
-    .back-button {
-        display: block;
-        width: fit-content;
-        margin: 10px auto 25px;
-        padding: 8px 16px;
-        background: #1f6feb;
-        color: white;
-        border-radius: 8px;
-        text-decoration: none;
-        font-size: 14px;
-    }
-    .card {
-        background: #161b22;
-        border-radius: 12px;
-        margin: 20px auto;
-        padding: 20px;
-        width: min(900px, 92%);
-        box-shadow: 0 0 12px rgba(0,0,0,0.35);
-    }
-    .card h3 {
-        margin-top: 0;
-        font-size: 20px;
-    }
-    .tag {
-        display: inline-block;
-        padding: 4px 10px;
-        margin-left: 10px;
-        background: #238636;
-        color: white;
-        font-size: 12px;
-        border-radius: 8px;
-    }
-    .info-line {
-        margin: 6px 0;
-        font-size: 15px;
-    }
-    a {
-        color: #58a6ff;
-        text-decoration: none;
-    }
-    .link-button {
-        display: inline-block;
-        margin-top: 12px;
-        padding: 6px 14px;
-        background: #30363d;
-        color: #58a6ff;
-        border-radius: 6px;
-        text-decoration: none;
-        font-size: 13px;
-        margin-right: 10px;
-    }
+:root {
+  --bg: #050816;
+  --card: #0b1020;
+  --border-subtle: #1f2933;
+  --text-main: #f9fafb;
+  --text-soft: #9ca3af;
+  --accent-soft: rgba(79, 70, 229, 0.12);
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+  --radius-xl: 18px;
+  --radius-pill: 999px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+  background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  width: 100%;
+  max-width: 900px;
+  padding: 36px 18px 56px;
+}
+
+/* ===== Header (already aligned) ===== */
+
+.page-header { text-align: center; }
+
+.breadcrumb {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+}
+
+.title { font-size: 30px; font-weight: 700; margin: 0; }
+
+.subtitle {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-soft);
+  text-transform: uppercase;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  margin: 18px 0 26px;
+}
+
+.pill-button {
+  border-radius: var(--radius-pill);
+  border: 1px solid #374151;
+  background: rgba(15,23,42,0.9);
+  color: var(--text-main);
+  font-size: 13px;
+  padding: 6px 14px;
+  text-decoration: none;
+}
+
+/* ===== Cards (rebased) ===== */
+
+.card {
+  background: linear-gradient(145deg, var(--card), #050816 80%);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-subtle);
+  padding: 10px 18px 14px;
+  box-shadow: var(--shadow-soft);
+  margin-top: 18px;
+}
+
+.card-header {
+  margin-bottom: 6px;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.card-meta {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-top: 2px;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-top: 8px;
+}
+
+.meta-label {
+  font-weight: 500;
+  color: #d1d5db;
+  margin-right: 4px;
+}
+
+.Suggested-pill {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 10px;
+  font-size: 11px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: #c7d2fe;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.card-footer {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.link-pill {
+  border-radius: var(--radius-pill);
+  border: 1px solid #4b5563;
+  padding: 4px 10px;
+  font-size: 11px;
+  text-decoration: none;
+  color: #e5e7eb;
+  background: #020617;
+}
 </style>
 </head>
 
 <body>
+<main class="page">
 
-<h1>Airport Limousine Bus Guide</h1>
-<div style="text-align:center; opacity:0.7;">JP · GJN-2026-May · Transport</div>
-<a href="https://jp-gjn-2026-may.trekworks.org/" class="back-button">
-    ← Back to Trip Home
-</a>
+  <div class="page-header">
+    <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
+    <h1 class="title">Airport Limousine Bus Guide</h1>
+    <p class="subtitle">Airport bus for Japan trip (14 May 2026 → 29 May 2026)</p>
+    <div class="toolbar">
+      <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
+        ← Back to Trip Home
+      </a>
+    </div>
+  </div>
 
-<!-- ======================= OSAKA ARRIVAL ======================= -->
-<div class="card">
-    <h3>🚌 Kansai Airport (KIX) → Osaka City (Namba / OCAT)</h3>
-    <div class="info-line"><strong>Destination:</strong> OCAT (Namba)</div>
-    <div class="info-line"><strong>Travel Time:</strong> ~50 minutes</div>
-    <div class="info-line"><strong>Fare:</strong> ¥1,600</div>
-
-    <h4>⏱ Recommended Buses (Arrival Day – 14 May 2026)</h4>
-
-    <div class="info-line"><strong>Flight Arrival:</strong> 18:30 (Jetstar JQ001) → Clear immigration & luggage by ~19:30</div>
-
-    <div class="info-line">✔ <strong>19:40 → OCAT</strong> <span class="tag">Recommended</span></div>
-    <div class="info-line">✔ <strong>20:10 → OCAT</strong> (Backup)</div>
-
-    <a class="link-button" href="external.html?url=https://www.kate.co.jp/en/timetable/detail/UM">Timetable</a>
-    <a class="link-button" href="external.html?url=https://maps.app.goo.gl/peZzSWk1ig7ZBRmy8">OCAT Map</a>
-    <a class="link-button" href="external.html?url=https://www.klook.com/en-AU/activity/18203-kansai-airport-one-way-transfer-osaka/">Bookings</a>
-</div>
-
-<!-- ======================= OSAKA RETURN ======================= -->
-<div class="card">
-    <h3>🚌 Osaka (Namba / OCAT) → Kansai Airport (KIX)</h3>
-
-    <div class="info-line"><strong>Flight Departure:</strong> 19:00 on 29 May 2026</div>
-    <div class="info-line"><strong>Recommended Arrival at Airport:</strong> ~17:00</div>
-    <div class="info-line"><strong>Travel Time:</strong> ~50 minutes</div>
-
-    <h4>⏱ Recommended Buses (Return Day – 29 May)</h4>
-    <div class="info-line">✔ <strong>15:40 → KIX Terminal 1</strong> <span class="tag">Recommended</span></div>
-    <div class="info-line">✔ <strong>16:10 → KIX Terminal 1</strong> (Backup)</div>
-
-    <a class="link-button" href="external.html?url=https://www.kate.co.jp/en/timetable/detail/UM">Timetable</a>
-    <a class="link-button" href="external.html?url=https://maps.app.goo.gl/peZzSWk1ig7ZBRmy8">OCAT Map</a>
-    <a class="link-button" href="external.html?url=https://www.klook.com/en-AU/activity/18203-kansai-airport-one-way-transfer-osaka/">Bookings</a>
-</div>
-
-<!-- ======================= OKINAWA ARRIVAL ======================= -->
-<div class="card">
-    <h3>🚌 Naha Airport → Hotel Nikko Alivila</h3>
-
-    <div class="info-line"><strong>Flight Arrival:</strong> 16:55 (JAL 2087)</div>
-    <div class="info-line"><strong>Travel Time:</strong> ~70–80 minutes</div>
-    <div class="info-line"><strong>Fare:</strong> ¥1,600</div>
-
-    <h4>⏱ Recommended Bus</h4>
-
-    <div class="info-line">
-        ✔ <strong>Bus No. 49 — 17:40 → Nikko Alivila</strong>
-        <span class="tag">Recommended</span>
+  <!-- Kansai Arrival -->
+  <article class="card">
+    <div class="card-header">
+      <div class="card-title">🚌 Kansai Airport (KIX) → Osaka City (Namba / OCAT)</div>
+      <div class="card-meta">Arrival day · 14 May 2026</div>
     </div>
 
-    <div class="info-line">Arrival: ~18:56</div>
+    <div class="meta-row">
+      <div><span class="meta-label">Destination:</span> OCAT (Namba)</div>
+      <div><span class="meta-label">Travel time:</span> 50 minutes</div>
+      <div><span class="meta-label">Fare:</span> ¥1,600</div>
+    </div>
 
-    <a class="link-button" href="external.html?url=https://okinawabus.com/en/wp-content/uploads/sites/7/2025/09/979548af61fd0ebd2e3fe9895c4097aa.pdf">Timetable</a>
-    <a class="link-button" href="external.html?url=https://okinawabus.com/en/wp-content/uploads/sites/7/2025/02/2025.4.1B-areaEN.pdf">Price</a>
-    <a class="link-button" href="external.html?url=https://japanbusonline.com/en/Detail/14700010001/0/9472018001/9472018002/">Bookings</a>
-    <a class="link-button" href="external.html?url=https://maps.app.goo.gl/ikVv3HbnEFsGvH4u6">Hotel Map</a>
-</div>
+    <div class="meta-row">
+      <div><span class="meta-label">Flight arrival:</span> 18:30 (Jetstar JQ001)</div>
+      <div><span class="meta-label">Clear by:</span> 19:30</div>
+    </div>
 
-<!-- ======================= OKINAWA RETURN ======================= -->
-<div class="card">
-    <h3>🚌 Hotel Nikko Alivila → Naha Airport</h3>
+    <div class="meta-row">
+      <div>
+        <span class="meta-label">19:40 → OCAT</span>
+        <span class="Suggested-pill">Suggested</span>
+      </div>
+      <div><span class="meta-label">20:10 → OCAT</span> (Backup)</div>
+    </div>
 
-    <div class="info-line"><strong>Travel Time:</strong> ~70–80 minutes</div>
+    <div class="card-footer">
+      <a class="link-pill" href="external.html?url=https://www.kate.co.jp/en/timetable/detail/UM">Timetable</a>
+      <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/peZzSWk1ig7ZBRmy8">OCAT Map</a>
+      <a class="link-pill" href="external.html?url=https://www.klook.com/en-AU/activity/18203-kansai-airport-one-way-transfer-osaka/">Bookings</a>
+    </div>
+  </article>
 
-    <h4>⏱ Recommended Buses</h4>
+  <!-- Kansai Return -->
+  <article class="card">
+    <div class="card-header">
+      <div class="card-title">🚌 Osaka (Namba / OCAT) → Kansai Airport (KIX)</div>
+      <div class="card-meta">Return day · 29 May 2026</div>
+    </div>
 
-    <div class="info-line">✔ <strong>08:50 → Naha Airport</strong> <span class="tag">Recommended</span></div>
-    <div class="info-line">✔ <strong>10:50 → Naha Airport</strong> (Backup)</div>
+    <div class="meta-row">
+      <div><span class="meta-label">Flight departure:</span> 19:00</div>
+      <div><span class="meta-label">Arrive by:</span> 17:00</div>
+      <div><span class="meta-label">Travel time:</span> 50 minutes</div>
+    </div>
 
-    <a class="link-button" href="external.html?url=https://okinawabus.com/en/wp-content/uploads/sites/7/2025/09/979548af61fd0ebd2e3fe9895c4097aa.pdf">Timetable</a>
-    <a class="link-button" href="external.html?url=https://okinawabus.com/en/wp-content/uploads/sites/7/2025/02/2025.4.1B-areaEN.pdf">Price</a>
-    <a class="link-button" href="external.html?url=https://japanbusonline.com/en/Detail/14700010001/0/9472018001/9472018002/">Bookings</a>
-    <a class="link-button" href="external.html?url=https://maps.app.goo.gl/ikVv3HbnEFsGvH4u6">Hotel Map</a>
-</div>
+    <div class="meta-row">
+      <div>
+        <span class="meta-label">15:40 → KIX T1</span>
+        <span class="Suggested-pill">Suggested</span>
+      </div>
+      <div><span class="meta-label">16:10 → KIX T1</span> (Backup)</div>
+    </div>
 
+    <div class="card-footer">
+      <a class="link-pill" href="external.html?url=https://www.kate.co.jp/en/timetable/detail/UM">Timetable</a>
+      <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/peZzSWk1ig7ZBRmy8">OCAT Map</a>
+      <a class="link-pill" href="external.html?url=https://www.klook.com/en-AU/activity/18203-kansai-airport-one-way-transfer-osaka/">Bookings</a>
+    </div>
+  </article>
+
+  <!-- Naha Arrival -->
+  <article class="card">
+    <div class="card-header">
+      <div class="card-title">🚌 Naha Airport → Hotel Nikko Alivila</div>
+      <div class="card-meta">Arrival</div>
+    </div>
+
+    <div class="meta-row">
+      <div><span class="meta-label">Flight arrival:</span> 16:55 (JAL 2087)</div>
+      <div><span class="meta-label">Travel time:</span> 70–80 minutes</div>
+      <div><span class="meta-label">Fare:</span> ¥1,600</div>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <span class="meta-label">Bus 49 · 17:40</span>
+        <span class="Suggested-pill">Suggested</span>
+      </div>
+      <div><span class="meta-label">Arrival:</span> 18:56</div>
+    </div>
+
+    <div class="card-footer">
+      <a class="link-pill" href="external.html?url=https://okinawabus.com/en/wp-content/uploads/sites/7/2025/09/979548af61fd0ebd2e3fe9895c4097aa.pdf">Timetable</a>
+      <a class="link-pill" href="external.html?url=https://okinawabus.com/en/wp-content/uploads/sites/7/2025/02/2025.4.1B-areaEN.pdf">Price</a>
+      <a class="link-pill" href="external.html?url=https://japanbusonline.com/en/Detail/14700010001/0/9472018001/9472018002/">Bookings</a>
+      <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/ikVv3HbnEFsGvH4u6">Hotel Map</a>
+    </div>
+  </article>
+
+  <!-- Naha Return -->
+  <article class="card">
+    <div class="card-header">
+      <div class="card-title">🚌 Hotel Nikko Alivila → Naha Airport</div>
+    </div>
+
+    <div class="meta-row">
+      <div><span class="meta-label">Travel time:</span> 70–80 minutes</div>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <span class="meta-label">08:50 → Naha</span>
+        <span class="Suggested-pill">Suggested</span>
+      </div>
+      <div><span class="meta-label">10:50 → Naha</span> (Backup)</div>
+    </div>
+
+    <div class="card-footer">
+      <a class="link-pill" href="external.html?url=https://okinawabus.com/en/wp-content/uploads/sites/7/2025/09/979548af61fd0ebd2e3fe9895c4097aa.pdf">Timetable</a>
+      <a class="link-pill" href="external.html?url=https://okinawabus.com/en/wp-content/uploads/sites/7/2025/02/2025.4.1B-areaEN.pdf">Price</a>
+      <a class="link-pill" href="external.html?url=https://japanbusonline.com/en/Detail/14700010001/0/9472018001/9472018002/">Bookings</a>
+      <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/ikVv3HbnEFsGvH4u6">Hotel Map</a>
+    </div>
+  </article>
+
+</main>
 </body>
 </html>
