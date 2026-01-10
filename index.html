@@ -20,254 +20,383 @@
       --radius-pill: 999px;
       --shadow-card: 0 20px 40px rgba(15,23,42,0.8);
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0; padding:0; min-height:100vh;
-      font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
-      background:radial-gradient(circle at top,#111827 0,#020617 45%,#020617 100%);
-      color:var(--text-main); display:flex; justify-content:center;
-    }
-    .page{width:100%; max-width:960px; padding:26px 14px 80px;}
-    header{text-align:center; margin-bottom:26px;}
-    .trip-flag{font-size:13px; letter-spacing:.18em; color:var(--text-muted); margin-bottom:4px;}
-    h1{margin:0; font-size:clamp(24px,3.2vw,30px);}
-    .trip-dates{margin-top:4px; font-size:13px; color:var(--text-muted);}
-    .pill-row{margin-top:14px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;}
-    .pill{
-      border-radius:var(--radius-pill);
-      padding:6px 12px;
-      font-size:12px;
-      border:1px solid var(--border-soft);
-      background:radial-gradient(circle at top left,#1f2937,#020617);
-      color:var(--text-muted);
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      cursor:pointer;
-      user-select:none;
-    }
-    .pill.install{ color:var(--text-main); }
-    .pill.trip-offline{
-      color:#fbbf24;
-      border-color:#fbbf24;
-    }
-    .grid{
-      margin-top:24px;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:18px;
-    }
-    .card{
-      background:radial-gradient(circle at top,var(--bg-card),var(--bg-card-soft));
-      border:1px solid var(--border-soft);
-      border-radius:var(--radius-card);
-      box-shadow:var(--shadow-card);
-      padding:16px 17px 14px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-    .card-header{display:flex; gap:10px; align-items:center; margin-bottom:10px;}
-    .card-emoji{font-size:26px;}
-    .card-title{font-size:16px; font-weight:600;}
-    .card-tag{font-size:11px; text-transform:uppercase; letter-spacing:.18em; color:var(--text-muted); margin-bottom:6px;}
-    .card-text{font-size:13px; color:var(--text-muted); margin-bottom:12px;}
-    .card-footer{display:flex; justify-content:space-between; align-items:center;}
-    .secure-label{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:3px 9px; border-radius:var(--radius-pill);
-      border:1px solid rgba(148,163,184,.55);
-      background:rgba(15,23,42,.95); color:var(--text-muted);
-    }
-    .secure-dot{width:7px; height:7px; border-radius:999px; background:#22c55e;}
-    .card-link{text-decoration:none; color:var(--accent-blue); font-size:13px;}
-    .card-link span{font-size:14px;}
 
-    .hub-btn{
-      margin-top:40px;
-      display:inline-block;
-      padding:10px 22px;
-      border-radius:var(--radius-pill);
-      background:radial-gradient(circle at top left,#1f2937,#020617);
-      border:1px solid var(--border-soft);
-      color:var(--text-main);
-      font-size:14px;
-      text-decoration:none;
-      letter-spacing:0.3px;
-    }
-    .hub-btn:hover{
-      background:radial-gradient(circle at top left,#263445,#0b0f19);
-      border-color:#4b5563;
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      font-family: system-ui,-apple-system,"Segoe UI",sans-serif;
+      background: radial-gradient(circle at top,#111827 0,#020617 45%,#020617 100%);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
     }
 
-    .hub-container{text-align:center; margin-top:36px;}
+    .page {
+      width: 100%;
+      max-width: 960px;
+      padding: 26px 14px 80px;
+    }
 
-    /* ===============================
-       iOS Install Helper (additive)
-       =============================== */
-    .ios-install-helper{
-      position:fixed;
-      bottom:14px;
-      left:50%;
-      transform:translateX(-50%);
-      max-width:520px;
-      width:calc(100% - 28px);
-      background:rgba(15,23,42,.97);
-      border:1px solid var(--border-soft);
-      border-radius:14px;
-      padding:12px 14px;
-      display:none;
-      z-index:999;
-      box-shadow:0 20px 40px rgba(0,0,0,.6);
+    /* ===== Header (ALIGNED MODEL) ===== */
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 26px;
     }
-    .ios-install-helper p{
-      margin:0;
-      font-size:13px;
-      color:var(--text-muted);
-      line-height:1.4;
+
+    .breadcrumb {
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
     }
-    .ios-install-helper strong{
-      color:var(--text-main);
-      font-weight:600;
+
+    .title {
+      margin: 0;
+      font-size: clamp(24px,3.2vw,30px);
+      font-weight: 700;
     }
-    .ios-install-actions{
-      margin-top:8px;
-      display:flex;
-      justify-content:flex-end;
+
+    .subtitle {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
     }
-    .ios-install-dismiss{
-      font-size:12px;
-      color:var(--accent-blue);
-      cursor:pointer;
-      user-select:none;
+
+    .toolbar {
+      margin-top: 14px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      border-radius: var(--radius-pill);
+      padding: 6px 12px;
+      font-size: 12px;
+      border: 1px solid var(--border-soft);
+      background: radial-gradient(circle at top left,#1f2937,#020617);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .pill.install { color: var(--text-main); }
+
+    .pill.trip-offline {
+      color: #fbbf24;
+      border-color: #fbbf24;
+    }
+
+    @media (max-width: 640px) {
+      .subtitle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        text-align: center;
+      }
+    }
+
+    /* ===== Grid ===== */
+
+    .grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top,var(--bg-card),var(--bg-card-soft));
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: 16px 17px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-header {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .card-emoji { font-size: 26px; }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .secure-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148,163,184,.55);
+      background: rgba(15,23,42,.95);
+      color: var(--text-muted);
+    }
+
+    .secure-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .card-link {
+      text-decoration: none;
+      color: var(--accent-blue);
+      font-size: 13px;
+    }
+
+    .hub-container {
+      text-align: center;
+      margin-top: 36px;
+    }
+
+    .hub-btn {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: var(--radius-pill);
+      background: radial-gradient(circle at top left,#1f2937,#020617);
+      border: 1px solid var(--border-soft);
+      color: var(--text-main);
+      font-size: 14px;
+      text-decoration: none;
+      letter-spacing: .3px;
+    }
+
+    /* ===== iOS Install Helper ===== */
+
+    .ios-install-helper {
+      position: fixed;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 520px;
+      width: calc(100% - 28px);
+      background: rgba(15,23,42,.97);
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: none;
+      z-index: 999;
+      box-shadow: 0 20px 40px rgba(0,0,0,.6);
+    }
+
+    .ios-install-helper p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .ios-install-actions {
+      margin-top: 8px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .ios-install-dismiss {
+      font-size: 12px;
+      color: var(--accent-blue);
+      cursor: pointer;
     }
   </style>
 </head>
+
 <body>
 <div class="page">
 
-  <header>
-    <div class="trip-flag">JP · GJN-JP-2026-May</div>
-    <h1>Trip Home</h1>
-    <p class="trip-dates">Japan · May 2026 · Secure trip guide</p>
-
-    <div class="pill-row">
+  <!-- ===== Header ===== -->
+  <div class="page-header">
+    <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
+    <h1 class="title">Trip Home</h1>
+    <p class="subtitle">
+      <span class="subtitle-main">Secure trip guide</span>
+      <span class="subtitle-dates">(14 May 2026 → 29 May 2026)</span>
+    </p>
+    <div class="toolbar">
       <div class="pill" id="tripModePill">Trip Mode: Online</div>
       <div class="pill" id="tripModeHelp">?</div>
       <div class="pill install" id="installPill" style="display:none;">
         <span>⬇️</span>Install App
       </div>
     </div>
-  </header>
+  </div>
 
+  <!-- ===== Cards ===== -->
   <main>
     <div class="grid">
 
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">🏨</div><div class="card-title">Accommodation</div></div>
+          <div class="card-header">
+            <div class="card-emoji">🏨</div>
+            <div class="card-title">Accommodation</div>
+          </div>
           <div class="card-text">Hotel details, confirmations and stay information for May 2026.</div>
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="./accommodation.html">Open <span>↗</span></a>
+          <a class="card-link" href="./accommodation.html">Open ↗</a>
         </div>
       </article>
 
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">🎡</div><div class="card-title">Activities</div></div>
+          <div class="card-header">
+            <div class="card-emoji">🎡</div>
+            <div class="card-title">Activities</div>
+          </div>
           <div class="card-text">Tours, experiences, timings and booking confirmations.</div>
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="./activities.html">Open <span>↗</span></a>
+          <a class="card-link" href="./activities.html">Open ↗</a>
         </div>
       </article>
 
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">🚌</div><div class="card-title">Airport Limousine Bus</div></div>
+          <div class="card-header">
+            <div class="card-emoji">🚌</div>
+            <div class="card-title">Airport Limousine Bus</div>
+          </div>
           <div class="card-text">Timetables, boarding locations and drop-off arrangements.</div>
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="./airport-limousine-bus.html">Open <span>↗</span></a>
+          <a class="card-link" href="./airport-limousine-bus.html">Open ↗</a>
         </div>
       </article>
 
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">✈️</div><div class="card-title">Flights</div></div>
+          <div class="card-header">
+            <div class="card-emoji">✈️</div>
+            <div class="card-title">Flights</div>
+          </div>
           <div class="card-text">Flight schedules, terminals and booking detail.</div>
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="./flights.html">Open <span>↗</span></a>
+          <a class="card-link" href="./flights.html">Open ↗</a>
         </div>
       </article>
 
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">📘</div><div class="card-title">Guides</div></div>
+          <div class="card-header">
+            <div class="card-emoji">📘</div>
+            <div class="card-title">Guides</div>
+          </div>
           <div class="card-text">Reference guides and essential Japan travel information.</div>
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="./guides.html">Open <span>↗</span></a>
+          <a class="card-link" href="./guides.html">Open ↗</a>
         </div>
       </article>
 
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">🛍️</div><div class="card-title">Shopping</div></div>
+          <div class="card-header">
+            <div class="card-emoji">🛍️</div>
+            <div class="card-title">Shopping</div>
+          </div>
           <div class="card-text">Shopping plans, destinations and budget considerations.</div>
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="./shopping.html">Open <span>↗</span></a>
+          <a class="card-link" href="./shopping.html">Open ↗</a>
         </div>
       </article>
 
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">📝</div><div class="card-title">Task List</div></div>
+          <div class="card-header">
+            <div class="card-emoji">📝</div>
+            <div class="card-title">Task List</div>
+          </div>
           <div class="card-text">Trip organisation and preparation checklists.</div>
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="./task-list-guide.html">Open <span>↗</span></a>
+          <a class="card-link" href="./task-list-guide.html">Open ↗</a>
         </div>
       </article>
 
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">🚄</div><div class="card-title">Trains</div></div>
+          <div class="card-header">
+            <div class="card-emoji">🚄</div>
+            <div class="card-title">Trains</div>
+          </div>
           <div class="card-text">Rail movements and bookings for the May 2026 itinerary.</div>
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="./trains.html">Open <span>↗</span></a>
+          <a class="card-link" href="./trains.html">Open ↗</a>
         </div>
       </article>
 
       <article class="card">
         <div>
           <div class="card-tag">TRIP ELEMENT</div>
-          <div class="card-header"><div class="card-emoji">🎒</div><div class="card-title">Travel Packing Guide</div></div>
+          <div class="card-header">
+            <div class="card-emoji">🎒</div>
+            <div class="card-title">Travel Packing Guide</div>
+          </div>
           <div class="card-text">Packing checklist for Sema & Gavin.</div>
         </div>
         <div class="card-footer">
           <div class="secure-label"><span class="secure-dot"></span>Secure section</div>
-          <a class="card-link" href="./travel-packing-guide.html">Open <span>↗</span></a>
+          <a class="card-link" href="./travel-packing-guide.html">Open ↗</a>
         </div>
       </article>
 
@@ -277,10 +406,9 @@
       <a href="https://trekworks.org/" class="hub-btn">← Back to TrekWorks Hub</a>
     </div>
   </main>
-
 </div>
 
-<!-- iOS Install Helper -->
+<!-- ===== iOS Install Helper ===== -->
 <div class="ios-install-helper" id="iosInstallHelper">
   <p>
     <strong>Install this trip for offline use</strong><br>
@@ -290,10 +418,13 @@
     <span class="ios-install-dismiss" id="iosInstallDismiss">Dismiss</span>
   </div>
 </div>
+
 <script>
-// ===============================
-// TrekWorks Trip Mode – localStorage + IndexedDB
-// ===============================
+/* ===============================
+   TrekWorks Trip Mode logic
+   (VERBATIM from your original)
+   =============================== */
+
 const TRIP_ID = "GJN-2026-May";
 const TRIP_MODE_LS_KEY = "trekworks.tripMode:GJN-2026-May";
 const DEFAULT_TRIP_MODE = "online";
@@ -380,9 +511,10 @@ helpPill.addEventListener("click", () => {
 
 refreshTripModeUI();
 
-// ===============================
-// Install App logic
-// ===============================
+/* ===============================
+   PWA install + service worker
+   =============================== */
+
 let deferredInstallPrompt = null;
 
 window.addEventListener("beforeinstallprompt", (e) => {
@@ -403,9 +535,6 @@ document.getElementById("installPill").addEventListener("click", async () => {
   deferredInstallPrompt = null;
 });
 
-// ===============================
-// Service Worker (with update refresh)
-// ===============================
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./service-worker.js", { scope: "./" })
     .then(() => {
@@ -415,9 +544,10 @@ if ("serviceWorker" in navigator) {
     });
 }
 
-// ===============================
-// iOS Install Helper logic
-// ===============================
+/* ===============================
+   iOS install helper
+   =============================== */
+
 (function () {
   const DISMISS_KEY = "trekworks.iosInstallDismissed";
   const helper = document.getElementById("iosInstallHelper");
@@ -447,4 +577,3 @@ if ("serviceWorker" in navigator) {
 
 </body>
 </html>
-
