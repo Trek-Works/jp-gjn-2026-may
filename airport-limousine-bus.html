@@ -99,6 +99,10 @@ body {
   margin-top: 2px;
 }
 
+.card-meta::before {
+  content: "";
+}
+
 .meta-row {
   display: flex;
   flex-wrap: wrap;
@@ -106,6 +110,13 @@ body {
   font-size: 13px;
   color: var(--text-soft);
   margin-top: 8px;
+}
+
+/* ADD THIS BLOCK */
+.meta-label {
+  font-weight: 500;
+  color: #d1d5db;
+  margin-right: 4px;
 }
 
 @media (max-width: 640px) {
