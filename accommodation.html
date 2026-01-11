@@ -233,6 +233,17 @@
     margin-top: 6px;
   }
 
+  /* MOBILE FIX: make footer pills wrap nicely when there are 4 */
+  .card-footer {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .card-footer .link-pill {
+    flex: 1 1 calc(50% - 6px);
+    text-align: center;
+  }
+
 }
   </style>
 
