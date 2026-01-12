@@ -271,6 +271,17 @@
       text-decoration: none;
     }
 
+/* Footer line-break control */
+.desktop-only {
+  display: inline;
+}
+
+@media (max-width: 640px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
     /* ===== <details> Chevron ===== */
 
     details summary {
@@ -1034,10 +1045,10 @@
     </section>
 
 <footer>
-  For air travel, see
-  <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.
+  For air travel, see <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.
   For getting to and from the airport, use the
-  <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>.<br>
+  <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>.
+  <br class="desktop-only">
   For Shinkansen travel between Osaka and Fukuoka, see the
   <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Train Guide</a>.
   For overnight stays, go to
