@@ -1,146 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Flights – GJN-2026-May</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
+  <meta charset="UTF-8" />
+  <title>Flights – JP GJN-2026-May</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-elevated: #0b1020;
+      --bg-card: #0f1629;
+      --border-soft: #1f2940;
+      --accent: #4f8cff;
+      --accent-soft: rgba(79, 140, 255, 0.15);
+      --text-main: #f5f7ff;
+      --text-soft: #9ca3af;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-        background: #0d1117;
-        color: #e6edf3;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-            Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-        margin: 0; padding: 0;
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
     }
-    .container {
-        max-width: 950px;
-        margin: 40px auto;
-        padding: 0 20px;
+
+    .page {
+      max-width: 920px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 36px 18px 56px;
     }
-    h1 {
-        text-align: center;
-        margin-bottom: 8px;
-        font-size: 32px;
-        color: #fff;
+
+    /* ===== Header ===== */
+
+    .page-header {
+      text-align: center;
     }
-    h2 {
-        margin-top: 0;
-        font-size: 18px;
+
+    .page-header .toolbar {
+      justify-content: center;
+    }
+
+    .breadcrumb {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--text-soft);
+      text-transform: uppercase;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 26px;
+      align-items: center;
+    }
+
+    .pill-button {
+      border-radius: var(--radius-pill);
+      border: 1px solid #374151;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-size: 13px;
+      padding: 6px 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ===== Cards ===== */
+
+    .card {
+      background: linear-gradient(145deg, #0b1020, #020617 80%);
+      border-radius: var(--radius-lg);
+      padding: 6px 20px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      margin-top: 14px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .card-meta {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-top: 6px;
+      margin-bottom: 10px;
+    }
+
+    .meta-label {
+      font-weight: 500;
+      color: #d1d5db;
+      margin-right: 4px;
+    }
+
+    .card-footer {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .link-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid #4b5563;
+      padding: 4px 10px;
+      font-size: 11px;
+      text-decoration: none;
+      color: #e5e7eb;
+      background: #020617;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    /* ===== Footer ===== */
+
+    footer {
+      margin-top: 56px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .desktop-only {
+      display: inline;
+    }
+
+    @media (max-width: 640px) {
+      .desktop-only {
+        display: none;
+      }
+
+      .subtitle {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 8px;
-        color: #58a6ff;
+        gap: 2px;
+        text-align: center;
+      }
+
+      .meta-row {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .card-footer {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .card-footer .link-pill {
+        flex: 1 1 calc(50% - 6px);
+        text-align: center;
+      }
     }
-    a.back {
-        display: inline-block;
-        margin-bottom: 25px;
-        padding: 8px 14px;
-        background: #21262d;
-        border: 1px solid #30363d;
-        border-radius: 6px;
-        color: #58a6ff;
-        text-decoration: none;
-    }
-    .flight-card {
-        background: #161b22;
-        border: 1px solid #30363d;
-        border-radius: 10px;
-        padding: 18px 22px;
-        margin-bottom: 26px;
-    }
-    .row { margin-bottom: 6px; }
-    .label { font-weight: 600; color: #9ab; }
-    .btn-row { margin-top: 14px; display: flex; gap: 10px; }
-    .btn {
-        padding: 8px 14px;
-        border-radius: 8px;
-        font-size: 14px;
-        text-decoration: none;
-        color: #fff;
-        background: #238636;
-        border: 1px solid #2ea043;
-    }
-    .btn.secondary {
-        background: #1f6feb;
-        border-color: #388bfd;
-    }
-</style>
+  </style>
 </head>
+
 <body>
-<div class="container">
+  <main class="page">
+    <div class="page-header">
+      <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
+      <h1 class="title">Flights</h1>
+      <p class="subtitle">
+        <span class="subtitle-main">Air travel for Japan trip</span>
+        <span class="subtitle-dates">(14 May 2026 → 29 May 2026)</span>
+      </p>
 
-<h1>Flights – May 2026</h1>
-<a class="back" href="https://jp-gjn-2026-may.trekworks.org/">← Back to Trip Home</a>
-
-<!-- 1. SYD → KIX -->
-<div class="flight-card">
-    <h2><i class="fa-solid fa-plane-departure"></i> Sydney (SYD) → Osaka (KIX)</h2>
-
-    <div class="row"><span class="label">Airline:</span> Jetstar Airways (JQ)</div>
-    <div class="row"><span class="label">Flight:</span> JQ001</div>
-
-    <div class="row"><span class="label">Departure:</span> 14 May 2026 — 11:10 AM · Sydney (SYD)</div>
-    <div class="row"><span class="label">Arrival:</span> 14 May 2026 — 7:50 PM · Osaka Kansai (KIX)</div>
-    <div class="row"><span class="label">Terminal:</span> T1</div>
-
-    <div class="btn-row">
-        <a class="btn" href="external.html?url=https://flightaware.com/live/flight/JST13">Flight Status</a>
-        <a class="btn secondary" href="external.html?url=https://checkin.jetstar.com/">Online Check-In</a>
+      <div class="toolbar">
+        <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
+          ← Back to Trip Home
+        </a>
+      </div>
     </div>
-</div>
 
-<!-- 2. Osaka ITM → Okinawa OKA -->
-<div class="flight-card">
-    <h2><i class="fa-solid fa-plane-departure"></i> Osaka (ITM) → Okinawa (OKA)</h2>
+    <!-- SYD → KIX -->
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">✈️ Sydney (SYD) → Osaka (KIX)</div>
+          <div class="card-meta">International departure · 14 May 2026</div>
+        </div>
+      </div>
 
-    <div class="row"><span class="label">Airline:</span> Japan Airlines (JAL / operated by JTA)</div>
-    <div class="row"><span class="label">Flight:</span> JL2087</div>
+      <div class="meta-row">
+        <div><span class="meta-label">Airline:</span> Jetstar Airways (JQ)</div>
+        <div><span class="meta-label">Flight:</span> JQ001</div>
+        <div><span class="meta-label">Terminal:</span> T1</div>
+      </div>
 
-    <div class="row"><span class="label">Departure:</span> 17 May 2026 — 2:50 PM · Osaka Itami (ITM)</div>
-    <div class="row"><span class="label">Arrival:</span> 17 May 2026 — 4:55 PM · Okinawa Naha (OKA)</div>
-    <div class="row"><span class="label">Terminal:</span> ITM South Terminal</div>
+      <div class="meta-row">
+        <div><span class="meta-label">Depart:</span> 11:10 AM · Sydney</div>
+        <div><span class="meta-label">Arrive:</span> 7:50 PM · Kansai</div>
+      </div>
 
-    <div class="btn-row">
-        <a class="btn" href="external.html?url=https://flightaware.com/live/flight/JAL2087">Flight Status</a>
-        <a class="btn secondary" href="external.html?url=https://digital.jal.co.jp/ssci/identification?lang=en-GB">Online Check-In</a>
-    </div>
-</div>
+      <div class="card-footer">
+        <a class="link-pill" href="external.html?url=https://flightaware.com/live/flight/JST13">Flight Status</a>
+        <a class="link-pill" href="external.html?url=https://checkin.jetstar.com/">Online Check-In</a>
+      </div>
+    </article>
 
-<!-- 3. Okinawa → Fukuoka -->
-<div class="flight-card">
-    <h2><i class="fa-solid fa-plane-departure"></i> Okinawa (OKA) → Fukuoka (FUK)</h2>
+    <!-- ITM → OKA -->
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">✈️ Osaka (ITM) → Okinawa (OKA)</div>
+          <div class="card-meta">Domestic flight · 17 May 2026</div>
+        </div>
+      </div>
 
-    <div class="row"><span class="label">Airline:</span> Japan Airlines (JAL / operated by JTA)</div>
-    <div class="row"><span class="label">Flight:</span> JL054 (JTA054)</div>
+      <div class="meta-row">
+        <div><span class="meta-label">Airline:</span> Japan Airlines (JAL / JTA)</div>
+        <div><span class="meta-label">Flight:</span> JL2087</div>
+        <div><span class="meta-label">Terminal:</span> ITM South</div>
+      </div>
 
-    <div class="row"><span class="label">Departure:</span> 22 May 2026 — 1:35 PM · Okinawa Naha (OKA)</div>
-    <div class="row"><span class="label">Arrival:</span> 22 May 2026 — 3:15 PM · Fukuoka (FUK)</div>
-    <div class="row"><span class="label">Terminal:</span> Domestic Terminal</div>
+      <div class="meta-row">
+        <div><span class="meta-label">Depart:</span> 2:50 PM · Itami</div>
+        <div><span class="meta-label">Arrive:</span> 4:55 PM · Naha</div>
+      </div>
 
-    <div class="btn-row">
-        <a class="btn" href="external.html?url=https://flightaware.com/live/flight/JTA054">Flight Status</a>
-        <a class="btn secondary" href="external.html?url=https://digital.jal.co.jp/ssci/identification?lang=en-GB">Online Check-In</a>
-    </div>
-</div>
+      <div class="card-footer">
+        <a class="link-pill" href="external.html?url=https://flightaware.com/live/flight/JAL2087">Flight Status</a>
+        <a class="link-pill" href="external.html?url=https://digital.jal.co.jp/ssci/identification?lang=en-GB">Online Check-In</a>
+      </div>
+    </article>
 
-<!-- 4. Osaka → Sydney -->
-<div class="flight-card">
-    <h2><i class="fa-solid fa-plane-departure"></i> Osaka (KIX) → Sydney (SYD)</h2>
+    <!-- OKA → FUK -->
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">✈️ Okinawa (OKA) → Fukuoka (FUK)</div>
+          <div class="card-meta">Domestic flight · 22 May 2026</div>
+        </div>
+      </div>
 
-    <div class="row"><span class="label">Airline:</span> Jetstar Airways (JQ)</div>
-    <div class="row"><span class="label">Flight:</span> JQ002</div>
+      <div class="meta-row">
+        <div><span class="meta-label">Airline:</span> Japan Airlines (JAL / JTA)</div>
+        <div><span class="meta-label">Flight:</span> JL054</div>
+        <div><span class="meta-label">Terminal:</span> Domestic</div>
+      </div>
 
-    <div class="row"><span class="label">Departure:</span> 29 May 2026 — 9:25 PM · Osaka Kansai (KIX)</div>
-    <div class="row"><span class="label">Arrival:</span> 30 May 2026 — 8:10 AM · Sydney (SYD)</div>
-    <div class="row"><span class="label">Terminal:</span> T1</div>
+      <div class="meta-row">
+        <div><span class="meta-label">Depart:</span> 1:35 PM · Naha</div>
+        <div><span class="meta-label">Arrive:</span> 3:15 PM · Fukuoka</div>
+      </div>
 
-    <div class="btn-row">
-        <a class="btn" href="external.html?url=https://flightaware.com/live/flight/JST14">Flight Status</a>
-        <a class="btn secondary" href="external.html?url=https://checkin.jetstar.com/">Online Check-In</a>
-    </div>
-</div>
+      <div class="card-footer">
+        <a class="link-pill" href="external.html?url=https://flightaware.com/live/flight/JTA054">Flight Status</a>
+        <a class="link-pill" href="external.html?url=https://digital.jal.co.jp/ssci/identification?lang=en-GB">Online Check-In</a>
+      </div>
+    </article>
 
-</div>
+    <!-- KIX → SYD -->
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">✈️ Osaka (KIX) → Sydney (SYD)</div>
+          <div class="card-meta">International return · 29 May 2026</div>
+        </div>
+      </div>
+
+      <div class="meta-row">
+        <div><span class="meta-label">Airline:</span> Jetstar Airways (JQ)</div>
+        <div><span class="meta-label">Flight:</span> JQ002</div>
+        <div><span class="meta-label">Terminal:</span> T1</div>
+      </div>
+
+      <div class="meta-row">
+        <div><span class="meta-label">Depart:</span> 9:25 PM · Kansai</div>
+        <div><span class="meta-label">Arrive:</span> 8:10 AM · Sydney (30 May)</div>
+      </div>
+
+      <div class="card-footer">
+        <a class="link-pill" href="external.html?url=https://flightaware.com/live/flight/JST14">Flight Status</a>
+        <a class="link-pill" href="external.html?url=https://checkin.jetstar.com/">Online Check-In</a>
+      </div>
+    </article>
+
+    <footer>
+      For getting to and from the airport, use the
+      <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>.
+      <br class="desktop-only">
+      For Shinkansen travel between Osaka and Fukuoka, see the
+      <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Train Guide</a>.
+      For overnight stays, go to
+      <a href="https://jp-gjn-2026-may.trekworks.org/accommodation.html">Accommodation</a>.
+      For things to do, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>.
+    </footer>
+  </main>
 </body>
 </html>
