@@ -21,18 +21,13 @@
       --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.45);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       min-height: 100vh;
       font-family: system-ui, sans-serif;
       background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
       color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
       display: flex;
       justify-content: center;
     }
@@ -40,19 +35,10 @@
     .page {
       max-width: 920px;
       width: 100%;
-      margin: 0 auto;
       padding: 36px 18px 56px;
     }
 
-    /* ===== Header ===== */
-
-    .page-header {
-      text-align: center;
-    }
-
-    .page-header .toolbar {
-      justify-content: center;
-    }
+    .page-header { text-align: center; }
 
     .breadcrumb {
       text-transform: uppercase;
@@ -62,10 +48,7 @@
       margin-bottom: 6px;
     }
 
-    .title {
-      font-size: 30px;
-      font-weight: 700;
-    }
+    .title { font-size: 30px; font-weight: 700; }
 
     .subtitle {
       margin-top: 4px;
@@ -76,38 +59,27 @@
 
     .toolbar {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      justify-content: center;
       margin: 18px 0 26px;
-      align-items: center;
     }
 
     .pill-button {
       border-radius: var(--radius-pill);
       border: 1px solid #374151;
       background: rgba(15, 23, 42, 0.9);
-      color: var(--text-main);
+      color: #93c5fd;
       font-size: 13px;
       padding: 6px 14px;
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    /* ===== Sections ===== */
-
-    .section {
-      margin-top: 36px;
-    }
+    .section { margin-top: 36px; }
 
     .section-title {
       font-size: 17px;
       font-weight: 600;
       margin-bottom: 14px;
     }
-
-    /* ===== Cards ===== */
 
     .card {
       background: linear-gradient(145deg, #0b1020, #020617 80%);
@@ -127,8 +99,8 @@
     .card-footer {
       margin-top: 10px;
       display: flex;
-      flex-wrap: wrap;
       gap: 8px;
+      flex-wrap: wrap;
     }
 
     .link-pill {
@@ -139,11 +111,7 @@
       text-decoration: none;
       color: #e5e7eb;
       background: #020617;
-      white-space: nowrap;
-      flex: 0 0 auto;
     }
-
-    /* ===== <details> Chevron ===== */
 
     details summary {
       list-style: none;
@@ -159,14 +127,9 @@
       top: 1px;
       font-size: 13px;
       color: var(--text-soft);
-      transition: transform 0.2s ease;
     }
 
-    details[open] summary::before {
-      transform: rotate(90deg);
-    }
-
-    /* ===== Footer ===== */
+    details[open] summary::before { transform: rotate(90deg); }
 
     footer {
       margin-top: 56px;
@@ -175,37 +138,12 @@
       color: var(--text-soft);
     }
 
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+    footer a { color: var(--accent); text-decoration: none; }
 
-    .desktop-only {
-      display: inline;
-    }
+    .desktop-only { display: inline; }
 
     @media (max-width: 640px) {
-      .desktop-only {
-        display: none;
-      }
-
-      .subtitle {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2px;
-        text-align: center;
-      }
-
-      .card-footer {
-        flex-wrap: wrap;
-        gap: 6px;
-      }
-
-      .card-footer .link-pill {
-        flex: 1 1 calc(50% - 6px);
-        text-align: center;
-      }
+      .desktop-only { display: none; }
     }
   </style>
 </head>
@@ -217,11 +155,8 @@
     <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
     <h1 class="title">Guides</h1>
     <p class="subtitle">Travel guides and references for Japan trip</p>
-
     <div class="toolbar">
-      <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
-        ← Back to Trip Home
-      </a>
+      <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button">← Back to Trip Home</a>
     </div>
   </div>
 
@@ -233,14 +168,14 @@
       <div class="card">
         <div class="label">Before Your Flight</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://piqtour.com/checklist/">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://piqtour.com/checklist/">Open Guide (Page)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Your FIRST HOUR in Japan</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=7z-hxGUwXVo">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=7z-hxGUwXVo">Open Guide (Video)</a>
         </div>
       </div>
     </details>
@@ -249,19 +184,19 @@
   <!-- 💴 Money & Tourist Traps -->
   <section class="section">
     <details>
-      <summary class="section-title">💴 Money &amp; Tourist Traps</summary>
+      <summary class="section-title">💴 Money & Tourist Traps</summary>
 
       <div class="card">
         <div class="label">Train Travel from Tokyo to Osaka</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=yl3kuvpNavg">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=yl3kuvpNavg">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">20 Ways Tourists Waste Money in Japan 2025</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=eKf8TN8eOpY">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=eKf8TN8eOpY">Open Guide (Video)</a>
         </div>
       </div>
     </details>
@@ -275,28 +210,28 @@
       <div class="card">
         <div class="label">How To Spend Two Weeks in Japan</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=er3W4ieNpW0">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=er3W4ieNpW0">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">How to Spend 5 Days in Tokyo</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=0MQKLUkAUf8">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=0MQKLUkAUf8">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">The Ultimate Japan Trip Timeline</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://piqtour.com/timeline/">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://piqtour.com/timeline/">Open Guide (Page)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Beyond The Tourist Trail (eBook)</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.currentlyhannah.com/travelguide">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://www.currentlyhannah.com/travelguide">Open Guide (Page)</a>
         </div>
       </div>
     </details>
@@ -310,21 +245,21 @@
       <div class="card">
         <div class="label">Don’t come to Japan during these months</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=CfNzVfYwluM">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=CfNzVfYwluM">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Okinawa in May</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://visitokinawajapan.com/plan-your-trip/when-to-visit-climate-seasons/okinawa-may/">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://visitokinawajapan.com/plan-your-trip/when-to-visit-climate-seasons/okinawa-may/">Open Guide (Page)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">When to Visit Okinawa</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://visitokinawajapan.com/plan-your-trip/when-to-visit-climate-seasons/">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://visitokinawajapan.com/plan-your-trip/when-to-visit-climate-seasons/">Open Guide (Page)</a>
         </div>
       </div>
     </details>
@@ -333,26 +268,26 @@
   <!-- 🚆 Transport & IC Cards -->
   <section class="section">
     <details>
-      <summary class="section-title">🚆 Transport &amp; IC Cards</summary>
+      <summary class="section-title">🚆 Transport & IC Cards</summary>
 
       <div class="card">
         <div class="label">Japan IC Cards</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=TZcCYawUV0A">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=TZcCYawUV0A">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Japan Travel Apps</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://piqtour.com/essential-apps/">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://piqtour.com/essential-apps/">Open Guide (Page)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Japan’s Bullet Train</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=HG2Hy1zs5fg">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=HG2Hy1zs5fg">Open Guide (Video)</a>
         </div>
       </div>
     </details>
@@ -361,41 +296,46 @@
   <!-- 🎎 Culture & Practical Tips -->
   <section class="section">
     <details>
-      <summary class="section-title">🎎 Culture &amp; Practical Tips</summary>
+      <summary class="section-title">🎎 Culture & Practical Tips</summary>
 
       <div class="card">
         <div class="label">Finding Toilets in Japan</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=DZEqRqezRDo">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=DZEqRqezRDo">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Things Okay in Japan but Illegal Around the World</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=0RoA5QEm8fc">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=0RoA5QEm8fc">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
-        <div class="label">Top Attractions in Kyoto</div>
+        <div class="label">Top Attractions in Kyoto (Kyoto Prefecture)</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2158.html">Open Guide</a>
+          <a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2158.html">Open Guide (Page)</a>
         </div>
       </div>
+
+      <div class="card"><div class="label">What to do in Fukuoka (Fukuoka Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2161.html">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Dazaifu (Fukuoka Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e4850.html">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Kumamoto (Kumamoto Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e4500.html">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Nagasaki (Nagasaki Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2162.html">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Osaka (Osaka Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2157.html">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Kyoto (Kyoto Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2158.html">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Naha (Okinawa Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e7102.html">Open Guide (Page)</a></div></div>
+
     </details>
   </section>
 
   <footer>
-    For things to do, see
-    <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>.
-    For places to shop, visit
-    <a href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>.
+    For things to do, see <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>.
+    For places to shop, visit <a href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>.
     <br class="desktop-only">
-    For overnight stays, go to
-    <a href="https://jp-gjn-2026-may.trekworks.org/accommodation.html">Accommodation</a>.
-    For getting around, see
-    <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>.
+    For overnight stays, go to <a href="https://jp-gjn-2026-may.trekworks.org/accommodation.html">Accommodation</a>.
+    For getting around, see <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>.
   </footer>
 
 </main>
