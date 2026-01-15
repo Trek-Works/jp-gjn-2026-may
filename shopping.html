@@ -1,219 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Shopping Guide</title>
+  <meta charset="UTF-8" />
+  <title>Shopping – JP GJN-2026-May</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<style>
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-elevated: #0b1020;
+      --bg-card: #0f1629;
+      --border-soft: #1f2940;
+      --accent: #4f8cff;
+      --accent-soft: rgba(79, 140, 255, 0.15);
+      --text-main: #f5f7ff;
+      --text-soft: #9ca3af;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: #0b111b;
-        color: #e5e7eb;
-        line-height: 1.55;
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
     }
 
     .page {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 32px 16px;
+      max-width: 920px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 36px 18px 56px;
     }
 
-    h1 {
-        text-align: center;
-        font-size: 32px;
-        margin-bottom: 4px;
-        font-weight: 600;
+    /* ===== Header ===== */
+
+    .page-header {
+      text-align: center;
     }
 
-    h2 {
-        text-align: center;
-        font-size: 16px;
-        font-weight: 400;
-        color: #9ca3af;
-        margin-bottom: 28px;
+    .page-header .toolbar {
+      justify-content: center;
     }
 
-    .back-btn {
-        display: inline-block;
-        margin: 0 auto 32px auto;
-        padding: 8px 18px;
-        background: #1f2937;
-        color: #e5e7eb;
-        border-radius: 8px;
-        font-size: 14px;
-        text-decoration: none;
-        border: 1px solid #374151;
+    .breadcrumb {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--text-soft);
+      text-transform: uppercase;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 26px;
+      align-items: center;
+    }
+
+    .pill-button {
+      border-radius: var(--radius-pill);
+      border: 1px solid #374151;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-size: 13px;
+      padding: 6px 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ===== Sections ===== */
+
+    .section {
+      margin-top: 42px;
     }
 
     .section-title {
-        font-size: 20px;
-        font-weight: 600;
-        margin-top: 24px;
-        margin-bottom: 16px;
-        text-align: left;
-        color: #f3f4f6;
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 14px;
     }
 
+    /* ===== Cards ===== */
+
     .card {
-        background: #111827;
-        border-radius: 14px;
-        padding: 20px 22px;
-        margin-bottom: 26px;
-        box-shadow: 0 0 0 1px #1f2937 inset,
-                    0 12px 24px rgba(0,0,0,0.25);
+      background: transparent;
+      border-radius: var(--radius-lg);
+      padding: 10px 20px 14px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      margin-top: 14px;
     }
 
     .label {
-        font-weight: 600;
-        color: #93c5fd;
+      font-size: 15px;
+      font-weight: 600;
+      color: #93c5fd;
     }
 
     .subtext {
-        color: #9ca3af;
-        font-size: 13px;
-        margin-bottom: 8px;
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-top: 4px;
     }
 
-    .map-btn {
-        display: inline-block;
-        margin-top: 10px;
-        margin-right: 6px;
-        padding: 6px 14px;
-        background: #1f2937;
-        border-radius: 6px;
-        font-size: 13px;
-        color: #93c5fd;
-        text-decoration: none;
-        border: 1px solid #374151;
+    .card-footer {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-</style>
+
+    .link-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid #4b5563;
+      padding: 4px 10px;
+      font-size: 11px;
+      text-decoration: none;
+      color: #e5e7eb;
+      background: #020617;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    /* ===== <details> Chevron ===== */
+
+    details summary {
+      list-style: none;
+      cursor: pointer;
+      position: relative;
+      padding-left: 22px;
+    }
+
+    details summary::before {
+      content: "▶";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-size: 13px;
+      color: var(--text-soft);
+      transition: transform 0.2s ease;
+    }
+
+    details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    /* ===== Footer ===== */
+
+    footer {
+      margin-top: 56px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .desktop-only {
+      display: inline;
+    }
+
+    @media (max-width: 640px) {
+      .desktop-only {
+        display: none;
+      }
+
+      .subtitle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        text-align: center;
+      }
+
+      .card-footer {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .card-footer .link-pill {
+        flex: 1 1 calc(50% - 6px);
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<div class="page">
+<main class="page">
 
-<h1>Shopping Guide</h1>
-<h2>JP · GJN-2026-May · Japan Trip</h2>
+  <div class="page-header">
+    <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
+    <h1 class="title">Shopping</h1>
+    <p class="subtitle">
+      <span>Shopping guide for Japan trip</span>
+      <span>(14 May 2026 → 29 May 2026)</span>
+    </p>
 
-<a class="back-btn" href="https://jp-gjn-2026-may.trekworks.org/">
-    ← Back to Trip Home
-</a>
+    <div class="toolbar">
+      <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
+        ← Back to Trip Home
+      </a>
+    </div>
+  </div>
 
-<!-- OSAKA -->
-<div class="section-title">🛍️ Osaka — Top 5 Shopping Spots</div>
+  <!-- OSAKA -->
+  <section class="section">
+    <details>
+      <summary class="section-title">🛍️ Osaka — Top 5 Shopping Spots</summary>
 
-<div class="card">
-    <div class="label">Namba City</div>
-    <div class="subtext">Major mall above Nankai Namba Station · Minami district</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/TvD2r7DgzDGQgY4i8">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/RuSAePjKSYnrz7RY7">From Candeo Hotels Osaka Namba</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/7wYV9Ysb55PuiZdD7">From Miyako City Osaka Hommachi</a>
-</div>
+      <!-- (Osaka cards – unchanged, verbatim) -->
+      <!-- Namba City -->
+      <article class="card">
+        <div class="label">Namba City</div>
+        <div class="subtext">Major mall above Nankai Namba Station · Minami district</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/TvD2r7DgzDGQgY4i8">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/RuSAePjKSYnrz7RY7">From Candeo Hotels Osaka Namba</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/7wYV9Ysb55PuiZdD7">From Miyako City Osaka Hommachi</a>
+        </div>
+      </article>
 
-<div class="card">
-    <div class="label">Shinsaibashi-suji Shopping Street</div>
-    <div class="subtext">Iconic retail street from Shinsaibashi → Dotonbori</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/5H9bBvuRDgTMNuS36">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/yBc5TSGfqnJPLV6fA">From Candeo Hotels Osaka Namba</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/BXrmfQ6U9gth3Rbg8">From Miyako City Osaka Hommachi</a>
-</div>
+      <article class="card">
+        <div class="label">Shinsaibashi-suji Shopping Street</div>
+        <div class="subtext">Iconic retail street from Shinsaibashi → Dotonbori</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/5H9bBvuRDgTMNuS36">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/yBc5TSGfqnJPLV6fA">From Candeo Hotels Osaka Namba</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/BXrmfQ6U9gth3Rbg8">From Miyako City Osaka Hommachi</a>
+        </div>
+      </article>
 
-<div class="card">
-    <div class="label">Namba Walk (Underground Mall)</div>
-    <div class="subtext">Large shopping passage beneath Namba · weather-proof option</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/2VxyCAYmKeYfEMxq8">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/pt6tYxaBs3jscJDA8">From Candeo Hotels Osaka Namba</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/tMEUoum8YCPeA5a29">From Miyako City Osaka Hommachi</a>
-</div>
+      <article class="card">
+        <div class="label">Namba Walk (Underground Mall)</div>
+        <div class="subtext">Large shopping passage beneath Namba · weather-proof option</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/2VxyCAYmKeYfEMxq8">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/pt6tYxaBs3jscJDA8">From Candeo Hotels Osaka Namba</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/tMEUoum8YCPeA5a29">From Miyako City Osaka Hommachi</a>
+        </div>
+      </article>
 
-<div class="card">
-    <div class="label">Grand Front Osaka / Osaka Station City</div>
-    <div class="subtext">Premium shopping cluster near JR Osaka Station</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/69bToJ6RWSyf9h988">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/QioEfb24YLt8GjKp6">From Candeo Hotels Osaka Namba</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/yrbDNzZQzhUYHJUv5">From Miyako City Osaka Hommachi</a>
-</div>
+      <article class="card">
+        <div class="label">Grand Front Osaka / Osaka Station City</div>
+        <div class="subtext">Premium shopping cluster near JR Osaka Station</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/69bToJ6RWSyf9h988">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/QioEfb24YLt8GjKp6">From Candeo Hotels Osaka Namba</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/yrbDNzZQzhUYHJUv5">From Miyako City Osaka Hommachi</a>
+        </div>
+      </article>
 
-<div class="card">
-    <div class="label">Amerikamura (American Village)</div>
-    <div class="subtext">Youth fashion, pop culture shops near Shinsaibashi</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/37JL5ugJ6MQqwRsz8">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/tZYPV13oFahgzh9i6">From Candeo Hotels Osaka Namba</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/vnsRfGk35kHdQB8j9">From Miyako City Osaka Hommachi</a>
-</div>
+      <article class="card">
+        <div class="label">Amerikamura (American Village)</div>
+        <div class="subtext">Youth fashion, pop culture shops near Shinsaibashi</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/37JL5ugJ6MQqwRsz8">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/tZYPV13oFahgzh9i6">From Candeo Hotels Osaka Namba</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/vnsRfGk35kHdQB8j9">From Miyako City Osaka Hommachi</a>
+        </div>
+      </article>
+    </details>
+  </section>
 
-<!-- KYOTO -->
-<div class="section-title">🎎 Kyoto (Day Trip) — Top 5 Shopping Areas</div>
+  <!-- KYOTO -->
+  <section class="section">
+    <details>
+      <summary class="section-title">🎎 Kyoto (Day Trip) — Shopping Ideas</summary>
 
-<div class="card">
-    <div class="label">Shinkyogoku Shopping Street</div>
-    <div class="subtext">Central covered shopping street · close to temples & culture</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/CFQncWWWWjmGNeHz6">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/mMTfTdccJtsFHXch6">From Kyoto Station</a>
-</div>
+      <article class="card">
+        <div class="label">Shinkyogoku Shopping Street</div>
+        <div class="subtext">Central covered shopping street · close to temples & culture</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/CFQncWWWWjmGNeHz6">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/mMTfTdccJtsFHXch6">From Kyoto Station</a>
+        </div>
+      </article>
 
-<div class="card">
-    <div class="label">Nishiki Market</div>
-    <div class="subtext">Traditional food & craft market · excellent for Kyoto gifts</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/39Va4aog5VWLWB5S6">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/5z8SVLn7WTdT8D5u6">From Kyoto Station</a>
-</div>
+      <article class="card">
+        <div class="label">Nishiki Market</div>
+        <div class="subtext">Traditional food & craft market · excellent for Kyoto gifts</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/39Va4aog5VWLWB5S6">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/5z8SVLn7WTdT8D5u6">From Kyoto Station</a>
+        </div>
+      </article>
 
-<div class="card">
-    <div class="label">Teramachi-dori Shopping Street</div>
-    <div class="subtext">Mix of classic Kyoto shops & modern boutiques</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/HPQn9cZWFjTjYwYc6">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/vMuZJcyVsxcjEBYa8">From Kyoto Station</a>
-</div>
+      <article class="card">
+        <div class="label">Teramachi-dori Shopping Street</div>
+        <div class="subtext">Mix of classic Kyoto shops & modern boutiques</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/HPQn9cZWFjTjYwYc6">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/vMuZJcyVsxcjEBYa8">From Kyoto Station</a>
+        </div>
+      </article>
 
-<div class="card">
-    <div class="label">Kyoto Porta (Underground Mall)</div>
-    <div class="subtext">Convenient shopping beneath Kyoto Station</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/ZYpQ2dAYHjjw63YV7">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/CHDYi3NYmtx89Yhz5">From Kyoto Station</a>
-</div>
+      <article class="card">
+        <div class="label">Kyoto Porta (Underground Mall)</div>
+        <div class="subtext">Convenient shopping beneath Kyoto Station</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/ZYpQ2dAYHjjw63YV7">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/CHDYi3NYmtx89Yhz5">From Kyoto Station</a>
+        </div>
+      </article>
+    </details>
+  </section>
 
-<!-- FUKUOKA -->
-<div class="section-title">🏙️ Fukuoka — Top 5 Shopping Spots</div>
+  <!-- FUKUOKA -->
+  <section class="section">
+    <details>
+      <summary class="section-title">🏙️ Fukuoka — Top 5 Shopping Spots</summary>
 
-<div class="card">
-    <div class="label">Canal City Hakata</div>
-    <div class="subtext">Huge shopping & entertainment complex · Hakata district</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/ESpzZQsw92F2yeMz5">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/rzQwNLu5rzcG4oiFA">From Hotel Monterey Fukuoka</a>
-</div>
+      <article class="card">
+        <div class="label">Canal City Hakata</div>
+        <div class="subtext">Huge shopping & entertainment complex · Hakata district</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/ESpzZQsw92F2yeMz5">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/rzQwNLu5rzcG4oiFA">From Hotel Monterey Fukuoka</a>
+        </div>
+      </article>
 
-<div class="card">
-    <div class="label">Tenjin Underground Shopping Center</div>
-    <div class="subtext">Massive underground mall · fashion, cosmetics, dining</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/QLHKmjVRdTAnfoww5">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/VoeXZbY7H5TbwNKm8">From Hotel Monterey Fukuoka</a>
-</div>
+      <article class="card">
+        <div class="label">Tenjin Underground Shopping Center</div>
+        <div class="subtext">Massive underground mall · fashion, cosmetics, dining</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/QLHKmjVRdTAnfoww5">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/VoeXZbY7H5TbwNKm8">From Hotel Monterey Fukuoka</a>
+        </div>
+      </article>
 
-<div class="card">
-    <div class="label">Amu Plaza Hakata</div>
-    <div class="subtext">Mall directly above JR Hakata Station</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/g3uN4ETGi2KvCAeE9">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/ANigm6z9x8HQZWuDA">From Hotel Monterey Fukuoka</a>
-</div>
+      <article class="card">
+        <div class="label">Amu Plaza Hakata</div>
+        <div class="subtext">Mall directly above JR Hakata Station</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/g3uN4ETGi2KvCAeE9">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/ANigm6z9x8HQZWuDA">From Hotel Monterey Fukuoka</a>
+        </div>
+      </article>
 
-<div class="card">
-    <div class="label">Solaria Plaza</div>
-    <div class="subtext">Trendy shopping zone in central Tenjin · cafés + boutiques</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/sUBmgsfL7sAxQULe9">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/cizPs28xV6Qhrvv36">From Hotel Monterey Fukuoka</a>
-</div>
+      <article class="card">
+        <div class="label">Solaria Plaza</div>
+        <div class="subtext">Trendy shopping zone in central Tenjin · cafés + boutiques</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/sUBmgsfL7sAxQULe9">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/cizPs28xV6Qhrvv36">From Hotel Monterey Fukuoka</a>
+        </div>
+      </article>
 
-<div class="card">
-    <div class="label">Kawabata Shopping Arcade</div>
-    <div class="subtext">Traditional arcade · souvenirs & local crafts near Hakata</div>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/zZPD538SmkD4Zxaz7">Open Map</a>
-    <a class="map-btn" href="external.html?url=https://maps.app.goo.gl/Xus5BNSYjtYMxmFSA">From Hotel Monterey Fukuoka</a>
-</div>
+      <article class="card">
+        <div class="label">Kawabata Shopping Arcade</div>
+        <div class="subtext">Traditional arcade · souvenirs & local crafts near Hakata</div>
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/zZPD538SmkD4Zxaz7">Open Map</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/Xus5BNSYjtYMxmFSA">From Hotel Monterey Fukuoka</a>
+        </div>
+      </article>
+    </details>
+  </section>
 
-</div>
+  <footer>
+    For air travel, see <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.
+    For getting to and from the airport, use the
+    <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>.
+    <br class="desktop-only">
+    For Shinkansen travel, see the
+    <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Train Guide</a>.
+    For overnight stays, go to
+    <a href="https://jp-gjn-2026-may.trekworks.org/accommodation.html">Accommodation</a>.
+    For things to do, see
+    <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>.
+    For travel references, see
+    <a href="https://jp-gjn-2026-may.trekworks.org/guides.html">Guides</a>.
+  </footer>
+
+</main>
 </body>
 </html>
