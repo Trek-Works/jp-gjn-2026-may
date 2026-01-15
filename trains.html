@@ -1,126 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Train Transport Guide</title>
+  <meta charset="UTF-8" />
+  <title>Trains – JP GJN-2026-May</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<style>
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-elevated: #0b1020;
+      --bg-card: #0f1629;
+      --bg-optional: #0b1122;
+      --border-soft: #1f2940;
+      --accent: #4f8cff;
+      --accent-soft: rgba(79, 140, 255, 0.15);
+      --text-main: #f5f7ff;
+      --text-soft: #9ca3af;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: #0b111b;
-        color: #e5e7eb;
-        line-height: 1.55;
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
     }
 
     .page {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 32px 16px;
+      max-width: 920px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 36px 18px 56px;
     }
 
-    h1 {
-        text-align: center;
-        font-size: 32px;
-        margin-bottom: 4px;
-        font-weight: 600;
+    /* ===== Header ===== */
+
+    .page-header {
+      text-align: center;
     }
 
-    h2 {
-        text-align: center;
-        font-size: 16px;
-        font-weight: 400;
-        color: #9ca3af;
-        margin-bottom: 28px;
+    .page-header .toolbar {
+      justify-content: center;
     }
 
-    .back-btn {
-        display: inline-block;
-        margin: 0 auto 32px auto;
-        padding: 8px 18px;
-        background: #1f2937;
-        color: #e5e7eb;
-        border-radius: 8px;
-        font-size: 14px;
-        text-decoration: none;
-        border: 1px solid #374151;
+    .breadcrumb {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 6px;
     }
+
+    .title {
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--text-soft);
+      text-transform: uppercase;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 26px;
+      align-items: center;
+    }
+
+    .pill-button {
+      border-radius: var(--radius-pill);
+      border: 1px solid #374151;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-size: 13px;
+      padding: 6px 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ===== Sections ===== */
+
+    .section {
+      margin-top: 42px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-top: 6px;
+    }
+
+    /* ===== Cards ===== */
 
     .card {
-        background: #111827;
-        border-radius: 14px;
-        padding: 20px 22px;
-        margin-bottom: 28px;
-        box-shadow: 0 0 0 1px #1f2937 inset, 0 12px 24px rgba(0,0,0,0.25);
+      background: linear-gradient(145deg, #0b1020, #020617 80%);
+      border-radius: var(--radius-lg);
+      padding: 6px 20px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      margin-top: 14px;
     }
 
-    .fare-badge {
-        float: right;
-        background: #1e3a8a;
-        padding: 6px 12px;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: 600;
-        color: #dbeafe;
+    .card.optional {
+      background: var(--bg-optional);
+      box-shadow: none;
     }
 
-    .label {
-        font-weight: 600;
-        color: #93c5fd;
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 8px;
     }
 
-    .line-btn {
-        display: inline-block;
-        margin-top: 12px;
-        padding: 6px 14px;
-        background: #1f2937;
-        border-radius: 6px;
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .card-meta {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-top: 6px;
+      margin-bottom: 10px;
+    }
+
+    .meta-label {
+      font-weight: 500;
+      color: #d1d5db;
+      margin-right: 4px;
+    }
+
+    .card-footer {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .link-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid #4b5563;
+      padding: 4px 10px;
+      font-size: 11px;
+      text-decoration: none;
+      color: #e5e7eb;
+      background: #020617;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    /* ===== Footer ===== */
+
+    footer {
+      margin-top: 56px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Footer line-break control */
+    .desktop-only {
+      display: inline;
+    }
+
+    @media (max-width: 640px) {
+      .desktop-only {
+        display: none;
+      }
+
+      .subtitle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        text-align: center;
+      }
+
+      .subtitle-dates {
         font-size: 13px;
-        color: #93c5fd;
-        text-decoration: none;
-        border: 1px solid #374151;
+      }
+
+      .meta-row {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      /* MOBILE FIX: make footer pills wrap nicely when there are 4 */
+      .card-footer {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .card-footer .link-pill {
+        flex: 1 1 calc(50% - 6px);
+        text-align: center;
+      }
     }
-</style>
+  </style>
 </head>
 
 <body>
-<div class="page">
+  <main class="page">
+    <div class="page-header">
+      <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
+      <h1 class="title">Trains</h1>
+      <p class="subtitle">
+        <span class="subtitle-main">Rail travel for Japan trip</span>
+        <span class="subtitle-dates">(14 May 2026 → 29 May 2026)</span>
+      </p>
 
-    <h1>Train Transport Guide</h1>
-    <h2>JP · GJN-2026-May · Japan Trip</h2>
-
-    <a class="back-btn" href="https://jp-gjn-2026-may.trekworks.org/">
-        ← Back to Trip Home
-    </a>
-
-    <!-- 15 May 2026 — Osaka → Kyoto → Osaka -->
-    <div class="card">
-        <div class="fare-badge">¥580 × 2</div>
-        <div class="label">15 May 2026 — Osaka (Namba) → Kyoto (Day Trip) → Osaka (Namba)</div>
-        <br>
-        <span class="label">Train Type:</span> JR Special Rapid Service (Shinkaisoku)<br>
-        <span class="label">Route:</span> Osaka-Namba → Kyoto Station → Osaka-Namba<br>
-        <span class="label">Fare Type:</span> Standard (2 passengers)<br>
-
-        <a class="line-btn" href="external.html?url=https://global.trafficinfo.westjr.co.jp/en/kansai">West Japan</a>
+      <div class="toolbar">
+        <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
+          ← Back to Trip Home
+        </a>
+      </div>
     </div>
 
-    <!-- 26 May 2026 — Hakata → Shin-Osaka (Nozomi 28) -->
-    <div class="card">
-        <div class="fare-badge">¥43,780</div>
-        <div class="label">26 May 2026 — Hakata → Shin-Osaka</div>
-        <br>
-        <span class="label">Train:</span> Nozomi 28 (Green Car — 2 passengers)<br>
-        <span class="label">Depart:</span> 12:15 PM<br>
-        <span class="label">Arrive:</span> 2:43 PM<br>
-        <span class="label">Duration:</span> 2 hours 28 minutes<br>
-        <span class="label">Line:</span> Sanyo Shinkansen (JR Central)<br>
+    <!-- Airport Rail Alternatives -->
+    <section class="section">
+      <div class="section-title">✈️ Airport rail alternatives (Kansai)</div>
+      <div class="section-subtitle">These are rail options referenced in the itinerary. Airport Limousine Bus remains your primary “timetabled” plan.</div>
 
-        <a class="line-btn" href="external.html?url=https://global.jr-central.co.jp/en/">Line Info</a>
-    </div>
+      <!-- 14 May 2026 — KIX → Osaka -->
+      <article class="card optional">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Kansai Airport (KIX) → Osaka (Namba / Umeda)</div>
+            <div class="card-meta">Arrival night · 14 May 2026</div>
+          </div>
+        </div>
 
-</div>
+        <div class="meta-row">
+          <div><span class="meta-label">When:</span> After landing (~7:50 PM) and clearing arrivals (~9:00 PM)</div>
+          <div><span class="meta-label">Travel time:</span> ~45–60 min</div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Options:</span> Nankai (to Namba) · JR (to Tennoji/Osaka/Umeda)</div>
+          <div><span class="meta-label">Note:</span> Use as backup if bus timing doesn’t suit</div>
+        </div>
+
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://www.kansai-airport.or.jp/en/access/">KIX Access</a>
+          <a class="link-pill" href="external.html?url=https://www.nankai.co.jp/en_railway">Nankai</a>
+          <a class="link-pill" href="external.html?url=https://www.westjr.co.jp/global/en/">JR West</a>
+        </div>
+      </article>
+
+      <!-- 29 May 2026 — Osaka → KIX -->
+      <article class="card optional">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Osaka (Namba / Umeda) → Kansai Airport (KIX)</div>
+            <div class="card-meta">Return day · 29 May 2026</div>
+          </div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">When:</span> After check-out (~3:00 PM)</div>
+          <div><span class="meta-label">Travel time:</span> ~45–60 min</div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Options:</span> Nankai (from Namba) · JR (from Osaka/Tennoji)</div>
+          <div><span class="meta-label">Note:</span> Rail backup if traffic affects bus</div>
+        </div>
+
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://www.kansai-airport.or.jp/en/access/">KIX Access</a>
+          <a class="link-pill" href="external.html?url=https://www.nankai.co.jp/en_railway">Nankai</a>
+          <a class="link-pill" href="external.html?url=https://www.westjr.co.jp/global/en/">JR West</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Osaka Area -->
+    <section class="section">
+      <div class="section-title">🏯 Osaka base (Honshu)</div>
+
+      <!-- 16 May 2026 — Osaka → Kyoto → Osaka -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Osaka → Kyoto (Day Trip) → Osaka</div>
+            <div class="card-meta">Day trip · 16 May 2026</div>
+          </div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Typical routes:</span> JR (Umeda/Osaka ↔ Kyoto) · Keihan (to Fushimi Inari area) · Hankyu (to Arashiyama)</div>
+          <div><span class="meta-label">Train type:</span> Rapid / Special Rapid (varies by line)</div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Travel time:</span> ~30–60 min each way (depends on line + connections)</div>
+          <div><span class="meta-label">Tip:</span> Use IC card and follow Google Maps platform guidance</div>
+        </div>
+
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://www.hankyu.co.jp/en/ticket/index.html">Hankyu</a>
+          <a class="link-pill" href="external.html?url=https://www.keihan.co.jp/travel/en/">Keihan</a>
+          <a class="link-pill" href="external.html?url=https://www.westjr.co.jp/global/en/">JR West</a>
+          <a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2019.html">About Japan Trains</a>
+        </div>
+      </article>
+
+      <!-- 28 May 2026 — Osaka → Kobe (Optional) -->
+      <article class="card optional">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Osaka → Kobe (Sannomiya) → Osaka</div>
+            <div class="card-meta">Optional side trip · 28 May 2026</div>
+          </div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Train type:</span> Rapid / Express (varies by operator)</div>
+          <div><span class="meta-label">Travel time:</span> ~25–35 min each way</div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Options:</span> JR · Hankyu · Hanshin</div>
+          <div><span class="meta-label">Note:</span> Easy half-day add-on from Osaka</div>
+        </div>
+
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://www.hankyu.co.jp/en/ticket/index.html">Hankyu</a>
+          <a class="link-pill" href="external.html?url=https://www.hanshin.co.jp/global/en/access/">Hanshin</a>
+          <a class="link-pill" href="external.html?url=https://www.westjr.co.jp/global/en/">JR West</a>
+          <a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2019.html">About Japan Trains</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Kyushu -->
+    <section class="section">
+      <div class="section-title">🎎 Fukuoka base (Kyushu)</div>
+
+      <!-- 23 May 2026 — Fukuoka → Nagasaki -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Hakata (Fukuoka) → Nagasaki → Hakata</div>
+            <div class="card-meta">Day trip · 23 May 2026</div>
+          </div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Train type:</span> Limited Express (relay connection for Nagasaki route)</div>
+          <div><span class="meta-label">Travel time:</span> ~2 h 10 m each way</div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Note:</span> Plan for a long but very doable day trip</div>
+          <div><span class="meta-label">Operator:</span> JR Kyushu</div>
+        </div>
+
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://www.jrkyushu.co.jp/english/">JR Kyushu</a>
+           <a class="link-pill" href="external.html?url=https://smart-ex.jp/en/lp/app/">Shinkansen</a>
+          <a class="link-pill" href="external.html?url=https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/">JR West Rail Pass</a>
+          <a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2019.html">About Japan Trains</a>
+        </div>
+      </article>
+
+      <!-- 24 May 2026 — Fukuoka → Dazaifu -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Fukuoka (Tenjin/Hakata) → Dazaifu → Fukuoka</div>
+            <div class="card-meta">Half-day / day trip · 24 May 2026</div>
+          </div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Typical route:</span> Nishitetsu (Tenjin area) via interchange to Dazaifu Line</div>
+          <div><span class="meta-label">Travel time:</span> ~30–45 min each way</div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Tip:</span> Combine with Ohori Park the same day</div>
+          <div><span class="meta-label">Operator:</span> Nishitetsu</div>
+        </div>
+
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://www.nishitetsu.jp/en/">Nishitetsu</a>
+          <a class="link-pill" href="external.html?url=https://www.jrkyushu.co.jp/english/">JR Kyushu</a>
+          <a class="link-pill" href="external.html?url=https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/">JR West Rail Pass</a>
+          <a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2019.html">About Japan Trains</a>
+        </div>
+      </article>
+
+      <!-- 25 May 2026 — Fukuoka → Kumamoto -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚄 Hakata (Fukuoka) → Kumamoto → Hakata</div>
+            <div class="card-meta">Day trip · 25 May 2026</div>
+          </div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Train type:</span> Shinkansen (Kyushu Shinkansen)</div>
+          <div><span class="meta-label">Travel time:</span> ~45 min each way</div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Tip:</span> Book reserved seats if you prefer certainty</div>
+          <div><span class="meta-label">Operator:</span> JR Kyushu</div>
+        </div>
+
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://www.jrkyushu.co.jp/english/">JR Kyushu</a>
+          <a class="link-pill" href="external.html?url=https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/">JR West Rail Pass</a>
+          <a class="link-pill" href="external.html?url=https://global.jr-central.co.jp/en/">Shinkansen Info</a>
+          <a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2019.html">About Japan Trains</a>
+        </div>
+      </article>
+
+      <!-- 26 May 2026 — Hakata → Shin-Osaka -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚄 Hakata → Shin-Osaka</div>
+            <div class="card-meta">Travel day · 26 May 2026</div>
+          </div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Train:</span> Nozomi 28 (Green Car — 2 passengers)</div>
+          <div><span class="meta-label">Line:</span> Sanyo Shinkansen</div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Depart:</span> 12:15 PM</div>
+          <div><span class="meta-label">Arrive:</span> 2:43 PM</div>
+          <div><span class="meta-label">Duration:</span> 2 h 28 m</div>
+        </div>
+
+        <div class="card-footer">
+          <a class="link-pill" href="external.html?url=https://global.jr-central.co.jp/en/">JR Central</a>
+          <a class="link-pill" href="external.html?url=https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/sanyo_sanin/">JR West (Sanyo Area Pass)</a>
+          <a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2019.html">About Japan Trains</a>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      For air travel, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.
+      For getting to and from the airport, use the
+      <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>.
+      <br class="desktop-only">
+      For things to do, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>.
+      For overnight stays, go to
+      <a href="https://jp-gjn-2026-may.trekworks.org/accommodation.html">Accommodation</a>.
+    </footer>
+  </main>
 </body>
 </html>
