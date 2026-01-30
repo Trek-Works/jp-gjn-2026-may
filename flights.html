@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Flights – JP GJN-2026-May</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
+    /* ======================================================
+       Root variables
+       ====================================================== */
     :root {
       --bg: #050814;
       --bg-elevated: #0b1020;
@@ -20,6 +21,9 @@
       --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.45);
     }
 
+    /* ======================================================
+       Global reset & base
+       ====================================================== */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -43,8 +47,9 @@
       padding: 36px 18px 56px;
     }
 
-    /* ===== Header ===== */
-
+    /* ======================================================
+       Header
+       ====================================================== */
     .page-header {
       text-align: center;
     }
@@ -94,8 +99,9 @@
       gap: 6px;
     }
 
-    /* ===== Cards ===== */
-
+    /* ======================================================
+       Cards
+       ====================================================== */
     .card {
       background: transparent;
       border-radius: var(--radius-lg);
@@ -123,6 +129,9 @@
       color: var(--text-soft);
     }
 
+    /* ======================================================
+       Meta rows (card content)
+       ====================================================== */
     .meta-row {
       display: flex;
       flex-wrap: wrap;
@@ -139,6 +148,9 @@
       margin-right: 4px;
     }
 
+    /* ======================================================
+       Card footer (action pills)
+       ====================================================== */
     .card-footer {
       margin-top: 10px;
       display: flex;
@@ -158,8 +170,9 @@
       flex: 0 0 auto;
     }
 
-    /* ===== Footer ===== */
-
+    /* ======================================================
+       Footer
+       ====================================================== */
     footer {
       margin-top: 56px;
       text-align: center;
@@ -172,15 +185,19 @@
       text-decoration: none;
     }
 
+    /* ======================================================
+       Utilities
+       ====================================================== */
     .desktop-only {
       display: inline;
     }
 
+    /* ======================================================
+       Mobile overrides (component-scoped)
+       ====================================================== */
     @media (max-width: 640px) {
-      .desktop-only {
-        display: none;
-      }
 
+      /* Header subtitle */
       .subtitle {
         display: flex;
         flex-direction: column;
@@ -189,11 +206,13 @@
         text-align: center;
       }
 
+      /* Meta rows */
       .meta-row {
         flex-direction: column;
         gap: 6px;
       }
 
+      /* Card footer pills */
       .card-footer {
         flex-wrap: wrap;
         gap: 6px;
@@ -203,10 +222,15 @@
         flex: 1 1 calc(50% - 6px);
         text-align: center;
       }
+
+      /* Footer helpers */
+      .desktop-only {
+        display: none;
+      }
     }
+
   </style>
 </head>
-
 <body>
   <main class="page">
     <div class="page-header">
@@ -267,7 +291,6 @@
       </div>
     </article>
 
-
     <!-- ITM → OKA -->
     <article class="card">
       <div class="card-header">
@@ -298,9 +321,6 @@
         <div>
           <span class="meta-label">Seats:</span>
           Gavin 9H (aisle) · Sema 9K (window)
-        </div>
-      </div>
-
         </div>
       </div>
 
@@ -335,7 +355,7 @@
       </div>
 
       <div class="meta-row">
-        <div><span class="meta-label">Aircraft Type:</span> Boeing737-800</div>
+        <div><span class="meta-label">Aircraft Type:</span> Boeing 737-800</div>
         <div><span class="meta-label">Extras:</span> Free Wi-Fi, USB port</div>
       </div>
 
@@ -343,9 +363,6 @@
         <div>
           <span class="meta-label">Seats:</span>
           Gavin 15J (aisle) · Sema 15K (window)
-        </div>
-      </div>
-
         </div>
       </div>
 
@@ -371,7 +388,7 @@
         <div><span class="meta-label">Airline:</span> Jetstar Airways (JQ)</div>
         <div><span class="meta-label">Flight:</span> JQ14</div>
         <div><span class="meta-label">Booking Reference:</span> MW9FXW</div>
-      </div>	
+      </div>
 
       <div class="meta-row">
         <div><span class="meta-label">Depart:</span> 9:25 PM · Kansai</div>
@@ -400,7 +417,6 @@
         <a class="link-pill" href="external.html?url=https://drive.google.com/file/d/1WrCMbLJLFpffQxOO9X9JM9gzv8ebSmmS/view?usp=sharing">Boarding Pass (Gavin)</a>
       </div>
     </article>
-
     <footer>
       For getting to and from the airport, use the
       <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>.
