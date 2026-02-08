@@ -100,7 +100,7 @@
       gap: 12px;
     }
     .card {
-      background: background: transparent;
+      background: transparent;
       border-radius: var(--radius-xl);
       border: 1px solid var(--border-subtle);
       padding: 6px 18px 6px;
@@ -207,7 +207,7 @@
     }
 /* Footer — aligned with Activities */
 footer {
-  margin-top: 56px;
+  margin-top: 20px;
   text-align: center;
   font-size: 12px;
   color: var(--text-soft);
@@ -223,14 +223,26 @@ footer a {
   display: inline;
 }
 
+.mobile-only {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .desktop-only {
     display: none;
+  }
+  .mobile-only {
+    display: inline;
   }
 }
 
 /* MOBILE-ONLY subtitle layout */
 @media (max-width: 640px) {
+
+  /* ✅ FIX: remove mobile contrast banding */
+  .card {
+    background: var(--card);
+  }
 
   /* Subtitle layout (already working) */
   .subtitle {
@@ -443,16 +455,38 @@ footer a {
       </article>
     </div>
   </section>
-<footer>
-  For air travel, see <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.
-  For getting to and from the airport, use the
-  <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>.
-  <br class="desktop-only">
-  For Shinkansen travel between Osaka and Fukuoka, see the
-  <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Train Guide</a>.
-  For things to do, see
-  <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>.
-</footer>
+
+   <footer>
+
+    <div class="meta-row">
+      <!-- Desktop: open in new tab -->
+      <span class="desktop-only">
+      <a target="_blank" rel="noopener"
+       href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>
+      |
+      <a target="_blank" rel="noopener"
+       href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
+      |
+      <a target="_blank" rel="noopener"
+       href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>
+      |
+      <a target="_blank" rel="noopener"
+       href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>
+     </span>
+
+     <!-- Mobile: same tab -->
+     <span class="mobile-only">
+     <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>
+     |
+     <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
+     |
+     <a href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>
+     |
+     <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>
+     </span>
+   </div>
+
+  </footer>
 
 </main>
 
