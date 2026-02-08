@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <title>Accommodation – JP GJN-2026-May</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
+    /* ======================================================
+       Root variables
+       ====================================================== */
     :root {
       --bg: #050816;
       --card: #0b1020;
@@ -22,7 +26,12 @@
       --radius-xl: 18px;
       --radius-pill: 999px;
     }
+
+    /* ======================================================
+       Global reset & base
+       ====================================================== */
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -33,6 +42,7 @@
       display: flex;
       justify-content: center;
     }
+
     .page {
       width: 100%;
       max-width: 1100px;
@@ -40,6 +50,9 @@
       padding: 32px 16px 40px;
     }
 
+    /* ======================================================
+       Header
+       ====================================================== */
     .page-header { text-align: center; }
     .page-header .toolbar { justify-content: center; }
 
@@ -50,13 +63,19 @@
       color: var(--text-soft);
       margin-bottom: 6px;
     }
-    .title { font-size: 30px; font-weight: 700; margin: 0; }
+
+    .title {
+      font-size: 30px;
+      font-weight: 700;
+      margin: 0;
+    }
+
     .subtitle {
       margin-top: 4px;
       font-size: 12px;
-     color: #9ca3af;
-     text-transform: uppercase;
-   }
+      color: #9ca3af;
+      text-transform: uppercase;
+    }
 
     .toolbar {
       display: flex;
@@ -65,6 +84,7 @@
       margin: 18px 0 26px;
       align-items: center;
     }
+
     .pill-button {
       border-radius: var(--radius-pill);
       border: 1px solid #374151;
@@ -78,12 +98,16 @@
       gap: 6px;
     }
 
+    /* ======================================================
+       Section headers
+       ====================================================== */
     .section-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 12px 0 10px;
     }
+
     .section-header-left {
       display: flex;
       align-items: center;
@@ -91,15 +115,24 @@
       font-size: 17px;
       font-weight: 600;
     }
-    .section-header-left .emoji { font-size: 18px; }
-    .section-header-meta { font-size: 12px; color: var(--text-soft); }
 
+    .section-header-left .emoji { font-size: 18px; }
+
+    .section-header-meta {
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    /* ======================================================
+       Cards & layout
+       ====================================================== */
     .cards {
       margin-top: 8px;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
+
     .card {
       background: transparent;
       border-radius: var(--radius-xl);
@@ -107,6 +140,7 @@
       padding: 6px 18px 6px;
       box-shadow: var(--shadow-soft);
     }
+
     .card-header {
       display: flex;
       justify-content: space-between;
@@ -114,13 +148,16 @@
       gap: 8px;
       margin-bottom: 6px;
     }
+
     .card-title { font-size: 15px; font-weight: 600; }
+
     .card-city {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--text-soft);
     }
+
     .badge-nights {
       background: transparent;
       padding: 0;
@@ -128,6 +165,10 @@
       font-size: 13px;
       color: var(--text-soft);
     }
+
+    /* ======================================================
+       Meta rows (card content)
+       ====================================================== */
     .meta-row {
       display: flex;
       flex-wrap: wrap;
@@ -136,24 +177,35 @@
       color: var(--text-soft);
       margin-top: 6px;
     }
+
     .meta-label {
       font-weight: 500;
       color: #d1d5db;
       margin-right: 4px;
     }
-    .detail-row { margin-top: 4px; font-size: 13px; }
+
+    .detail-row {
+      margin-top: 4px;
+      font-size: 13px;
+    }
+
     .detail-row a {
       color: #93c5fd;
       text-decoration: none;
     }
+
     .detail-row a:hover { text-decoration: underline; }
 
+    /* ======================================================
+       Card footer (action pills)
+       ====================================================== */
     .card-footer {
       margin-top: 10px;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
+
     .link-pill {
       border-radius: var(--radius-pill);
       border: 1px solid #4b5563;
@@ -166,6 +218,9 @@
       flex: 0 0 auto;
     }
 
+    /* ======================================================
+       Offline overlay (verbatim block)
+       ====================================================== */
     /* OFFLINE OVERLAY — REBASED VERBATIM TO attractions-guide.html */
     .offline-overlay {
       position: fixed;
@@ -176,6 +231,7 @@
       justify-content: center;
       z-index: 9999;
     }
+
     .offline-box {
       max-width: 420px;
       margin: 20px;
@@ -187,16 +243,19 @@
       text-align: center;
       font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     }
+
     .offline-box h2 {
       margin: 0 0 10px;
       font-size: 20px;
     }
+
     .offline-box p {
       margin: 0 0 16px;
       font-size: 14px;
       color: #b5bed5;
       line-height: 1.4;
     }
+
     .offline-box button {
       padding: 8px 16px;
       border-radius: 999px;
@@ -206,83 +265,77 @@
       font-size: 14px;
       cursor: pointer;
     }
-/* Footer — aligned with Activities */
-footer {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 12px;
-  color: var(--text-soft);
-}
 
-footer a {
-  color: #4f8cff; /* match Activities accent */
-  text-decoration: none;
-}
+    /* ======================================================
+       Footer (aligned with Activities)
+       ====================================================== */
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
 
-/* Footer line-break control */
-.desktop-only {
-  display: inline;
-}
+    footer a {
+      color: #4f8cff; /* match Activities accent */
+      text-decoration: none;
+    }
 
-.mobile-only {
-  display: none;
-}
+    /* Footer line-break control */
+    .desktop-only { display: inline; }
+    .mobile-only { display: none; }
 
-@media (max-width: 640px) {
-  .desktop-only {
-    display: none;
-  }
-  .mobile-only {
-    display: inline;
-  }
-}
+    /* ======================================================
+       Mobile overrides (component-scoped)
+       ====================================================== */
+    @media (max-width: 640px) {
 
-/* MOBILE-ONLY subtitle layout */
-@media (max-width: 640px) {
+      /* ✅ FIX: remove mobile contrast banding (match Flights) */
+      .card {
+        background: var(--bg-card);
+      }
 
-  /* ✅ FIX: remove mobile contrast banding (match Flights) */
-  .card {
-    background: var(--bg-card);
-  }
+      /* Subtitle layout */
+      .subtitle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        text-align: center;
+      }
 
-  /* Subtitle layout (already working) */
-  .subtitle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    text-align: center;
-  }
+      .subtitle-dates {
+        font-size: 13px;
+      }
 
-  .subtitle-dates {
-    font-size: 13px;
-  }
+      /* Meta rows: Arrival / Depart / Check-in / Check-out */
+      .meta-row {
+        flex-direction: column;
+        gap: 6px;
+      }
 
-  /* Meta rows: Arrival / Depart / Check-in / Check-out */
-  .meta-row {
-    flex-direction: column;
-    gap: 6px;
-  }
+      /* Reset default margins */
+      .detail-row {
+        margin-top: 6px;
+      }
 
-  /* Reset default margins */
-  .detail-row {
-    margin-top: 6px;
-  }
+      /* MOBILE FIX: make footer pills wrap nicely when there are 4 */
+      .card-footer {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
 
-  /* MOBILE FIX: make footer pills wrap nicely when there are 4 */
-  .card-footer {
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+      .card-footer .link-pill {
+        flex: 1 1 calc(50% - 6px);
+        text-align: center;
+      }
 
-  .card-footer .link-pill {
-    flex: 1 1 calc(50% - 6px);
-    text-align: center;
-  }
+      /* Footer helpers */
+      .desktop-only { display: none; }
+      .mobile-only { display: inline; }
+    }
 
-}
   </style>
-
 </head>
 
 <body>
@@ -292,8 +345,8 @@ footer a {
     <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
     <h1 class="title">Accommodation</h1>
     <p class="subtitle">
-     <span class="subtitle-main">Stays for Japan trip</span>
-     <span class="subtitle-dates">(14 May 2026 → 29 May 2026)</span>
+      <span class="subtitle-main">Stays for Japan trip</span>
+      <span class="subtitle-dates">(14 May 2026 → 29 May 2026)</span>
     </p>
     <div class="toolbar">
       <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
@@ -301,6 +354,7 @@ footer a {
       </a>
     </div>
   </div>
+
   <!-- OSAKA #1 -->
   <section>
     <div class="section-header">
@@ -310,11 +364,11 @@ footer a {
     <div class="cards">
       <article class="card">
         <div class="card-header">
-         <div>
-           <div class="card-title">Candeo Hotels Osaka Namba</div>
-           <div class="badge-nights">Stay: 3 nights</div>
+          <div>
+            <div class="card-title">Candeo Hotels Osaka Namba</div>
+            <div class="badge-nights">Stay: 3 nights</div>
           </div>
-         </div>
+        </div>
 
         <div class="meta-row">
           <div><span class="meta-label">Arrival:</span> 14 May 2026</div>
@@ -349,11 +403,11 @@ footer a {
     <div class="cards">
       <article class="card">
         <div class="card-header">
-         <div>
-           <div class="card-title">Hotel Nikko Alivila</div>
-           <div class="badge-nights">Stay: 5 nights</div>
+          <div>
+            <div class="card-title">Hotel Nikko Alivila</div>
+            <div class="badge-nights">Stay: 5 nights</div>
           </div>
-         </div>
+        </div>
 
         <div class="meta-row">
           <div><span class="meta-label">Arrival:</span> 17 May 2026</div>
@@ -388,11 +442,11 @@ footer a {
     <div class="cards">
       <article class="card">
         <div class="card-header">
-         <div>
-           <div class="card-title">Hotel Monterey Fukuoka</div>
-           <div class="badge-nights">Stay: 5 nights</div>
+          <div>
+            <div class="card-title">Hotel Monterey Fukuoka</div>
+            <div class="badge-nights">Stay: 5 nights</div>
           </div>
-         </div>
+        </div>
 
         <div class="meta-row">
           <div><span class="meta-label">Arrival:</span> 22 May 2026</div>
@@ -427,11 +481,11 @@ footer a {
     <div class="cards">
       <article class="card">
         <div class="card-header">
-         <div>
-           <div class="card-title">Miyako City Osaka Hommachi</div>
-           <div class="badge-nights">Stay: 2 nights</div>
+          <div>
+            <div class="card-title">Miyako City Osaka Hommachi</div>
+            <div class="badge-nights">Stay: 2 nights</div>
           </div>
-         </div>
+        </div>
 
         <div class="meta-row">
           <div><span class="meta-label">Arrival:</span> 27 May 2026</div>
@@ -457,35 +511,35 @@ footer a {
     </div>
   </section>
 
-   <footer>
+  <footer>
 
     <div class="meta-row">
       <!-- Desktop: open in new tab -->
       <span class="desktop-only">
-      <a target="_blank" rel="noopener"
-       href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>
-      |
-      <a target="_blank" rel="noopener"
-       href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
-      |
-      <a target="_blank" rel="noopener"
-       href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>
-      |
-      <a target="_blank" rel="noopener"
-       href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>
-     </span>
+        <a target="_blank" rel="noopener"
+          href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>
+        |
+        <a target="_blank" rel="noopener"
+          href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
+        |
+        <a target="_blank" rel="noopener"
+          href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>
+        |
+        <a target="_blank" rel="noopener"
+          href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>
+      </span>
 
-     <!-- Mobile: same tab -->
-     <span class="mobile-only">
-     <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>
-     |
-     <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
-     |
-     <a href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>
-     |
-     <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>
-     </span>
-   </div>
+      <!-- Mobile: same tab -->
+      <span class="mobile-only">
+        <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>
+        |
+        <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
+        |
+        <a href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>
+        |
+        <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>
+      </span>
+    </div>
 
   </footer>
 
