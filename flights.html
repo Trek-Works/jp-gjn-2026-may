@@ -174,7 +174,7 @@
        Footer
        ====================================================== */
     footer {
-      margin-top: 56px;
+      margin-top: 20px;
       text-align: center;
       font-size: 12px;
       color: var(--text-soft);
@@ -190,6 +190,10 @@
        ====================================================== */
     .desktop-only {
       display: inline;
+    }
+
+    .mobile-only {
+      display: none;
     }
 
     /* ======================================================
@@ -227,6 +231,12 @@
       .desktop-only {
         display: none;
       }
+
+      /* Footer helpers */
+      .mobile-only {
+        display: inline;
+      }
+
     }
 
   </style>
@@ -399,20 +409,28 @@
     </article>
     <footer>
 
-      <div class="meta-row">
-        <a class="desktop-only" target="_blank" rel="noopener"
-           href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">
-           Airport Limousine Bus
-        </a>  |
-        <a class="desktop-only" target="_blank" rel="noopener"
-           href="https://jp-gjn-2026-may.trekworks.org/trains.html">
-           Train Guide
-        </a>  |
-         <a class="desktop-only" target="_blank" rel="noopener"
-           href="https://jp-gjn-2026-may.trekworks.org/accommodation.html">
-           Accommodation
-        </a>
-      </div>
+<div class="meta-row">
+  <!-- Desktop: open in new tab -->
+  <span class="desktop-only">
+    <a target="_blank" rel="noopener"
+       href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
+    |
+    <a target="_blank" rel="noopener"
+       href="https://jp-gjn-2026-may.trekworks.org/trains.html">Train Guide</a>
+    |
+    <a target="_blank" rel="noopener"
+       href="https://jp-gjn-2026-may.trekworks.org/accommodation.html">Accommodation</a>
+  </span>
+
+  <!-- Mobile: same tab -->
+  <span class="mobile-only">
+    <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
+    |
+    <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Train Guide</a>
+    |
+    <a href="https://jp-gjn-2026-may.trekworks.org/accommodation.html">Accommodation</a>
+  </span>
+</div>
 
     </footer>
   </main>
