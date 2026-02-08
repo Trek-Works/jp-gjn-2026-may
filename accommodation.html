@@ -9,6 +9,7 @@
       --bg: #050816;
       --card: #0b1020;
       --card-soft: #11162a;
+      --bg-card: #0f1629; /* match Flights */
       --accent: #4f46e5;
       --accent-soft: rgba(79, 70, 229, 0.12);
       --badge: #1f2937;
@@ -239,9 +240,9 @@ footer a {
 /* MOBILE-ONLY subtitle layout */
 @media (max-width: 640px) {
 
-  /* ✅ FIX: remove mobile contrast banding */
+  /* ✅ FIX: remove mobile contrast banding (match Flights) */
   .card {
-    background: var(--card);
+    background: var(--bg-card);
   }
 
   /* Subtitle layout (already working) */
