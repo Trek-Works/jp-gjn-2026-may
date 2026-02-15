@@ -66,39 +66,17 @@ const CORE_ASSETS = [
 
   "./external.html",
 
-  // NOTE: These MUST match your deployed filenames
   "./assets/icons/icon-192x192.png",
   "./assets/icons/icon-512x512.png"
 ];
 
 // -----------------------------------------------------
-// Install (resilient precache)
+// Install
 // -----------------------------------------------------
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    (async () => {
-      const cache = await caches.open(CACHE_NAME);
-
-      // Cache each asset independently so a single 404 doesn't kill install
-      const results = await Promise.allSettled(
-        CORE_ASSETS.map(async (asset) => {
-          const req = new Request(asset, { cache: "reload" });
-          const res = await fetch(req);
-
-          // Only cache successful (200-ish) responses
-          if (!res || !res.ok) throw new Error(`Precache failed: ${asset} (${res && res.status})`);
-
-          await cache.put(req, res);
-        })
-      );
-
-      // Optional: you could log failures during dev, but SW logs are noisy in prod.
-      // results.filter(r => r.status === "rejected").forEach(r => console.warn(r.reason));
-
-      return results;
-    })()
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS))
   );
-
   self.skipWaiting();
 });
 
