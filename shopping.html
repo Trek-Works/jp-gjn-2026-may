@@ -212,6 +212,51 @@
         text-align: center;
       }
     }
+
+    /* ===== Offline Overlay (added) ===== */
+    .offline-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5,6,11,0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .offline-box {
+      max-width: 420px;
+      margin: 20px;
+      padding: 20px 22px;
+      background: linear-gradient(145deg,var(--bg-card, #11141f),var(--bg-soft, #181b26));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.65);
+      text-align: center;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+
+    .offline-box h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .offline-box p {
+      margin: 0 0 16px;
+      font-size: 14px;
+      color: #b5bed5;
+      line-height: 1.4;
+    }
+
+    .offline-box button {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(78,168,255,0.15);
+      color: #4ea8ff;
+      font-size: 14px;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -244,9 +289,9 @@
         <div class="label">Namba City</div>
         <div class="subtext">Major mall above Nankai Namba Station · Minami district</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/TvD2r7DgzDGQgY4i8">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/RuSAePjKSYnrz7RY7">From Candeo Hotels Osaka Namba</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/7wYV9Ysb55PuiZdD7">From Miyako City Osaka Hommachi</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/TvD2r7DgzDGQgY4i8'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/RuSAePjKSYnrz7RY7'); return false;">From Candeo Hotels Osaka Namba</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/7wYV9Ysb55PuiZdD7'); return false;">From Miyako City Osaka Hommachi</a>
         </div>
       </article>
 
@@ -254,9 +299,9 @@
         <div class="label">Shinsaibashi-suji Shopping Street</div>
         <div class="subtext">Iconic retail street from Shinsaibashi → Dotonbori</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/5H9bBvuRDgTMNuS36">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/yBc5TSGfqnJPLV6fA">From Candeo Hotels Osaka Namba</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/BXrmfQ6U9gth3Rbg8">From Miyako City Osaka Hommachi</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/5H9bBvuRDgTMNuS36'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/yBc5TSGfqnJPLV6fA'); return false;">From Candeo Hotels Osaka Namba</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/BXrmfQ6U9gth3Rbg8'); return false;">From Miyako City Osaka Hommachi</a>
         </div>
       </article>
 
@@ -264,9 +309,9 @@
         <div class="label">Namba Walk (Underground Mall)</div>
         <div class="subtext">Large shopping passage beneath Namba · weather-proof option</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/2VxyCAYmKeYfEMxq8">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/pt6tYxaBs3jscJDA8">From Candeo Hotels Osaka Namba</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/tMEUoum8YCPeA5a29">From Miyako City Osaka Hommachi</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/2VxyCAYmKeYfEMxq8'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/pt6tYxaBs3jscJDA8'); return false;">From Candeo Hotels Osaka Namba</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/tMEUoum8YCPeA5a29'); return false;">From Miyako City Osaka Hommachi</a>
         </div>
       </article>
 
@@ -274,9 +319,9 @@
         <div class="label">Grand Front Osaka / Osaka Station City</div>
         <div class="subtext">Premium shopping cluster near JR Osaka Station</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/69bToJ6RWSyf9h988">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/QioEfb24YLt8GjKp6">From Candeo Hotels Osaka Namba</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/yrbDNzZQzhUYHJUv5">From Miyako City Osaka Hommachi</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/69bToJ6RWSyf9h988'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/QioEfb24YLt8GjKp6'); return false;">From Candeo Hotels Osaka Namba</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/yrbDNzZQzhUYHJUv5'); return false;">From Miyako City Osaka Hommachi</a>
         </div>
       </article>
 
@@ -284,9 +329,9 @@
         <div class="label">Amerikamura (American Village)</div>
         <div class="subtext">Youth fashion, pop culture shops near Shinsaibashi</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/37JL5ugJ6MQqwRsz8">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/tZYPV13oFahgzh9i6">From Candeo Hotels Osaka Namba</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/vnsRfGk35kHdQB8j9">From Miyako City Osaka Hommachi</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/37JL5ugJ6MQqwRsz8'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/tZYPV13oFahgzh9i6'); return false;">From Candeo Hotels Osaka Namba</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/vnsRfGk35kHdQB8j9'); return false;">From Miyako City Osaka Hommachi</a>
         </div>
       </article>
     </details>
@@ -301,8 +346,8 @@
         <div class="label">Shinkyogoku Shopping Street</div>
         <div class="subtext">Central covered shopping street · close to temples & culture</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/CFQncWWWWjmGNeHz6">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/mMTfTdccJtsFHXch6">From Kyoto Station</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/CFQncWWWWjmGNeHz6'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/mMTfTdccJtsFHXch6'); return false;">From Kyoto Station</a>
         </div>
       </article>
 
@@ -310,8 +355,8 @@
         <div class="label">Nishiki Market</div>
         <div class="subtext">Traditional food & craft market · excellent for Kyoto gifts</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/39Va4aog5VWLWB5S6">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/5z8SVLn7WTdT8D5u6">From Kyoto Station</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/39Va4aog5VWLWB5S6'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/5z8SVLn7WTdT8D5u6'); return false;">From Kyoto Station</a>
         </div>
       </article>
 
@@ -319,8 +364,8 @@
         <div class="label">Teramachi-dori Shopping Street</div>
         <div class="subtext">Mix of classic Kyoto shops & modern boutiques</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/HPQn9cZWFjTjYwYc6">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/vMuZJcyVsxcjEBYa8">From Kyoto Station</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/HPQn9cZWFjTjYwYc6'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/vMuZJcyVsxcjEBYa8'); return false;">From Kyoto Station</a>
         </div>
       </article>
 
@@ -328,8 +373,8 @@
         <div class="label">Kyoto Porta (Underground Mall)</div>
         <div class="subtext">Convenient shopping beneath Kyoto Station</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/ZYpQ2dAYHjjw63YV7">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/CHDYi3NYmtx89Yhz5">From Kyoto Station</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/ZYpQ2dAYHjjw63YV7'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/CHDYi3NYmtx89Yhz5'); return false;">From Kyoto Station</a>
         </div>
       </article>
     </details>
@@ -344,8 +389,8 @@
         <div class="label">Canal City Hakata</div>
         <div class="subtext">Huge shopping & entertainment complex · Hakata district</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/ESpzZQsw92F2yeMz5">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/rzQwNLu5rzcG4oiFA">From Hotel Monterey Fukuoka</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/ESpzZQsw92F2yeMz5'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/rzQwNLu5rzcG4oiFA'); return false;">From Hotel Monterey Fukuoka</a>
         </div>
       </article>
 
@@ -353,8 +398,8 @@
         <div class="label">Tenjin Underground Shopping Center</div>
         <div class="subtext">Massive underground mall · fashion, cosmetics, dining</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/QLHKmjVRdTAnfoww5">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/VoeXZbY7H5TbwNKm8">From Hotel Monterey Fukuoka</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/QLHKmjVRdTAnfoww5'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/VoeXZbY7H5TbwNKm8'); return false;">From Hotel Monterey Fukuoka</a>
         </div>
       </article>
 
@@ -362,8 +407,8 @@
         <div class="label">Amu Plaza Hakata</div>
         <div class="subtext">Mall directly above JR Hakata Station</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/g3uN4ETGi2KvCAeE9">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/ANigm6z9x8HQZWuDA">From Hotel Monterey Fukuoka</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/g3uN4ETGi2KvCAeE9'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/ANigm6z9x8HQZWuDA'); return false;">From Hotel Monterey Fukuoka</a>
         </div>
       </article>
 
@@ -371,8 +416,8 @@
         <div class="label">Solaria Plaza</div>
         <div class="subtext">Trendy shopping zone in central Tenjin · cafés + boutiques</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/sUBmgsfL7sAxQULe9">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/cizPs28xV6Qhrvv36">From Hotel Monterey Fukuoka</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/sUBmgsfL7sAxQULe9'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/cizPs28xV6Qhrvv36'); return false;">From Hotel Monterey Fukuoka</a>
         </div>
       </article>
 
@@ -380,8 +425,8 @@
         <div class="label">Kawabata Shopping Arcade</div>
         <div class="subtext">Traditional arcade · souvenirs & local crafts near Hakata</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/zZPD538SmkD4Zxaz7">Open Map</a>
-          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/Xus5BNSYjtYMxmFSA">From Hotel Monterey Fukuoka</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/zZPD538SmkD4Zxaz7'); return false;">Open Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://maps.app.goo.gl/Xus5BNSYjtYMxmFSA'); return false;">From Hotel Monterey Fukuoka</a>
         </div>
       </article>
     </details>
@@ -403,5 +448,59 @@
   </footer>
 
 </main>
+
+<!-- Offline overlay (added) -->
+<div class="offline-overlay" id="offlineOverlay">
+  <div class="offline-box">
+    <h2>You’re offline</h2>
+    <p>
+      This content requires an internet connection.<br>
+      You can continue using other parts of the app while offline.
+    </p>
+    <button onclick="closeOffline()">OK</button>
+  </div>
+</div>
+
+<script>
+function handleExternal(url) {
+  verifyConnectivity()
+    .then(function () {
+      window.location.href = 'external.html?url=' + encodeURIComponent(url);
+    })
+    .catch(showOffline);
+}
+
+function verifyConnectivity() {
+  return new Promise(function (resolve, reject) {
+    const controller = new AbortController();
+    const timeout = setTimeout(function () {
+      controller.abort();
+      reject();
+    }, 800);
+
+    fetch('external.html', {
+      cache: 'no-store',
+      signal: controller.signal
+    })
+      .then(function () {
+        clearTimeout(timeout);
+        resolve();
+      })
+      .catch(function () {
+        clearTimeout(timeout);
+        reject();
+      });
+  });
+}
+
+function showOffline() {
+  document.getElementById('offlineOverlay').style.display = 'flex';
+}
+
+function closeOffline() {
+  document.getElementById('offlineOverlay').style.display = 'none';
+}
+</script>
+
 </body>
 </html>

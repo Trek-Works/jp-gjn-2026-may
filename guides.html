@@ -145,6 +145,47 @@
     @media (max-width: 640px) {
       .desktop-only { display: none; }
     }
+
+    /* ===== Offline Overlay (added) ===== */
+    .offline-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5,6,11,0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .offline-box {
+      max-width: 420px;
+      margin: 20px;
+      padding: 20px 22px;
+      background: linear-gradient(145deg,var(--bg-card, #11141f),var(--bg-soft, #181b26));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.65);
+      text-align: center;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    .offline-box h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+    .offline-box p {
+      margin: 0 0 16px;
+      font-size: 14px;
+      color: #b5bed5;
+      line-height: 1.4;
+    }
+    .offline-box button {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(78,168,255,0.15);
+      color: #4ea8ff;
+      font-size: 14px;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -168,14 +209,14 @@
       <div class="card">
         <div class="label">Before Your Flight</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://piqtour.com/checklist/">Open Guide (Page)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://piqtour.com/checklist/'); return false;">Open Guide (Page)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Your FIRST HOUR in Japan</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=7z-hxGUwXVo">Open Guide (Video)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.youtube.com/watch?v=7z-hxGUwXVo'); return false;">Open Guide (Video)</a>
         </div>
       </div>
     </details>
@@ -189,14 +230,14 @@
       <div class="card">
         <div class="label">Train Travel from Tokyo to Osaka</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=yl3kuvpNavg">Open Guide (Video)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.youtube.com/watch?v=yl3kuvpNavg'); return false;">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">20 Ways Tourists Waste Money in Japan 2025</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=eKf8TN8eOpY">Open Guide (Video)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.youtube.com/watch?v=eKf8TN8eOpY'); return false;">Open Guide (Video)</a>
         </div>
       </div>
     </details>
@@ -210,42 +251,42 @@
       <div class="card">
         <div class="label">Essential Tips</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://youtu.be/Ymvy9mDZboI">Open Guide (Video)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://youtu.be/Ymvy9mDZboI'); return false;">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">How To Spend Two Weeks in Japan</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=er3W4ieNpW0">Open Guide (Video)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.youtube.com/watch?v=er3W4ieNpW0'); return false;">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">How to Spend 5 Days in Tokyo</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=0MQKLUkAUf8">Open Guide (Video)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.youtube.com/watch?v=0MQKLUkAUf8'); return false;">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">The Ultimate Japan Trip Timeline</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://piqtour.com/timeline/">Open Guide (Page)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://piqtour.com/timeline/'); return false;">Open Guide (Page)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Beyond The Tourist Trail (eBook)</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.currentlyhannah.com/travelguide">Open Guide (Page)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.currentlyhannah.com/travelguide'); return false;">Open Guide (Page)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Airport Buses and Transfers, Metro Passes, JR Trains</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.klook.com/en-AU/transport/?des_id=10015&target_slug=%2Fen-AU%2Ftransport%2Fttd%2Fjrpass%2F">Product Offering (Page)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.klook.com/en-AU/transport/?des_id=10015&target_slug=%2Fen-AU%2Ftransport%2Fttd%2Fjrpass%2F'); return false;">Product Offering (Page)</a>
         </div>
       </div>
 
@@ -260,21 +301,21 @@
       <div class="card">
         <div class="label">Don’t come to Japan during these months</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=CfNzVfYwluM">Open Guide (Video)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.youtube.com/watch?v=CfNzVfYwluM'); return false;">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Okinawa in May</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://visitokinawajapan.com/plan-your-trip/when-to-visit-climate-seasons/okinawa-may/">Open Guide (Page)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://visitokinawajapan.com/plan-your-trip/when-to-visit-climate-seasons/okinawa-may/'); return false;">Open Guide (Page)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">When to Visit Okinawa</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://visitokinawajapan.com/plan-your-trip/when-to-visit-climate-seasons/">Open Guide (Page)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://visitokinawajapan.com/plan-your-trip/when-to-visit-climate-seasons/'); return false;">Open Guide (Page)</a>
         </div>
       </div>
     </details>
@@ -288,14 +329,14 @@
       <div class="card">
         <div class="label">Must Have Japan Travel Apps</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://youtu.be/tszILBo0vr0">Open Guide (Video)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://youtu.be/tszILBo0vr0'); return false;">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Japan Travel Apps Guide</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://piqtour.com/essential-apps/">Open Guide (Page)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://piqtour.com/essential-apps/'); return false;">Open Guide (Page)</a>
         </div>
 
       </div>
@@ -310,22 +351,22 @@
       <div class="card">
         <div class="label">Japan Data Plans: Pocket WiFi, eSIM, SIM Card</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://youtu.be/9t-ubj4jNps">Open Guide (Video)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://youtu.be/9t-ubj4jNps'); return false;">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">"Japan SIM" online, a data-only eSIM for foreign travelers</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://newsroom.kddi.com/english/news/detail/kddi_nr-713_4090.html">Product Offering (Page)</a>
-          <a class="link-pill" href="external.html?url=https://povo.jp/japan-sim/online/">Sign Up (Page)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://newsroom.kddi.com/english/news/detail/kddi_nr-713_4090.html'); return false;">Product Offering (Page)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://povo.jp/japan-sim/online/'); return false;">Sign Up (Page)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Japan IC Cards</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=TZcCYawUV0A">Open Guide (Video)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.youtube.com/watch?v=TZcCYawUV0A'); return false;">Open Guide (Video)</a>
         </div>
       </div>
 
@@ -340,31 +381,31 @@
       <div class="card">
         <div class="label">Finding Toilets in Japan</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=DZEqRqezRDo">Open Guide (Video)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.youtube.com/watch?v=DZEqRqezRDo'); return false;">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Things Okay in Japan but Illegal Around the World</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.youtube.com/watch?v=0RoA5QEm8fc">Open Guide (Video)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.youtube.com/watch?v=0RoA5QEm8fc'); return false;">Open Guide (Video)</a>
         </div>
       </div>
 
       <div class="card">
         <div class="label">Top Attractions in Kyoto (Kyoto Prefecture)</div>
         <div class="card-footer">
-          <a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2158.html">Open Guide (Page)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2158.html'); return false;">Open Guide (Page)</a>
         </div>
       </div>
 
-      <div class="card"><div class="label">What to do in Fukuoka (Fukuoka Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2161.html">Open Guide (Page)</a></div></div>
-      <div class="card"><div class="label">What to do in Dazaifu (Fukuoka Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e4850.html">Open Guide (Page)</a></div></div>
-      <div class="card"><div class="label">What to do in Kumamoto (Kumamoto Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e4500.html">Open Guide (Page)</a></div></div>
-      <div class="card"><div class="label">What to do in Nagasaki (Nagasaki Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2162.html">Open Guide (Page)</a></div></div>
-      <div class="card"><div class="label">What to do in Osaka (Osaka Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2157.html">Open Guide (Page)</a></div></div>
-      <div class="card"><div class="label">What to do in Kyoto (Kyoto Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e2158.html">Open Guide (Page)</a></div></div>
-      <div class="card"><div class="label">What to do in Naha (Okinawa Prefecture)</div><div class="card-footer"><a class="link-pill" href="external.html?url=https://www.japan-guide.com/e/e7102.html">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Fukuoka (Fukuoka Prefecture)</div><div class="card-footer"><a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2161.html'); return false;">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Dazaifu (Fukuoka Prefecture)</div><div class="card-footer"><a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e4850.html'); return false;">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Kumamoto (Kumamoto Prefecture)</div><div class="card-footer"><a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e4500.html'); return false;">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Nagasaki (Nagasaki Prefecture)</div><div class="card-footer"><a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2162.html'); return false;">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Osaka (Osaka Prefecture)</div><div class="card-footer"><a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2157.html'); return false;">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Kyoto (Kyoto Prefecture)</div><div class="card-footer"><a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2158.html'); return false;">Open Guide (Page)</a></div></div>
+      <div class="card"><div class="label">What to do in Naha (Okinawa Prefecture)</div><div class="card-footer"><a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e7102.html'); return false;">Open Guide (Page)</a></div></div>
 
     </details>
   </section>
@@ -378,5 +419,59 @@
   </footer>
 
 </main>
+
+<!-- Offline overlay (added) -->
+<div class="offline-overlay" id="offlineOverlay">
+  <div class="offline-box">
+    <h2>You’re offline</h2>
+    <p>
+      This content requires an internet connection.<br>
+      You can continue using other parts of the app while offline.
+    </p>
+    <button onclick="closeOffline()">OK</button>
+  </div>
+</div>
+
+<script>
+function handleExternal(url) {
+  verifyConnectivity()
+    .then(function () {
+      window.location.href = 'external.html?url=' + encodeURIComponent(url);
+    })
+    .catch(showOffline);
+}
+
+function verifyConnectivity() {
+  return new Promise(function (resolve, reject) {
+    const controller = new AbortController();
+    const timeout = setTimeout(function () {
+      controller.abort();
+      reject();
+    }, 800);
+
+    fetch('external.html', {
+      cache: 'no-store',
+      signal: controller.signal
+    })
+      .then(function () {
+        clearTimeout(timeout);
+        resolve();
+      })
+      .catch(function () {
+        clearTimeout(timeout);
+        reject();
+      });
+  });
+}
+
+function showOffline() {
+  document.getElementById('offlineOverlay').style.display = 'flex';
+}
+
+function closeOffline() {
+  document.getElementById('offlineOverlay').style.display = 'none';
+}
+</script>
+
 </body>
 </html>

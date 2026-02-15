@@ -170,6 +170,47 @@
       flex: 0 0 auto;
     }
 
+    /* OFFLINE OVERLAY — REBASED VERBATIM TO attractions-guide.html */
+    .offline-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5,6,11,0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .offline-box {
+      max-width: 420px;
+      margin: 20px;
+      padding: 20px 22px;
+      background: linear-gradient(145deg,var(--bg-card, #11141f),var(--bg-soft, #181b26));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.65);
+      text-align: center;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    .offline-box h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+    .offline-box p {
+      margin: 0 0 16px;
+      font-size: 14px;
+      color: #b5bed5;
+      line-height: 1.4;
+    }
+    .offline-box button {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(78,168,255,0.15);
+      color: #4ea8ff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
     /* ======================================================
        Footer
        ====================================================== */
@@ -296,12 +337,12 @@
       </div>
 
       <div class="card-footer">
-        <a class="link-pill" href="external.html?url=https://flightaware.com/live/flight/JST13">Flight Status</a>
-        <a class="link-pill" href="external.html?url=https://www.jetstar.com/au/en/home?">Jetstar Login</a>
-        <a class="link-pill" href="external.html?url=https://seatmaps.com/airlines/jq-jetstar-airways/boeing-787-8/#78d69f40906679a976dc4d45cebffbe6">Seat Map</a>
-        <a class="link-pill" href="external.html?url=https://checkin.jetstar.com/">Online Check-In</a>
-        <a class="link-pill" href="external.html?url=https://drive.google.com/file/d/1zeTNECFCbwFfEuie2oXxfdx6yxXv-9eF/view?usp=sharing">Boarding Pass (Sema)</a>
-        <a class="link-pill" href="external.html?url=https://drive.google.com/file/d/1dcDRR8pFF2yShL_cOy0yHmwxa2zf7AmG/view?usp=sharing">Boarding Pass (Gavin)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JST13'); return false;">Flight Status</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.jetstar.com/au/en/home?'); return false;">Jetstar Login</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jq-jetstar-airways/boeing-787-8/#78d69f40906679a976dc4d45cebffbe6'); return false;">Seat Map</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://checkin.jetstar.com/'); return false;">Online Check-In</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1zeTNECFCbwFfEuie2oXxfdx6yxXv-9eF/view?usp=sharing'); return false;">Boarding Pass (Sema)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1dcDRR8pFF2yShL_cOy0yHmwxa2zf7AmG/view?usp=sharing'); return false;">Boarding Pass (Gavin)</a>
       </div>
     </article>
 
@@ -334,11 +375,11 @@
       </div>
 
       <div class="card-footer">
-        <a class="link-pill" href="external.html?url=https://flightaware.com/live/flight/JAL2087">Flight Status</a>
-        <a class="link-pill" href="external.html?url=https://www.jal.co.jp/jp/en/">JAL Login</a>
-        <a class="link-pill" href="external.html?url=https://seatmaps.com/airlines/jl-jal/airbus-a350-900/#3da972c3ec85b6f3cc5306acf034fd23">Seat Map</a>
-        <a class="link-pill" href="external.html?url=https://drive.google.com/file/d/15hYlgOFYLLUWZTFsSXaKVwcsuztXFHC3/view?usp=sharing">Boarding Pass (Sema)</a>
-        <a class="link-pill" href="external.html?url=https://drive.google.com/file/d/1q-Z5-cd3po4dBi-BX1eUsxnh7nC5MX0r/view?usp=sharing">Boarding Pass (Gavin)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JAL2087'); return false;">Flight Status</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.jal.co.jp/jp/en/'); return false;">JAL Login</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jl-jal/airbus-a350-900/#3da972c3ec85b6f3cc5306acf034fd23'); return false;">Seat Map</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/15hYlgOFYLLUWZTFsSXaKVwcsuztXFHC3/view?usp=sharing'); return false;">Boarding Pass (Sema)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1q-Z5-cd3po4dBi-BX1eUsxnh7nC5MX0r/view?usp=sharing'); return false;">Boarding Pass (Gavin)</a>
       </div>
     </article>
 
@@ -371,11 +412,11 @@
       </div>
 
       <div class="card-footer">
-        <a class="link-pill" href="external.html?url=https://flightaware.com/live/flight/JTA054">Flight Status</a>
-        <a class="link-pill" href="external.html?url=https://www.jal.co.jp/jp/en/">JAL Login</a>
-        <a class="link-pill" href="external.html?url=https://seatmaps.com/airlines/jl-jal/boeing-737-800/#d756d3d2b9dac72449a6a6926534558a">Seat Map</a>
-        <a class="link-pill" href="external.html?url=https://drive.google.com/file/d/1r8t4Pex4ZD47PXeYuTK2aD9xyUqQMK49/view?usp=sharing">Boarding Pass (Sema)</a>
-        <a class="link-pill" href="external.html?url=https://drive.google.com/file/d/1ibQWGDZ7b_0oeFofX0ilOhjEFELXB-gK/view?usp=sharing">Boarding Pass (Gavin)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JTA054'); return false;">Flight Status</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.jal.co.jp/jp/en/'); return false;">JAL Login</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jl-jal/boeing-737-800/#d756d3d2b9dac72449a6a6926534558a'); return false;">Seat Map</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1r8t4Pex4ZD47PXeYuTK2aD9xyUqQMK49/view?usp=sharing'); return false;">Boarding Pass (Sema)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1ibQWGDZ7b_0oeFofX0ilOhjEFELXB-gK/view?usp=sharing'); return false;">Boarding Pass (Gavin)</a>
       </div>
     </article>
 
@@ -408,12 +449,12 @@
       </div>
 
       <div class="card-footer">
-        <a class="link-pill" href="external.html?url=https://flightaware.com/live/flight/JST14">Flight Status</a>
-        <a class="link-pill" href="external.html?url=https://www.jetstar.com/au/en/home?">Jetstar Login</a>
-        <a class="link-pill" href="external.html?url=https://seatmaps.com/airlines/jq-jetstar-airways/boeing-787-8/#78d69f40906679a976dc4d45cebffbe6">Seat Map</a>
-        <a class="link-pill" href="external.html?url=https://checkin.jetstar.com/">Online Check-In</a>
-        <a class="link-pill" href="external.html?url=https://drive.google.com/file/d/1VL0jzXwcV1ArTi1CiK9dzs8FxOnMy57w/view?usp=sharing">Boarding Pass (Sema)</a>
-        <a class="link-pill" href="external.html?url=https://drive.google.com/file/d/1WrCMbLJLFpffQxOO9X9JM9gzv8ebSmmS/view?usp=sharing">Boarding Pass (Gavin)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JST14'); return false;">Flight Status</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.jetstar.com/au/en/home?'); return false;">Jetstar Login</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jq-jetstar-airways/boeing-787-8/#78d69f40906679a976dc4d45cebffbe6'); return false;">Seat Map</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://checkin.jetstar.com/'); return false;">Online Check-In</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1VL0jzXwcV1ArTi1CiK9dzs8FxOnMy57w/view?usp=sharing'); return false;">Boarding Pass (Sema)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1WrCMbLJLFpffQxOO9X9JM9gzv8ebSmmS/view?usp=sharing'); return false;">Boarding Pass (Gavin)</a>
       </div>
     </article>
     <footer>
@@ -438,10 +479,64 @@
     <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Train Guide</a>
     |
     <a href="https://jp-gjn-2026-may.trekworks.org/accommodation.html">Accommodation</a>
+    <a href="https://jp-gjn-2026-may.trekworks.org/accommodation.html">Accommodation</a>
   </span>
 </div>
 
     </footer>
   </main>
+
+<div class="offline-overlay" id="offlineOverlay">
+  <div class="offline-box">
+    <h2>You’re offline</h2>
+    <p>
+      This content requires an internet connection.<br>
+      You can continue using other parts of the app while offline.
+    </p>
+    <button onclick="closeOffline()">OK</button>
+  </div>
+</div>
+
+<script>
+function handleExternal(url) {
+  verifyConnectivity()
+    .then(function () {
+      window.location.href = 'external.html?url=' + encodeURIComponent(url);
+    })
+    .catch(showOffline);
+}
+
+function verifyConnectivity() {
+  return new Promise(function (resolve, reject) {
+    const controller = new AbortController();
+    const timeout = setTimeout(function () {
+      controller.abort();
+      reject();
+    }, 800);
+
+    fetch('external.html', {
+      cache: 'no-store',
+      signal: controller.signal
+    })
+      .then(function () {
+        clearTimeout(timeout);
+        resolve();
+      })
+      .catch(function () {
+        clearTimeout(timeout);
+        reject();
+      });
+  });
+}
+
+function showOffline() {
+  document.getElementById('offlineOverlay').style.display = 'flex';
+}
+
+function closeOffline() {
+  document.getElementById('offlineOverlay').style.display = 'none';
+}
+</script>
+
 </body>
 </html>
