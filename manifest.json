@@ -1,23 +1,23 @@
 {
-  "id": "trekworks-jp-gjn-2026",
+  "id": "trekworks-jp-gjn-2026-may",
   "name": "GJN-2026-May – Japan Trip",
   "short_name": "GJN-JP-2026-May",
   "description": "Unified trip app for JP GJN-2026-May (Japan) with quick access to secure trip sections.",
   "lang": "en-AU",
-  "start_url": "https://jp-gjn-2026-may.trekworks.org/",
-  "scope": "https://jp-gjn-2026-may.trekworks.org/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#0b1220",
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "assets/icons/icon-JP-2026-192.png",
+      "src": "assets/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "assets/icons/icon-JP-2026-512.png",
+      "src": "assets/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
