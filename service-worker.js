@@ -67,8 +67,8 @@ const CORE_ASSETS = [
   "./external.html",
 
   // NOTE: These MUST match your deployed filenames
-  "./assets/icons/icon-192x192.png",
-  "./assets/icons/icon-512x512.png"
+"./assets/icons/icon-JP-2026-192.png",
+"./assets/icons/icon-JP-2026-512.png"
 ];
 
 // -----------------------------------------------------
