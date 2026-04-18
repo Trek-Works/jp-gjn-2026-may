@@ -13,7 +13,7 @@
       --bg: #050816;
       --card: #0b1020;
       --card-soft: #11162a;
-      --bg-card: #0f1629; /* match Flights */
+      --bg-card: #0f1629;
       --accent: #4f46e5;
       --accent-soft: rgba(79, 70, 229, 0.12);
       --badge: #1f2937;
@@ -219,9 +219,40 @@
     }
 
     /* ======================================================
-       Offline overlay (verbatim block)
+       Footer nav
        ====================================================== */
-    /* OFFLINE OVERLAY — REBASED VERBATIM TO attractions-guide.html */
+    .footer-nav {
+      margin-top: 28px;
+      padding-top: 0;
+      border-top: none;
+      font-size: 12px;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    .footer-line {
+      max-width: 980px;
+      margin: 0 auto;
+      line-height: 1.45;
+      color: var(--text-soft);
+    }
+
+    .footer-line a {
+      color: #4f8cff;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .footer-line a:hover {
+      text-decoration: underline;
+    }
+
+    .desktop-only { display: inline; }
+    .mobile-only { display: none; }
+
+    /* ======================================================
+       Offline overlay
+       ====================================================== */
     .offline-overlay {
       position: fixed;
       inset: 0;
@@ -267,35 +298,13 @@
     }
 
     /* ======================================================
-       Footer (aligned with Activities)
-       ====================================================== */
-    footer {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--text-soft);
-    }
-
-    footer a {
-      color: #4f8cff; /* match Activities accent */
-      text-decoration: none;
-    }
-
-    /* Footer line-break control */
-    .desktop-only { display: inline; }
-    .mobile-only { display: none; }
-
-    /* ======================================================
-       Mobile overrides (component-scoped)
+       Mobile overrides
        ====================================================== */
     @media (max-width: 640px) {
-
-      /* ✅ FIX: remove mobile contrast banding (match Flights) */
       .card {
         background: var(--bg-card);
       }
 
-      /* Subtitle layout */
       .subtitle {
         display: flex;
         flex-direction: column;
@@ -308,18 +317,15 @@
         font-size: 13px;
       }
 
-      /* Meta rows: Arrival / Depart / Check-in / Check-out */
       .meta-row {
         flex-direction: column;
         gap: 6px;
       }
 
-      /* Reset default margins */
       .detail-row {
         margin-top: 6px;
       }
 
-      /* MOBILE FIX: make footer pills wrap nicely when there are 4 */
       .card-footer {
         flex-wrap: wrap;
         gap: 6px;
@@ -330,7 +336,10 @@
         text-align: center;
       }
 
-      /* Footer helpers */
+      .footer-line {
+        line-height: 1.8;
+      }
+
       .desktop-only { display: none; }
       .mobile-only { display: inline; }
     }
@@ -515,36 +524,28 @@
     </div>
   </section>
 
-  <footer>
-
-    <div class="meta-row">
-      <!-- Desktop: open in new tab -->
-      <span class="desktop-only">
-        <a target="_blank" rel="noopener"
-          href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>
-        |
-        <a target="_blank" rel="noopener"
-          href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
-        |
-        <a target="_blank" rel="noopener"
-          href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>
-        |
-        <a target="_blank" rel="noopener"
-          href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>
-      </span>
-
-      <!-- Mobile: same tab -->
-      <span class="mobile-only">
-        <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>
-        |
-        <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
-        |
-        <a href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>
-        |
-        <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>
-      </span>
+  <footer class="footer-nav">
+    <div class="footer-line desktop-only">
+      For trip activities, see
+      <a target="_blank" rel="noopener" href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>.
+      For airport transport, see
+      <a target="_blank" rel="noopener" href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>.
+      For shopping options, see
+      <a target="_blank" rel="noopener" href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>.
+      For rail travel, see
+      <a target="_blank" rel="noopener" href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>.
     </div>
 
+    <div class="footer-line mobile-only">
+      For trip activities, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>.
+      For airport transport, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>.
+      For shopping options, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>.
+      For rail travel, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>.
+    </div>
   </footer>
 
 </main>
