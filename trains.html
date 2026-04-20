@@ -107,12 +107,6 @@
       margin-bottom: 10px;
     }
 
-    .section-subtitle {
-      font-size: 13px;
-      color: var(--text-soft);
-      margin-top: 6px;
-    }
-
     /* ===== Cards ===== */
 
     .card {
@@ -144,7 +138,8 @@
 
     .card-meta {
       font-size: 13px;
-      color: var(--text-soft);
+      color: #93c5fd;
+      font-weight: 600;
     }
 
     .meta-row {
@@ -181,26 +176,6 @@
       white-space: nowrap;
       flex: 0 0 auto;
     }
-
-    /* ===== Chevron collapses (same implementation pattern as Activities) ===== */
-
-    details summary {
-      list-style: none;
-      cursor: pointer;
-      position: relative;
-      padding-left: 22px;
-    }
-
-    details summary::before {
-      content: "▶";
-      position: absolute;
-      left: 0;
-      top: 1px;
-      font-size: 13px;
-      color: var(--text-soft);
-    }
-
-    details[open] summary::before { transform: rotate(90deg); }
 
     /* ===== Footer ===== */
 
@@ -243,7 +218,6 @@
         gap: 6px;
       }
 
-      /* MOBILE FIX: make footer pills wrap nicely when there are 4 */
       .card-footer {
         flex-wrap: wrap;
         gap: 6px;
@@ -322,238 +296,231 @@
 
     <!-- Airport Rail Alternatives -->
     <section class="section">
-      <details>
-        <summary class="section-title">✈️ Airport rail alternatives (Kansai)</summary>
-        <div class="section-subtitle">These are rail options referenced in the itinerary. Airport Limousine Bus remains your primary “timetabled” plan.</div>
+      <div class="section-title">✈️ Airport rail alternatives (Kansai)</div>
 
-        <!-- 14 May 2026 — KIX → Osaka -->
-        <article class="card optional">
-          <div class="card-header">
-            <div>
-              <div class="card-title">🚆 Kansai Airport (KIX) → Osaka (Namba / Umeda)</div>
-              <div class="card-meta">Arrival night · 14 May 2026</div>
-            </div>
+      <!-- 14 May 2026 — KIX → Osaka -->
+      <article class="card optional">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Kansai Airport (KIX) → Osaka (Namba / Umeda)</div>
+            <div class="card-meta">Thu 14 May 2026</div>
           </div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">When:</span> After landing (~7:50 PM) and clearing arrivals (~9:00 PM)</div>
-            <div><span class="meta-label">Travel time:</span> ~45–60 min</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">When:</span> After landing (~7:50 PM) and clearing arrivals (~9:00 PM)</div>
+          <div><span class="meta-label">Travel time:</span> ~45–60 min</div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Options:</span> Nankai (to Namba) · JR (to Tennoji/Osaka/Umeda)</div>
-            <div><span class="meta-label">Note:</span> Use as backup if bus timing doesn’t suit</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Options:</span> Nankai (to Namba) · JR (to Tennoji/Osaka/Umeda)</div>
+          <div><span class="meta-label">Note:</span> Use as backup if bus timing doesn’t suit</div>
+        </div>
 
-          <div class="card-footer">
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.kansai-airport.or.jp/en/access/'); return false;">KIX Access</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.nankai.co.jp/en_railway'); return false;">Nankai</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/global/en/'); return false;">JR West</a>
-          </div>
-        </article>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.kansai-airport.or.jp/en/access/'); return false;">KIX Access</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.nankai.co.jp/en_railway'); return false;">Nankai</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/global/en/'); return false;">JR West</a>
+        </div>
+      </article>
 
-        <!-- 29 May 2026 — Osaka → KIX -->
-        <article class="card optional">
-          <div class="card-header">
-            <div>
-              <div class="card-title">🚆 Osaka (Namba / Umeda) → Kansai Airport (KIX)</div>
-              <div class="card-meta">Return day · 29 May 2026</div>
-            </div>
+      <!-- 29 May 2026 — Osaka → KIX -->
+      <article class="card optional">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Osaka (Namba / Umeda) → Kansai Airport (KIX)</div>
+            <div class="card-meta">Fri 29 May 2026</div>
           </div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">When:</span> After check-out (~3:00 PM)</div>
-            <div><span class="meta-label">Travel time:</span> ~45–60 min</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">When:</span> After check-out (~3:00 PM)</div>
+          <div><span class="meta-label">Travel time:</span> ~45–60 min</div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Options:</span> Nankai (from Namba) · JR (from Osaka/Tennoji)</div>
-            <div><span class="meta-label">Note:</span> Rail backup if traffic affects bus</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Options:</span> Nankai (from Namba) · JR (from Osaka/Tennoji)</div>
+          <div><span class="meta-label">Note:</span> Rail backup if traffic affects bus</div>
+        </div>
 
-          <div class="card-footer">
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.kansai-airport.or.jp/en/access/'); return false;">KIX Access</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.nankai.co.jp/en_railway'); return false;">Nankai</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/global/en/'); return false;">JR West</a>
-          </div>
-        </article>
-      </details>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.kansai-airport.or.jp/en/access/'); return false;">KIX Access</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.nankai.co.jp/en_railway'); return false;">Nankai</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/global/en/'); return false;">JR West</a>
+        </div>
+      </article>
     </section>
 
     <!-- Osaka Area -->
     <section class="section">
-      <details>
-        <summary class="section-title">🏯 Osaka base (Honshu)</summary>
+      <div class="section-title">🏯 Osaka base (Honshu)</div>
 
-        <!-- 16 May 2026 — Osaka → Kyoto → Osaka -->
-        <article class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">🚆 Osaka → Kyoto (Day Trip) → Osaka</div>
-              <div class="card-meta">Day trip · 16 May 2026</div>
-            </div>
+      <!-- 16 May 2026 — Osaka → Kyoto → Osaka -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Osaka → Kyoto (Day Trip) → Osaka</div>
+            <div class="card-meta">Sat 16 May 2026</div>
           </div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Typical routes:</span> JR (Umeda/Osaka ↔ Kyoto) · Keihan (to Fushimi Inari area) · Hankyu (to Arashiyama)</div>
-            <div><span class="meta-label">Train type:</span> Rapid / Special Rapid (varies by line)</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Typical routes:</span> JR (Umeda/Osaka ↔ Kyoto) · Keihan (to Fushimi Inari area) · Hankyu (to Arashiyama)</div>
+          <div><span class="meta-label">Train type:</span> Rapid / Special Rapid (varies by line)</div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Travel time:</span> ~30–60 min each way (depends on line + connections)</div>
-            <div><span class="meta-label">Tip:</span> Use IC card and follow Google Maps platform guidance</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Travel time:</span> ~30–60 min each way (depends on line + connections)</div>
+          <div><span class="meta-label">Tip:</span> Use IC card and follow Google Maps platform guidance</div>
+        </div>
 
-          <div class="card-footer">
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.hankyu.co.jp/en/ticket/index.html'); return false;">Hankyu</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.keihan.co.jp/travel/en/'); return false;">Keihan</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/global/en/'); return false;">JR West</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2019.html'); return false;">About Japan Trains</a>
-          </div>
-        </article>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.hankyu.co.jp/en/ticket/index.html'); return false;">Hankyu</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.keihan.co.jp/travel/en/'); return false;">Keihan</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/global/en/'); return false;">JR West</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2019.html'); return false;">About Japan Trains</a>
+        </div>
+      </article>
 
-        <!-- 28 May 2026 — Osaka → Kobe (Optional) -->
-        <article class="card optional">
-          <div class="card-header">
-            <div>
-              <div class="card-title">🚆 Osaka → Kobe (Sannomiya) → Osaka</div>
-              <div class="card-meta">Optional side trip · 28 May 2026</div>
-            </div>
+      <!-- 28 May 2026 — Osaka → Kobe (Optional) -->
+      <article class="card optional">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Osaka → Kobe (Sannomiya) → Osaka</div>
+            <div class="card-meta">Thu 28 May 2026</div>
           </div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Train type:</span> Rapid / Express (varies by operator)</div>
-            <div><span class="meta-label">Travel time:</span> ~25–35 min each way</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Train type:</span> Rapid / Express (varies by operator)</div>
+          <div><span class="meta-label">Travel time:</span> ~25–35 min each way</div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Options:</span> JR · Hankyu · Hanshin</div>
-            <div><span class="meta-label">Note:</span> Easy half-day add-on from Osaka</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Options:</span> JR · Hankyu · Hanshin</div>
+          <div><span class="meta-label">Note:</span> Easy half-day add-on from Osaka</div>
+        </div>
 
-          <div class="card-footer">
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.hankyu.co.jp/en/ticket/index.html'); return false;">Hankyu</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.hanshin.co.jp/global/en/access/'); return false;">Hanshin</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/global/en/'); return false;">JR West</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2019.html'); return false;">About Japan Trains</a>
-          </div>
-        </article>
-      </details>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.hankyu.co.jp/en/ticket/index.html'); return false;">Hankyu</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.hanshin.co.jp/global/en/access/'); return false;">Hanshin</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/global/en/'); return false;">JR West</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2019.html'); return false;">About Japan Trains</a>
+        </div>
+      </article>
     </section>
 
     <!-- Kyushu -->
     <section class="section">
-      <details>
-        <summary class="section-title">🎎 Fukuoka base (Kyushu)</summary>
+      <div class="section-title">🎎 Fukuoka base (Kyushu)</div>
 
-        <!-- 23 May 2026 — Fukuoka → Nagasaki -->
-        <article class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">🚆 Hakata (Fukuoka) → Nagasaki → Hakata</div>
-              <div class="card-meta">Day trip · 23 May 2026</div>
-            </div>
+      <!-- 23 May 2026 — Fukuoka → Nagasaki -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Hakata (Fukuoka) → Nagasaki → Hakata</div>
+            <div class="card-meta">Sat 23 May 2026</div>
           </div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Train type:</span> Limited Express (relay connection for Nagasaki route)</div>
-            <div><span class="meta-label">Travel time:</span> ~2 h 10 m each way</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Train type:</span> Limited Express (relay connection for Nagasaki route)</div>
+          <div><span class="meta-label">Travel time:</span> ~2 h 10 m each way</div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Note:</span> Plan for a long but very doable day trip</div>
-            <div><span class="meta-label">Operator:</span> JR Kyushu</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Note:</span> Plan for a long but very doable day trip</div>
+          <div><span class="meta-label">Operator:</span> JR Kyushu</div>
+        </div>
 
-          <div class="card-footer">
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.jrkyushu.co.jp/english/'); return false;">JR Kyushu</a>
-             <a class="link-pill" href="#" onclick="handleExternal('https://smart-ex.jp/en/lp/app/'); return false;">Shinkansen</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/'); return false;">JR West Rail Pass</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2019.html'); return false;">About Japan Trains</a>
-          </div>
-        </article>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.jrkyushu.co.jp/english/'); return false;">JR Kyushu</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://smart-ex.jp/en/lp/app/'); return false;">Shinkansen</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/'); return false;">JR West Rail Pass</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2019.html'); return false;">About Japan Trains</a>
+        </div>
+      </article>
 
-        <!-- 24 May 2026 — Fukuoka → Dazaifu -->
-        <article class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">🚆 Fukuoka (Tenjin/Hakata) → Dazaifu → Fukuoka</div>
-              <div class="card-meta">Half-day / day trip · 24 May 2026</div>
-            </div>
+      <!-- 24 May 2026 — Fukuoka → Dazaifu -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Fukuoka (Tenjin/Hakata) → Dazaifu → Fukuoka</div>
+            <div class="card-meta">Sun 24 May 2026</div>
           </div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Typical route:</span> Nishitetsu (Tenjin area) via interchange to Dazaifu Line</div>
-            <div><span class="meta-label">Travel time:</span> ~30–45 min each way</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Typical route:</span> Nishitetsu (Tenjin area) via interchange to Dazaifu Line</div>
+          <div><span class="meta-label">Travel time:</span> ~30–45 min each way</div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Tip:</span> Combine with Ohori Park the same day</div>
-            <div><span class="meta-label">Operator:</span> Nishitetsu</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Tip:</span> Combine with Ohori Park the same day</div>
+          <div><span class="meta-label">Operator:</span> Nishitetsu</div>
+        </div>
 
-          <div class="card-footer">
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.nishitetsu.jp/en/'); return false;">Nishitetsu</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.jrkyushu.co.jp/english/'); return false;">JR Kyushu</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/'); return false;">JR West Rail Pass</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2019.html'); return false;">About Japan Trains</a>
-          </div>
-        </article>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.nishitetsu.jp/en/'); return false;">Nishitetsu</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.jrkyushu.co.jp/english/'); return false;">JR Kyushu</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/'); return false;">JR West Rail Pass</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2019.html'); return false;">About Japan Trains</a>
+        </div>
+      </article>
 
-        <!-- 25 May 2026 — Fukuoka → Kumamoto -->
-        <article class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">🚄 Hakata (Fukuoka) → Kumamoto → Hakata</div>
-              <div class="card-meta">Day trip · 25 May 2026</div>
-            </div>
+      <!-- 25 May 2026 — Fukuoka → Kumamoto -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚄 Hakata (Fukuoka) → Kumamoto → Hakata</div>
+            <div class="card-meta">Mon 25 May 2026</div>
           </div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Train type:</span> Shinkansen (Kyushu Shinkansen)</div>
-            <div><span class="meta-label">Travel time:</span> ~45 min each way</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Train type:</span> Shinkansen (Kyushu Shinkansen)</div>
+          <div><span class="meta-label">Travel time:</span> ~45 min each way</div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Tip:</span> Book reserved seats if you prefer certainty</div>
-            <div><span class="meta-label">Operator:</span> JR Kyushu</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Tip:</span> Book reserved seats if you prefer certainty</div>
+          <div><span class="meta-label">Operator:</span> JR Kyushu</div>
+        </div>
 
-          <div class="card-footer">
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.jrkyushu.co.jp/english/'); return false;">JR Kyushu</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/'); return false;">JR West Rail Pass</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://global.jr-central.co.jp/en/'); return false;">Shinkansen Info</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2019.html'); return false;">About Japan Trains</a>
-          </div>
-        </article>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.jrkyushu.co.jp/english/'); return false;">JR Kyushu</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/'); return false;">JR West Rail Pass</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://global.jr-central.co.jp/en/'); return false;">Shinkansen Info</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2019.html'); return false;">About Japan Trains</a>
+        </div>
+      </article>
 
-        <!-- 26 May 2026 — Hakata → Shin-Osaka -->
-        <article class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">🚄 Hakata → Shin-Osaka</div>
-              <div class="card-meta">Travel day · 26 May 2026</div>
-            </div>
+      <!-- 26 May 2026 — Hakata → Shin-Osaka -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚄 Hakata → Shin-Osaka</div>
+            <div class="card-meta">Tue 26 May 2026</div>
           </div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Train:</span> Nozomi 28 (Green Car — 2 passengers)</div>
-            <div><span class="meta-label">Line:</span> Sanyo Shinkansen</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Train:</span> Nozomi 28 (Green Car — 2 passengers)</div>
+          <div><span class="meta-label">Line:</span> Sanyo Shinkansen</div>
+        </div>
 
-          <div class="meta-row">
-            <div><span class="meta-label">Depart:</span> 12:15 PM</div>
-            <div><span class="meta-label">Arrive:</span> 2:43 PM</div>
-            <div><span class="meta-label">Duration:</span> 2 h 28 m</div>
-          </div>
+        <div class="meta-row">
+          <div><span class="meta-label">Depart:</span> 12:15 PM</div>
+          <div><span class="meta-label">Arrive:</span> 2:43 PM</div>
+          <div><span class="meta-label">Duration:</span> 2 h 28 m</div>
+        </div>
 
-          <div class="card-footer">
-            <a class="link-pill" href="#" onclick="handleExternal('https://global.jr-central.co.jp/en/'); return false;">JR Central</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/sanyo_sanin/'); return false;">JR West (Sanyo Area Pass)</a>
-            <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2019.html'); return false;">About Japan Trains</a>
-          </div>
-        </article>
-      </details>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="handleExternal('https://global.jr-central.co.jp/en/'); return false;">JR Central</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/sanyo_sanin/'); return false;">JR West (Sanyo Area Pass)</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.japan-guide.com/e/e2019.html'); return false;">About Japan Trains</a>
+        </div>
+      </article>
     </section>
 
     <footer>

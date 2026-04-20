@@ -85,7 +85,11 @@ body {
 }
 
 .card-header {
-  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
 .card-title {
@@ -95,12 +99,8 @@ body {
 
 .card-meta {
   font-size: 13px;
-  color: var(--text-soft);
-  margin-top: 2px;
-}
-
-.card-meta::before {
-  content: "";
+  color: #93c5fd;
+  font-weight: 600;
 }
 
 .meta-row {
@@ -112,7 +112,6 @@ body {
   margin-top: 8px;
 }
 
-/* ADD THIS BLOCK */
 .meta-label {
   font-weight: 500;
   color: #d1d5db;
@@ -125,7 +124,6 @@ body {
     gap: 6px;
   }
 
-  /* MOBILE FIX: make footer pills wrap nicely when there are 4 */
   .card-footer {
     flex-wrap: wrap;
     gap: 6px;
@@ -155,6 +153,7 @@ body {
   white-space: nowrap;
   flex: 0 0 auto;
 }
+
 /* ===== Footer (aligned with Activities & Accommodation) ===== */
 
 footer {
@@ -165,7 +164,7 @@ footer {
 }
 
 footer a {
-  color: #4f8cff; /* match Activities */
+  color: #4f8cff;
   text-decoration: none;
 }
 
@@ -246,8 +245,10 @@ footer a {
   <!-- Kansai Arrival -->
   <article class="card">
     <div class="card-header">
-      <div class="card-title">🚌 Kansai Airport (KIX) → Osaka City (Namba / OCAT)</div>
-      <div class="card-meta">Arrival day · 14 May 2026</div>
+      <div>
+        <div class="card-title">🚌 Kansai Airport (KIX) → Osaka City (Namba / OCAT)</div>
+        <div class="card-meta">Thu 14 May 2026</div>
+      </div>
     </div>
 
     <div class="meta-row">
@@ -264,7 +265,6 @@ footer a {
     <div class="meta-row">
       <div>
         <span class="meta-label">9:05 PM → OCAT</span>
-        
       </div>
       <div><span class="meta-label">9:20 PM → OCAT</span> (1st Backup)</div>
       <div><span class="meta-label">9:35 PM → OCAT</span> (2nd Backup)</div>
@@ -277,11 +277,13 @@ footer a {
     </div>
   </article>
 
- <!-- Osaka Itami (ITM) Outbound -->
+  <!-- Osaka Itami (ITM) Outbound -->
   <article class="card">
     <div class="card-header">
-      <div class="card-title">🚌 Osaka (Namba / OCAT) → Itami Airport (ITM)</div>
-      <div class="card-meta">Travel day · 17 May 2026</div>
+      <div>
+        <div class="card-title">🚌 Osaka (Namba / OCAT) → Itami Airport (ITM)</div>
+        <div class="card-meta">Sun 17 May 2026</div>
+      </div>
     </div>
 
     <div class="meta-row">
@@ -299,7 +301,6 @@ footer a {
     <div class="meta-row">
       <div>
         <span class="meta-label">12:30 PM → ITM North Terminal</span>
-        
       </div>
       <div><span class="meta-label">12:50 PM → ITM North Terminal</span> (Backup)</div>
     </div>
@@ -314,16 +315,18 @@ footer a {
   <!-- Naha Arrival -->
   <article class="card">
     <div class="card-header">
-      <div class="card-title">🚌 Naha Airport → Hotel Nikko Alivila</div>
-      <div class="card-meta">Travel day · 17 May 2026</div>
+      <div>
+        <div class="card-title">🚌 Naha Airport → Hotel Nikko Alivila</div>
+        <div class="card-meta">Sun 17 May 2026</div>
+      </div>
     </div>
-    
+
     <div class="meta-row">
       <div><span class="meta-label">Flight arrival:</span> 4:55 PM (JAL 2087)</div>
       <div><span class="meta-label">Clear by:</span> 5:25 PM PM</div>
     </div>
 
-<div class="meta-row">
+    <div class="meta-row">
       <div><span class="meta-label">Destination:</span> Hotel Nikko Alivila</div>
       <div><span class="meta-label">Travel time:</span> 90 minutes</div>
       <div><span class="meta-label">Fare:</span> ¥1,600</div>
@@ -332,7 +335,6 @@ footer a {
     <div class="meta-row">
       <div>
         <span class="meta-label">5:40 PM → Bus 49</span>
-        
       </div>
       <div><span class="meta-label">If bus missed, take taxi → Hotel Nikko Alivila</span> (Backup)</div>
       <div><span class="meta-label">Travel time:</span> 70 minutes</div>
@@ -350,16 +352,18 @@ footer a {
   <!-- Naha Return -->
   <article class="card">
     <div class="card-header">
-      <div class="card-title">🚌 Hotel Nikko Alivila → Naha Airport</div>
-      <div class="card-meta">Travel day · 22 May 2026</div>
+      <div>
+        <div class="card-title">🚌 Hotel Nikko Alivila → Naha Airport</div>
+        <div class="card-meta">Fri 22 May 2026</div>
+      </div>
     </div>
-    
+
     <div class="meta-row">
       <div><span class="meta-label">Flight departure:</span> 1:35 PM (NU 054)</div>
       <div><span class="meta-label">Arrive by:</span> 11:35 AM</div>
     </div>
 
-<div class="meta-row">
+    <div class="meta-row">
       <div><span class="meta-label">Destination:</span> Naha Airport</div>
       <div><span class="meta-label">Travel time:</span> 90 minutes</div>
       <div><span class="meta-label">Fare:</span> ¥1,600</div>
@@ -368,7 +372,6 @@ footer a {
     <div class="meta-row">
       <div>
         <span class="meta-label">8:50 AM → Bus 142</span>
-        
       </div>
       <div><span class="meta-label">If bus missed, take taxi → Naha Airport</span> (Backup)</div>
       <div><span class="meta-label">Travel time:</span> 70 minutes</div>
@@ -386,8 +389,10 @@ footer a {
   <!-- Kansai Return -->
   <article class="card">
     <div class="card-header">
-      <div class="card-title">🚌 Osaka (Namba / OCAT) → Kansai Airport (KIX)</div>
-      <div class="card-meta">Return day · 29 May 2026</div>
+      <div>
+        <div class="card-title">🚌 Osaka (Namba / OCAT) → Kansai Airport (KIX)</div>
+        <div class="card-meta">Fri 29 May 2026</div>
+      </div>
     </div>
 
     <div class="meta-row">
@@ -404,7 +409,6 @@ footer a {
     <div class="meta-row">
       <div>
         <span class="meta-label">5:18 PM → KIX T1</span>
-        
       </div>
       <div><span class="meta-label">5:33 PM → KIX T1</span> (1st Backup)</div>
       <div><span class="meta-label">5:48 PM → KIX T1</span> (2nd Backup)</div>
@@ -416,7 +420,6 @@ footer a {
       <a class="link-pill" href="#" onclick="handleExternal('https://www.klook.com/en-AU/activity/18203-kansai-airport-one-way-transfer-osaka/'); return false;">Bookings</a>
     </div>
   </article>
-
 
 <footer>
   For air travel, see <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.

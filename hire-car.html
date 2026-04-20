@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hire Car – JP GJN-2026-May</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-elevated: #0b1020;
+      --bg-card: #0f1629;
+      --bg-optional: #0b1122;
+      --border-soft: #1f2940;
+      --accent: #4f8cff;
+      --accent-soft: rgba(79, 140, 255, 0.15);
+      --text-main: #f5f7ff;
+      --text-soft: #9ca3af;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      max-width: 920px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 36px 18px 56px;
+    }
+
+    .page-header {
+      text-align: center;
+    }
+
+    .page-header .toolbar {
+      justify-content: center;
+    }
+
+    .breadcrumb {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--text-soft);
+      text-transform: uppercase;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 26px;
+      align-items: center;
+    }
+
+    .pill-button {
+      border-radius: var(--radius-pill);
+      border: 1px solid #374151;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-size: 13px;
+      padding: 6px 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section {
+      margin-top: 42px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .card {
+      background: transparent;
+      border-radius: var(--radius-lg);
+      padding: 10px 20px 14px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      margin-top: 14px;
+    }
+
+    .label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #93c5fd;
+    }
+
+    .subtext {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-top: 4px;
+    }
+
+    .card-footer {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .link-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid #4b5563;
+      padding: 4px 10px;
+      font-size: 11px;
+      text-decoration: none;
+      color: #e5e7eb;
+      background: #020617;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    details summary {
+      list-style: none;
+      cursor: pointer;
+      position: relative;
+      padding-left: 22px;
+    }
+
+    details summary::before {
+      content: "▶";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-size: 13px;
+      color: var(--text-soft);
+      transition: transform 0.2s ease;
+    }
+
+    details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    footer {
+      margin-top: 56px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .desktop-only {
+      display: inline;
+    }
+
+    @media (max-width: 640px) {
+      .desktop-only {
+        display: none;
+      }
+
+      .subtitle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        text-align: center;
+      }
+
+      .card-footer {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .card-footer .link-pill {
+        flex: 1 1 calc(50% - 6px);
+        text-align: center;
+      }
+    }
+
+    .offline-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .offline-box {
+      max-width: 420px;
+      margin: 20px;
+      padding: 20px 22px;
+      background: linear-gradient(
+        145deg,
+        var(--bg-card, #11141f),
+        var(--bg-soft, #181b26)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+      text-align: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .offline-box h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .offline-box p {
+      margin: 0 0 16px;
+      font-size: 14px;
+      color: #b5bed5;
+      line-height: 1.4;
+    }
+
+    .offline-box button {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(78, 168, 255, 0.15);
+      color: #4ea8ff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+<main class="page">
+
+  <div class="page-header">
+    <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
+    <h1 class="title">Hire Car</h1>
+    <p class="subtitle">
+      <span>Okinawa hire car placeholders for Japan trip</span>
+      <span>(14 May 2026 → 29 May 2026)</span>
+    </p>
+
+    <div class="toolbar">
+      <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
+        ← Back to Trip Home
+      </a>
+    </div>
+  </div>
+
+  <section class="section">
+    <details open>
+      <summary class="section-title">🚗 Okinawa Hire Car — Placeholder Set</summary>
+
+      <article class="card">
+        <div class="label">Booking</div>
+        <div class="subtext">Placeholder section for Okinawa reservation records, supplier details and booking confirmation links.</div>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="return false;">Reservation</a>
+          <a class="link-pill" href="#" onclick="return false;">Confirmation</a>
+          <a class="link-pill" href="#" onclick="return false;">Supplier</a>
+          <a class="link-pill" href="#" onclick="return false;">Amend Booking</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="label">Driver Requirements</div>
+        <div class="subtext">Placeholder section for licence checks, International Driving Permit, passport support and payment requirements.</div>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="return false;">Licence</a>
+          <a class="link-pill" href="#" onclick="return false;">IDP</a>
+          <a class="link-pill" href="#" onclick="return false;">Passport</a>
+          <a class="link-pill" href="#" onclick="return false;">Credit Card</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="label">Pick-up</div>
+        <div class="subtext">Placeholder section for Okinawa pick-up logistics, counter details, shuttle arrangements and collection hours.</div>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="return false;">Pick-up Location</a>
+          <a class="link-pill" href="#" onclick="return false;">Counter</a>
+          <a class="link-pill" href="#" onclick="return false;">Shuttle</a>
+          <a class="link-pill" href="#" onclick="return false;">Hours</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="label">Vehicle Use</div>
+        <div class="subtext">Placeholder section for ETC toll card notes, fuel type, parking guidance and in-car navigation references.</div>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="return false;">ETC Toll Card</a>
+          <a class="link-pill" href="#" onclick="return false;">Fuel Type</a>
+          <a class="link-pill" href="#" onclick="return false;">Parking</a>
+          <a class="link-pill" href="#" onclick="return false;">Navigation</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="label">Return</div>
+        <div class="subtext">Placeholder section for return location, refill requirements, vehicle check process and final receipt records.</div>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="return false;">Return Location</a>
+          <a class="link-pill" href="#" onclick="return false;">Fuel Refill</a>
+          <a class="link-pill" href="#" onclick="return false;">Damage Check</a>
+          <a class="link-pill" href="#" onclick="return false;">Receipt</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="label">Emergency</div>
+        <div class="subtext">Placeholder section for roadside assistance, accident steps, insurance references and urgent contact details.</div>
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="return false;">Roadside Assist</a>
+          <a class="link-pill" href="#" onclick="return false;">Accident Steps</a>
+          <a class="link-pill" href="#" onclick="return false;">Insurance</a>
+          <a class="link-pill" href="#" onclick="return false;">Contact Number</a>
+        </div>
+      </article>
+    </details>
+  </section>
+
+  <footer>
+    For airport references, see <a href="https://jp-gjn-2026-may.trekworks.org/airports.html">Airports</a>.
+    For flight details, see
+    <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.
+    <br class="desktop-only">
+    For mobile connectivity, see
+    <a href="https://jp-gjn-2026-may.trekworks.org/data-and-esim.html">Data and eSIM</a>.
+    For policy records, see
+    <a href="https://jp-gjn-2026-may.trekworks.org/insurance.html">Insurance</a>.
+  </footer>
+
+</main>
+
+<div class="offline-overlay" id="offlineOverlay">
+  <div class="offline-box">
+    <h2>You’re offline</h2>
+    <p>
+      This content requires an internet connection.<br>
+      You can continue using other parts of the app while offline.
+    </p>
+    <button onclick="closeOffline()">OK</button>
+  </div>
+</div>
+
+<script>
+function handleExternal(url) {
+  verifyConnectivity()
+    .then(function () {
+      window.location.href = 'external.html?url=' + encodeURIComponent(url);
+    })
+    .catch(showOffline);
+}
+
+function verifyConnectivity() {
+  return new Promise(function (resolve, reject) {
+    const controller = new AbortController();
+    const timeout = setTimeout(function () {
+      controller.abort();
+      reject();
+    }, 800);
+
+    fetch('external.html', {
+      cache: 'no-store',
+      signal: controller.signal
+    })
+      .then(function () {
+        clearTimeout(timeout);
+        resolve();
+      })
+      .catch(function () {
+        clearTimeout(timeout);
+        reject();
+      });
+  });
+}
+
+function showOffline() {
+  document.getElementById('offlineOverlay').style.display = 'flex';
+}
+
+function closeOffline() {
+  document.getElementById('offlineOverlay').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
