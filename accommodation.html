@@ -4,11 +4,16 @@
   <meta charset="UTF-8" />
   <title>Accommodation – JP GJN-2026-May</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
+    /* ======================================================
+       Root variables
+       ====================================================== */
     :root {
       --bg: #050816;
       --card: #0b1020;
       --card-soft: #11162a;
+      --bg-card: #0f1629;
       --accent: #4f46e5;
       --accent-soft: rgba(79, 70, 229, 0.12);
       --badge: #1f2937;
@@ -21,7 +26,12 @@
       --radius-xl: 18px;
       --radius-pill: 999px;
     }
+
+    /* ======================================================
+       Global reset & base
+       ====================================================== */
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -32,6 +42,7 @@
       display: flex;
       justify-content: center;
     }
+
     .page {
       width: 100%;
       max-width: 1100px;
@@ -39,6 +50,9 @@
       padding: 32px 16px 40px;
     }
 
+    /* ======================================================
+       Header
+       ====================================================== */
     .page-header { text-align: center; }
     .page-header .toolbar { justify-content: center; }
 
@@ -49,7 +63,13 @@
       color: var(--text-soft);
       margin-bottom: 6px;
     }
-    .title { font-size: 30px; font-weight: 700; margin: 0; }
+
+    .title {
+      font-size: 30px;
+      font-weight: 700;
+      margin: 0;
+    }
+
     .subtitle {
       margin-top: 4px;
       font-size: 12px;
@@ -64,6 +84,7 @@
       margin: 18px 0 26px;
       align-items: center;
     }
+
     .pill-button {
       border-radius: var(--radius-pill);
       border: 1px solid #374151;
@@ -77,12 +98,16 @@
       gap: 6px;
     }
 
+    /* ======================================================
+       Section headers
+       ====================================================== */
     .section-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 12px 0 10px;
     }
+
     .section-header-left {
       display: flex;
       align-items: center;
@@ -90,22 +115,32 @@
       font-size: 17px;
       font-weight: 600;
     }
-    .section-header-left .emoji { font-size: 18px; }
-    .section-header-meta { font-size: 12px; color: var(--text-soft); }
 
+    .section-header-left .emoji { font-size: 18px; }
+
+    .section-header-meta {
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    /* ======================================================
+       Cards & layout
+       ====================================================== */
     .cards {
       margin-top: 8px;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
+
     .card {
-      background: background: transparent;
+      background: transparent;
       border-radius: var(--radius-xl);
       border: 1px solid var(--border-subtle);
       padding: 6px 18px 6px;
       box-shadow: var(--shadow-soft);
     }
+
     .card-header {
       display: flex;
       justify-content: space-between;
@@ -113,13 +148,16 @@
       gap: 8px;
       margin-bottom: 6px;
     }
+
     .card-title { font-size: 15px; font-weight: 600; }
+
     .card-city {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--text-soft);
     }
+
     .badge-nights {
       background: transparent;
       padding: 0;
@@ -127,6 +165,10 @@
       font-size: 13px;
       color: var(--text-soft);
     }
+
+    /* ======================================================
+       Meta rows (card content)
+       ====================================================== */
     .meta-row {
       display: flex;
       flex-wrap: wrap;
@@ -135,24 +177,35 @@
       color: var(--text-soft);
       margin-top: 6px;
     }
+
     .meta-label {
       font-weight: 500;
       color: #d1d5db;
       margin-right: 4px;
     }
-    .detail-row { margin-top: 4px; font-size: 13px; }
+
+    .detail-row {
+      margin-top: 4px;
+      font-size: 13px;
+    }
+
     .detail-row a {
       color: #93c5fd;
       text-decoration: none;
     }
+
     .detail-row a:hover { text-decoration: underline; }
 
+    /* ======================================================
+       Card footer (action pills)
+       ====================================================== */
     .card-footer {
       margin-top: 10px;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
+
     .link-pill {
       border-radius: var(--radius-pill);
       border: 1px solid #4b5563;
@@ -165,7 +218,9 @@
       flex: 0 0 auto;
     }
 
-    /* ===== In-page Map Modal ===== */
+    /* ======================================================
+       In-page map modal
+       ====================================================== */
     .map-modal {
       position: fixed;
       inset: 0;
@@ -208,7 +263,41 @@
       background: #020617;
     }
 
-    /* OFFLINE OVERLAY — REBASED VERBATIM TO attractions-guide.html */
+    /* ======================================================
+       Footer nav
+       ====================================================== */
+    .footer-nav {
+      margin-top: 28px;
+      padding-top: 0;
+      border-top: none;
+      font-size: 12px;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    .footer-line {
+      max-width: 980px;
+      margin: 0 auto;
+      line-height: 1.45;
+      color: var(--text-soft);
+    }
+
+    .footer-line a {
+      color: #4f8cff;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .footer-line a:hover {
+      text-decoration: underline;
+    }
+
+    .desktop-only { display: inline; }
+    .mobile-only { display: none; }
+
+    /* ======================================================
+       Offline overlay
+       ====================================================== */
     .offline-overlay {
       position: fixed;
       inset: 0;
@@ -218,6 +307,7 @@
       justify-content: center;
       z-index: 9999;
     }
+
     .offline-box {
       max-width: 420px;
       margin: 20px;
@@ -229,16 +319,19 @@
       text-align: center;
       font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     }
+
     .offline-box h2 {
       margin: 0 0 10px;
       font-size: 20px;
     }
+
     .offline-box p {
       margin: 0 0 16px;
       font-size: 14px;
       color: #b5bed5;
       line-height: 1.4;
     }
+
     .offline-box button {
       padding: 8px 16px;
       border-radius: 999px;
@@ -249,29 +342,14 @@
       cursor: pointer;
     }
 
-    footer {
-      margin-top: 56px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--text-soft);
-    }
-
-    footer a {
-      color: #4f8cff;
-      text-decoration: none;
-    }
-
-    .desktop-only {
-      display: inline;
-    }
-
+    /* ======================================================
+       Mobile overrides
+       ====================================================== */
     @media (max-width: 640px) {
-      .desktop-only {
-        display: none;
+      .card {
+        background: var(--bg-card);
       }
-    }
 
-    @media (max-width: 640px) {
       .subtitle {
         display: flex;
         flex-direction: column;
@@ -302,7 +380,15 @@
         flex: 1 1 calc(50% - 6px);
         text-align: center;
       }
+
+      .footer-line {
+        line-height: 1.8;
+      }
+
+      .desktop-only { display: none; }
+      .mobile-only { display: inline; }
     }
+
   </style>
 </head>
 
@@ -357,6 +443,7 @@
         <div class="card-footer">
           <a class="link-pill" href="#" onclick="handleExternal('https://www.candeohotels.com/en/osaka-namba/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Candeo%20Hotels%20Osaka%20Namba%202-2-5%20Higashishinsaibashi%20Chuo%20Osaka%20542-0083%20Japan&output=embed'); return false;">View Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.expedia.com.au/trips/egti-COM-68L-QOE8/details/YjMyZjM0ZjItMzZmMy01YjJiLTlkZjMtNGE5ZGYxNTZhNzE3OzgwN2IwNWRhLTZlYTItNDFlMS05YmIxLWExMGY1YzM0N2QyOV8wO2VnOnByb3BlcnR5OjQ2YjEyMTY5NTNhMDE3NmVlY2U0Nzk3ZTc1N2JhZTIz'); return false;">Reservation</a>
         </div>
       </article>
     </div>
@@ -396,6 +483,7 @@
         <div class="card-footer">
           <a class="link-pill" href="#" onclick="handleExternal('https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Hotel%20Nikko%20Alivila%20600%20Gima%20Yomitan%20Okinawa%20904-0393%20Japan&output=embed'); return false;">View Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.agoda.com/en-au/account/editbooking.html?bookingId=Y4rqw8yuAbSFQENb8gVKKg%3D%3D&landFrom=TripDetail&sort=BookingStartDate&state=Upcoming&products=&includeArchivedBookings=&page=1&ds=dka3JA3TXrs6Y40J'); return false;">Reservation</a>
         </div>
       </article>
     </div>
@@ -435,6 +523,7 @@
         <div class="card-footer">
           <a class="link-pill" href="#" onclick="handleExternal('https://www.hotelmonterey.co.jp/en/fukuoka/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Hotel%20Monterey%20Fukuoka%203-4-13%20Watanabe-dori%20Chuo-ku%20Fukuoka%20810-0004%20Japan&output=embed'); return false;">View Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://secure.booking.com/confirmation.en-gb.html?label=metagha-link-LUAU-hotel-488157_dev-desktop_los-5_bw-216_dow-Sunday_defdate-0_room-0_gstadt-2_rateid-au_aud-0_gacid-21415138027_mcid-50_bc-AAdy3Q_ppa-1_clrid-0_ad-1_gstkid-0_checkin-20260517_&aid=2419679&sid=ce65d9979a4dbd0bee9f8e7003a70f2b&source=confirmation_error_validation&bn=5067218345'); return false;">Reservation</a>
         </div>
       </article>
     </div>
@@ -474,20 +563,34 @@
         <div class="card-footer">
           <a class="link-pill" href="#" onclick="handleExternal('https://en.miyakohotels.ne.jp/hommachi/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Miyako%20City%20Osaka%20Hommachi%201-8-7%20Kitakyuhoujimachi%20Chuo-ku%20Osaka%20541-0057%20Japan&output=embed'); return false;">View Map</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.expedia.com.au/trips/egti-QAU-C3Q-7BVJ/details/Y2Y4OGIzNGMtODFmNy01ZTQ4LWJiZjItMjM4NTQyZmY5M2Q4OzNmMTU2YjRiLTBlYzgtNGFmMS1iNDAyLTZhZDkxODE5ZTE1Zl8wO2VnOnByb3BlcnR5Ojg3MjEzMTg0ZDQwNTE2NjcxZDg2NjJkZTE3YWZjYTI5'); return false;">Reservation</a>
         </div>
       </article>
     </div>
   </section>
 
-  <footer>
-    For air travel, see <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.
-    For getting to and from the airport, use the
-    <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>.
-    <br class="desktop-only">
-    For Shinkansen travel between Osaka and Fukuoka, see the
-    <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Train Guide</a>.
-    For things to do, see
-    <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>.
+  <footer class="footer-nav">
+    <div class="footer-line desktop-only">
+      For trip activities, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>.
+      For airport transport, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>.
+      For shopping options, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>.
+      For rail travel, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>.
+    </div>
+
+    <div class="footer-line mobile-only">
+      For trip activities, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/activities.html">Activities</a>.
+      For airport transport, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>.
+      For shopping options, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/shopping.html">Shopping</a>.
+      For rail travel, see
+      <a href="https://jp-gjn-2026-may.trekworks.org/trains.html">Trains</a>.
+    </div>
   </footer>
 
 </main>
