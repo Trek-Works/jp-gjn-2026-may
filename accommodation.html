@@ -802,8 +802,12 @@
 
 <script>
 function openMapModal(url) {
-  document.getElementById('mapFrame').src = url;
-  document.getElementById('mapModal').style.display = 'flex';
+  verifyConnectivity()
+    .then(function () {
+      document.getElementById('mapFrame').src = url;
+      document.getElementById('mapModal').style.display = 'flex';
+    })
+    .catch(showOffline);
 }
 
 function closeMapModal() {
