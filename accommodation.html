@@ -266,84 +266,129 @@
 
 
     /* ======================================================
-       In-page reservation modal
+       In-page reservation details hub modal
        ====================================================== */
     .reservation-modal {
       position: fixed;
       inset: 0;
       background: rgba(5, 6, 11, 0.88);
       display: none;
-      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
       z-index: 9998;
     }
 
+    .reservation-panel {
+      width: min(560px, 100%);
+      background: linear-gradient(145deg, #0b1020, #111827);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
     .reservation-modal-header {
-      min-height: 52px;
       background: #0b1020;
       border-bottom: 1px solid rgba(255,255,255,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 8px 14px;
+      padding: 16px 18px 14px;
       color: #f9fafb;
-      font-size: 14px;
+    }
+
+    .reservation-modal-kicker {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 4px;
     }
 
     .reservation-modal-title {
-      font-weight: 600;
+      font-size: 18px;
+      font-weight: 700;
       line-height: 1.25;
+    }
+
+    .reservation-modal-body {
+      padding: 16px 18px 18px;
+    }
+
+    .reservation-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .reservation-detail {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      background: rgba(2,6,23,0.55);
+      padding: 10px 12px;
+    }
+
+    .reservation-detail.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .reservation-detail-label {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-bottom: 3px;
+    }
+
+    .reservation-detail-value {
+      font-size: 14px;
+      color: #f9fafb;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
     }
 
     .reservation-modal-actions {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       gap: 8px;
-      flex: 0 0 auto;
+      margin-top: 6px;
     }
 
-    .reservation-modal-external,
+    .reservation-action,
     .reservation-modal-close {
-      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: var(--radius-pill);
+      border: 1px solid #4b5563;
       background: #020617;
-      color: #f9fafb;
-      border-radius: 999px;
-      padding: 6px 12px;
+      color: #e5e7eb;
+      padding: 8px 13px;
       font-size: 13px;
       cursor: pointer;
       text-decoration: none;
-      white-space: nowrap;
+      text-align: center;
+      flex: 1 1 auto;
     }
 
-    .reservation-modal-external {
+    .reservation-action.primary {
       color: #93c5fd;
-    }
-
-    .reservation-modal iframe {
-      width: 100%;
-      height: calc(100vh - 52px);
-      border: 0;
-      background: #020617;
+      border-color: rgba(147,197,253,0.45);
+      background: rgba(37,99,235,0.12);
     }
 
     @media (max-width: 640px) {
-      .reservation-modal-header {
-        align-items: flex-start;
-        flex-direction: column;
+      .reservation-modal {
+        align-items: flex-end;
+        padding: 10px;
       }
 
-      .reservation-modal-actions {
-        width: 100%;
+      .reservation-panel {
+        border-radius: 20px 20px 14px 14px;
       }
 
-      .reservation-modal-external,
+      .reservation-detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reservation-action,
       .reservation-modal-close {
-        flex: 1 1 auto;
-        text-align: center;
-      }
-
-      .reservation-modal iframe {
-        height: calc(100vh - 94px);
+        flex-basis: 100%;
+        padding: 10px 13px;
       }
     }
 
@@ -527,7 +572,7 @@
         <div class="card-footer">
           <a class="link-pill" href="#" onclick="handleExternal('https://www.candeohotels.com/en/osaka-namba/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Candeo%20Hotels%20Osaka%20Namba%202-2-5%20Higashishinsaibashi%20Chuo%20Osaka%20542-0083%20Japan&output=embed'); return false;">View Map</a>
-          <a class="link-pill" href="#" onclick="openReservationModal('Candeo Hotels Osaka Namba', 'https://www.expedia.com.au/trips/egti-COM-68L-QOE8/details/YjMyZjM0ZjItMzZmMy01YjJiLTlkZjMtNGE5ZGYxNTZhNzE3OzgwN2IwNWRhLTZlYTItNDFlMS05YmIxLWExMGY1YzM0N2QyOV8wO2VnOnByb3BlcnR5OjQ2YjEyMTY5NTNhMDE3NmVlY2U0Nzk3ZTc1N2JhZTIz'); return false;">Reservation</a>
+          <a class="link-pill" href="#" onclick="openReservationHub('Candeo Hotels Osaka Namba','Expedia','COM-68L-QOE8','14 May 2026 → 17 May 2026','3:00 PM','11:00 AM','https://www.expedia.com.au/trips/egti-COM-68L-QOE8/details/YjMyZjM0ZjItMzZmMy01YjJiLTlkZjMtNGE5ZGYxNTZhNzE3OzgwN2IwNWRhLTZlYTItNDFlMS05YmIxLWExMGY1YzM0N2QyOV8wO2VnOnByb3BlcnR5OjQ2YjEyMTY5NTNhMDE3NmVlY2U0Nzk3ZTc1N2JhZTIz','https://www.candeohotels.com/en/osaka-namba/'); return false;">Reservation</a>
         </div>
       </article>
     </div>
@@ -567,7 +612,7 @@
         <div class="card-footer">
           <a class="link-pill" href="#" onclick="handleExternal('https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Hotel%20Nikko%20Alivila%20600%20Gima%20Yomitan%20Okinawa%20904-0393%20Japan&output=embed'); return false;">View Map</a>
-          <a class="link-pill" href="#" onclick="openReservationModal('Hotel Nikko Alivila', 'https://www.agoda.com/en-au/account/editbooking.html?bookingId=Y4rqw8yuAbSFQENb8gVKKg%3D%3D&landFrom=TripDetail&sort=BookingStartDate&state=Upcoming&products=&includeArchivedBookings=&page=1&ds=dka3JA3TXrs6Y40J'); return false;">Reservation</a>
+          <a class="link-pill" href="#" onclick="openReservationHub('Hotel Nikko Alivila','Agoda','Y4rqw8yuAbSFQENb8gVKKg==','17 May 2026 → 22 May 2026','3:00 PM','11:00 AM','https://www.agoda.com/en-au/account/editbooking.html?bookingId=Y4rqw8yuAbSFQENb8gVKKg%3D%3D&landFrom=TripDetail&sort=BookingStartDate&state=Upcoming&products=&includeArchivedBookings=&page=1&ds=dka3JA3TXrs6Y40J','https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/'); return false;">Reservation</a>
         </div>
       </article>
     </div>
@@ -607,7 +652,7 @@
         <div class="card-footer">
           <a class="link-pill" href="#" onclick="handleExternal('https://www.hotelmonterey.co.jp/en/fukuoka/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Hotel%20Monterey%20Fukuoka%203-4-13%20Watanabe-dori%20Chuo-ku%20Fukuoka%20810-0004%20Japan&output=embed'); return false;">View Map</a>
-          <a class="link-pill" href="#" onclick="openReservationModal('Hotel Monterey Fukuoka', 'https://secure.booking.com/confirmation.en-gb.html?label=metagha-link-LUAU-hotel-488157_dev-desktop_los-5_bw-216_dow-Sunday_defdate-0_room-0_gstadt-2_rateid-au_aud-0_gacid-21415138027_mcid-50_bc-AAdy3Q_ppa-1_clrid-0_ad-1_gstkid-0_checkin-20260517_&aid=2419679&sid=ce65d9979a4dbd0bee9f8e7003a70f2b&source=confirmation_error_validation&bn=5067218345'); return false;">Reservation</a>
+          <a class="link-pill" href="#" onclick="openReservationHub('Hotel Monterey Fukuoka','Booking.com','5067218345','22 May 2026 → 27 May 2026','3:00 PM','11:00 AM','https://secure.booking.com/confirmation.en-gb.html?label=metagha-link-LUAU-hotel-488157_dev-desktop_los-5_bw-216_dow-Sunday_defdate-0_room-0_gstadt-2_rateid-au_aud-0_gacid-21415138027_mcid-50_bc-AAdy3Q_ppa-1_clrid-0_ad-1_gstkid-0_checkin-20260517_&aid=2419679&sid=ce65d9979a4dbd0bee9f8e7003a70f2b&source=confirmation_error_validation&bn=5067218345','https://www.hotelmonterey.co.jp/en/fukuoka/'); return false;">Reservation</a>
         </div>
       </article>
     </div>
@@ -647,7 +692,7 @@
         <div class="card-footer">
           <a class="link-pill" href="#" onclick="handleExternal('https://en.miyakohotels.ne.jp/hommachi/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Miyako%20City%20Osaka%20Hommachi%201-8-7%20Kitakyuhoujimachi%20Chuo-ku%20Osaka%20541-0057%20Japan&output=embed'); return false;">View Map</a>
-          <a class="link-pill" href="#" onclick="openReservationModal('Miyako City Osaka Hommachi', 'https://www.expedia.com.au/trips/egti-QAU-C3Q-7BVJ/details/Y2Y4OGIzNGMtODFmNy01ZTQ4LWJiZjItMjM4NTQyZmY5M2Q4OzNmMTU2YjRiLTBlYzgtNGFmMS1iNDAyLTZhZDkxODE5ZTE1Zl8wO2VnOnByb3BlcnR5Ojg3MjEzMTg0ZDQwNTE2NjcxZDg2NjJkZTE3YWZjYTI5'); return false;">Reservation</a>
+          <a class="link-pill" href="#" onclick="openReservationHub('Miyako City Osaka Hommachi','Expedia','QAU-C3Q-7BVJ','27 May 2026 → 29 May 2026','3:00 PM','11:00 AM','https://www.expedia.com.au/trips/egti-QAU-C3Q-7BVJ/details/Y2Y4OGIzNGMtODFmNy01ZTQ4LWJiZjItMjM4NTQyZmY5M2Q4OzNmMTU2YjRiLTBlYzgtNGFmMS1iNDAyLTZhZDkxODE5ZTE1Zl8wO2VnOnByb3BlcnR5Ojg3MjEzMTg0ZDQwNTE2NjcxZDg2NjJkZTE3YWZjYTI5','https://en.miyakohotels.ne.jp/hommachi/'); return false;">Reservation</a>
         </div>
       </article>
     </div>
@@ -690,14 +735,47 @@
 
 
 <div class="reservation-modal" id="reservationModal">
-  <div class="reservation-modal-header">
-    <div class="reservation-modal-title" id="reservationModalTitle">Reservation</div>
-    <div class="reservation-modal-actions">
-      <a class="reservation-modal-external" id="reservationExternalLink" href="#" target="_blank" rel="noopener">Open externally</a>
-      <button class="reservation-modal-close" onclick="closeReservationModal()">X Close</button>
+  <div class="reservation-panel" role="dialog" aria-modal="true" aria-labelledby="reservationModalTitle">
+    <div class="reservation-modal-header">
+      <div class="reservation-modal-kicker">Reservation details</div>
+      <div class="reservation-modal-title" id="reservationModalTitle">Reservation</div>
+    </div>
+
+    <div class="reservation-modal-body">
+      <div class="reservation-detail-grid">
+        <div class="reservation-detail full-width">
+          <div class="reservation-detail-label">Hotel</div>
+          <div class="reservation-detail-value" id="reservationHotel">—</div>
+        </div>
+        <div class="reservation-detail">
+          <div class="reservation-detail-label">Booking provider</div>
+          <div class="reservation-detail-value" id="reservationProvider">—</div>
+        </div>
+        <div class="reservation-detail">
+          <div class="reservation-detail-label">Confirmation / itinerary</div>
+          <div class="reservation-detail-value" id="reservationNumber">—</div>
+        </div>
+        <div class="reservation-detail full-width">
+          <div class="reservation-detail-label">Stay dates</div>
+          <div class="reservation-detail-value" id="reservationDates">—</div>
+        </div>
+        <div class="reservation-detail">
+          <div class="reservation-detail-label">Check-in</div>
+          <div class="reservation-detail-value" id="reservationCheckIn">—</div>
+        </div>
+        <div class="reservation-detail">
+          <div class="reservation-detail-label">Check-out</div>
+          <div class="reservation-detail-value" id="reservationCheckOut">—</div>
+        </div>
+      </div>
+
+      <div class="reservation-modal-actions">
+        <a class="reservation-action primary" id="reservationExternalLink" href="#" onclick="openReservationExternal(); return false;">Open Reservation</a>
+        <a class="reservation-action" id="reservationHotelLink" href="#" onclick="openHotelExternal(); return false;">Open Hotel Website</a>
+        <button class="reservation-modal-close" onclick="closeReservationHub()">Close</button>
+      </div>
     </div>
   </div>
-  <iframe id="reservationFrame" src="" loading="lazy"></iframe>
 </div>
 
 <div class="offline-overlay" id="offlineOverlay">
@@ -723,20 +801,39 @@ function closeMapModal() {
 }
 
 
-function openReservationModal(title, url) {
-  verifyConnectivity()
-    .then(function () {
-      document.getElementById('reservationModalTitle').textContent = 'Reservation · ' + title;
-      document.getElementById('reservationExternalLink').href = url;
-      document.getElementById('reservationFrame').src = url;
-      document.getElementById('reservationModal').style.display = 'flex';
-    })
-    .catch(showOffline);
+let currentReservationUrl = '';
+let currentHotelUrl = '';
+
+function openReservationHub(hotel, provider, confirmation, dates, checkIn, checkOut, reservationUrl, hotelUrl) {
+  currentReservationUrl = reservationUrl;
+  currentHotelUrl = hotelUrl;
+
+  document.getElementById('reservationModalTitle').textContent = hotel;
+  document.getElementById('reservationHotel').textContent = hotel;
+  document.getElementById('reservationProvider').textContent = provider;
+  document.getElementById('reservationNumber').textContent = confirmation || 'Not recorded';
+  document.getElementById('reservationDates').textContent = dates;
+  document.getElementById('reservationCheckIn').textContent = checkIn;
+  document.getElementById('reservationCheckOut').textContent = checkOut;
+  document.getElementById('reservationExternalLink').href = reservationUrl;
+  document.getElementById('reservationHotelLink').href = hotelUrl;
+  document.getElementById('reservationModal').style.display = 'flex';
 }
 
-function closeReservationModal() {
-  document.getElementById('reservationFrame').src = '';
+function closeReservationHub() {
   document.getElementById('reservationModal').style.display = 'none';
+}
+
+function openReservationExternal() {
+  if (currentReservationUrl) {
+    handleExternal(currentReservationUrl);
+  }
+}
+
+function openHotelExternal() {
+  if (currentHotelUrl) {
+    handleExternal(currentHotelUrl);
+  }
 }
 
 function handleExternal(url) {
