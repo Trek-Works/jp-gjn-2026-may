@@ -281,7 +281,7 @@
       width: min(560px, 100%);
       background: linear-gradient(145deg, #0b1020, #111827);
       border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 20px 20px 14px 14px;
+      border-radius: 22px;
       box-shadow: var(--shadow-soft);
       overflow: hidden;
     }
@@ -291,10 +291,6 @@
       border-bottom: 1px solid rgba(255,255,255,0.12);
       padding: 16px 18px 14px;
       color: #f9fafb;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
     }
 
     .website-modal-kicker {
@@ -355,18 +351,12 @@
       border: 1px solid #4b5563;
       background: #020617;
       color: #e5e7eb;
-      padding: 10px 13px;
+      padding: 8px 13px;
       font-size: 13px;
       cursor: pointer;
       text-decoration: none;
       text-align: center;
-      flex: 1 1 100%;
-    }
-
-    .website-modal-header .website-modal-close {
-      flex: 0 0 auto;
-      padding: 6px 12px;
-      white-space: nowrap;
+      flex: 1 1 auto;
     }
 
     .website-action.primary {
@@ -390,6 +380,58 @@
         flex-basis: 100%;
         padding: 10px 13px;
       }
+    }
+
+
+
+    /* ======================================================
+       In-page hotel website browser wrapper
+       ====================================================== */
+    .website-browser-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.88);
+      display: none;
+      flex-direction: column;
+      z-index: 9998;
+    }
+
+    .website-browser-modal-header {
+      height: 52px;
+      background: #0b1020;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      color: #f9fafb;
+      font-size: 14px;
+    }
+
+    .website-browser-modal-title {
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-right: 12px;
+    }
+
+    .website-browser-modal-close {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: #020617;
+      color: #f9fafb;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .website-browser-modal iframe {
+      width: 100%;
+      height: calc(100vh - 52px);
+      border: 0;
+      background: #020617;
     }
 
     /* ======================================================
@@ -869,11 +911,8 @@
 <div class="website-modal" id="websiteModal">
   <div class="website-panel" role="dialog" aria-modal="true" aria-labelledby="websiteModalTitle">
     <div class="website-modal-header">
-      <div>
-        <div class="website-modal-kicker">Hotel website</div>
-        <div class="website-modal-title" id="websiteModalTitle">Hotel Website</div>
-      </div>
-      <button class="website-modal-close" onclick="closeWebsiteHub()">X Close</button>
+      <div class="website-modal-kicker">Hotel website</div>
+      <div class="website-modal-title" id="websiteModalTitle">Hotel Website</div>
     </div>
 
     <div class="website-modal-body">
@@ -890,9 +929,18 @@
 
       <div class="website-modal-actions">
         <a class="website-action primary" id="websiteExternalLink" href="#" onclick="openWebsiteExternal(); return false;">Open Hotel Website</a>
+        <button class="website-modal-close" onclick="closeWebsiteHub()">Close</button>
       </div>
     </div>
   </div>
+</div>
+
+<div class="website-browser-modal" id="websiteBrowserModal">
+  <div class="website-browser-modal-header">
+    <div class="website-browser-modal-title" id="websiteBrowserTitle">Hotel Website</div>
+    <button class="website-browser-modal-close" onclick="closeWebsiteBrowser()">X Close</button>
+  </div>
+  <iframe id="websiteBrowserFrame" src="" loading="lazy"></iframe>
 </div>
 
 
@@ -985,8 +1033,24 @@ function closeWebsiteHub() {
 
 function openWebsiteExternal() {
   if (currentWebsiteUrl) {
-    handleExternal(currentWebsiteUrl);
+    openWebsiteBrowser(currentWebsiteUrl);
   }
+}
+
+function openWebsiteBrowser(url) {
+  verifyConnectivity()
+    .then(function () {
+      document.getElementById('websiteBrowserTitle').textContent = document.getElementById('websiteModalTitle').textContent || 'Hotel Website';
+      document.getElementById('websiteBrowserFrame').src = 'external.html?url=' + encodeURIComponent(url);
+      document.getElementById('websiteModal').style.display = 'none';
+      document.getElementById('websiteBrowserModal').style.display = 'flex';
+    })
+    .catch(showOffline);
+}
+
+function closeWebsiteBrowser() {
+  document.getElementById('websiteBrowserFrame').src = '';
+  document.getElementById('websiteBrowserModal').style.display = 'none';
 }
 
 let currentReservationUrl = '';
