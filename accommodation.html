@@ -309,6 +309,58 @@
     }
 
 
+    .website-fallback {
+      display: none;
+      height: calc(100vh - 52px);
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: #020617;
+    }
+
+    .website-fallback-panel {
+      width: min(520px, 100%);
+      background: linear-gradient(145deg, #0b1020, #111827);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      padding: 20px 22px;
+      text-align: center;
+    }
+
+    .website-fallback-panel h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .website-fallback-panel p {
+      margin: 0 0 16px;
+      font-size: 14px;
+      color: #b5bed5;
+      line-height: 1.45;
+    }
+
+    .website-fallback-url {
+      margin-bottom: 16px;
+      font-size: 12px;
+      color: var(--text-soft);
+      overflow-wrap: anywhere;
+    }
+
+    .website-fallback-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(147,197,253,0.45);
+      background: rgba(37,99,235,0.12);
+      color: #93c5fd;
+      padding: 9px 16px;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+
 
     /* ======================================================
        In-page reservation details hub modal
@@ -615,9 +667,9 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openWebsiteModal('https://www.hotelmonterey.co.jp/en/fukuoka/'); return false;">Hotel Website</a>
+          <a class="link-pill" href="#" onclick="openWebsiteModal('https://www.candeohotels.com/en/osaka-namba/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Candeo%20Hotels%20Osaka%20Namba%202-2-5%20Higashishinsaibashi%20Chuo%20Osaka%20542-0083%20Japan&output=embed'); return false;">View Map</a>
-          <a class="link-pill" href="#" onclick="openReservationHub('Candeo Hotels Osaka Namba','Expedia','20251023062656252','73282005639619','14 May 2026 → 17 May 2026','3:00 PM','11:00 AM','https://www.expedia.com.au/trips/egti-COM-68L-QOE8/details/YjMyZjM0ZjItMzZmMy01YjJiLTlkZjMtNGE5ZGYxNTZhNzE3OzgwN2IwNWRhLTZlYTItNDFlMS05YmIxLWExMGY1YzM0N2QyOV8wO2VnOnByb3BlcnR5OjQ2YjEyMTY5NTNhMDE3NmVlY2U0Nzk3ZTc1N2JhZTIz','https://www.hotelmonterey.co.jp/en/fukuoka/'); return false;">Reservation</a>
+          <a class="link-pill" href="#" onclick="openReservationHub('Candeo Hotels Osaka Namba','Expedia','20251023062656252','73282005639619','14 May 2026 → 17 May 2026','3:00 PM','11:00 AM','https://www.expedia.com.au/trips/egti-COM-68L-QOE8/details/YjMyZjM0ZjItMzZmMy01YjJiLTlkZjMtNGE5ZGYxNTZhNzE3OzgwN2IwNWRhLTZlYTItNDFlMS05YmIxLWExMGY1YzM0N2QyOV8wO2VnOnByb3BlcnR5OjQ2YjEyMTY5NTNhMDE3NmVlY2U0Nzk3ZTc1N2JhZTIz','https://www.candeohotels.com/en/osaka-namba/'); return false;">Reservation</a>
         </div>
       </article>
     </div>
@@ -695,7 +747,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openWebsiteModal('https://www.hotelmonterey.co.jp/en/fukuoka/'); return false;">Hotel Website</a>
+          <a class="link-pill" href="#" onclick="openWebsiteModal('https://www.hotelmonterey.co.jp/en/fukuoka/', true); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Hotel%20Monterey%20Fukuoka%203-4-13%20Watanabe-dori%20Chuo-ku%20Fukuoka%20810-0004%20Japan&output=embed'); return false;">View Map</a>
           <a class="link-pill" href="#" onclick="openReservationHub('Hotel Monterey Fukuoka','Booking.com','5067218345','0607','22 May 2026 → 27 May 2026','3:00 PM','11:00 AM','https://secure.booking.com/confirmation.en-gb.html?label=metagha-link-LUAU-hotel-488157_dev-desktop_los-5_bw-216_dow-Sunday_defdate-0_room-0_gstadt-2_rateid-au_aud-0_gacid-21415138027_mcid-50_bc-AAdy3Q_ppa-1_clrid-0_ad-1_gstkid-0_checkin-20260517_&aid=2419679&sid=ce65d9979a4dbd0bee9f8e7003a70f2b&source=confirmation_error_validation&bn=5067218345','https://www.hotelmonterey.co.jp/en/fukuoka/'); return false;">Reservation</a>
         </div>
@@ -735,7 +787,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openWebsiteModal('https://en.miyakohotels.ne.jp/hommachi/'); return false;">Hotel Website</a>
+          <a class="link-pill" href="#" onclick="openWebsiteModal('https://en.miyakohotels.ne.jp/hommachi/', true); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Miyako%20City%20Osaka%20Hommachi%201-8-7%20Kitakyuhoujimachi%20Chuo-ku%20Osaka%20541-0057%20Japan&output=embed'); return false;">View Map</a>
           <a class="link-pill" href="#" onclick="openReservationHub('Miyako City Osaka Hommachi','Expedia','20251025063720730','73284053063610','27 May 2026 → 29 May 2026','3:00 PM','11:00 AM','https://www.expedia.com.au/trips/egti-QAU-C3Q-7BVJ/details/Y2Y4OGIzNGMtODFmNy01ZTQ4LWJiZjItMjM4NTQyZmY5M2Q4OzNmMTU2YjRiLTBlYzgtNGFmMS1iNDAyLTZhZDkxODE5ZTE1Zl8wO2VnOnByb3BlcnR5Ojg3MjEzMTg0ZDQwNTE2NjcxZDg2NjJkZTE3YWZjYTI5','https://en.miyakohotels.ne.jp/hommachi/'); return false;">Reservation</a>
         </div>
@@ -790,6 +842,14 @@
     <button class="website-modal-close" onclick="closeWebsiteModal()">X Close</button>
   </div>
   <iframe id="websiteFrame" src="" loading="lazy"></iframe>
+  <div class="website-fallback" id="websiteFallback">
+    <div class="website-fallback-panel">
+      <h2>Open Hotel Website</h2>
+      <p>This hotel website does not display inside the card modal. Use the button below to open the official hotel website.</p>
+      <div class="website-fallback-url" id="websiteFallbackUrl">—</div>
+      <a class="website-fallback-action" id="websiteFallbackLink" href="#">Open Hotel Website</a>
+    </div>
+  </div>
 </div>
 
 
@@ -864,10 +924,33 @@ function closeMapModal() {
   document.getElementById('mapModal').style.display = 'none';
 }
 
-function openWebsiteModal(url) {
+function openWebsiteModal(url, useFallback) {
   verifyConnectivity()
     .then(function () {
-      document.getElementById('websiteFrame').src = url;
+      const websiteFrame = document.getElementById('websiteFrame');
+      const websiteFallback = document.getElementById('websiteFallback');
+      const websiteFallbackUrl = document.getElementById('websiteFallbackUrl');
+      const websiteFallbackLink = document.getElementById('websiteFallbackLink');
+
+      if (useFallback) {
+        websiteFrame.src = '';
+        websiteFrame.style.display = 'none';
+        websiteFallbackUrl.textContent = url;
+        websiteFallbackLink.href = url;
+        websiteFallbackLink.onclick = function () {
+          handleExternal(url);
+          return false;
+        };
+        websiteFallback.style.display = 'flex';
+      } else {
+        websiteFallback.style.display = 'none';
+        websiteFallbackUrl.textContent = '—';
+        websiteFallbackLink.href = '#';
+        websiteFallbackLink.onclick = null;
+        websiteFrame.style.display = 'block';
+        websiteFrame.src = url;
+      }
+
       document.getElementById('websiteModal').style.display = 'flex';
     })
     .catch(showOffline);
@@ -875,6 +958,8 @@ function openWebsiteModal(url) {
 
 function closeWebsiteModal() {
   document.getElementById('websiteFrame').src = '';
+  document.getElementById('websiteFrame').style.display = 'block';
+  document.getElementById('websiteFallback').style.display = 'none';
   document.getElementById('websiteModal').style.display = 'none';
 }
 
