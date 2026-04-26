@@ -263,51 +263,6 @@
       background: #020617;
     }
 
-    /* ======================================================
-       In-page website modal
-       ====================================================== */
-    .website-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(5, 6, 11, 0.88);
-      display: none;
-      flex-direction: column;
-      z-index: 9998;
-    }
-
-    .website-modal-header {
-      height: 52px;
-      background: #0b1020;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 14px;
-      color: #f9fafb;
-      font-size: 14px;
-    }
-
-    .website-modal-title {
-      font-weight: 600;
-    }
-
-    .website-modal-close {
-      border: 1px solid rgba(255,255,255,0.16);
-      background: #020617;
-      color: #f9fafb;
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-    .website-modal iframe {
-      width: 100%;
-      height: calc(100vh - 52px);
-      border: 0;
-      background: #020617;
-    }
-
 
 
     /* ======================================================
@@ -615,7 +570,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openWebsiteModal('https://www.candeohotels.com/en/osaka-namba/'); return false;">Hotel Website</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.candeohotels.com/en/osaka-namba/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Candeo%20Hotels%20Osaka%20Namba%202-2-5%20Higashishinsaibashi%20Chuo%20Osaka%20542-0083%20Japan&output=embed'); return false;">View Map</a>
           <a class="link-pill" href="#" onclick="openReservationHub('Candeo Hotels Osaka Namba','Expedia','20251023062656252','73282005639619','14 May 2026 → 17 May 2026','3:00 PM','11:00 AM','https://www.expedia.com.au/trips/egti-COM-68L-QOE8/details/YjMyZjM0ZjItMzZmMy01YjJiLTlkZjMtNGE5ZGYxNTZhNzE3OzgwN2IwNWRhLTZlYTItNDFlMS05YmIxLWExMGY1YzM0N2QyOV8wO2VnOnByb3BlcnR5OjQ2YjEyMTY5NTNhMDE3NmVlY2U0Nzk3ZTc1N2JhZTIz','https://www.candeohotels.com/en/osaka-namba/'); return false;">Reservation</a>
         </div>
@@ -655,7 +610,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openWebsiteModal('https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/'); return false;">Hotel Website</a>
+          <a class="link-pill" href="#" onclick="handleExternal('https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Hotel%20Nikko%20Alivila%20600%20Gima%20Yomitan%20Okinawa%20904-0393%20Japan&output=embed'); return false;">View Map</a>
           <a class="link-pill" href="#" onclick="openReservationHub('Hotel Nikko Alivila','Agoda','1947898604','6361934265','17 May 2026 → 22 May 2026','3:00 PM','11:00 AM','https://www.agoda.com/en-au/account/editbooking.html?bookingId=Y4rqw8yuAbSFQENb8gVKKg%3D%3D&landFrom=TripDetail&sort=BookingStartDate&state=Upcoming&products=&includeArchivedBookings=&page=1&ds=dka3JA3TXrs6Y40J','https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/'); return false;">Reservation</a>
         </div>
@@ -743,13 +698,6 @@
     </div>
   </section>
 
-
-  <div class="toolbar" style="justify-content:center; margin: 28px 0 0;">
-    <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
-      ← Back to Trip Home
-    </a>
-  </div>
-
   <footer class="footer-nav">
     <div class="footer-line desktop-only">
       For trip activities, see
@@ -782,14 +730,6 @@
     <button class="map-modal-close" onclick="closeMapModal()">X Close</button>
   </div>
   <iframe id="mapFrame" src="" loading="lazy"></iframe>
-</div>
-
-<div class="website-modal" id="websiteModal">
-  <div class="website-modal-header">
-    <div class="website-modal-title">Hotel Website</div>
-    <button class="website-modal-close" onclick="closeWebsiteModal()">X Close</button>
-  </div>
-  <iframe id="websiteFrame" src="" loading="lazy"></iframe>
 </div>
 
 
@@ -862,20 +802,6 @@ function openMapModal(url) {
 function closeMapModal() {
   document.getElementById('mapFrame').src = '';
   document.getElementById('mapModal').style.display = 'none';
-}
-
-function openWebsiteModal(url) {
-  verifyConnectivity()
-    .then(function () {
-      document.getElementById('websiteFrame').src = url;
-      document.getElementById('websiteModal').style.display = 'flex';
-    })
-    .catch(showOffline);
-}
-
-function closeWebsiteModal() {
-  document.getElementById('websiteFrame').src = '';
-  document.getElementById('websiteModal').style.display = 'none';
 }
 
 
