@@ -1079,13 +1079,24 @@ function closeReservationHub() {
 
 function openReservationExternal() {
   if (currentReservationUrl) {
-    handleExternal(currentReservationUrl);
+    openReservationBrowser(currentReservationUrl);
   }
+}
+
+function openReservationBrowser(url) {
+  verifyConnectivity()
+    .then(function () {
+      document.getElementById('websiteBrowserTitle').textContent = document.getElementById('reservationModalTitle').textContent || 'Reservation';
+      document.getElementById('websiteBrowserFrame').src = 'external.html?url=' + encodeURIComponent(url);
+      document.getElementById('reservationModal').style.display = 'none';
+      document.getElementById('websiteBrowserModal').style.display = 'flex';
+    })
+    .catch(showOffline);
 }
 
 function openHotelExternal() {
   if (currentHotelUrl) {
-    handleExternal(currentHotelUrl);
+    openReservationBrowser(currentHotelUrl);
   }
 }
 
