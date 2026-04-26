@@ -382,58 +382,6 @@
       }
     }
 
-
-
-    /* ======================================================
-       In-page hotel website browser wrapper
-       ====================================================== */
-    .website-browser-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(5, 6, 11, 0.88);
-      display: none;
-      flex-direction: column;
-      z-index: 9998;
-    }
-
-    .website-browser-modal-header {
-      height: 52px;
-      background: #0b1020;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 14px;
-      color: #f9fafb;
-      font-size: 14px;
-    }
-
-    .website-browser-modal-title {
-      font-weight: 600;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      padding-right: 12px;
-    }
-
-    .website-browser-modal-close {
-      border: 1px solid rgba(255,255,255,0.16);
-      background: #020617;
-      color: #f9fafb;
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 13px;
-      cursor: pointer;
-      flex: 0 0 auto;
-    }
-
-    .website-browser-modal iframe {
-      width: 100%;
-      height: calc(100vh - 52px);
-      border: 0;
-      background: #020617;
-    }
-
     /* ======================================================
        In-page reservation details hub modal
        ====================================================== */
@@ -935,14 +883,6 @@
   </div>
 </div>
 
-<div class="website-browser-modal" id="websiteBrowserModal">
-  <div class="website-browser-modal-header">
-    <div class="website-browser-modal-title" id="websiteBrowserTitle">Hotel Website</div>
-    <button class="website-browser-modal-close" onclick="closeWebsiteBrowser()">X Close</button>
-  </div>
-  <iframe id="websiteBrowserFrame" src="" loading="lazy"></iframe>
-</div>
-
 
 
 <div class="reservation-modal" id="reservationModal">
@@ -1031,26 +971,24 @@ function closeWebsiteHub() {
   document.getElementById('websiteModal').style.display = 'none';
 }
 
+function isDesktopBrowser() {
+  return window.matchMedia('(min-width: 641px)').matches &&
+    !/Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+}
+
 function openWebsiteExternal() {
-  if (currentWebsiteUrl) {
-    openWebsiteBrowser(currentWebsiteUrl);
+  if (!currentWebsiteUrl) return;
+
+  if (isDesktopBrowser()) {
+    verifyConnectivity()
+      .then(function () {
+        window.open(currentWebsiteUrl, '_blank', 'noopener,noreferrer');
+      })
+      .catch(showOffline);
+    return;
   }
-}
 
-function openWebsiteBrowser(url) {
-  verifyConnectivity()
-    .then(function () {
-      document.getElementById('websiteBrowserTitle').textContent = document.getElementById('websiteModalTitle').textContent || 'Hotel Website';
-      document.getElementById('websiteBrowserFrame').src = 'external.html?url=' + encodeURIComponent(url);
-      document.getElementById('websiteModal').style.display = 'none';
-      document.getElementById('websiteBrowserModal').style.display = 'flex';
-    })
-    .catch(showOffline);
-}
-
-function closeWebsiteBrowser() {
-  document.getElementById('websiteBrowserFrame').src = '';
-  document.getElementById('websiteBrowserModal').style.display = 'none';
+  handleExternal(currentWebsiteUrl);
 }
 
 let currentReservationUrl = '';
