@@ -264,6 +264,125 @@
     }
 
     /* ======================================================
+       In-page hotel website hub modal
+       ====================================================== */
+    .website-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 9998;
+    }
+
+    .website-panel {
+      width: min(560px, 100%);
+      background: linear-gradient(145deg, #0b1020, #111827);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .website-modal-header {
+      background: #0b1020;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding: 16px 18px 14px;
+      color: #f9fafb;
+    }
+
+    .website-modal-kicker {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .website-modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .website-modal-body {
+      padding: 16px 18px 18px;
+    }
+
+    .website-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .website-detail {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      background: rgba(2,6,23,0.55);
+      padding: 10px 12px;
+    }
+
+    .website-detail-label {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-bottom: 3px;
+    }
+
+    .website-detail-value {
+      font-size: 14px;
+      color: #f9fafb;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .website-modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .website-action,
+    .website-modal-close {
+      border-radius: var(--radius-pill);
+      border: 1px solid #4b5563;
+      background: #020617;
+      color: #e5e7eb;
+      padding: 8px 13px;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      flex: 1 1 auto;
+    }
+
+    .website-action.primary {
+      color: #93c5fd;
+      border-color: rgba(147,197,253,0.45);
+      background: rgba(37,99,235,0.12);
+    }
+
+    @media (max-width: 640px) {
+      .website-modal {
+        align-items: flex-end;
+        padding: 10px;
+      }
+
+      .website-panel {
+        border-radius: 20px 20px 14px 14px;
+      }
+
+      .website-action,
+      .website-modal-close {
+        flex-basis: 100%;
+        padding: 10px 13px;
+      }
+    }
+
+    /* ======================================================
        In-page reservation details hub modal
        ====================================================== */
     .reservation-modal {
@@ -568,7 +687,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="handleExternal('https://www.candeohotels.com/en/osaka-namba/'); return false;">Hotel Website</a>
+          <a class="link-pill" href="#" onclick="openWebsiteHub('Candeo Hotels Osaka Namba','https://www.candeohotels.com/en/osaka-namba/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Candeo%20Hotels%20Osaka%20Namba%202-2-5%20Higashishinsaibashi%20Chuo%20Osaka%20542-0083%20Japan&output=embed'); return false;">View Map</a>
           <a class="link-pill" href="#" onclick="openReservationHub('Candeo Hotels Osaka Namba','Expedia','20251023062656252','73282005639619','14 May 2026 → 17 May 2026','3:00 PM','11:00 AM','https://www.expedia.com.au/trips/egti-COM-68L-QOE8/details/YjMyZjM0ZjItMzZmMy01YjJiLTlkZjMtNGE5ZGYxNTZhNzE3OzgwN2IwNWRhLTZlYTItNDFlMS05YmIxLWExMGY1YzM0N2QyOV8wO2VnOnByb3BlcnR5OjQ2YjEyMTY5NTNhMDE3NmVlY2U0Nzk3ZTc1N2JhZTIz','https://www.candeohotels.com/en/osaka-namba/'); return false;">Reservation</a>
         </div>
@@ -608,7 +727,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="handleExternal('https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/'); return false;">Hotel Website</a>
+          <a class="link-pill" href="#" onclick="openWebsiteHub('Hotel Nikko Alivila','https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Hotel%20Nikko%20Alivila%20600%20Gima%20Yomitan%20Okinawa%20904-0393%20Japan&output=embed'); return false;">View Map</a>
           <a class="link-pill" href="#" onclick="openReservationHub('Hotel Nikko Alivila','Agoda','1947898604','6361934265','17 May 2026 → 22 May 2026','3:00 PM','11:00 AM','https://www.agoda.com/en-au/account/editbooking.html?bookingId=Y4rqw8yuAbSFQENb8gVKKg%3D%3D&landFrom=TripDetail&sort=BookingStartDate&state=Upcoming&products=&includeArchivedBookings=&page=1&ds=dka3JA3TXrs6Y40J','https://www.okura-nikko.com/japan/yomitan/hotel-nikko-alivilayomitan-resort-okinawa/'); return false;">Reservation</a>
         </div>
@@ -648,7 +767,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="handleExternal('https://www.hotelmonterey.co.jp/en/fukuoka/'); return false;">Hotel Website</a>
+          <a class="link-pill" href="#" onclick="openWebsiteHub('Hotel Monterey Fukuoka','https://www.hotelmonterey.co.jp/en/fukuoka/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Hotel%20Monterey%20Fukuoka%203-4-13%20Watanabe-dori%20Chuo-ku%20Fukuoka%20810-0004%20Japan&output=embed'); return false;">View Map</a>
           <a class="link-pill" href="#" onclick="openReservationHub('Hotel Monterey Fukuoka','Booking.com','5067218345','0607','22 May 2026 → 27 May 2026','3:00 PM','11:00 AM','https://secure.booking.com/confirmation.en-gb.html?label=metagha-link-LUAU-hotel-488157_dev-desktop_los-5_bw-216_dow-Sunday_defdate-0_room-0_gstadt-2_rateid-au_aud-0_gacid-21415138027_mcid-50_bc-AAdy3Q_ppa-1_clrid-0_ad-1_gstkid-0_checkin-20260517_&aid=2419679&sid=ce65d9979a4dbd0bee9f8e7003a70f2b&source=confirmation_error_validation&bn=5067218345','https://www.hotelmonterey.co.jp/en/fukuoka/'); return false;">Reservation</a>
         </div>
@@ -688,7 +807,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="handleExternal('https://en.miyakohotels.ne.jp/hommachi/'); return false;">Hotel Website</a>
+          <a class="link-pill" href="#" onclick="openWebsiteHub('Miyako City Osaka Hommachi','https://en.miyakohotels.ne.jp/hommachi/'); return false;">Hotel Website</a>
           <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Miyako%20City%20Osaka%20Hommachi%201-8-7%20Kitakyuhoujimachi%20Chuo-ku%20Osaka%20541-0057%20Japan&output=embed'); return false;">View Map</a>
           <a class="link-pill" href="#" onclick="openReservationHub('Miyako City Osaka Hommachi','Expedia','20251025063720730','73284053063610','27 May 2026 → 29 May 2026','3:00 PM','11:00 AM','https://www.expedia.com.au/trips/egti-QAU-C3Q-7BVJ/details/Y2Y4OGIzNGMtODFmNy01ZTQ4LWJiZjItMjM4NTQyZmY5M2Q4OzNmMTU2YjRiLTBlYzgtNGFmMS1iNDAyLTZhZDkxODE5ZTE1Zl8wO2VnOnByb3BlcnR5Ojg3MjEzMTg0ZDQwNTE2NjcxZDg2NjJkZTE3YWZjYTI5','https://en.miyakohotels.ne.jp/hommachi/'); return false;">Reservation</a>
         </div>
@@ -736,6 +855,34 @@
   </div>
   <iframe id="mapFrame" src="" loading="lazy"></iframe>
 </div>
+
+<div class="website-modal" id="websiteModal">
+  <div class="website-panel" role="dialog" aria-modal="true" aria-labelledby="websiteModalTitle">
+    <div class="website-modal-header">
+      <div class="website-modal-kicker">Hotel website</div>
+      <div class="website-modal-title" id="websiteModalTitle">Hotel Website</div>
+    </div>
+
+    <div class="website-modal-body">
+      <div class="website-detail-grid">
+        <div class="website-detail">
+          <div class="website-detail-label">Hotel</div>
+          <div class="website-detail-value" id="websiteHotel">—</div>
+        </div>
+        <div class="website-detail">
+          <div class="website-detail-label">Website</div>
+          <div class="website-detail-value" id="websiteUrl">—</div>
+        </div>
+      </div>
+
+      <div class="website-modal-actions">
+        <a class="website-action primary" id="websiteExternalLink" href="#" onclick="openWebsiteExternal(); return false;">Open Hotel Website</a>
+        <button class="website-modal-close" onclick="closeWebsiteHub()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <div class="reservation-modal" id="reservationModal">
@@ -806,6 +953,28 @@ function openMapModal(url) {
 function closeMapModal() {
   document.getElementById('mapFrame').src = '';
   document.getElementById('mapModal').style.display = 'none';
+}
+
+let currentWebsiteUrl = '';
+
+function openWebsiteHub(hotel, websiteUrl) {
+  currentWebsiteUrl = websiteUrl;
+
+  document.getElementById('websiteModalTitle').textContent = hotel;
+  document.getElementById('websiteHotel').textContent = hotel;
+  document.getElementById('websiteUrl').textContent = websiteUrl;
+  document.getElementById('websiteExternalLink').href = websiteUrl;
+  document.getElementById('websiteModal').style.display = 'flex';
+}
+
+function closeWebsiteHub() {
+  document.getElementById('websiteModal').style.display = 'none';
+}
+
+function openWebsiteExternal() {
+  if (currentWebsiteUrl) {
+    handleExternal(currentWebsiteUrl);
+  }
 }
 
 let currentReservationUrl = '';
