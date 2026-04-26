@@ -271,9 +271,9 @@
       inset: 0;
       background: rgba(5, 6, 11, 0.88);
       display: none;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
-      padding: 18px;
+      padding: 10px;
       z-index: 9998;
     }
 
@@ -281,7 +281,7 @@
       width: min(560px, 100%);
       background: linear-gradient(145deg, #0b1020, #111827);
       border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 22px;
+      border-radius: 20px 20px 14px 14px;
       box-shadow: var(--shadow-soft);
       overflow: hidden;
     }
@@ -291,6 +291,10 @@
       border-bottom: 1px solid rgba(255,255,255,0.12);
       padding: 16px 18px 14px;
       color: #f9fafb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
 
     .website-modal-kicker {
@@ -351,12 +355,18 @@
       border: 1px solid #4b5563;
       background: #020617;
       color: #e5e7eb;
-      padding: 8px 13px;
+      padding: 10px 13px;
       font-size: 13px;
       cursor: pointer;
       text-decoration: none;
       text-align: center;
-      flex: 1 1 auto;
+      flex: 1 1 100%;
+    }
+
+    .website-modal-header .website-modal-close {
+      flex: 0 0 auto;
+      padding: 6px 12px;
+      white-space: nowrap;
     }
 
     .website-action.primary {
@@ -859,8 +869,11 @@
 <div class="website-modal" id="websiteModal">
   <div class="website-panel" role="dialog" aria-modal="true" aria-labelledby="websiteModalTitle">
     <div class="website-modal-header">
-      <div class="website-modal-kicker">Hotel website</div>
-      <div class="website-modal-title" id="websiteModalTitle">Hotel Website</div>
+      <div>
+        <div class="website-modal-kicker">Hotel website</div>
+        <div class="website-modal-title" id="websiteModalTitle">Hotel Website</div>
+      </div>
+      <button class="website-modal-close" onclick="closeWebsiteHub()">X Close</button>
     </div>
 
     <div class="website-modal-body">
@@ -877,7 +890,6 @@
 
       <div class="website-modal-actions">
         <a class="website-action primary" id="websiteExternalLink" href="#" onclick="openWebsiteExternal(); return false;">Open Hotel Website</a>
-        <button class="website-modal-close" onclick="closeWebsiteHub()">Close</button>
       </div>
     </div>
   </div>
@@ -971,24 +983,10 @@ function closeWebsiteHub() {
   document.getElementById('websiteModal').style.display = 'none';
 }
 
-function isDesktopBrowser() {
-  return window.matchMedia('(min-width: 641px)').matches &&
-    !/Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
-}
-
 function openWebsiteExternal() {
-  if (!currentWebsiteUrl) return;
-
-  if (isDesktopBrowser()) {
-    verifyConnectivity()
-      .then(function () {
-        window.open(currentWebsiteUrl, '_blank', 'noopener,noreferrer');
-      })
-      .catch(showOffline);
-    return;
+  if (currentWebsiteUrl) {
+    handleExternal(currentWebsiteUrl);
   }
-
-  handleExternal(currentWebsiteUrl);
 }
 
 let currentReservationUrl = '';
