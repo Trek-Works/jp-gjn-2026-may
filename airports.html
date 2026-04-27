@@ -183,6 +183,87 @@
       }
     }
 
+
+    .site-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9998;
+      padding: 18px;
+    }
+
+    .site-modal {
+      width: min(1100px, 100%);
+      height: min(820px, 92vh);
+      background: #020617;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-modal-header {
+      min-height: 48px;
+      padding: 10px 14px 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0b1020;
+    }
+
+    .site-modal-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f5f7ff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .site-modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+
+    .site-modal-frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #ffffff;
+    }
+
+    @media (max-width: 640px) {
+      .site-modal-overlay {
+        padding: 0;
+      }
+
+      .site-modal {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+      }
+    }
+
     .offline-overlay {
       position: fixed;
       inset: 0;
@@ -258,11 +339,11 @@
       <div class="label">Airport Services</div>
       <div class="subtext">Airport service information for the airports used on this trip.</div>
       <div class="card-footer">
-        <a class="link-pill" href="#" onclick="handleExternal('https://www.fukuoka-airport.jp/en/'); return false;">Fukuoka (FUK)</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://www.kansai-airport.or.jp/en/service/information/info-center'); return false;">Kansai (KIX)</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://www.naha-airport.co.jp/en/service/'); return false;">Naha (OKA)</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://tokyo-haneda.com/en/service/index.html'); return false;">Naneda (HND)</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://www.osaka-airport.co.jp/en/service/information/info-center'); return false;">Osaka Itami (ITM)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.fukuoka-airport.jp/en/', 'Fukuoka Airport Services'); return false;">Fukuoka (FUK)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.kansai-airport.or.jp/en/service/information/info-center', 'Kansai Airport Services'); return false;">Kansai (KIX)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.naha-airport.co.jp/en/service/', 'Naha Airport Services'); return false;">Naha (OKA)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://tokyo-haneda.com/en/service/index.html', 'Haneda Airport Services'); return false;">Naneda (HND)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.osaka-airport.co.jp/en/service/information/info-center', 'Osaka Itami Airport Services'); return false;">Osaka Itami (ITM)</a>
       </div>
     </article>
 
@@ -270,14 +351,14 @@
       <div class="label">Airport Maps</div>
       <div class="subtext">Terminal maps and airport navigation links for each relevant airport.</div>
       <div class="card-footer">
-        <a class="link-pill" href="#" onclick="handleExternal('https://www.fukuoka-airport.jp/en/map/?floor_id=dom_1f'); return false;">FUK</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://tokyo-haneda.com/en/floor/floor-guide.html?area=7&tab=terminal1&culture=en'); return false;">HND T1</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://tokyo-haneda.com/en/floor/floor-guide.html?area=8&tab=terminal2&culture=en'); return false;">HND T2</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://tokyo-haneda.com/en/floor/floor-guide.html?area=9&tab=terminal3&culture=en'); return false;">HND T3</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://platinumaps.jp/maps/osaka-itami-airport?floor=2F'); return false;">ITM</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://platinumaps.jp/maps/kix-airport?floor=1F&area=32'); return false;">KIX T1</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://platinumaps.jp/maps/kix-airport?floor=1F&area=33'); return false;">KIX T2</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://www.naha-airport.co.jp/en/spend/map/'); return false;">OKA</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.fukuoka-airport.jp/en/map/?floor_id=dom_1f', 'FUK Airport Map'); return false;">FUK</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://tokyo-haneda.com/en/floor/floor-guide.html?area=7&tab=terminal1&culture=en', 'HND Terminal 1 Map'); return false;">HND T1</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://tokyo-haneda.com/en/floor/floor-guide.html?area=8&tab=terminal2&culture=en', 'HND Terminal 2 Map'); return false;">HND T2</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://tokyo-haneda.com/en/floor/floor-guide.html?area=9&tab=terminal3&culture=en', 'HND Terminal 3 Map'); return false;">HND T3</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://platinumaps.jp/maps/osaka-itami-airport?floor=2F', 'ITM Airport Map'); return false;">ITM</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://platinumaps.jp/maps/kix-airport?floor=1F&area=32', 'KIX Terminal 1 Map'); return false;">KIX T1</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://platinumaps.jp/maps/kix-airport?floor=1F&area=33', 'KIX Terminal 2 Map'); return false;">KIX T2</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.naha-airport.co.jp/en/spend/map/', 'OKA Airport Map'); return false;">OKA</a>
       </div>
     </article>
   </section>
@@ -297,6 +378,17 @@
 
 </main>
 
+
+<div class="site-modal-overlay" id="siteModalOverlay">
+  <div class="site-modal">
+    <div class="site-modal-header">
+      <div class="site-modal-title" id="siteModalTitle">Airport Link</div>
+      <button class="site-modal-close" type="button" onclick="closeSiteModal()" aria-label="Close">×</button>
+    </div>
+    <iframe class="site-modal-frame" id="siteModalFrame" title="Airport link"></iframe>
+  </div>
+</div>
+
 <div class="offline-overlay" id="offlineOverlay">
   <div class="offline-box">
     <h2>You’re offline</h2>
@@ -309,12 +401,25 @@
 </div>
 
 <script>
-function handleExternal(url) {
+function handleExternal(url, title) {
   verifyConnectivity()
     .then(function () {
-      window.location.href = 'external.html?url=' + encodeURIComponent(url);
+      openSiteModal(url, title || 'Airport Link');
     })
     .catch(showOffline);
+}
+
+function openSiteModal(url, title) {
+  document.getElementById('siteModalTitle').textContent = title;
+  document.getElementById('siteModalFrame').src = url;
+  document.getElementById('siteModalOverlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSiteModal() {
+  document.getElementById('siteModalFrame').src = 'about:blank';
+  document.getElementById('siteModalOverlay').style.display = 'none';
+  document.body.style.overflow = '';
 }
 
 function verifyConnectivity() {
@@ -347,6 +452,12 @@ function showOffline() {
 function closeOffline() {
   document.getElementById('offlineOverlay').style.display = 'none';
 }
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') {
+    closeSiteModal();
+  }
+});
 </script>
 
 </body>
