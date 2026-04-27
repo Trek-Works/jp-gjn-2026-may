@@ -332,6 +332,113 @@
       }
     }
 
+
+    /* ===== Launch Page Modal ===== */
+    .launch-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 18px;
+    }
+
+    .launch-modal {
+      width: min(560px, 100%);
+      background: #0b1020;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+      overflow: hidden;
+    }
+
+    .launch-modal-header {
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .launch-modal-kicker {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .launch-modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .launch-modal-body {
+      padding: 16px 18px 18px;
+    }
+
+    .launch-field {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      background: #050814;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .launch-field-label {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .launch-field-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      overflow-wrap: anywhere;
+    }
+
+    .launch-modal-note {
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--text-soft);
+      margin: 16px 0;
+    }
+
+    .launch-modal-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .launch-action-button,
+    .launch-close-button {
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      padding: 9px 14px;
+      font-size: 13px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .launch-action-button {
+      background: rgba(79, 140, 255, 0.15);
+      color: #93c5fd;
+    }
+
+    .launch-close-button {
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 640px) {
+      .launch-modal-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* ===== Offline Overlay (aligned to Accommodation & Activities) ===== */
 
     .offline-overlay {
@@ -426,12 +533,12 @@
       </div>
 
       <div class="card-footer">
-        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JST13', this.textContent.trim()); return false;">Flight Status</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://www.jetstar.com/au/en/home?', this.textContent.trim()); return false;">Jetstar Login</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://flightaware.com/live/flight/JST13', 'Flight Status', 'FlightAware'); return false;">Flight Status</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://www.jetstar.com/au/en/home?', 'Jetstar Login', 'Jetstar'); return false;">Jetstar Login</a>
         <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jq-jetstar-airways/boeing-787-8/#78d69f40906679a976dc4d45cebffbe6', this.textContent.trim()); return false;">Seat Map</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://checkin.jetstar.com/', this.textContent.trim()); return false;">Online Check-In</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1zeTNECFCbwFfEuie2oXxfdx6yxXv-9eF/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Sema)</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1dcDRR8pFF2yShL_cOy0yHmwxa2zf7AmG/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Gavin)</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://checkin.jetstar.com/', 'Online Check-In', 'Jetstar'); return false;">Online Check-In</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://drive.google.com/file/d/1zeTNECFCbwFfEuie2oXxfdx6yxXv-9eF/view?usp=sharing', 'Boarding Pass (Sema)', 'Google Drive'); return false;">Boarding Pass (Sema)</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://drive.google.com/file/d/1dcDRR8pFF2yShL_cOy0yHmwxa2zf7AmG/view?usp=sharing', 'Boarding Pass (Gavin)', 'Google Drive'); return false;">Boarding Pass (Gavin)</a>
       </div>
     </article>
 
@@ -464,11 +571,12 @@
       </div>
 
       <div class="card-footer">
-        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JAL2087', this.textContent.trim()); return false;">Flight Status</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://flightaware.com/live/flight/JAL2087', 'Flight Status', 'FlightAware'); return false;">Flight Status</a>
         <a class="link-pill" href="#" onclick="handleExternal('https://www.jal.co.jp/jp/en/', this.textContent.trim()); return false;">JAL Login</a>
         <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jl-jal/airbus-a350-900/#3da972c3ec85b6f3cc5306acf034fd23', this.textContent.trim()); return false;">Seat Map</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/15hYlgOFYLLUWZTFsSXaKVwcsuztXFHC3/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Sema)</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1q-Z5-cd3po4dBi-BX1eUsxnh7nC5MX0r/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Gavin)</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://digital.jal.co.jp/ssci/identification?lang=en-GB', 'Online Check-In', 'Japan Airlines'); return false;">Online Check-In</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://drive.google.com/file/d/15hYlgOFYLLUWZTFsSXaKVwcsuztXFHC3/view?usp=sharing', 'Boarding Pass (Sema)', 'Google Drive'); return false;">Boarding Pass (Sema)</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://drive.google.com/file/d/1q-Z5-cd3po4dBi-BX1eUsxnh7nC5MX0r/view?usp=sharing', 'Boarding Pass (Gavin)', 'Google Drive'); return false;">Boarding Pass (Gavin)</a>
       </div>
     </article>
 
@@ -501,11 +609,12 @@
       </div>
 
       <div class="card-footer">
-        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JTA054', this.textContent.trim()); return false;">Flight Status</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://flightaware.com/live/flight/JTA054', 'Flight Status', 'FlightAware'); return false;">Flight Status</a>
         <a class="link-pill" href="#" onclick="handleExternal('https://www.jal.co.jp/jp/en/', this.textContent.trim()); return false;">JAL Login</a>
         <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jl-jal/boeing-737-800/#d756d3d2b9dac72449a6a6926534558a', this.textContent.trim()); return false;">Seat Map</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1r8t4Pex4ZD47PXeYuTK2aD9xyUqQMK49/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Sema)</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1ibQWGDZ7b_0oeFofX0ilOhjEFELXB-gK/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Gavin)</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://digital.jal.co.jp/ssci/identification?lang=en-GB', 'Online Check-In', 'Japan Airlines'); return false;">Online Check-In</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://drive.google.com/file/d/1r8t4Pex4ZD47PXeYuTK2aD9xyUqQMK49/view?usp=sharing', 'Boarding Pass (Sema)', 'Google Drive'); return false;">Boarding Pass (Sema)</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://drive.google.com/file/d/1ibQWGDZ7b_0oeFofX0ilOhjEFELXB-gK/view?usp=sharing', 'Boarding Pass (Gavin)', 'Google Drive'); return false;">Boarding Pass (Gavin)</a>
       </div>
     </article>
 
@@ -538,12 +647,12 @@
       </div>
 
       <div class="card-footer">
-        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JST14', this.textContent.trim()); return false;">Flight Status</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://www.jetstar.com/au/en/home?', this.textContent.trim()); return false;">Jetstar Login</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://flightaware.com/live/flight/JST14', 'Flight Status', 'FlightAware'); return false;">Flight Status</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://www.jetstar.com/au/en/home?', 'Jetstar Login', 'Jetstar'); return false;">Jetstar Login</a>
         <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jq-jetstar-airways/boeing-787-8/#78d69f40906679a976dc4d45cebffbe6', this.textContent.trim()); return false;">Seat Map</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://checkin.jetstar.com/', this.textContent.trim()); return false;">Online Check-In</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1lpLbKdp3G-fBl-gQ1SJmzePiQ64SBI9M/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Sema)</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/19DIW9lN1lglELKW9-Ceq7SEp_-s0OFX5/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Gavin)</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://checkin.jetstar.com/', 'Online Check-In', 'Jetstar'); return false;">Online Check-In</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://drive.google.com/file/d/1S7-qOYcelO2Zkx4mOHGuY4IjDLmQj2aG/view?usp=sharing', 'Boarding Pass (Sema)', 'Google Drive'); return false;">Boarding Pass (Sema)</a>
+        <a class="link-pill" href="#" onclick="handleLaunchPage('https://drive.google.com/file/d/1z6wNZKtVNbVGUAGmFP2J04dYTRvjbRlN/view?usp=sharing', 'Boarding Pass (Gavin)', 'Google Drive'); return false;">Boarding Pass (Gavin)</a>
       </div>
     </article>
 
@@ -576,6 +685,33 @@
     </div>
   </div>
 
+
+  <div class="launch-modal-overlay" id="launchModalOverlay">
+    <div class="launch-modal" role="dialog" aria-modal="true" aria-labelledby="launchModalTitle">
+      <div class="launch-modal-header">
+        <div class="launch-modal-kicker">Flight link</div>
+        <div class="launch-modal-title" id="launchModalTitle">Flight Link</div>
+      </div>
+      <div class="launch-modal-body">
+        <div class="launch-field">
+          <div class="launch-field-label">Link</div>
+          <div class="launch-field-value" id="launchLinkName">Flight Link</div>
+        </div>
+        <div class="launch-field">
+          <div class="launch-field-label">Provider</div>
+          <div class="launch-field-value" id="launchProviderName">External website</div>
+        </div>
+        <div class="launch-modal-note">
+          This website may block embedded modal pages or require Google account access. Use the button below to open the link while keeping this Flights page available behind it.
+        </div>
+        <div class="launch-modal-actions">
+          <a class="launch-action-button" id="launchOpenButton" href="#" target="_blank" rel="noopener noreferrer">Open Link</a>
+          <button class="launch-close-button" type="button" onclick="closeLaunchModal()">X Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="offline-overlay" id="offlineOverlay">
     <div class="offline-box">
       <h2>You’re offline</h2>
@@ -594,6 +730,39 @@
           openSiteModal(url, title || 'Flight Link');
         })
         .catch(showOffline);
+    }
+
+
+
+    function handleLaunchPage(url, title, provider) {
+      verifyConnectivity()
+        .then(function () {
+          openLaunchModal(url, title || 'Flight Link', provider || 'External website');
+        })
+        .catch(showOffline);
+    }
+
+    function openLaunchModal(url, title, provider) {
+      const overlay = document.getElementById('launchModalOverlay');
+      const titleEl = document.getElementById('launchModalTitle');
+      const linkNameEl = document.getElementById('launchLinkName');
+      const providerEl = document.getElementById('launchProviderName');
+      const openButton = document.getElementById('launchOpenButton');
+
+      titleEl.textContent = title || 'Flight Link';
+      linkNameEl.textContent = title || 'Flight Link';
+      providerEl.textContent = provider || 'External website';
+      openButton.href = url;
+      openButton.textContent = 'Open ' + (title || 'Link');
+      overlay.style.display = 'flex';
+    }
+
+    function closeLaunchModal() {
+      const overlay = document.getElementById('launchModalOverlay');
+      const openButton = document.getElementById('launchOpenButton');
+
+      overlay.style.display = 'none';
+      openButton.href = '#';
     }
 
     function openSiteModal(url, title) {
@@ -650,6 +819,7 @@
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         closeSiteModal();
+        closeLaunchModal();
       }
     });
   </script>
