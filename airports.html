@@ -264,6 +264,112 @@
       }
     }
 
+
+    .launch-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 18px;
+    }
+
+    .launch-modal {
+      width: min(560px, 100%);
+      background: #0b1020;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+      overflow: hidden;
+    }
+
+    .launch-modal-header {
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .launch-modal-kicker {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .launch-modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .launch-modal-body {
+      padding: 16px 18px 18px;
+    }
+
+    .launch-field {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      background: #050814;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .launch-field-label {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .launch-field-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      overflow-wrap: anywhere;
+    }
+
+    .launch-modal-note {
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--text-soft);
+      margin: 16px 0;
+    }
+
+    .launch-modal-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .launch-action-button,
+    .launch-close-button {
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      padding: 9px 14px;
+      font-size: 13px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .launch-action-button {
+      background: rgba(79, 140, 255, 0.15);
+      color: #93c5fd;
+    }
+
+    .launch-close-button {
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 640px) {
+      .launch-modal-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .offline-overlay {
       position: fixed;
       inset: 0;
@@ -389,6 +495,34 @@
   </div>
 </div>
 
+
+
+<div class="launch-modal-overlay" id="launchModalOverlay">
+  <div class="launch-modal" role="dialog" aria-modal="true" aria-labelledby="launchModalTitle">
+    <div class="launch-modal-header">
+      <div class="launch-modal-kicker">Airport Services</div>
+      <div class="launch-modal-title" id="launchModalTitle">Airport Services</div>
+    </div>
+    <div class="launch-modal-body">
+      <div class="launch-field">
+        <div class="launch-field-label">Airport</div>
+        <div class="launch-field-value" id="launchAirportName">Airport Services</div>
+      </div>
+      <div class="launch-field">
+        <div class="launch-field-label">Provider</div>
+        <div class="launch-field-value">Official airport website</div>
+      </div>
+      <div class="launch-modal-note">
+        This airport website blocks embedded modal pages. Use the button below to open the official airport services page while keeping this Airports page available behind it.
+      </div>
+      <div class="launch-modal-actions">
+        <a class="launch-action-button" id="launchOpenButton" href="#" target="_blank" rel="noopener noreferrer">Open Airport Services</a>
+        <button class="launch-close-button" type="button" onclick="closeLaunchModal()">X Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="offline-overlay" id="offlineOverlay">
   <div class="offline-box">
     <h2>You’re offline</h2>
@@ -418,38 +552,17 @@ function handleLaunchPage(url, title) {
 }
 
 function openLaunchModal(url, title) {
-  const safeTitle = escapeHtml(title);
-  const safeUrl = escapeHtml(url);
-
-  document.getElementById('siteModalTitle').textContent = title;
-  document.getElementById('siteModalFrame').srcdoc = `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%); color: #f5f7ff; display: flex; align-items: center; justify-content: center; padding: 24px; }
-        .launch-card { width: min(520px, 100%); background: #0f1629; border: 1px solid #1f2940; border-radius: 18px; box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65); padding: 24px; text-align: center; }
-        .launch-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-        .launch-text { font-size: 14px; line-height: 1.5; color: #b5bed5; margin-bottom: 18px; }
-        .launch-url { font-size: 12px; color: #9ca3af; overflow-wrap: anywhere; margin-bottom: 18px; }
-        .launch-button { border-radius: 999px; border: 1px solid #4b5563; background: #020617; color: #e5e7eb; display: inline-flex; align-items: center; justify-content: center; padding: 9px 16px; text-decoration: none; font-size: 13px; font-weight: 600; }
-      </style>
-    </head>
-    <body>
-      <div class="launch-card">
-        <div class="launch-title">${safeTitle}</div>
-        <div class="launch-text">This airport website does not allow itself to open inside the modal window.<br>Use the button below to launch the official site directly.</div>
-        <div class="launch-url">${safeUrl}</div>
-        <a class="launch-button" href="${safeUrl}" target="_blank" rel="noopener noreferrer">Open official site ↗</a>
-      </div>
-    </body>
-    </html>
-  `;
-  document.getElementById('siteModalOverlay').style.display = 'flex';
+  document.getElementById('launchModalTitle').textContent = title;
+  document.getElementById('launchAirportName').textContent = title;
+  document.getElementById('launchOpenButton').href = url;
+  document.getElementById('launchModalOverlay').style.display = 'flex';
   document.body.style.overflow = 'hidden';
+}
+
+function closeLaunchModal() {
+  document.getElementById('launchOpenButton').href = '#';
+  document.getElementById('launchModalOverlay').style.display = 'none';
+  document.body.style.overflow = '';
 }
 
 function escapeHtml(value) {
@@ -507,6 +620,7 @@ function closeOffline() {
 document.addEventListener('keydown', function (event) {
   if (event.key === 'Escape') {
     closeSiteModal();
+    closeLaunchModal();
   }
 });
 </script>
