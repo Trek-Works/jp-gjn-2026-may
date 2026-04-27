@@ -344,6 +344,52 @@
   }
 }
 
+
+    /* ======================================================
+       In-page map modal
+       ====================================================== */
+    .map-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.88);
+      display: none;
+      flex-direction: column;
+      z-index: 9998;
+    }
+
+    .map-modal-header {
+      height: 52px;
+      background: #0b1020;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      color: #f9fafb;
+      font-size: 14px;
+    }
+
+    .map-modal-title {
+      font-weight: 600;
+    }
+
+    .map-modal-close {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: #020617;
+      color: #f9fafb;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .map-modal iframe {
+      width: 100%;
+      height: calc(100vh - 52px);
+      border: 0;
+      background: #020617;
+    }
+
     /* ======================================================
        In-page external browser modal
        ====================================================== */
@@ -554,7 +600,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://maps.app.goo.gl/D18XhLFRaUsPJYsL9'); return false;"
+                onclick="openMapModal('https://www.google.com/maps?q=Umeda%20Sky%20Building%20Kuchu%20Teien%20Observatory%20Osaka%20Japan&output=embed'); return false;"
                 >View Map</a
               >
               <a
@@ -596,7 +642,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://maps.app.goo.gl/FDnwHnapEKAbXMrNA'); return false;"
+                onclick="openMapModal('https://www.google.com/maps?q=Osaka%20Aquarium%20Kaiyukan%20Tempozan%20Harbor%20Village%20Osaka%20Japan&output=embed'); return false;"
                 >View Map</a
               >
               <a
@@ -637,7 +683,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://maps.app.goo.gl/8K8rTqiTZEecMmKn8'); return false;"
+                onclick="openMapModal('https://www.google.com/maps?q=Spa%20World%20Shinsekai%20Osaka%20Japan&output=embed'); return false;"
                 >View Map</a
               >
               <a
@@ -745,7 +791,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://maps.app.goo.gl/57qo2yPfTS9vAgii9'); return false;"
+                onclick="openMapModal('https://www.google.com/maps?q=Cape%20Zanpa%20Lighthouse%20Yomitan%20Okinawa%20Japan&output=embed'); return false;"
                 >View Map</a
               >
               <a
@@ -783,7 +829,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://maps.app.goo.gl/LghdCsUD3eBzkJM4A'); return false;"
+                onclick="openMapModal('https://www.google.com/maps?q=Blue%20Cave%20Onna%20Village%20Okinawa%20Japan&output=embed'); return false;"
                 >View Map</a
               >
               <a
@@ -820,7 +866,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://maps.app.goo.gl/Mx9qbdmxtC8Kikwi6'); return false;"
+                onclick="openMapModal('https://www.google.com/maps?q=Senagajima%20Umikaji%20Terrace%20Okinawa%20Japan&output=embed'); return false;"
                 >View Map</a
               >
             </div>
@@ -912,7 +958,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://maps.app.goo.gl/KVS8CmJ1RyUQAvZQ8'); return false;"
+                onclick="openMapModal('https://www.google.com/maps?q=Canal%20City%20Hakata%20Fukuoka%20Japan&output=embed'); return false;"
                 >View Map</a
               >
             </div>
@@ -938,7 +984,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://maps.app.goo.gl/PwiNFcDba4iieRSC6'); return false;"
+                onclick="openMapModal('https://www.google.com/maps?q=Ohori%20Park%20Fukuoka%20Art%20Museum%20Fukuoka%20Japan&output=embed'); return false;"
                 >View Map</a
               >
             </div>
@@ -965,7 +1011,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://maps.app.goo.gl/HAsbZtpA19v7dxrj6'); return false;"
+                onclick="openMapModal('https://www.google.com/maps?q=Nakasu%20Kawabata%20Fukuoka%20Japan&output=embed'); return false;"
                 >View Map</a
               >
               <a
@@ -1059,7 +1105,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://maps.app.goo.gl/aQTm75dKLaLqcDzA8'); return false;"
+                onclick="openMapModal('https://www.google.com/maps?q=Kyoto%20Station%20Kyoto%20Japan&output=embed'); return false;"
                 >Kyoto central map</a
               >
             </div>
@@ -1085,7 +1131,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://maps.app.goo.gl/jcUcg8barfBRyE9QA'); return false;"
+                onclick="openMapModal('https://www.google.com/maps?q=Kobe%20Sannomiya%20Station%20Kobe%20Japan&output=embed'); return false;"
                 >Kobe Sannomiya map</a
               >
             </div>
@@ -1093,6 +1139,12 @@
         </details>
       </div>
     </section>
+
+    <div class="toolbar" style="justify-content:center; margin: 28px 0 0;">
+      <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
+        ← Back to Trip Home
+      </a>
+    </div>
 
 <footer>
   For air travel, see <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.
@@ -1106,6 +1158,14 @@
 </footer>
 
   </div>
+<div class="map-modal" id="mapModal">
+  <div class="map-modal-header">
+    <div class="map-modal-title">Map</div>
+    <button class="map-modal-close" onclick="closeMapModal()">X Close</button>
+  </div>
+  <iframe id="mapFrame" src="" loading="lazy"></iframe>
+</div>
+
 <div class="website-browser-modal" id="websiteBrowserModal">
   <div class="website-browser-modal-header">
     <div class="website-browser-modal-title" id="websiteBrowserTitle">External Site</div>
@@ -1126,6 +1186,20 @@
 </div>
 
 <script>
+  function openMapModal(url) {
+    verifyConnectivity()
+      .then(function () {
+        document.getElementById("mapFrame").src = url;
+        document.getElementById("mapModal").style.display = "flex";
+      })
+      .catch(showOffline);
+  }
+
+  function closeMapModal() {
+    document.getElementById("mapFrame").src = "";
+    document.getElementById("mapModal").style.display = "none";
+  }
+
   function openExternalBrowser(title, url) {
     verifyConnectivity()
       .then(function () {
