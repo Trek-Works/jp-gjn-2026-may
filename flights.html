@@ -251,6 +251,87 @@
       }
     }
 
+    /* ===== Site Modal ===== */
+    .site-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5,6,11,0.92);
+      display: none;
+      z-index: 9998;
+      padding: 14px;
+    }
+
+    .site-modal.is-open {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-modal-shell {
+      width: 100%;
+      height: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      background: #020617;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.75);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-modal-header {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      background: #0b1020;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .site-modal-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f9fafb;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .site-modal-close {
+      border: 1px solid #374151;
+      background: #020617;
+      color: #e5e7eb;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .site-modal-frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+    }
+
+    @media (max-width: 640px) {
+      .site-modal {
+        padding: 0;
+      }
+
+      .site-modal-shell {
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+      }
+    }
+
     /* ===== Offline Overlay (aligned to Accommodation & Activities) ===== */
 
     .offline-overlay {
@@ -345,12 +426,12 @@
       </div>
 
       <div class="card-footer">
-        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JST13'); return false;">Flight Status</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://www.jetstar.com/au/en/home?'); return false;">Jetstar Login</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jq-jetstar-airways/boeing-787-8/#78d69f40906679a976dc4d45cebffbe6'); return false;">Seat Map</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://checkin.jetstar.com/'); return false;">Online Check-In</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1zeTNECFCbwFfEuie2oXxfdx6yxXv-9eF/view?usp=sharing'); return false;">Boarding Pass (Sema)</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1dcDRR8pFF2yShL_cOy0yHmwxa2zf7AmG/view?usp=sharing'); return false;">Boarding Pass (Gavin)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JST13', this.textContent.trim()); return false;">Flight Status</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.jetstar.com/au/en/home?', this.textContent.trim()); return false;">Jetstar Login</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jq-jetstar-airways/boeing-787-8/#78d69f40906679a976dc4d45cebffbe6', this.textContent.trim()); return false;">Seat Map</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://checkin.jetstar.com/', this.textContent.trim()); return false;">Online Check-In</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1zeTNECFCbwFfEuie2oXxfdx6yxXv-9eF/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Sema)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1dcDRR8pFF2yShL_cOy0yHmwxa2zf7AmG/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Gavin)</a>
       </div>
     </article>
 
@@ -383,11 +464,11 @@
       </div>
 
       <div class="card-footer">
-        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JAL2087'); return false;">Flight Status</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://www.jal.co.jp/jp/en/'); return false;">JAL Login</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jl-jal/airbus-a350-900/#3da972c3ec85b6f3cc5306acf034fd23'); return false;">Seat Map</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/15hYlgOFYLLUWZTFsSXaKVwcsuztXFHC3/view?usp=sharing'); return false;">Boarding Pass (Sema)</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1q-Z5-cd3po4dBi-BX1eUsxnh7nC5MX0r/view?usp=sharing'); return false;">Boarding Pass (Gavin)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JAL2087', this.textContent.trim()); return false;">Flight Status</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.jal.co.jp/jp/en/', this.textContent.trim()); return false;">JAL Login</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jl-jal/airbus-a350-900/#3da972c3ec85b6f3cc5306acf034fd23', this.textContent.trim()); return false;">Seat Map</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/15hYlgOFYLLUWZTFsSXaKVwcsuztXFHC3/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Sema)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1q-Z5-cd3po4dBi-BX1eUsxnh7nC5MX0r/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Gavin)</a>
       </div>
     </article>
 
@@ -420,11 +501,11 @@
       </div>
 
       <div class="card-footer">
-        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JTA054'); return false;">Flight Status</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://www.jal.co.jp/jp/en/'); return false;">JAL Login</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jl-jal/boeing-737-800/#d756d3d2b9dac72449a6a6926534558a'); return false;">Seat Map</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1r8t4Pex4ZD47PXeYuTK2aD9xyUqQMK49/view?usp=sharing'); return false;">Boarding Pass (Sema)</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1ibQWGDZ7b_0oeFofX0ilOhjEFELXB-gK/view?usp=sharing'); return false;">Boarding Pass (Gavin)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JTA054', this.textContent.trim()); return false;">Flight Status</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.jal.co.jp/jp/en/', this.textContent.trim()); return false;">JAL Login</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jl-jal/boeing-737-800/#d756d3d2b9dac72449a6a6926534558a', this.textContent.trim()); return false;">Seat Map</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1r8t4Pex4ZD47PXeYuTK2aD9xyUqQMK49/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Sema)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1ibQWGDZ7b_0oeFofX0ilOhjEFELXB-gK/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Gavin)</a>
       </div>
     </article>
 
@@ -457,14 +538,20 @@
       </div>
 
       <div class="card-footer">
-        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JST14'); return false;">Flight Status</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://www.jetstar.com/au/en/home?'); return false;">Jetstar Login</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jq-jetstar-airways/boeing-787-8/#78d69f40906679a976dc4d45cebffbe6'); return false;">Seat Map</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://checkin.jetstar.com/'); return false;">Online Check-In</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1lpLbKdp3G-fBl-gQ1SJmzePiQ64SBI9M/view?usp=sharing'); return false;">Boarding Pass (Sema)</a>
-        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/19DIW9lN1lglELKW9-Ceq7SEp_-s0OFX5/view?usp=sharing'); return false;">Boarding Pass (Gavin)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://flightaware.com/live/flight/JST14', this.textContent.trim()); return false;">Flight Status</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://www.jetstar.com/au/en/home?', this.textContent.trim()); return false;">Jetstar Login</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://seatmaps.com/airlines/jq-jetstar-airways/boeing-787-8/#78d69f40906679a976dc4d45cebffbe6', this.textContent.trim()); return false;">Seat Map</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://checkin.jetstar.com/', this.textContent.trim()); return false;">Online Check-In</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/1lpLbKdp3G-fBl-gQ1SJmzePiQ64SBI9M/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Sema)</a>
+        <a class="link-pill" href="#" onclick="handleExternal('https://drive.google.com/file/d/19DIW9lN1lglELKW9-Ceq7SEp_-s0OFX5/view?usp=sharing', this.textContent.trim()); return false;">Boarding Pass (Gavin)</a>
       </div>
     </article>
+
+    <div class="toolbar" style="justify-content:center; margin-top:32px; margin-bottom:0;">
+      <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
+        ← Back to Trip Home
+      </a>
+    </div>
 
 <footer>
   For getting to and from the airport, use the
@@ -479,6 +566,16 @@
 </footer>
   </main>
 
+  <div class="site-modal" id="siteModal" aria-hidden="true">
+    <div class="site-modal-shell">
+      <div class="site-modal-header">
+        <div class="site-modal-title" id="siteModalTitle">Flight Link</div>
+        <button class="site-modal-close" type="button" onclick="closeSiteModal()" aria-label="Close">×</button>
+      </div>
+      <iframe class="site-modal-frame" id="siteModalFrame" src="about:blank" loading="lazy"></iframe>
+    </div>
+  </div>
+
   <div class="offline-overlay" id="offlineOverlay">
     <div class="offline-box">
       <h2>You’re offline</h2>
@@ -491,12 +588,32 @@
   </div>
 
   <script>
-    function handleExternal(url) {
+    function handleExternal(url, title) {
       verifyConnectivity()
         .then(function () {
-          window.location.href = 'external.html?url=' + encodeURIComponent(url);
+          openSiteModal(url, title || 'Flight Link');
         })
         .catch(showOffline);
+    }
+
+    function openSiteModal(url, title) {
+      const modal = document.getElementById('siteModal');
+      const frame = document.getElementById('siteModalFrame');
+      const titleEl = document.getElementById('siteModalTitle');
+
+      titleEl.textContent = title || 'Flight Link';
+      frame.src = url;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeSiteModal() {
+      const modal = document.getElementById('siteModal');
+      const frame = document.getElementById('siteModalFrame');
+
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      frame.src = 'about:blank';
     }
 
     function verifyConnectivity() {
@@ -529,6 +646,12 @@
     function closeOffline() {
       document.getElementById('offlineOverlay').style.display = 'none';
     }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeSiteModal();
+      }
+    });
   </script>
 </body>
 </html>
