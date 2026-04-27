@@ -606,7 +606,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://www.klook.com/en-US/activity/35861-umeda-sky-building-kuchu-teien-observatory-ticket/?source_channel=googlettd&_language=en&_currency=AUD&_activity_id=35861&package_id=110718'); return false;"
+                onclick="openDirectExternal('https://www.klook.com/en-US/activity/35861-umeda-sky-building-kuchu-teien-observatory-ticket/?source_channel=googlettd&_language=en&_currency=AUD&_activity_id=35861&package_id=110718'); return false;"
                 >Booking</a
               >
             </div>
@@ -797,7 +797,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://www.klook.com/en-US/activity/184264-okinawa-sunsettour-naminoue-shrine-american-village-illumination/'); return false;"
+                onclick="openDirectExternal('https://www.klook.com/en-US/activity/184264-okinawa-sunsettour-naminoue-shrine-american-village-illumination/'); return false;"
                 >Booking</a
               >
             </div>
@@ -835,7 +835,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://www.klook.com/en-US/activity/30585-blue-cave-snorkeling-diving-experience-okinawa/?spm=SearchResult.SearchResult_LIST&clickId=7928709049'); return false;"
+                onclick="openDirectExternal('https://www.klook.com/en-US/activity/30585-blue-cave-snorkeling-diving-experience-okinawa/?spm=SearchResult.SearchResult_LIST&clickId=7928709049'); return false;"
                 >Booking</a
               >
             </div>
@@ -1017,7 +1017,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openExternalBrowser(this.textContent.trim(), 'https://www.klook.com/en-US/activity/78047-fukuoka-night-tour-yatai-dinner/'); return false;"
+                onclick="openDirectExternal('https://www.klook.com/en-US/activity/78047-fukuoka-night-tour-yatai-dinner/'); return false;"
                 >Booking</a
               >
             </div>
@@ -1214,6 +1214,14 @@
   function closeWebsiteBrowser() {
     document.getElementById("websiteBrowserFrame").src = "";
     document.getElementById("websiteBrowserModal").style.display = "none";
+  }
+
+  function openDirectExternal(url) {
+    verifyConnectivity()
+      .then(function () {
+        window.location.href = url;
+      })
+      .catch(showOffline);
   }
 
   function handleExternal(url) {
