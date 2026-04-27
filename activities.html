@@ -440,6 +440,134 @@
       background: #020617;
     }
 
+
+
+    /* ======================================================
+       In-page Klook booking launch modal
+       ====================================================== */
+    .klook-launch-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 9998;
+    }
+
+    .klook-launch-panel {
+      width: min(560px, 100%);
+      background: linear-gradient(145deg, #0b1020, #111827);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .klook-launch-header {
+      background: #0b1020;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding: 16px 18px 14px;
+      color: #f9fafb;
+    }
+
+    .klook-launch-kicker {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .klook-launch-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .klook-launch-body {
+      padding: 16px 18px 18px;
+    }
+
+    .klook-launch-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .klook-launch-detail {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      background: rgba(2,6,23,0.55);
+      padding: 10px 12px;
+    }
+
+    .klook-launch-detail-label {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-bottom: 3px;
+    }
+
+    .klook-launch-detail-value {
+      font-size: 14px;
+      color: #f9fafb;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .klook-launch-note {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.45;
+      margin: 0 0 14px;
+    }
+
+    .klook-launch-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .klook-launch-action,
+    .klook-launch-close {
+      border-radius: var(--radius-pill);
+      border: 1px solid #4b5563;
+      background: #020617;
+      color: #e5e7eb;
+      padding: 8px 13px;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      flex: 1 1 auto;
+    }
+
+    .klook-launch-action.primary {
+      color: #93c5fd;
+      border-color: rgba(147,197,253,0.45);
+      background: rgba(37,99,235,0.12);
+    }
+
+    @media (max-width: 640px) {
+      .klook-launch-modal {
+        align-items: flex-end;
+        padding: 10px;
+      }
+
+      .klook-launch-panel {
+        border-radius: 20px 20px 14px 14px;
+      }
+
+      .klook-launch-action,
+      .klook-launch-close {
+        flex-basis: 100%;
+        padding: 10px 13px;
+      }
+    }
+
     /* ===== Offline Overlay ===== */
 
     .offline-overlay {
@@ -606,7 +734,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openDirectExternal('https://www.klook.com/en-US/activity/35861-umeda-sky-building-kuchu-teien-observatory-ticket/?source_channel=googlettd&_language=en&_currency=AUD&_activity_id=35861&package_id=110718'); return false;"
+                onclick="openKlookLaunch('Umeda Sky Building & Kuchu Teien Observatory', 'https://www.klook.com/en-US/activity/35861-umeda-sky-building-kuchu-teien-observatory-ticket/?source_channel=googlettd&_language=en&_currency=AUD&_activity_id=35861&package_id=110718'); return false;"
                 >Booking</a
               >
             </div>
@@ -797,7 +925,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openDirectExternal('https://www.klook.com/en-US/activity/184264-okinawa-sunsettour-naminoue-shrine-american-village-illumination/'); return false;"
+                onclick="openKlookLaunch('Cape Zanpa & Lighthouse', 'https://www.klook.com/en-US/activity/184264-okinawa-sunsettour-naminoue-shrine-american-village-illumination/'); return false;"
                 >Booking</a
               >
             </div>
@@ -835,7 +963,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openDirectExternal('https://www.klook.com/en-US/activity/30585-blue-cave-snorkeling-diving-experience-okinawa/?spm=SearchResult.SearchResult_LIST&clickId=7928709049'); return false;"
+                onclick="openKlookLaunch('Blue Cave Snorkelling or Diving', 'https://www.klook.com/en-US/activity/30585-blue-cave-snorkeling-diving-experience-okinawa/?spm=SearchResult.SearchResult_LIST&clickId=7928709049'); return false;"
                 >Booking</a
               >
             </div>
@@ -1017,7 +1145,7 @@
               <a
                 class="link-pill"
                 href="#"
-                onclick="openDirectExternal('https://www.klook.com/en-US/activity/78047-fukuoka-night-tour-yatai-dinner/'); return false;"
+                onclick="openKlookLaunch('Nakasu Kawabata Night Walk', 'https://www.klook.com/en-US/activity/78047-fukuoka-night-tour-yatai-dinner/'); return false;"
                 >Booking</a
               >
             </div>
@@ -1174,6 +1302,37 @@
   <iframe id="websiteBrowserFrame" src="" loading="lazy"></iframe>
 </div>
 
+<div class="klook-launch-modal" id="klookLaunchModal">
+  <div class="klook-launch-panel" role="dialog" aria-modal="true" aria-labelledby="klookLaunchTitle">
+    <div class="klook-launch-header">
+      <div class="klook-launch-kicker">Klook booking</div>
+      <div class="klook-launch-title" id="klookLaunchTitle">Booking</div>
+    </div>
+
+    <div class="klook-launch-body">
+      <div class="klook-launch-detail-grid">
+        <div class="klook-launch-detail">
+          <div class="klook-launch-detail-label">Activity</div>
+          <div class="klook-launch-detail-value" id="klookLaunchActivity">—</div>
+        </div>
+        <div class="klook-launch-detail">
+          <div class="klook-launch-detail-label">Provider</div>
+          <div class="klook-launch-detail-value">Klook</div>
+        </div>
+      </div>
+
+      <p class="klook-launch-note">
+        Klook may block embedded booking pages. Use the button below to open the secure Klook booking page while keeping this Activities page available behind it.
+      </p>
+
+      <div class="klook-launch-actions">
+        <a class="klook-launch-action primary" id="klookLaunchExternalLink" href="#" target="_blank" rel="noopener">Open Klook Booking</a>
+        <button class="klook-launch-close" onclick="closeKlookLaunch()">X Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="offline-overlay" id="offlineOverlay">
   <div class="offline-box">
     <h2>You’re offline</h2>
@@ -1186,6 +1345,22 @@
 </div>
 
 <script>
+  function openKlookLaunch(activity, url) {
+    verifyConnectivity()
+      .then(function () {
+        document.getElementById("klookLaunchTitle").textContent = activity || "Klook Booking";
+        document.getElementById("klookLaunchActivity").textContent = activity || "Booking";
+        document.getElementById("klookLaunchExternalLink").href = url;
+        document.getElementById("klookLaunchModal").style.display = "flex";
+      })
+      .catch(showOffline);
+  }
+
+  function closeKlookLaunch() {
+    document.getElementById("klookLaunchExternalLink").href = "#";
+    document.getElementById("klookLaunchModal").style.display = "none";
+  }
+
   function openMapModal(url) {
     verifyConnectivity()
       .then(function () {
