@@ -188,6 +188,23 @@ function renderInvalid() {
   `;
 }
 
+function renderLaunch(targetUrl) {
+  document.getElementById("card").innerHTML = `
+    <h1>Opening external site</h1>
+    <p>This link will open outside TrekWorks.</p>
+    <p>You can go back before it opens.</p>
+    <div class="actions">
+      <a class="button" href="#" onclick="goBackSafely(); return false;">✕ Go Back</a>
+      <a class="button" href="${targetUrl}">Open Now</a>
+    </div>
+    <div class="footer">JP · GJN-2026-May · Japan</div>
+  `;
+
+  setTimeout(function () {
+    location.replace(targetUrl);
+  }, 1000);
+}
+
 /* ======================================================
    Main execution
    ====================================================== */
@@ -213,7 +230,7 @@ function renderInvalid() {
     return;
   }
 
-  location.replace(targetUrl);
+  renderLaunch(targetUrl);
 })();
 </script>
 
