@@ -237,6 +237,56 @@
 
 
 
+    /* ===== In-page Map Modal ===== */
+
+    .map-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.88);
+      display: none;
+      flex-direction: column;
+      z-index: 10001;
+    }
+
+    .map-modal-header {
+      height: 52px;
+      background: #0b1020;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      color: #f9fafb;
+      font-size: 14px;
+    }
+
+    .map-modal-title {
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-right: 12px;
+    }
+
+    .map-modal-close {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: #020617;
+      color: #f9fafb;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .map-modal iframe {
+      width: 100%;
+      height: calc(100vh - 52px);
+      border: 0;
+      background: #020617;
+    }
+
+
     /* ===== Site Modal ===== */
 
     .site-modal-overlay {
@@ -516,7 +566,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/XuGMgw2kkRHA7nPv7', 'Train to Namba', 'Kansai Airport → Namba', 'Google Maps'); return false;">Train to Namba</a>
+          <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Kansai%20Airport%20Station%20to%20Namba%20Station%20Osaka%20Japan&output=embed', 'Train to Namba'); return false;">Train to Namba</a>
         </div>
       </article>
 
@@ -539,7 +589,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/R9NHx2pbanSztXjC6', 'Train to Kansai', 'Sakaisuji Hommachi → Kansai Airport', 'Google Maps'); return false;">Train to Kansai</a>
+          <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Sakaisuji%20Hommachi%20Station%20to%20Kansai%20Airport%20Station%20Japan&output=embed', 'Train to Kansai'); return false;">Train to Kansai</a>
         </div>
       </article>
     </section>
@@ -568,8 +618,8 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/TpD9UuVHHCG55YVS9', 'Train to Kyoto', 'Namba → Kyoto', 'Google Maps'); return false;">Train to Kyoto</a>
-          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/dcwsgsUa68iPDjxx5', 'Train to Namba', 'Kyoto → Namba', 'Google Maps'); return false;">Train to Namba</a>
+          <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Namba%20Station%20Osaka%20to%20Kyoto%20Station%20Japan&output=embed', 'Train to Kyoto'); return false;">Train to Kyoto</a>
+          <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Kyoto%20Station%20to%20Namba%20Station%20Osaka%20Japan&output=embed', 'Train to Namba'); return false;">Train to Namba</a>
         </div>
       </article>
     </section>
@@ -598,8 +648,8 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/sfV7hZkw8xA6oCsJ8', 'Train to Nagasaki', 'Hakata → Nagasaki', 'Google Maps'); return false;">Train to Nagasaki</a>
-          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/62bco6RFLkpZpuah8', 'Train to Hakata', 'Nagasaki → Hakata', 'Google Maps'); return false;">Train to Hakata</a>
+          <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Hakata%20Station%20Fukuoka%20to%20Nagasaki%20Station%20Japan&output=embed', 'Train to Nagasaki'); return false;">Train to Nagasaki</a>
+          <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Nagasaki%20Station%20to%20Hakata%20Station%20Fukuoka%20Japan&output=embed', 'Train to Hakata'); return false;">Train to Hakata</a>
         </div>
       </article>
 
@@ -629,8 +679,8 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/CQYUzRqdY1yA8Mjy5', 'Train to Kumamoto', 'Hakata → Kumamoto', 'Google Maps'); return false;">Train to Kumamoto</a>
-          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/X9gDMDASThyQJjBv6', 'Train to Hakata', 'Kumamoto → Hakata', 'Google Maps'); return false;">Train to Hakata</a>
+          <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Hakata%20Station%20Fukuoka%20to%20Kumamoto%20Station%20Japan&output=embed', 'Train to Kumamoto'); return false;">Train to Kumamoto</a>
+          <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Kumamoto%20Station%20to%20Hakata%20Station%20Fukuoka%20Japan&output=embed', 'Train to Hakata'); return false;">Train to Hakata</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.jrkyushu.co.jp/english/', 'Tickets'); return false;">Tickets</a>
         </div>
       </article>
@@ -677,6 +727,15 @@
       <a href="https://jp-gjn-2026-may.trekworks.org/accommodation.html">Accommodation</a>.
     </footer>
   </main>
+
+
+  <div class="map-modal" id="mapModal">
+    <div class="map-modal-header">
+      <div class="map-modal-title" id="mapModalTitle">Map</div>
+      <button class="map-modal-close" type="button" onclick="closeMapModal()">X Close</button>
+    </div>
+    <iframe id="mapFrame" src="" loading="lazy" title="Map preview"></iframe>
+  </div>
 
 
   <div class="site-modal-overlay" id="siteModalOverlay" onclick="siteBackdropClose(event)">
@@ -756,6 +815,31 @@
 
   <script>
 
+
+    function openMapModal(url, title) {
+      var modal = document.getElementById('mapModal');
+      var frame = document.getElementById('mapFrame');
+      var modalTitle = document.getElementById('mapModalTitle');
+
+      modalTitle.textContent = title || 'Map';
+      frame.src = url;
+      modal.style.display = 'flex';
+      document.body.classList.add('modal-open');
+    }
+
+    function closeMapModal() {
+      var modal = document.getElementById('mapModal');
+      var frame = document.getElementById('mapFrame');
+
+      frame.src = '';
+      modal.style.display = 'none';
+      if ((!document.getElementById('siteModalOverlay') || document.getElementById('siteModalOverlay').style.display !== 'block') &&
+          (!document.getElementById('trainLaunchOverlay') || document.getElementById('trainLaunchOverlay').style.display !== 'block') &&
+          (!document.getElementById('reservationOverlay') || document.getElementById('reservationOverlay').style.display !== 'block')) {
+        document.body.classList.remove('modal-open');
+      }
+    }
+
     function openSiteModal(url, title) {
       var overlay = document.getElementById('siteModalOverlay');
       var frame = document.getElementById('siteModalFrame');
@@ -773,7 +857,9 @@
 
       frame.src = 'about:blank';
       overlay.style.display = 'none';
-      if (!document.getElementById('reservationOverlay') || document.getElementById('reservationOverlay').style.display !== 'block') {
+      if ((!document.getElementById('mapModal') || document.getElementById('mapModal').style.display !== 'flex') &&
+          (!document.getElementById('reservationOverlay') || document.getElementById('reservationOverlay').style.display !== 'block') &&
+          (!document.getElementById('trainLaunchOverlay') || document.getElementById('trainLaunchOverlay').style.display !== 'block')) {
         document.body.classList.remove('modal-open');
       }
     }
@@ -803,7 +889,8 @@
       openButton.href = '#';
       overlay.style.display = 'none';
       if ((!document.getElementById('reservationOverlay') || document.getElementById('reservationOverlay').style.display !== 'block') &&
-          (!document.getElementById('siteModalOverlay') || document.getElementById('siteModalOverlay').style.display !== 'block')) {
+          (!document.getElementById('siteModalOverlay') || document.getElementById('siteModalOverlay').style.display !== 'block') &&
+          (!document.getElementById('mapModal') || document.getElementById('mapModal').style.display !== 'flex')) {
         document.body.classList.remove('modal-open');
       }
     }
@@ -821,7 +908,11 @@
 
     function closeReservationLaunch() {
       document.getElementById('reservationOverlay').style.display = 'none';
-      document.body.classList.remove('modal-open');
+      if ((!document.getElementById('mapModal') || document.getElementById('mapModal').style.display !== 'flex') &&
+          (!document.getElementById('siteModalOverlay') || document.getElementById('siteModalOverlay').style.display !== 'block') &&
+          (!document.getElementById('trainLaunchOverlay') || document.getElementById('trainLaunchOverlay').style.display !== 'block')) {
+        document.body.classList.remove('modal-open');
+      }
     }
 
     function reservationBackdropClose(event) {
@@ -832,6 +923,7 @@
 
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Escape') {
+        closeMapModal();
         closeSiteModal();
         closeTrainLaunch();
         closeReservationLaunch();
