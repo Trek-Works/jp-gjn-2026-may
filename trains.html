@@ -82,11 +82,6 @@
       align-items: center;
     }
 
-    .bottom-toolbar {
-      justify-content: center;
-      margin: 38px 0 -30px;
-    }
-
     .pill-button {
       border-radius: var(--radius-pill);
       border: 1px solid #374151;
@@ -112,6 +107,11 @@
       margin-bottom: 10px;
     }
 
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-top: 6px;
+    }
 
     /* ===== Cards ===== */
 
@@ -235,9 +235,9 @@
       }
     }
 
-    /* ===== Site Modal ===== */
+    /* ===== Reservation Launch Page ===== */
 
-    .site-modal-overlay {
+    .reservation-overlay {
       position: fixed;
       inset: 0;
       display: none;
@@ -246,9 +246,9 @@
       padding: 18px;
     }
 
-    .site-modal {
-      width: min(1100px, 100%);
-      height: min(820px, calc(100vh - 36px));
+    .reservation-modal {
+      width: min(720px, 100%);
+      max-height: calc(100vh - 36px);
       margin: 0 auto;
       background: #020617;
       border: 1px solid var(--border-soft);
@@ -259,7 +259,7 @@
       flex-direction: column;
     }
 
-    .site-modal-header {
+    .reservation-header {
       height: 44px;
       min-height: 44px;
       display: flex;
@@ -271,16 +271,13 @@
       border-bottom: 1px solid var(--border-soft);
     }
 
-    .site-modal-title {
+    .reservation-title {
       font-size: 13px;
       font-weight: 600;
       color: #e5e7eb;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
     }
 
-    .site-modal-close {
+    .reservation-close {
       border: 1px solid #374151;
       background: rgba(15, 23, 42, 0.9);
       color: #e5e7eb;
@@ -292,23 +289,13 @@
       line-height: 1;
     }
 
-    .site-modal-frame {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      background: #fff;
-    }
-
-    .launch-modal-body {
+    .reservation-body {
       padding: 18px;
-      background: linear-gradient(180deg, #0b1020 0%, #111827 100%);
       overflow: auto;
-      flex: 1;
+      background: linear-gradient(180deg, #0b1020 0%, #111827 100%);
     }
 
-    .launch-card {
-      max-width: 640px;
-      margin: 0 auto;
+    .reservation-card {
       border: 1px solid var(--border-soft);
       border-radius: 18px;
       background: rgba(15, 23, 42, 0.82);
@@ -316,13 +303,13 @@
       overflow: hidden;
     }
 
-    .launch-card-header {
+    .reservation-card-header {
       padding: 18px 18px 14px;
       border-bottom: 1px solid var(--border-soft);
       background: #0b1020;
     }
 
-    .launch-kicker {
+    .reservation-kicker {
       font-size: 11px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -331,18 +318,18 @@
       margin-bottom: 4px;
     }
 
-    .launch-title {
+    .reservation-main-title {
       font-size: 20px;
       line-height: 1.25;
       font-weight: 700;
       color: var(--text-main);
     }
 
-    .launch-card-content {
+    .reservation-content {
       padding: 18px;
     }
 
-    .launch-field {
+    .reservation-field {
       border: 1px solid var(--border-soft);
       border-radius: 14px;
       background: #020617;
@@ -350,32 +337,26 @@
       margin-bottom: 12px;
     }
 
-    .launch-label {
+    .reservation-label {
       font-size: 11px;
       color: var(--text-soft);
       margin-bottom: 5px;
     }
 
-    .launch-value {
+    .reservation-value {
       font-size: 14px;
       color: var(--text-main);
       font-weight: 600;
     }
 
-    .launch-note {
-      font-size: 13px;
-      line-height: 1.45;
-      color: #cbd5e1;
-      margin: 14px 0 16px;
-    }
-
-    .launch-actions {
+    .reservation-actions {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
+      margin-top: 14px;
     }
 
-    .launch-button {
+    .reservation-button {
       flex: 1 1 220px;
       border-radius: var(--radius-pill);
       border: 1px solid #4b5563;
@@ -389,7 +370,7 @@
       cursor: pointer;
     }
 
-    .launch-button.primary {
+    .reservation-button.primary {
       border-color: #31558f;
       background: rgba(79, 140, 255, 0.18);
       color: #bfdbfe;
@@ -400,13 +381,14 @@
     }
 
     @media (max-width: 640px) {
-      .site-modal-overlay {
+      .reservation-overlay {
         padding: 0;
       }
 
-      .site-modal {
-        height: 100vh;
+      .reservation-modal {
         width: 100%;
+        min-height: 100vh;
+        max-height: 100vh;
         border-radius: 0;
         border-left: 0;
         border-right: 0;
@@ -433,32 +415,30 @@
       </div>
     </div>
 
-    <!-- Airport Rail Alternatives -->
+    <!-- Airport Rail Options -->
     <section class="section">
-      <div class="section-title">✈️ Airport rail alternatives (Kansai)</div>
+      <div class="section-title">✈️ Kansai Airport Rail Options</div>
+
       <!-- 14 May 2026 — KIX → Osaka -->
       <article class="card optional">
         <div class="card-header">
           <div>
-            <div class="card-title">🚆 Kansai Airport (KIX) → Osaka (Namba / Umeda)</div>
-            <div class="card-meta">Arrival night · 14 May 2026</div>
+            <div class="card-title">🚆 Kansai Airport (KIX) → Osaka (Namba)</div>
+            <div class="card-meta">Arrive· 14 May 2026</div>
           </div>
         </div>
 
         <div class="meta-row">
           <div><span class="meta-label">When:</span> After landing (~7:50 PM) and clearing arrivals (~9:00 PM)</div>
-          <div><span class="meta-label">Travel time:</span> ~45–60 min</div>
         </div>
 
         <div class="meta-row">
-          <div><span class="meta-label">Options:</span> Nankai (to Namba) · JR (to Tennoji/Osaka/Umeda)</div>
-          <div><span class="meta-label">Note:</span> Use as backup if bus timing doesn’t suit</div>
+          <div><span class="meta-label">Depart Kansai:</span> 9:35 PM</div>
+          <div><span class="meta-label">Arrive Namba:</span> 10:15 PM</div>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.kansai-airport.or.jp/en/access/', 'KIX Access', 'Rail access information for Kansai Airport', 'Kansai Airport'); return false;">KIX Access</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.nankai.co.jp/en_railway', 'Nankai', 'Nankai Railway information for Kansai Airport and Osaka', 'Nankai'); return false;">Nankai</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/global/en/', 'JR West'); return false;">JR West</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/XuGMgw2kkRHA7nPv7">Train to Namba</a>
         </div>
       </article>
 
@@ -466,91 +446,59 @@
       <article class="card optional">
         <div class="card-header">
           <div>
-            <div class="card-title">🚆 Osaka (Namba / Umeda) → Kansai Airport (KIX)</div>
-            <div class="card-meta">Return day · 29 May 2026</div>
+            <div class="card-title">🚆 Osaka (Sakaisuji Hommachi) → Kansai Airport (KIX)</div>
+            <div class="card-meta">Depart · 29 May 2026</div>
           </div>
         </div>
 
         <div class="meta-row">
-          <div><span class="meta-label">When:</span> After check-out (~3:00 PM)</div>
-          <div><span class="meta-label">Travel time:</span> ~45–60 min</div>
+          <div><span class="meta-label">When:</span> After check-out (~4:00 PM)</div>
         </div>
 
         <div class="meta-row">
-          <div><span class="meta-label">Options:</span> Nankai (from Namba) · JR (from Osaka/Tennoji)</div>
-          <div><span class="meta-label">Note:</span> Rail backup if traffic affects bus</div>
+          <div><span class="meta-label">Depart Sakaisuji Hommachi:</span> 4:15 PM</div>
+          <div><span class="meta-label">Arrive Kansai:</span> 5:07 PM</div>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.kansai-airport.or.jp/en/access/', 'KIX Access', 'Rail access information for Kansai Airport', 'Kansai Airport'); return false;">KIX Access</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.nankai.co.jp/en_railway', 'Nankai', 'Nankai Railway information for Kansai Airport and Osaka', 'Nankai'); return false;">Nankai</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/global/en/', 'JR West'); return false;">JR West</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/R9NHx2pbanSztXjC6">Train to Kansai</a>
         </div>
       </article>
     </section>
 
     <!-- Osaka Area -->
     <section class="section">
-      <div class="section-title">🏯 Osaka base (Honshu)</div>
+      <div class="section-title">🏯 Osaka Rail Options</div>
 
       <!-- 16 May 2026 — Osaka → Kyoto → Osaka -->
       <article class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">🚆 Osaka → Kyoto (Day Trip) → Osaka</div>
+            <div class="card-title">🚆 Osaka (Namba) → Kyoto (Day Trip) → Osaka (Namba)</div>
             <div class="card-meta">Day trip · 16 May 2026</div>
           </div>
         </div>
 
         <div class="meta-row">
-          <div><span class="meta-label">Typical routes:</span> JR (Umeda/Osaka ↔ Kyoto) · Keihan (to Fushimi Inari area) · Hankyu (to Arashiyama)</div>
-          <div><span class="meta-label">Train type:</span> Rapid / Special Rapid (varies by line)</div>
+          <div><span class="meta-label">Depart Namba:</span> 10:00 AM</div>
+          <div><span class="meta-label">Arrive Kyoto:</span> 10:44 AM</div>
         </div>
 
         <div class="meta-row">
-          <div><span class="meta-label">Travel time:</span> ~30–60 min each way (depends on line + connections)</div>
-          <div><span class="meta-label">Tip:</span> Use IC card and follow Google Maps platform guidance</div>
+          <div><span class="meta-label">Depart Kyoto:</span> 6:14 PM</div>
+          <div><span class="meta-label">Arrive Namba:</span> 6:59 PM</div>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.hankyu.co.jp/en/ticket/index.html', 'Hankyu'); return false;">Hankyu</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.keihan.co.jp/travel/en/', 'Keihan', 'Keihan Railway information for Osaka, Kyoto and Fushimi Inari area travel', 'Keihan'); return false;">Keihan</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/global/en/', 'JR West'); return false;">JR West</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains', 'Japan train travel guide and practical rail information', 'Japan Guide'); return false;">About Japan Trains</a>
-        </div>
-      </article>
-
-      <!-- 28 May 2026 — Osaka → Kobe (Optional) -->
-      <article class="card optional">
-        <div class="card-header">
-          <div>
-            <div class="card-title">🚆 Osaka → Kobe (Sannomiya) → Osaka</div>
-            <div class="card-meta">Optional side trip · 28 May 2026</div>
-          </div>
-        </div>
-
-        <div class="meta-row">
-          <div><span class="meta-label">Train type:</span> Rapid / Express (varies by operator)</div>
-          <div><span class="meta-label">Travel time:</span> ~25–35 min each way</div>
-        </div>
-
-        <div class="meta-row">
-          <div><span class="meta-label">Options:</span> JR · Hankyu · Hanshin</div>
-          <div><span class="meta-label">Note:</span> Easy half-day add-on from Osaka</div>
-        </div>
-
-        <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.hankyu.co.jp/en/ticket/index.html', 'Hankyu'); return false;">Hankyu</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.hanshin.co.jp/global/en/access/', 'Hanshin'); return false;">Hanshin</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/global/en/', 'JR West'); return false;">JR West</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains', 'Japan train travel guide and practical rail information', 'Japan Guide'); return false;">About Japan Trains</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/TpD9UuVHHCG55YVS9">Train to Kyoto</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/dcwsgsUa68iPDjxx5">Train to Namba</a>
         </div>
       </article>
     </section>
 
     <!-- Kyushu -->
     <section class="section">
-      <div class="section-title">🎎 Fukuoka base (Kyushu)</div>
+      <div class="section-title">🎎 Fukuoka Rail Options</div>
 
       <!-- 23 May 2026 — Fukuoka → Nagasaki -->
       <article class="card">
@@ -562,47 +510,18 @@
         </div>
 
         <div class="meta-row">
-          <div><span class="meta-label">Train type:</span> Limited Express (relay connection for Nagasaki route)</div>
-          <div><span class="meta-label">Travel time:</span> ~2 h 10 m each way</div>
+          <div><span class="meta-label">Depart Hakata:</span> 10:03 AM</div>
+          <div><span class="meta-label">Arrive Nagasaki:</span> 11:28 AM</div>
         </div>
 
         <div class="meta-row">
-          <div><span class="meta-label">Note:</span> Plan for a long but very doable day trip</div>
-          <div><span class="meta-label">Operator:</span> JR Kyushu</div>
+          <div><span class="meta-label">Depart Nagasaki:</span> 6:19 PM</div>
+          <div><span class="meta-label">Arrive Hakata:</span> 7:53 PM</div>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.jrkyushu.co.jp/english/', 'JR Kyushu'); return false;">JR Kyushu</a>
-           <a class="link-pill" href="#" onclick="openLaunchModal('https://smart-ex.jp/en/lp/app/', 'Shinkansen', 'Smart EX app information for Shinkansen booking and travel', 'Smart EX'); return false;">Shinkansen</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/', 'JR West Rail Pass'); return false;">JR West Rail Pass</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains', 'Japan train travel guide and practical rail information', 'Japan Guide'); return false;">About Japan Trains</a>
-        </div>
-      </article>
-
-      <!-- 24 May 2026 — Fukuoka → Dazaifu -->
-      <article class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">🚆 Fukuoka (Tenjin/Hakata) → Dazaifu → Fukuoka</div>
-            <div class="card-meta">Half-day / day trip · 24 May 2026</div>
-          </div>
-        </div>
-
-        <div class="meta-row">
-          <div><span class="meta-label">Typical route:</span> Nishitetsu (Tenjin area) via interchange to Dazaifu Line</div>
-          <div><span class="meta-label">Travel time:</span> ~30–45 min each way</div>
-        </div>
-
-        <div class="meta-row">
-          <div><span class="meta-label">Tip:</span> Combine with Ohori Park the same day</div>
-          <div><span class="meta-label">Operator:</span> Nishitetsu</div>
-        </div>
-
-        <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.nishitetsu.jp/en/', 'Nishitetsu', 'Nishitetsu rail information for Fukuoka and Dazaifu', 'Nishitetsu'); return false;">Nishitetsu</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.jrkyushu.co.jp/english/', 'JR Kyushu'); return false;">JR Kyushu</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/', 'JR West Rail Pass'); return false;">JR West Rail Pass</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains', 'Japan train travel guide and practical rail information', 'Japan Guide'); return false;">About Japan Trains</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/sfV7hZkw8xA6oCsJ8">Train to Nagasaki</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/62bco6RFLkpZpuah8">Train to Hakata</a>
         </div>
       </article>
 
@@ -616,56 +535,57 @@
         </div>
 
         <div class="meta-row">
+          <div><span class="meta-label">Train:</span> Sakura 741</div>
+          <div><span class="meta-label">Green Car:</span> ¥8,110 each (¥16,220)</div>
           <div><span class="meta-label">Train type:</span> Shinkansen (Kyushu Shinkansen)</div>
-          <div><span class="meta-label">Travel time:</span> ~45 min each way</div>
         </div>
 
         <div class="meta-row">
-          <div><span class="meta-label">Tip:</span> Book reserved seats if you prefer certainty</div>
-          <div><span class="meta-label">Operator:</span> JR Kyushu</div>
+          <div><span class="meta-label">Depart Hakata:</span> 9:06 AM</div>
+          <div><span class="meta-label">Arrive Kumamoto:</span> 9:43 AM (39 mins)</div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Depart Kumamoto:</span> 5:04 PM</div>
+          <div><span class="meta-label">Arrive Hakata:</span> 5:43 PM</div>
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.jrkyushu.co.jp/english/', 'JR Kyushu'); return false;">JR Kyushu</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/', 'JR West Rail Pass'); return false;">JR West Rail Pass</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://global.jr-central.co.jp/en/', 'Shinkansen Info'); return false;">Shinkansen Info</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains', 'Japan train travel guide and practical rail information', 'Japan Guide'); return false;">About Japan Trains</a>
-        </div>
-      </article>
-
-      <!-- 26 May 2026 — Hakata → Shin-Osaka -->
-      <article class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">🚄 Hakata → Shin-Osaka</div>
-            <div class="card-meta">Travel day · 26 May 2026</div>
-          </div>
-        </div>
-
-        <div class="meta-row">
-          <div><span class="meta-label">Train:</span> Nozomi 28 (Green Car — 2 passengers)</div>
-          <div><span class="meta-label">Line:</span> Sanyo Shinkansen</div>
-        </div>
-
-        <div class="meta-row">
-          <div><span class="meta-label">Depart:</span> 12:15 PM</div>
-          <div><span class="meta-label">Arrive:</span> 2:43 PM</div>
-          <div><span class="meta-label">Duration:</span> 2 h 28 m</div>
-        </div>
-
-        <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openSiteModal('https://global.jr-central.co.jp/en/', 'Shinkansen Info'); return false;">JR Central</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/sanyo_sanin/', 'JR West (Sanyo Area Pass)'); return false;">JR West (Sanyo Area Pass)</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains', 'Japan train travel guide and practical rail information', 'Japan Guide'); return false;">About Japan Trains</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/CQYUzRqdY1yA8Mjy5">Train to Kumamoto</a>
+          <a class="link-pill" href="external.html?url=https://maps.app.goo.gl/X9gDMDASThyQJjBv6">Train to Hakata</a>
+          <a class="link-pill" href="external.html?url=https://www.jrkyushu.co.jp/english/">Tickets</a>
         </div>
       </article>
     </section>
 
-    <div class="toolbar bottom-toolbar">
-      <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
-        ← Back to Trip Home
-      </a>
-    </div>
+    <!-- Shinkansen Rail -->
+    <section class="section">
+      <div class="section-title">🚄 Shinkansen Rail</div>
+
+      <!-- 27 May 2026 — Hakata → Shin-Osaka -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚆 Hakata → Shin-Osaka</div>
+            <div class="card-meta">Travel day · 27 May 2026</div>
+          </div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Train:</span> NOZOMI 28 Series N700S with 16 cars</div>
+          <div><span class="meta-label">Green Car:</span> ¥21,890 each (¥43,780)</div>
+        </div>
+
+        <div class="meta-row">
+          <div><span class="meta-label">Depart Hakata:</span> 12:15 PM</div>
+          <div><span class="meta-label">Arrive Shin-Osaka:</span> 2:43 PM (2h 28m)</div>
+        </div>
+
+        <div class="card-footer">
+          <a class="link-pill" href="#" onclick="openReservationLaunch(); return false;">Reservation</a>
+        </div>
+      </article>
+    </section>
 
     <footer>
       For air travel, see
@@ -680,43 +600,38 @@
     </footer>
   </main>
 
-  <div class="site-modal-overlay" id="siteModalOverlay" onclick="modalBackdropClose(event)">
-    <div class="site-modal" role="dialog" aria-modal="true" aria-label="Site preview">
-      <div class="site-modal-header">
-        <div class="site-modal-title" id="siteModalTitle">Site</div>
-        <button class="site-modal-close" type="button" onclick="closeSiteModal()" aria-label="Close">×</button>
+  <div class="reservation-overlay" id="reservationOverlay" onclick="reservationBackdropClose(event)">
+    <div class="reservation-modal" role="dialog" aria-modal="true" aria-label="Shinkansen reservation launch page">
+      <div class="reservation-header">
+        <div class="reservation-title">Reservation</div>
+        <button class="reservation-close" type="button" onclick="closeReservationLaunch()" aria-label="Close">×</button>
       </div>
-      <iframe class="site-modal-frame" id="siteModalFrame" title="Site preview"></iframe>
-    </div>
-  </div>
-
-  <div class="site-modal-overlay" id="launchModalOverlay" onclick="launchBackdropClose(event)">
-    <div class="site-modal" role="dialog" aria-modal="true" aria-label="Launch external site">
-      <div class="site-modal-header">
-        <div class="site-modal-title" id="launchModalHeaderTitle">Site</div>
-        <button class="site-modal-close" type="button" onclick="closeLaunchModal()" aria-label="Close">×</button>
-      </div>
-      <div class="launch-modal-body">
-        <div class="launch-card">
-          <div class="launch-card-header">
-            <div class="launch-kicker">Train Site</div>
-            <div class="launch-title" id="launchModalTitle">Site</div>
+      <div class="reservation-body">
+        <div class="reservation-card">
+          <div class="reservation-card-header">
+            <div class="reservation-kicker">Shinkansen Reservation</div>
+            <div class="reservation-main-title">Hakata → Shin-Osaka</div>
           </div>
-          <div class="launch-card-content">
-            <div class="launch-field">
-              <div class="launch-label">Resource</div>
-              <div class="launch-value" id="launchModalResource">Site</div>
+          <div class="reservation-content">
+            <div class="reservation-field">
+              <div class="reservation-label">Reservation number</div>
+              <div class="reservation-value">2008</div>
             </div>
-            <div class="launch-field">
-              <div class="launch-label">Provider</div>
-              <div class="launch-value" id="launchModalProvider">Provider</div>
+            <div class="reservation-field">
+              <div class="reservation-label">Car</div>
+              <div class="reservation-value">Green Car 10</div>
             </div>
-            <p class="launch-note">
-              This site may block embedded pages. Use the button below to open the secure site while keeping this Trains page available behind it.
-            </p>
-            <div class="launch-actions">
-              <a class="launch-button primary" id="launchModalOpen" href="#" target="_blank" rel="noopener">Open Site</a>
-              <button class="launch-button" type="button" onclick="closeLaunchModal()">X Close</button>
+            <div class="reservation-field">
+              <div class="reservation-label">Seats</div>
+              <div class="reservation-value">Seat 15-A and Seat 15-B</div>
+            </div>
+            <div class="reservation-field">
+              <div class="reservation-label">smart EX Membership ID</div>
+              <div class="reservation-value">7938142473</div>
+            </div>
+            <div class="reservation-actions">
+              <a class="reservation-button primary" href="https://shinkansen2.jr-central.co.jp/RSV_P/smart_en_index.htm" target="_blank" rel="noopener">smart EX Login</a>
+              <button class="reservation-button" type="button" onclick="closeReservationLaunch()">X Close</button>
             </div>
           </div>
         </div>
@@ -725,72 +640,27 @@
   </div>
 
   <script>
-  function openSiteModal(url, title) {
-    var overlay = document.getElementById('siteModalOverlay');
-    var frame = document.getElementById('siteModalFrame');
-    var modalTitle = document.getElementById('siteModalTitle');
-
-    modalTitle.textContent = title || 'Site';
-    frame.src = url;
-    overlay.style.display = 'block';
-    document.body.classList.add('modal-open');
-  }
-
-  function closeSiteModal() {
-    var overlay = document.getElementById('siteModalOverlay');
-    var frame = document.getElementById('siteModalFrame');
-
-    frame.src = 'about:blank';
-    overlay.style.display = 'none';
-    document.body.classList.remove('modal-open');
-  }
-
-  function modalBackdropClose(event) {
-    if (event.target && event.target.id === 'siteModalOverlay') {
-      closeSiteModal();
+    function openReservationLaunch() {
+      document.getElementById('reservationOverlay').style.display = 'block';
+      document.body.classList.add('modal-open');
     }
-  }
 
-  function openLaunchModal(url, title, resource, provider) {
-    var overlay = document.getElementById('launchModalOverlay');
-    var headerTitle = document.getElementById('launchModalHeaderTitle');
-    var launchTitle = document.getElementById('launchModalTitle');
-    var launchResource = document.getElementById('launchModalResource');
-    var launchProvider = document.getElementById('launchModalProvider');
-    var launchOpen = document.getElementById('launchModalOpen');
-
-    headerTitle.textContent = title || 'Site';
-    launchTitle.textContent = title || 'Site';
-    launchResource.textContent = resource || title || 'Site';
-    launchProvider.textContent = provider || 'Provider';
-    launchOpen.href = url;
-    launchOpen.textContent = 'Open ' + (provider || title || 'Site');
-    overlay.style.display = 'block';
-    document.body.classList.add('modal-open');
-  }
-
-  function closeLaunchModal() {
-    var overlay = document.getElementById('launchModalOverlay');
-    var launchOpen = document.getElementById('launchModalOpen');
-
-    launchOpen.href = '#';
-    overlay.style.display = 'none';
-    document.body.classList.remove('modal-open');
-  }
-
-  function launchBackdropClose(event) {
-    if (event.target && event.target.id === 'launchModalOverlay') {
-      closeLaunchModal();
+    function closeReservationLaunch() {
+      document.getElementById('reservationOverlay').style.display = 'none';
+      document.body.classList.remove('modal-open');
     }
-  }
 
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-      closeSiteModal();
-      closeLaunchModal();
+    function reservationBackdropClose(event) {
+      if (event.target && event.target.id === 'reservationOverlay') {
+        closeReservationLaunch();
+      }
     }
-  });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeReservationLaunch();
+      }
+    });
   </script>
-
 </body>
 </html>
