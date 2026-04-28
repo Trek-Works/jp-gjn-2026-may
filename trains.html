@@ -516,7 +516,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openSiteModal('https://maps.app.goo.gl/XuGMgw2kkRHA7nPv7', 'Train to Namba'); return false;">Train to Namba</a>
+          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/XuGMgw2kkRHA7nPv7', 'Train to Namba', 'Kansai Airport → Namba', 'Google Maps'); return false;">Train to Namba</a>
         </div>
       </article>
 
@@ -539,7 +539,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openSiteModal('https://maps.app.goo.gl/R9NHx2pbanSztXjC6', 'Train to Kansai'); return false;">Train to Kansai</a>
+          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/R9NHx2pbanSztXjC6', 'Train to Kansai', 'Sakaisuji Hommachi → Kansai Airport', 'Google Maps'); return false;">Train to Kansai</a>
         </div>
       </article>
     </section>
@@ -568,8 +568,8 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openSiteModal('https://maps.app.goo.gl/TpD9UuVHHCG55YVS9', 'Train to Kyoto'); return false;">Train to Kyoto</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://maps.app.goo.gl/dcwsgsUa68iPDjxx5', 'Train to Namba'); return false;">Train to Namba</a>
+          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/TpD9UuVHHCG55YVS9', 'Train to Kyoto', 'Namba → Kyoto', 'Google Maps'); return false;">Train to Kyoto</a>
+          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/dcwsgsUa68iPDjxx5', 'Train to Namba', 'Kyoto → Namba', 'Google Maps'); return false;">Train to Namba</a>
         </div>
       </article>
     </section>
@@ -598,8 +598,8 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openSiteModal('https://maps.app.goo.gl/sfV7hZkw8xA6oCsJ8', 'Train to Nagasaki'); return false;">Train to Nagasaki</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://maps.app.goo.gl/62bco6RFLkpZpuah8', 'Train to Hakata'); return false;">Train to Hakata</a>
+          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/sfV7hZkw8xA6oCsJ8', 'Train to Nagasaki', 'Hakata → Nagasaki', 'Google Maps'); return false;">Train to Nagasaki</a>
+          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/62bco6RFLkpZpuah8', 'Train to Hakata', 'Nagasaki → Hakata', 'Google Maps'); return false;">Train to Hakata</a>
         </div>
       </article>
 
@@ -629,8 +629,8 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openSiteModal('https://maps.app.goo.gl/CQYUzRqdY1yA8Mjy5', 'Train to Kumamoto'); return false;">Train to Kumamoto</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://maps.app.goo.gl/X9gDMDASThyQJjBv6', 'Train to Hakata'); return false;">Train to Hakata</a>
+          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/CQYUzRqdY1yA8Mjy5', 'Train to Kumamoto', 'Hakata → Kumamoto', 'Google Maps'); return false;">Train to Kumamoto</a>
+          <a class="link-pill" href="#" onclick="openTrainLaunch('https://maps.app.goo.gl/X9gDMDASThyQJjBv6', 'Train to Hakata', 'Kumamoto → Hakata', 'Google Maps'); return false;">Train to Hakata</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.jrkyushu.co.jp/english/', 'Tickets'); return false;">Tickets</a>
         </div>
       </article>
@@ -686,6 +686,32 @@
         <button class="site-modal-close" type="button" onclick="closeSiteModal()" aria-label="Close">×</button>
       </div>
       <iframe class="site-modal-frame" id="siteModalFrame" title="Site preview"></iframe>
+    </div>
+  </div>
+
+
+  <div class="reservation-overlay" id="trainLaunchOverlay" onclick="trainLaunchBackdropClose(event)">
+    <div class="reservation-modal" role="dialog" aria-modal="true" aria-label="Train link launch page">
+      <div class="reservation-header">
+        <div class="reservation-title" id="trainLaunchHeaderTitle">Train Link</div>
+        <button class="reservation-close" type="button" onclick="closeTrainLaunch()" aria-label="Close">×</button>
+      </div>
+      <div class="reservation-body">
+        <div class="reservation-card">
+          <div class="reservation-card-header">
+            <div class="reservation-kicker">Train Link</div>
+            <div class="reservation-main-title" id="trainLaunchTitle">Train Link</div>
+          </div>
+          <div class="reservation-content">
+            <div class="reservation-field"><div class="reservation-label">Route</div><div class="reservation-value" id="trainLaunchResource">Route</div></div>
+            <div class="reservation-field"><div class="reservation-label">Provider</div><div class="reservation-value" id="trainLaunchProvider">Provider</div></div>
+            <div class="reservation-actions">
+              <a class="reservation-button primary" id="trainLaunchOpen" href="#" target="_blank" rel="noopener">Open Link</a>
+              <button class="reservation-button" type="button" onclick="closeTrainLaunch()">X Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -758,6 +784,36 @@
       }
     }
 
+
+    function openTrainLaunch(url, title, resource, provider) {
+      document.getElementById('trainLaunchHeaderTitle').textContent = title || 'Train Link';
+      document.getElementById('trainLaunchTitle').textContent = title || 'Train Link';
+      document.getElementById('trainLaunchResource').textContent = resource || title || 'Route';
+      document.getElementById('trainLaunchProvider').textContent = provider || 'Provider';
+      var openButton = document.getElementById('trainLaunchOpen');
+      openButton.href = url;
+      openButton.textContent = 'Open ' + (provider || title || 'Link');
+      document.getElementById('trainLaunchOverlay').style.display = 'block';
+      document.body.classList.add('modal-open');
+    }
+
+    function closeTrainLaunch() {
+      var overlay = document.getElementById('trainLaunchOverlay');
+      var openButton = document.getElementById('trainLaunchOpen');
+      openButton.href = '#';
+      overlay.style.display = 'none';
+      if ((!document.getElementById('reservationOverlay') || document.getElementById('reservationOverlay').style.display !== 'block') &&
+          (!document.getElementById('siteModalOverlay') || document.getElementById('siteModalOverlay').style.display !== 'block')) {
+        document.body.classList.remove('modal-open');
+      }
+    }
+
+    function trainLaunchBackdropClose(event) {
+      if (event.target && event.target.id === 'trainLaunchOverlay') {
+        closeTrainLaunch();
+      }
+    }
+
     function openReservationLaunch() {
       document.getElementById('reservationOverlay').style.display = 'block';
       document.body.classList.add('modal-open');
@@ -777,6 +833,7 @@
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Escape') {
         closeSiteModal();
+        closeTrainLaunch();
         closeReservationLaunch();
       }
     });
