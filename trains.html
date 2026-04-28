@@ -112,6 +112,7 @@
       margin-bottom: 10px;
     }
 
+
     /* ===== Cards ===== */
 
     .card {
@@ -143,8 +144,7 @@
 
     .card-meta {
       font-size: 13px;
-      color: #93c5fd;
-      font-weight: 600;
+      color: var(--text-soft);
     }
 
     .meta-row {
@@ -223,6 +223,7 @@
         gap: 6px;
       }
 
+      /* MOBILE FIX: make footer pills wrap nicely when there are 4 */
       .card-footer {
         flex-wrap: wrap;
         gap: 6px;
@@ -233,7 +234,6 @@
         text-align: center;
       }
     }
-
 
     /* ===== Site Modal ===== */
 
@@ -299,6 +299,102 @@
       background: #fff;
     }
 
+    .launch-modal-body {
+      padding: 18px;
+      background: linear-gradient(180deg, #0b1020 0%, #111827 100%);
+      overflow: auto;
+      flex: 1;
+    }
+
+    .launch-card {
+      max-width: 640px;
+      margin: 0 auto;
+      border: 1px solid var(--border-soft);
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.82);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .launch-card-header {
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid var(--border-soft);
+      background: #0b1020;
+    }
+
+    .launch-kicker {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .launch-title {
+      font-size: 20px;
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .launch-card-content {
+      padding: 18px;
+    }
+
+    .launch-field {
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      background: #020617;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+
+    .launch-label {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-bottom: 5px;
+    }
+
+    .launch-value {
+      font-size: 14px;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .launch-note {
+      font-size: 13px;
+      line-height: 1.45;
+      color: #cbd5e1;
+      margin: 14px 0 16px;
+    }
+
+    .launch-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .launch-button {
+      flex: 1 1 220px;
+      border-radius: var(--radius-pill);
+      border: 1px solid #4b5563;
+      padding: 9px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      color: #e5e7eb;
+      background: #020617;
+      cursor: pointer;
+    }
+
+    .launch-button.primary {
+      border-color: #31558f;
+      background: rgba(79, 140, 255, 0.18);
+      color: #bfdbfe;
+    }
+
     body.modal-open {
       overflow: hidden;
     }
@@ -316,6 +412,7 @@
         border-right: 0;
       }
     }
+
   </style>
 </head>
 
@@ -339,13 +436,12 @@
     <!-- Airport Rail Alternatives -->
     <section class="section">
       <div class="section-title">✈️ Airport rail alternatives (Kansai)</div>
-
       <!-- 14 May 2026 — KIX → Osaka -->
       <article class="card optional">
         <div class="card-header">
           <div>
             <div class="card-title">🚆 Kansai Airport (KIX) → Osaka (Namba / Umeda)</div>
-            <div class="card-meta">Thu 14 May 2026</div>
+            <div class="card-meta">Arrival night · 14 May 2026</div>
           </div>
         </div>
 
@@ -360,8 +456,8 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.kansai-airport.or.jp/en/access/', 'KIX Access'); return false;">KIX Access</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.nankai.co.jp/en_railway', 'Nankai'); return false;">Nankai</a>
+          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.kansai-airport.or.jp/en/access/', 'KIX Access', 'Rail access information for Kansai Airport', 'Kansai Airport'); return false;">KIX Access</a>
+          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.nankai.co.jp/en_railway', 'Nankai', 'Nankai Railway information for Kansai Airport and Osaka', 'Nankai'); return false;">Nankai</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/global/en/', 'JR West'); return false;">JR West</a>
         </div>
       </article>
@@ -371,7 +467,7 @@
         <div class="card-header">
           <div>
             <div class="card-title">🚆 Osaka (Namba / Umeda) → Kansai Airport (KIX)</div>
-            <div class="card-meta">Fri 29 May 2026</div>
+            <div class="card-meta">Return day · 29 May 2026</div>
           </div>
         </div>
 
@@ -386,8 +482,8 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.kansai-airport.or.jp/en/access/', 'KIX Access'); return false;">KIX Access</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.nankai.co.jp/en_railway', 'Nankai'); return false;">Nankai</a>
+          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.kansai-airport.or.jp/en/access/', 'KIX Access', 'Rail access information for Kansai Airport', 'Kansai Airport'); return false;">KIX Access</a>
+          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.nankai.co.jp/en_railway', 'Nankai', 'Nankai Railway information for Kansai Airport and Osaka', 'Nankai'); return false;">Nankai</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/global/en/', 'JR West'); return false;">JR West</a>
         </div>
       </article>
@@ -402,7 +498,7 @@
         <div class="card-header">
           <div>
             <div class="card-title">🚆 Osaka → Kyoto (Day Trip) → Osaka</div>
-            <div class="card-meta">Sat 16 May 2026</div>
+            <div class="card-meta">Day trip · 16 May 2026</div>
           </div>
         </div>
 
@@ -418,9 +514,9 @@
 
         <div class="card-footer">
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.hankyu.co.jp/en/ticket/index.html', 'Hankyu'); return false;">Hankyu</a>
-          <a class="link-pill" href="#" onclick="openSiteModal('https://www.keihan.co.jp/travel/en/', 'Keihan'); return false;">Keihan</a>
+          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.keihan.co.jp/travel/en/', 'Keihan', 'Keihan Railway information for Osaka, Kyoto and Fushimi Inari area travel', 'Keihan'); return false;">Keihan</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/global/en/', 'JR West'); return false;">JR West</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains'); return false;">About Japan Trains</a>
+          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains', 'Japan train travel guide and practical rail information', 'Japan Guide'); return false;">About Japan Trains</a>
         </div>
       </article>
 
@@ -429,7 +525,7 @@
         <div class="card-header">
           <div>
             <div class="card-title">🚆 Osaka → Kobe (Sannomiya) → Osaka</div>
-            <div class="card-meta">Thu 28 May 2026</div>
+            <div class="card-meta">Optional side trip · 28 May 2026</div>
           </div>
         </div>
 
@@ -447,7 +543,7 @@
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.hankyu.co.jp/en/ticket/index.html', 'Hankyu'); return false;">Hankyu</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.hanshin.co.jp/global/en/access/', 'Hanshin'); return false;">Hanshin</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/global/en/', 'JR West'); return false;">JR West</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains'); return false;">About Japan Trains</a>
+          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains', 'Japan train travel guide and practical rail information', 'Japan Guide'); return false;">About Japan Trains</a>
         </div>
       </article>
     </section>
@@ -461,7 +557,7 @@
         <div class="card-header">
           <div>
             <div class="card-title">🚆 Hakata (Fukuoka) → Nagasaki → Hakata</div>
-            <div class="card-meta">Sat 23 May 2026</div>
+            <div class="card-meta">Day trip · 23 May 2026</div>
           </div>
         </div>
 
@@ -477,9 +573,9 @@
 
         <div class="card-footer">
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.jrkyushu.co.jp/english/', 'JR Kyushu'); return false;">JR Kyushu</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://smart-ex.jp/en/lp/app/', 'Shinkansen'); return false;">Shinkansen</a>
+           <a class="link-pill" href="#" onclick="openLaunchModal('https://smart-ex.jp/en/lp/app/', 'Shinkansen', 'Smart EX app information for Shinkansen booking and travel', 'Smart EX'); return false;">Shinkansen</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/', 'JR West Rail Pass'); return false;">JR West Rail Pass</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains'); return false;">About Japan Trains</a>
+          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains', 'Japan train travel guide and practical rail information', 'Japan Guide'); return false;">About Japan Trains</a>
         </div>
       </article>
 
@@ -488,7 +584,7 @@
         <div class="card-header">
           <div>
             <div class="card-title">🚆 Fukuoka (Tenjin/Hakata) → Dazaifu → Fukuoka</div>
-            <div class="card-meta">Sun 24 May 2026</div>
+            <div class="card-meta">Half-day / day trip · 24 May 2026</div>
           </div>
         </div>
 
@@ -503,10 +599,10 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.nishitetsu.jp/en/', 'Nishitetsu'); return false;">Nishitetsu</a>
+          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.nishitetsu.jp/en/', 'Nishitetsu', 'Nishitetsu rail information for Fukuoka and Dazaifu', 'Nishitetsu'); return false;">Nishitetsu</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.jrkyushu.co.jp/english/', 'JR Kyushu'); return false;">JR Kyushu</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/', 'JR West Rail Pass'); return false;">JR West Rail Pass</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains'); return false;">About Japan Trains</a>
+          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains', 'Japan train travel guide and practical rail information', 'Japan Guide'); return false;">About Japan Trains</a>
         </div>
       </article>
 
@@ -515,7 +611,7 @@
         <div class="card-header">
           <div>
             <div class="card-title">🚄 Hakata (Fukuoka) → Kumamoto → Hakata</div>
-            <div class="card-meta">Mon 25 May 2026</div>
+            <div class="card-meta">Day trip · 25 May 2026</div>
           </div>
         </div>
 
@@ -533,7 +629,7 @@
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.jrkyushu.co.jp/english/', 'JR Kyushu'); return false;">JR Kyushu</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/', 'JR West Rail Pass'); return false;">JR West Rail Pass</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://global.jr-central.co.jp/en/', 'Shinkansen Info'); return false;">Shinkansen Info</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains'); return false;">About Japan Trains</a>
+          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains', 'Japan train travel guide and practical rail information', 'Japan Guide'); return false;">About Japan Trains</a>
         </div>
       </article>
 
@@ -542,7 +638,7 @@
         <div class="card-header">
           <div>
             <div class="card-title">🚄 Hakata → Shin-Osaka</div>
-            <div class="card-meta">Wed 27 May 2026</div>
+            <div class="card-meta">Travel day · 26 May 2026</div>
           </div>
         </div>
 
@@ -558,9 +654,9 @@
         </div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openSiteModal('https://global.jr-central.co.jp/en/', 'JR Central'); return false;">JR Central</a>
+          <a class="link-pill" href="#" onclick="openSiteModal('https://global.jr-central.co.jp/en/', 'Shinkansen Info'); return false;">JR Central</a>
           <a class="link-pill" href="#" onclick="openSiteModal('https://www.westjr.co.jp/travel-information/en/tickets-passes/jrwest-rail-pass/sanyo_sanin/', 'JR West (Sanyo Area Pass)'); return false;">JR West (Sanyo Area Pass)</a>
-          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains'); return false;">About Japan Trains</a>
+          <a class="link-pill" href="#" onclick="openLaunchModal('https://www.japan-guide.com/e/e2019.html', 'About Japan Trains', 'Japan train travel guide and practical rail information', 'Japan Guide'); return false;">About Japan Trains</a>
         </div>
       </article>
     </section>
@@ -584,7 +680,6 @@
     </footer>
   </main>
 
-
   <div class="site-modal-overlay" id="siteModalOverlay" onclick="modalBackdropClose(event)">
     <div class="site-modal" role="dialog" aria-modal="true" aria-label="Site preview">
       <div class="site-modal-header">
@@ -592,6 +687,40 @@
         <button class="site-modal-close" type="button" onclick="closeSiteModal()" aria-label="Close">×</button>
       </div>
       <iframe class="site-modal-frame" id="siteModalFrame" title="Site preview"></iframe>
+    </div>
+  </div>
+
+  <div class="site-modal-overlay" id="launchModalOverlay" onclick="launchBackdropClose(event)">
+    <div class="site-modal" role="dialog" aria-modal="true" aria-label="Launch external site">
+      <div class="site-modal-header">
+        <div class="site-modal-title" id="launchModalHeaderTitle">Site</div>
+        <button class="site-modal-close" type="button" onclick="closeLaunchModal()" aria-label="Close">×</button>
+      </div>
+      <div class="launch-modal-body">
+        <div class="launch-card">
+          <div class="launch-card-header">
+            <div class="launch-kicker">Train Site</div>
+            <div class="launch-title" id="launchModalTitle">Site</div>
+          </div>
+          <div class="launch-card-content">
+            <div class="launch-field">
+              <div class="launch-label">Resource</div>
+              <div class="launch-value" id="launchModalResource">Site</div>
+            </div>
+            <div class="launch-field">
+              <div class="launch-label">Provider</div>
+              <div class="launch-value" id="launchModalProvider">Provider</div>
+            </div>
+            <p class="launch-note">
+              This site may block embedded pages. Use the button below to open the secure site while keeping this Trains page available behind it.
+            </p>
+            <div class="launch-actions">
+              <a class="launch-button primary" id="launchModalOpen" href="#" target="_blank" rel="noopener">Open Site</a>
+              <button class="launch-button" type="button" onclick="closeLaunchModal()">X Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -605,10 +734,6 @@
     frame.src = url;
     overlay.style.display = 'block';
     document.body.classList.add('modal-open');
-  }
-
-  function openLaunchModal(url, title) {
-    openSiteModal('external.html?url=' + encodeURIComponent(url), title);
   }
 
   function closeSiteModal() {
@@ -626,9 +751,43 @@
     }
   }
 
+  function openLaunchModal(url, title, resource, provider) {
+    var overlay = document.getElementById('launchModalOverlay');
+    var headerTitle = document.getElementById('launchModalHeaderTitle');
+    var launchTitle = document.getElementById('launchModalTitle');
+    var launchResource = document.getElementById('launchModalResource');
+    var launchProvider = document.getElementById('launchModalProvider');
+    var launchOpen = document.getElementById('launchModalOpen');
+
+    headerTitle.textContent = title || 'Site';
+    launchTitle.textContent = title || 'Site';
+    launchResource.textContent = resource || title || 'Site';
+    launchProvider.textContent = provider || 'Provider';
+    launchOpen.href = url;
+    launchOpen.textContent = 'Open ' + (provider || title || 'Site');
+    overlay.style.display = 'block';
+    document.body.classList.add('modal-open');
+  }
+
+  function closeLaunchModal() {
+    var overlay = document.getElementById('launchModalOverlay');
+    var launchOpen = document.getElementById('launchModalOpen');
+
+    launchOpen.href = '#';
+    overlay.style.display = 'none';
+    document.body.classList.remove('modal-open');
+  }
+
+  function launchBackdropClose(event) {
+    if (event.target && event.target.id === 'launchModalOverlay') {
+      closeLaunchModal();
+    }
+  }
+
   document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
       closeSiteModal();
+      closeLaunchModal();
     }
   });
   </script>
