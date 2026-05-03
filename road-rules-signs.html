@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Road Rules & Signs – JP GJN-2026-May</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-elevated: #0b1020;
+      --bg-card: #0f1629;
+      --bg-optional: #0b1122;
+      --border-soft: #1f2940;
+      --accent: #4f8cff;
+      --accent-soft: rgba(79, 140, 255, 0.15);
+      --text-main: #f5f7ff;
+      --text-soft: #9ca3af;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      max-width: 920px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 36px 18px 56px;
+    }
+
+    .page-header {
+      text-align: center;
+    }
+
+    .page-header .toolbar {
+      justify-content: center;
+    }
+
+    .breadcrumb {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--text-soft);
+      text-transform: uppercase;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 26px;
+      align-items: center;
+    }
+
+    .pill-button {
+      border-radius: var(--radius-pill);
+      border: 1px solid #374151;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-size: 13px;
+      padding: 6px 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section {
+      margin-top: 42px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .intro-card,
+    .card {
+      background: transparent;
+      border-radius: var(--radius-lg);
+      padding: 14px 20px 16px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      margin-top: 14px;
+    }
+
+    .intro-card {
+      background: linear-gradient(145deg, rgba(79, 140, 255, 0.15), rgba(15, 22, 41, 0.86));
+      border-color: rgba(147, 197, 253, 0.28);
+    }
+
+    .label {
+      font-size: 15px;
+      font-weight: 650;
+      color: #93c5fd;
+    }
+
+    .subtext {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-top: 4px;
+      line-height: 1.45;
+    }
+
+    .note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    .tag {
+      color: #f8fafc;
+      font-weight: 600;
+    }
+
+    .card-footer {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .link-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid #4b5563;
+      padding: 4px 10px;
+      font-size: 11px;
+      text-decoration: none;
+      color: #e5e7eb;
+      background: #020617;
+      white-space: nowrap;
+      flex: 0 0 auto;
+      cursor: pointer;
+    }
+
+    .placeholder-pill {
+      border-color: rgba(147, 197, 253, 0.35);
+      color: #bfdbfe;
+    }
+
+    .link-pill:hover,
+    .pill-button:hover {
+      border-color: #93c5fd;
+      color: #bfdbfe;
+    }
+
+    details summary {
+      list-style: none;
+      cursor: pointer;
+      position: relative;
+      padding-left: 22px;
+    }
+
+    details summary::before {
+      content: "▶";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-size: 13px;
+      color: var(--text-soft);
+      transition: transform 0.2s ease;
+    }
+
+    details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .bottom-home {
+      display: flex;
+      justify-content: center;
+      margin: 38px 0 0;
+    }
+
+    footer {
+      margin-top: 26px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .desktop-only {
+      display: inline;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.88);
+      display: none;
+      flex-direction: column;
+      z-index: 9998;
+    }
+
+    .modal-shell {
+      width: 100%;
+      height: 100%;
+      background: #020617;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      height: 52px;
+      min-height: 52px;
+      background: #0b1020;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      color: #f9fafb;
+      font-size: 14px;
+    }
+
+    .modal-title {
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-right: 12px;
+      flex: 1 1 auto;
+    }
+
+    .modal-open {
+      display: none;
+    }
+
+    .modal-close {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: #020617;
+      color: #f9fafb;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .modal-frame {
+      width: 100%;
+      height: calc(100vh - 52px);
+      border: 0;
+      background: #020617;
+    }
+
+    .offline-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .offline-box {
+      max-width: 420px;
+      margin: 20px;
+      padding: 20px 22px;
+      background: linear-gradient(145deg, var(--bg-card), #181b26);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+      text-align: center;
+    }
+
+    .offline-box h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .offline-box p {
+      margin: 0 0 16px;
+      font-size: 14px;
+      color: #b5bed5;
+      line-height: 1.4;
+    }
+
+    .offline-box button {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(78, 168, 255, 0.15);
+      color: #4ea8ff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 640px) {
+      .desktop-only {
+        display: none;
+      }
+
+      .subtitle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        text-align: center;
+      }
+
+      .card-footer {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .card-footer .link-pill {
+        flex: 1 1 calc(50% - 6px);
+        text-align: center;
+      }
+
+      .modal-header {
+        height: 48px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<main class="page">
+
+  <div class="page-header">
+    <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
+    <h1 class="title">Road Rules &amp; Signs</h1>
+    <p class="subtitle">
+      <span>Driving in Japan reference guide</span>
+      <span>(Okinawa hire car support)</span>
+    </p>
+
+    <div class="toolbar">
+      <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
+        ← Back to Trip Home
+      </a>
+      <a href="https://jp-gjn-2026-may.trekworks.org/hire-car.html" class="pill-button" style="color:#93c5fd;">
+        ← Back to Hire Car
+      </a>
+    </div>
+  </div>
+
+  <section class="section">
+    <article class="intro-card">
+      <div class="label">Purpose</div>
+      <div class="subtext">Quick-reference guide for common Japanese road rules, traffic signs, road markings, tolls, parking practices, and emergency information relevant to first-time driving in Japan.</div>
+      <div class="note">Each pill is prepared for a Google Drive image link. When final image URLs are added, Drive image pills should use the same preview-modal behaviour already used for the Hire Car IDP and Driver Licence records.</div>
+    </article>
+  </section>
+
+  <section class="section">
+    <details open>
+      <summary class="section-title">🚗 Road Rules, Signs &amp; Driving References</summary>
+
+      <article class="card">
+        <div class="label">Emergency Numbers Japan</div>
+        <div class="subtext"><span class="tag">Emergency &amp; Help</span> · Know the key emergency numbers before driving: 110 for police and 119 for ambulance/fire.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="emergency-numbers-japan" onclick="openSignPlaceholder('Emergency Numbers Japan'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Hazards - Say Thank you</div>
+        <div class="subtext"><span class="tag">Courtesy &amp; Hazards</span> · Japanese drivers commonly flash hazard lights briefly as a thank-you after being let in or after courteous driving.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="hazards--say-thank-you" onclick="openSignPlaceholder('Hazards - Say Thank you'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Yellow Lines - Don’t Cross / Change Lanes</div>
+        <div class="subtext"><span class="tag">Lane Rules</span> · Yellow lane lines generally mean do not cross or change lanes. Treat this as a strong restriction unless road markings clearly allow otherwise.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="yellow-lines--don-t-cross--change-lanes" onclick="openSignPlaceholder('Yellow Lines - Don’t Cross / Change Lanes'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Double Lines - White Side Changes Lanes</div>
+        <div class="subtext"><span class="tag">Lane Rules</span> · Where double lines include a white side, lane changing may only be permitted from the white-line side, subject to signage and road conditions.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="double-lines--white-side-changes-lanes" onclick="openSignPlaceholder('Double Lines - White Side Changes Lanes'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Tolls - ETC Lanes</div>
+        <div class="subtext"><span class="tag">Tolls &amp; ETC</span> · Do not enter ETC-only toll lanes unless the vehicle has an ETC card/device fitted and active. Use general/cash/credit lanes if unsure.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="tolls--etc-lanes" onclick="openSignPlaceholder('Tolls - ETC Lanes'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Parking - Back In</div>
+        <div class="subtext"><span class="tag">Parking</span> · Back-in parking is common and often expected in Japan. Reverse into marked spaces where practical.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="parking--back-in" onclick="openSignPlaceholder('Parking - Back In'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Sign - No Parking</div>
+        <div class="subtext"><span class="tag">Road Signs</span> · No parking. Do not park in the signed area or during the signed restriction period.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="sign--no-parking" onclick="openSignPlaceholder('Sign - No Parking'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Sign - No Stopping</div>
+        <div class="subtext"><span class="tag">Road Signs</span> · No stopping. Do not stop or park in the signed area, even briefly, unless directed by police or traffic control.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="sign--no-stopping" onclick="openSignPlaceholder('Sign - No Stopping'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Sign - No Entry</div>
+        <div class="subtext"><span class="tag">Road Signs</span> · Do not enter. Usually marks a one-way street or restricted-entry road.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="sign--no-entry" onclick="openSignPlaceholder('Sign - No Entry'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Sign - No Right Turn</div>
+        <div class="subtext"><span class="tag">Road Signs</span> · Right turn prohibited at the signed intersection or location.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="sign--no-right-turn" onclick="openSignPlaceholder('Sign - No Right Turn'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Sign - Direction Only</div>
+        <div class="subtext"><span class="tag">Road Signs</span> · Traffic must follow the indicated direction only.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="sign--direction-only" onclick="openSignPlaceholder('Sign - Direction Only'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Sign - Stop</div>
+        <div class="subtext"><span class="tag">Road Signs</span> · Come to a complete stop, check carefully, then proceed only when safe.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="sign--stop" onclick="openSignPlaceholder('Sign - Stop'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Sign - Slowdown</div>
+        <div class="subtext"><span class="tag">Road Signs</span> · Slow down and proceed with additional caution.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="sign--slowdown" onclick="openSignPlaceholder('Sign - Slowdown'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Sign - Speed Limits</div>
+        <div class="subtext"><span class="tag">Road Signs</span> · Observe posted speed limits. Local streets and expressways may vary significantly.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="sign--speed-limits" onclick="openSignPlaceholder('Sign - Speed Limits'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Sign - Crosswalks</div>
+        <div class="subtext"><span class="tag">Road Signs</span> · Watch for pedestrians and be prepared to stop at crossings.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="sign--crosswalks" onclick="openSignPlaceholder('Sign - Crosswalks'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Sign - Parking</div>
+        <div class="subtext"><span class="tag">Parking</span> · Parking permitted where signed, subject to any time or condition restrictions.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="sign--parking" onclick="openSignPlaceholder('Sign - Parking'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Sign - Parking 60 mins between 8am - 8pm</div>
+        <div class="subtext"><span class="tag">Parking</span> · Parking is limited to 60 minutes during the signed period. Check whether payment or display rules apply.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="sign--parking-60-mins-between-8am--8pm" onclick="openSignPlaceholder('Sign - Parking 60 mins between 8am - 8pm'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Railway Crossings</div>
+        <div class="subtext"><span class="tag">Railway Crossings</span> · Stop, check both directions, and proceed only when safe at railway crossings.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="railway-crossings" onclick="openSignPlaceholder('Railway Crossings'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Marked Drivers - Caution</div>
+        <div class="subtext"><span class="tag">Road Signs</span> · Take extra care around marked vehicles and drivers who may be learners, elderly, or otherwise flagged for caution.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="marked-drivers--caution" onclick="openSignPlaceholder('Marked Drivers - Caution'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Lights - Steady yellow prepare to stop</div>
+        <div class="subtext"><span class="tag">Traffic Lights</span> · Prepare to stop when safe. Do not accelerate through yellow lights.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="lights--steady-yellow-prepare-to-stop" onclick="openSignPlaceholder('Lights - Steady yellow prepare to stop'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Lights - RH turn on green arrow only</div>
+        <div class="subtext"><span class="tag">Traffic Lights</span> · Right turns may only be permitted when the green arrow is displayed.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="lights--rh-turn-on-green-arrow-only" onclick="openSignPlaceholder('Lights - RH turn on green arrow only'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Lights - Flashing yellow caution</div>
+        <div class="subtext"><span class="tag">Traffic Lights</span> · Proceed with caution and check for pedestrians, cyclists, and cross traffic.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="lights--flashing-yellow-caution" onclick="openSignPlaceholder('Lights - Flashing yellow caution'); return false;">View Sign</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="label">Lights - Flashing red stop then go</div>
+        <div class="subtext"><span class="tag">Traffic Lights</span> · Stop first, then proceed only when safe.</div>
+        <div class="card-footer">
+          <a class="link-pill placeholder-pill" href="#" data-sign="lights--flashing-red-stop-then-go" onclick="openSignPlaceholder('Lights - Flashing red stop then go'); return false;">View Sign</a>
+        </div>
+      </article>
+    </details>
+  </section>
+
+  <div class="bottom-home">
+    <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
+      ← Back to Trip Home
+    </a>
+  </div>
+
+  <footer>
+    For hire car booking details, see <a href="https://jp-gjn-2026-may.trekworks.org/hire-car.html">Hire Car</a>.
+    For flight details, see
+    <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.
+    <br class="desktop-only">
+    For airport references, see
+    <a href="https://jp-gjn-2026-may.trekworks.org/airports.html">Airports</a>.
+  </footer>
+
+</main>
+
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Sign preview">
+  <div class="modal-shell">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Loading…</div>
+      <a class="modal-open" id="modalOpen" href="#" target="_blank" rel="noopener">Open</a>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">X Close</button>
+    </div>
+    <iframe class="modal-frame" id="modalFrame" title="External content"></iframe>
+  </div>
+</div>
+
+<div class="offline-overlay" id="offlineOverlay">
+  <div class="offline-box">
+    <h2>You’re offline</h2>
+    <p>
+      This content requires an internet connection.<br>
+      You can continue using other parts of the app while offline.
+    </p>
+    <button onclick="closeOffline()">OK</button>
+  </div>
+</div>
+
+<script>
+function openDrivePreview(previewUrl, title, viewUrl) {
+  verifyConnectivity()
+    .then(function () {
+      const overlay = document.getElementById('modalOverlay');
+      const frame = document.getElementById('modalFrame');
+      const modalTitle = document.getElementById('modalTitle');
+      const openLink = document.getElementById('modalOpen');
+
+      modalTitle.textContent = title || 'Preview';
+      openLink.href = viewUrl || previewUrl;
+      frame.src = previewUrl;
+
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    })
+    .catch(showOffline);
+}
+
+function openSignPlaceholder(title) {
+  alert('Google Drive image URL pending for: ' + title);
+}
+
+function closeModal() {
+  const overlay = document.getElementById('modalOverlay');
+  const frame = document.getElementById('modalFrame');
+  overlay.style.display = 'none';
+  frame.removeAttribute('src');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') {
+    closeModal();
+    closeOffline();
+  }
+});
+
+document.getElementById('modalOverlay').addEventListener('click', function (event) {
+  if (event.target.id === 'modalOverlay') {
+    closeModal();
+  }
+});
+
+function verifyConnectivity() {
+  return new Promise(function (resolve, reject) {
+    const controller = new AbortController();
+    const timeout = setTimeout(function () {
+      controller.abort();
+      reject();
+    }, 800);
+
+    fetch('external.html', {
+      cache: 'no-store',
+      signal: controller.signal
+    })
+      .then(function () {
+        clearTimeout(timeout);
+        resolve();
+      })
+      .catch(function () {
+        clearTimeout(timeout);
+        reject();
+      });
+  });
+}
+
+function showOffline() {
+  document.getElementById('offlineOverlay').style.display = 'flex';
+}
+
+function closeOffline() {
+  document.getElementById('offlineOverlay').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
