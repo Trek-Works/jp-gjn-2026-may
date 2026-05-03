@@ -244,113 +244,108 @@
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(2, 6, 23, 0.88);
+      background: rgba(5, 6, 11, 0.88);
       display: none;
-      z-index: 9990;
-      align-items: stretch;
-      justify-content: center;
+      flex-direction: column;
+      z-index: 9998;
     }
 
     .modal-shell {
-      width: min(1100px, 100%);
-      height: min(920px, 100%);
-      margin: auto;
+      width: 100%;
+      height: 100%;
       background: #020617;
-      border: 1px solid rgba(148, 163, 184, 0.28);
-      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.78);
       display: flex;
       flex-direction: column;
     }
 
     .modal-header {
-      height: 46px;
-      min-height: 46px;
+      height: 52px;
+      min-height: 52px;
+      background: #0b1020;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 0 10px 0 14px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.22);
-      background: linear-gradient(90deg, #0f172a, #020617);
+      justify-content: space-between;
+      padding: 0 14px;
+      color: #f9fafb;
+      font-size: 14px;
     }
 
     .modal-title {
-      font-size: 13px;
-      color: #e5e7eb;
+      font-weight: 600;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      padding-right: 12px;
       flex: 1 1 auto;
     }
 
     .modal-open {
-      color: #93c5fd;
-      border: 1px solid rgba(147, 197, 253, 0.35);
-      border-radius: 999px;
-      padding: 4px 10px;
-      font-size: 12px;
-      text-decoration: none;
-      white-space: nowrap;
-      background: rgba(15, 23, 42, 0.92);
+      display: none;
     }
 
     .modal-close {
-      width: 34px;
-      height: 34px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: #020617;
+      color: #f9fafb;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.28);
-      background: rgba(15, 23, 42, 0.94);
-      color: #f8fafc;
-      font-size: 20px;
-      line-height: 1;
+      padding: 6px 12px;
+      font-size: 13px;
       cursor: pointer;
+      flex: 0 0 auto;
     }
 
-    .modal-frame,
-    .modal-launch {
-      flex: 1 1 auto;
+    .modal-frame {
       width: 100%;
+      height: calc(100vh - 52px);
       border: 0;
       background: #020617;
     }
 
     .modal-launch {
       display: none;
+    }
+
+    .map-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.88);
+      display: none;
+      flex-direction: column;
+      z-index: 9998;
+    }
+
+    .map-modal-header {
+      height: 52px;
+      background: #0b1020;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 28px;
-      text-align: center;
-    }
-
-    .launch-card {
-      max-width: 520px;
-      border-radius: 22px;
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.94));
-      padding: 26px 24px;
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.52);
-    }
-
-    .launch-card h2 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-
-    .launch-card p {
+      justify-content: space-between;
+      padding: 0 14px;
+      color: #f9fafb;
       font-size: 14px;
-      color: #cbd5e1;
-      line-height: 1.5;
-      margin-bottom: 18px;
     }
 
-    .launch-card a {
-      display: inline-flex;
+    .map-modal-title {
+      font-weight: 600;
+    }
+
+    .map-modal-close {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: #020617;
+      color: #f9fafb;
       border-radius: 999px;
-      padding: 9px 16px;
-      border: 1px solid rgba(147, 197, 253, 0.4);
-      color: #bfdbfe;
-      background: rgba(79, 140, 255, 0.12);
-      text-decoration: none;
-      font-size: 14px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .map-modal iframe {
+      width: 100%;
+      height: calc(100vh - 52px);
+      border: 0;
+      background: #020617;
     }
 
     .offline-overlay {
@@ -486,7 +481,7 @@
 
         <div class="card-footer">
           <a class="link-pill" href="#" onclick="openModal('https://www.klook.com/en-AU/voucher-new/f00bfae2-8083-4b46-6935-6c6979fcc422?lang=en_AU', 'Booking voucher', 'https://www.klook.com/en-AU/voucher-new/f00bfae2-8083-4b46-6935-6c6979fcc422?lang=en_AU', true); return false;">Booking Voucher</a>
-          <a class="link-pill" href="#" onclick="openModal('https://drive.google.com/file/d/1PDs9kuRItPOKbrgKo39rj2hKbSqd4Fm1/view?usp=sharing', 'Booking Confirmation', 'https://drive.google.com/file/d/1PDs9kuRItPOKbrgKo39rj2hKbSqd4Fm1/view?usp=sharing', true); return false;">Confirmation</a>
+          <a class="link-pill" href="#" onclick="openModal('https://drive.google.com/file/d/1PDs9kuRItPOKbrgKo39rj2hKbSqd4Fm1/preview', 'Booking Confirmation', 'https://drive.google.com/file/d/1PDs9kuRItPOKbrgKo39rj2hKbSqd4Fm1/view?usp=sharing', false); return false;">Confirmation</a>
           
           
         </div>
@@ -498,10 +493,10 @@
         <div class="note">Pick-up is outside the airport via shuttle. After landing and collecting luggage, contact the supplier for real-time dispatch to Bus Stop No. 14C (International Terminal). Last shuttle ~18:30 (within window for this flight); after-hours service may incur a fee. Same contact is listed for phone, LINE, and WhatsApp. Return is to the same location (confirm process at pick-up).</div>
 
         <div class="card-footer">
-          <a class="link-pill" href="#" onclick="openModal('https://maps.app.goo.gl/b4Arpj6qVJRBfNjJ9', 'Relax rental car — map', 'https://maps.app.goo.gl/b4Arpj6qVJRBfNjJ9', true); return false;">View Map</a>
+          <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Relax%20rental%20car%201-ch%C5%8Dme-15-5%20Wakasa%20Naha%20Okinawa%20Japan&output=embed'); return false;">View Map</a>
           
           <a class="link-pill" href="#" onclick="openModal('https://line.me/R/ti/p/@relax-okinawa', 'Relax Okinawa — LINE', 'https://line.me/R/ti/p/@relax-okinawa', true); return false;">LINE</a>
-          <a class="link-pill" href="#" onclick="openModal('https://wa.me/819082903579', 'Relax Okinawa — WhatsApp', 'https://wa.me/819082903579', true); return false;">WhatsApp</a>
+          <a class="link-pill" href="#" onclick="openWhatsApp(); return false;">WhatsApp</a>
         </div>
       </article>
 
@@ -519,8 +514,8 @@
         <div class="note">Driver policy listed: age 30–65 for this booking, and at least 1 year driving experience. Debit cards are not accepted for rental deposits.</div>
 
         <div class="card-footer">
-          <a class="link-pill alert-pill" href="#" onclick="openModal('https://drive.google.com/file/d/1BRICEKhK2k-gMRueR6CLZcFwJTKoooV8/view?usp=sharing', 'International Driving Permit', 'https://drive.google.com/file/d/1BRICEKhK2k-gMRueR6CLZcFwJTKoooV8/view?usp=sharing', true); return false;">IDP</a>
-          <a class="link-pill alert-pill" href="#" onclick="openModal('https://drive.google.com/file/d/1yPs-ooPHvxPhS4tWsHYuGNePu_NYs-vR/view?usp=sharing', 'Driver Licence', 'https://drive.google.com/file/d/1yPs-ooPHvxPhS4tWsHYuGNePu_NYs-vR/view?usp=sharing', true); return false;">Driver Licence</a>
+          <a class="link-pill alert-pill" href="#" onclick="openModal('https://drive.google.com/file/d/1BRICEKhK2k-gMRueR6CLZcFwJTKoooV8/preview', 'International Driving Permit', 'https://drive.google.com/file/d/1BRICEKhK2k-gMRueR6CLZcFwJTKoooV8/view?usp=sharing', false); return false;">IDP</a>
+          <a class="link-pill alert-pill" href="#" onclick="openModal('https://drive.google.com/file/d/1yPs-ooPHvxPhS4tWsHYuGNePu_NYs-vR/preview', 'Driver Licence', 'https://drive.google.com/file/d/1yPs-ooPHvxPhS4tWsHYuGNePu_NYs-vR/view?usp=sharing', false); return false;">Driver Licence</a>
           
           
         </div>
@@ -575,12 +570,20 @@
 
 </main>
 
+<div class="map-modal" id="mapModal">
+  <div class="map-modal-header">
+    <div class="map-modal-title">Map</div>
+    <button class="map-modal-close" onclick="closeMapModal()">X Close</button>
+  </div>
+  <iframe id="mapFrame" src="" loading="lazy"></iframe>
+</div>
+
 <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Site preview">
   <div class="modal-shell">
     <div class="modal-header">
       <div class="modal-title" id="modalTitle">Loading…</div>
       <a class="modal-open" id="modalOpen" href="#" target="_blank" rel="noopener">Open</a>
-      <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">X Close</button>
     </div>
     <iframe class="modal-frame" id="modalFrame" title="External content"></iframe>
     <div class="modal-launch" id="modalLaunch">
@@ -605,29 +608,50 @@
 </div>
 
 <script>
+function openMapModal(url) {
+  verifyConnectivity()
+    .then(function () {
+      document.getElementById('mapFrame').src = url;
+      document.getElementById('mapModal').style.display = 'flex';
+    })
+    .catch(showOffline);
+}
+
+function closeMapModal() {
+  document.getElementById('mapFrame').src = '';
+  document.getElementById('mapModal').style.display = 'none';
+}
+
+function openWhatsApp() {
+  verifyConnectivity()
+    .then(function () {
+      const appUrl = 'whatsapp://send?phone=819082903579';
+      const webUrl = 'https://wa.me/819082903579';
+
+      window.location.href = appUrl;
+
+      setTimeout(function () {
+        window.location.href = webUrl;
+      }, 900);
+    })
+    .catch(showOffline);
+}
+
 function openModal(url, title, externalUrl, launchMode) {
   verifyConnectivity()
     .then(function () {
       const overlay = document.getElementById('modalOverlay');
       const frame = document.getElementById('modalFrame');
-      const launch = document.getElementById('modalLaunch');
       const modalTitle = document.getElementById('modalTitle');
       const openLink = document.getElementById('modalOpen');
-      const launchTitle = document.getElementById('launchTitle');
-      const launchLink = document.getElementById('launchLink');
+      const targetUrl = externalUrl || url;
 
       modalTitle.textContent = title || 'Preview';
-      openLink.href = externalUrl || url;
-      launchTitle.textContent = title || 'Open site';
-      launchLink.href = externalUrl || url;
+      openLink.href = targetUrl;
 
       if (launchMode) {
-        frame.style.display = 'none';
-        frame.removeAttribute('src');
-        launch.style.display = 'flex';
+        frame.src = 'external.html?url=' + encodeURIComponent(targetUrl);
       } else {
-        launch.style.display = 'none';
-        frame.style.display = 'block';
         frame.src = url;
       }
 
@@ -647,6 +671,7 @@ function closeModal() {
 
 document.addEventListener('keydown', function (event) {
   if (event.key === 'Escape') {
+    closeMapModal();
     closeModal();
     closeOffline();
   }
