@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Road Rules & Signs – JP GJN-2026-May</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <style>
+<meta charset="utf-8"/>
+<title>Road Rules &amp; Signs – JP GJN-2026-May</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style>
     :root {
       --bg: #050814;
       --bg-elevated: #0b1020;
@@ -348,245 +348,294 @@
         height: 48px;
       }
     }
-  </style>
-</head>
+  
+    /* ======================================================
+       Emergency / map iframe modal
+       ====================================================== */
+    .map-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.88);
+      display: none;
+      flex-direction: column;
+      z-index: 9998;
+    }
 
+    .map-modal-header {
+      height: 52px;
+      background: #0b1020;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      color: #f9fafb;
+      font-size: 14px;
+    }
+
+    .map-modal-title {
+      font-weight: 600;
+    }
+
+    .map-modal-close {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: #020617;
+      color: #f9fafb;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .map-modal iframe {
+      width: 100%;
+      height: calc(100vh - 52px);
+      border: 0;
+      background: #020617;
+    }
+</style>
+</head>
 <body>
 <main class="page">
-
-  <div class="page-header">
-    <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
-    <h1 class="title">Road Rules &amp; Signs</h1>
-    <p class="subtitle">
-      <span>Driving in Japan reference guide</span>
-      <span>(Okinawa hire car support)</span>
-    </p>
-
-    <div class="toolbar">
-      <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
+<div class="page-header">
+<div class="breadcrumb">GJN-2026-May · Japan Trip</div>
+<h1 class="title">Road Rules &amp; Signs</h1>
+<p class="subtitle">
+<span>Driving in Japan</span>
+<span>(Okinawa hire car support)</span>
+</p>
+<div class="toolbar">
+<a class="pill-button" href="https://jp-gjn-2026-may.trekworks.org/" style="color:#93c5fd;">
         ← Back to Trip Home
       </a>
-      <a href="https://jp-gjn-2026-may.trekworks.org/hire-car.html" class="pill-button" style="color:#93c5fd;">
+<a class="pill-button" href="https://jp-gjn-2026-may.trekworks.org/hire-car.html" style="color:#93c5fd;">
         ← Back to Hire Car
       </a>
-    </div>
-  </div>
-
-  <section class="section">
-    <article class="intro-card">
-      <div class="label">Purpose</div>
-      <div class="subtext">Quick-reference guide for common Japanese road rules, traffic signs, road markings, tolls, parking practices, and emergency information relevant to first-time driving in Japan.</div>
-      <div class="note">Each pill is prepared for a Google Drive image link. When final image URLs are added, Drive image pills should use the same preview-modal behaviour already used for the Hire Car IDP and Driver Licence records.</div>
-    </article>
-  </section>
-
-  <section class="section">
-    <details open>
-      <summary class="section-title">🚗 Road Rules, Signs &amp; Driving References</summary>
-
-      <article class="card">
-        <div class="label">Emergency Numbers Japan</div>
-        <div class="subtext"><span class="tag">Emergency &amp; Help</span> · Know the key emergency numbers before driving: 110 for police and 119 for ambulance/fire.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="emergency-numbers-japan" onclick="openSignPlaceholder('Emergency Numbers Japan'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Hazards - Say Thank you</div>
-        <div class="subtext"><span class="tag">Courtesy &amp; Hazards</span> · Japanese drivers commonly flash hazard lights briefly as a thank-you after being let in or after courteous driving.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="hazards--say-thank-you" onclick="openSignPlaceholder('Hazards - Say Thank you'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Yellow Lines - Don’t Cross / Change Lanes</div>
-        <div class="subtext"><span class="tag">Lane Rules</span> · Yellow lane lines generally mean do not cross or change lanes. Treat this as a strong restriction unless road markings clearly allow otherwise.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="yellow-lines--don-t-cross--change-lanes" onclick="openSignPlaceholder('Yellow Lines - Don’t Cross / Change Lanes'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Double Lines - White Side Changes Lanes</div>
-        <div class="subtext"><span class="tag">Lane Rules</span> · Where double lines include a white side, lane changing may only be permitted from the white-line side, subject to signage and road conditions.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="double-lines--white-side-changes-lanes" onclick="openSignPlaceholder('Double Lines - White Side Changes Lanes'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Tolls - ETC Lanes</div>
-        <div class="subtext"><span class="tag">Tolls &amp; ETC</span> · Do not enter ETC-only toll lanes unless the vehicle has an ETC card/device fitted and active. Use general/cash/credit lanes if unsure.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="tolls--etc-lanes" onclick="openSignPlaceholder('Tolls - ETC Lanes'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Parking - Back In</div>
-        <div class="subtext"><span class="tag">Parking</span> · Back-in parking is common and often expected in Japan. Reverse into marked spaces where practical.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="parking--back-in" onclick="openSignPlaceholder('Parking - Back In'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Sign - No Parking</div>
-        <div class="subtext"><span class="tag">Road Signs</span> · No parking. Do not park in the signed area or during the signed restriction period.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="sign--no-parking" onclick="openSignPlaceholder('Sign - No Parking'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Sign - No Stopping</div>
-        <div class="subtext"><span class="tag">Road Signs</span> · No stopping. Do not stop or park in the signed area, even briefly, unless directed by police or traffic control.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="sign--no-stopping" onclick="openSignPlaceholder('Sign - No Stopping'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Sign - No Entry</div>
-        <div class="subtext"><span class="tag">Road Signs</span> · Do not enter. Usually marks a one-way street or restricted-entry road.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="sign--no-entry" onclick="openSignPlaceholder('Sign - No Entry'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Sign - No Right Turn</div>
-        <div class="subtext"><span class="tag">Road Signs</span> · Right turn prohibited at the signed intersection or location.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="sign--no-right-turn" onclick="openSignPlaceholder('Sign - No Right Turn'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Sign - Direction Only</div>
-        <div class="subtext"><span class="tag">Road Signs</span> · Traffic must follow the indicated direction only.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="sign--direction-only" onclick="openSignPlaceholder('Sign - Direction Only'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Sign - Stop</div>
-        <div class="subtext"><span class="tag">Road Signs</span> · Come to a complete stop, check carefully, then proceed only when safe.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="sign--stop" onclick="openSignPlaceholder('Sign - Stop'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Sign - Slowdown</div>
-        <div class="subtext"><span class="tag">Road Signs</span> · Slow down and proceed with additional caution.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="sign--slowdown" onclick="openSignPlaceholder('Sign - Slowdown'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Sign - Speed Limits</div>
-        <div class="subtext"><span class="tag">Road Signs</span> · Observe posted speed limits. Local streets and expressways may vary significantly.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="sign--speed-limits" onclick="openSignPlaceholder('Sign - Speed Limits'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Sign - Crosswalks</div>
-        <div class="subtext"><span class="tag">Road Signs</span> · Watch for pedestrians and be prepared to stop at crossings.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="sign--crosswalks" onclick="openSignPlaceholder('Sign - Crosswalks'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Sign - Parking</div>
-        <div class="subtext"><span class="tag">Parking</span> · Parking permitted where signed, subject to any time or condition restrictions.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="sign--parking" onclick="openSignPlaceholder('Sign - Parking'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Sign - Parking 60 mins between 8am - 8pm</div>
-        <div class="subtext"><span class="tag">Parking</span> · Parking is limited to 60 minutes during the signed period. Check whether payment or display rules apply.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="sign--parking-60-mins-between-8am--8pm" onclick="openSignPlaceholder('Sign - Parking 60 mins between 8am - 8pm'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Railway Crossings</div>
-        <div class="subtext"><span class="tag">Railway Crossings</span> · Stop, check both directions, and proceed only when safe at railway crossings.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="railway-crossings" onclick="openSignPlaceholder('Railway Crossings'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Marked Drivers - Caution</div>
-        <div class="subtext"><span class="tag">Road Signs</span> · Take extra care around marked vehicles and drivers who may be learners, elderly, or otherwise flagged for caution.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="marked-drivers--caution" onclick="openSignPlaceholder('Marked Drivers - Caution'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Lights - Steady yellow prepare to stop</div>
-        <div class="subtext"><span class="tag">Traffic Lights</span> · Prepare to stop when safe. Do not accelerate through yellow lights.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="lights--steady-yellow-prepare-to-stop" onclick="openSignPlaceholder('Lights - Steady yellow prepare to stop'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Lights - RH turn on green arrow only</div>
-        <div class="subtext"><span class="tag">Traffic Lights</span> · Right turns may only be permitted when the green arrow is displayed.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="lights--rh-turn-on-green-arrow-only" onclick="openSignPlaceholder('Lights - RH turn on green arrow only'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Lights - Flashing yellow caution</div>
-        <div class="subtext"><span class="tag">Traffic Lights</span> · Proceed with caution and check for pedestrians, cyclists, and cross traffic.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="lights--flashing-yellow-caution" onclick="openSignPlaceholder('Lights - Flashing yellow caution'); return false;">View Sign</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="label">Lights - Flashing red stop then go</div>
-        <div class="subtext"><span class="tag">Traffic Lights</span> · Stop first, then proceed only when safe.</div>
-        <div class="card-footer">
-          <a class="link-pill placeholder-pill" href="#" data-sign="lights--flashing-red-stop-then-go" onclick="openSignPlaceholder('Lights - Flashing red stop then go'); return false;">View Sign</a>
-        </div>
-      </article>
-    </details>
-  </section>
-
-  <div class="bottom-home">
-    <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
+</div>
+</div>
+<section class="section">
+<article class="intro-card">
+<div class="label">Purpose</div>
+<div class="subtext">Quick-reference guide for common Japanese road rules, traffic signs, road markings, tolls, parking practices, and emergency information relevant to first-time driving in Japan.</div>
+</article>
+</section>
+<section class="section">
+<details>
+<summary class="section-title">🚨 Emergency Contacts</summary>
+<article class="card">
+<div class="label">Emergency Contacts Japan</div>
+<div class="subtext">If you need urgent assistance, use the options below to communicate or locate help nearby.</div>
+<div class="card-footer"><a class="link-pill" href="#" onclick="openEmergencyPhrase(); return false;">🗣️ Emergency Phrase</a><a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=police%20station%20near%20me&amp;output=embed'); return false;">📍 Get Help Nearby</a></div>
+</article></details>
+</section>
+<section class="section">
+<details>
+<summary class="section-title">🚗 General Driving</summary>
+<article class="card">
+<div class="label">Hazards - Say Thank you</div>
+<div class="subtext"><span class="tag">Courtesy &amp; Hazards</span> · Japanese drivers commonly flash hazard lights briefly as a thank-you after being let in or after courteous driving.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="hazards--say-thank-you" href="#" onclick="openSignPlaceholder('Hazards - Say Thank you'); return false;">View Example</a>
+</div>
+</article><article class="card">
+<div class="label">Marked Drivers - Caution</div>
+<div class="subtext"><span class="tag">Road Signs</span> · Take extra care around marked vehicles and drivers who may be learners, elderly, or otherwise flagged for caution.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="marked-drivers--caution" href="#" onclick="openSignPlaceholder('Marked Drivers - Caution'); return false;">View Example</a>
+</div>
+</article><article class="card">
+<div class="label">Parking - Back In</div>
+<div class="subtext"><span class="tag">Parking</span> · Back-in parking is common and often expected in Japan. Reverse into marked spaces where practical.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="parking--back-in" href="#" onclick="openSignPlaceholder('Parking - Back In'); return false;">View Example</a>
+</div>
+</article></details>
+</section>
+<section class="section">
+<details>
+<summary class="section-title">🛣️ Road Markings &amp; Lane Rules</summary>
+<article class="card">
+<div class="label">Double Lines - White Side Changes Lanes</div>
+<div class="subtext"><span class="tag">Lane Rules</span> · Where double lines include a white side, lane changing may only be permitted from the white-line side, subject to signage and road conditions.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="double-lines--white-side-changes-lanes" href="#" onclick="openSignPlaceholder('Double Lines - White Side Changes Lanes'); return false;">View Example</a>
+</div>
+</article><article class="card">
+<div class="label">Yellow Lines - Don’t Cross / Change Lanes</div>
+<div class="subtext"><span class="tag">Lane Rules</span> · Yellow lane lines generally mean do not cross or change lanes. Treat this as a strong restriction unless road markings clearly allow otherwise.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="yellow-lines--don-t-cross--change-lanes" href="#" onclick="openSignPlaceholder('Yellow Lines - Don’t Cross / Change Lanes'); return false;">View Example</a>
+</div>
+</article></details>
+</section>
+<section class="section">
+<details>
+<summary class="section-title">🚦 Traffic Lights</summary>
+<article class="card">
+<div class="label">Lights - Flashing red stop then go</div>
+<div class="subtext"><span class="tag">Traffic Lights</span> · Stop first, then proceed only when safe.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="lights--flashing-red-stop-then-go" href="#" onclick="openSignPlaceholder('Lights - Flashing red stop then go'); return false;">View Traffic Light</a>
+</div>
+</article><article class="card">
+<div class="label">Lights - Flashing yellow caution</div>
+<div class="subtext"><span class="tag">Traffic Lights</span> · Proceed with caution and check for pedestrians, cyclists, and cross traffic.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="lights--flashing-yellow-caution" href="#" onclick="openSignPlaceholder('Lights - Flashing yellow caution'); return false;">View Traffic Light</a>
+</div>
+</article><article class="card">
+<div class="label">Lights - RH turn on green arrow only</div>
+<div class="subtext"><span class="tag">Traffic Lights</span> · Right turns may only be permitted when the green arrow is displayed.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="lights--rh-turn-on-green-arrow-only" href="#" onclick="openSignPlaceholder('Lights - RH turn on green arrow only'); return false;">View Traffic Light</a>
+</div>
+</article><article class="card">
+<div class="label">Lights - Steady yellow prepare to stop</div>
+<div class="subtext"><span class="tag">Traffic Lights</span> · Prepare to stop when safe. Do not accelerate through yellow lights.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="lights--steady-yellow-prepare-to-stop" href="#" onclick="openSignPlaceholder('Lights - Steady yellow prepare to stop'); return false;">View Traffic Light</a>
+</div>
+</article></details>
+</section>
+<section class="section">
+<details>
+<summary class="section-title">🛑 Traffic Signs</summary>
+<article class="card">
+<div class="label">Crosswalks</div>
+<div class="subtext"><span class="tag">Road Signs</span> · Watch for pedestrians and be prepared to stop at crossings.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="sign--crosswalks" href="#" onclick="openSignPlaceholder('Crosswalks'); return false;">View Sign</a>
+</div>
+</article><article class="card">
+<div class="label">Sign - Direction Only</div>
+<div class="subtext"><span class="tag">Road Signs</span> · Traffic must follow the indicated direction only.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="sign--direction-only" href="#" onclick="openSignPlaceholder('Sign - Direction Only'); return false;">View Sign</a>
+</div>
+</article><article class="card">
+<div class="label">Sign - No Entry</div>
+<div class="subtext"><span class="tag">Road Signs</span> · Do not enter. Usually marks a one-way street or restricted-entry road.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="sign--no-entry" href="#" onclick="openSignPlaceholder('Sign - No Entry'); return false;">View Sign</a>
+</div>
+</article><article class="card">
+<div class="label">Sign - No Right Turn</div>
+<div class="subtext"><span class="tag">Road Signs</span> · Right turn prohibited at the signed intersection or location.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="sign--no-right-turn" href="#" onclick="openSignPlaceholder('Sign - No Right Turn'); return false;">View Sign</a>
+</div>
+</article><article class="card">
+<div class="label">Sign - Slowdown</div>
+<div class="subtext"><span class="tag">Road Signs</span> · Slow down and proceed with additional caution.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="sign--slowdown" href="#" onclick="openSignPlaceholder('Sign - Slowdown'); return false;">View Sign</a>
+</div>
+</article><article class="card">
+<div class="label">Sign - Speed Limits</div>
+<div class="subtext"><span class="tag">Road Signs</span> · Observe posted speed limits. Local streets and expressways may vary significantly.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="sign--speed-limits" href="#" onclick="openSignPlaceholder('Sign - Speed Limits'); return false;">View Sign</a>
+</div>
+</article><article class="card">
+<div class="label">Sign - Stop</div>
+<div class="subtext"><span class="tag">Road Signs</span> · Come to a complete stop, check carefully, then proceed only when safe.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="sign--stop" href="#" onclick="openSignPlaceholder('Sign - Stop'); return false;">View Sign</a>
+</div>
+</article></details>
+</section>
+<section class="section">
+<details>
+<summary class="section-title">🚷 Parking</summary>
+<article class="card">
+<div class="label">Sign - No Parking</div>
+<div class="subtext"><span class="tag">Road Signs</span> · No parking. Do not park in the signed area or during the signed restriction period.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="sign--no-parking" href="#" onclick="openSignPlaceholder('Sign - No Parking'); return false;">View Sign</a>
+</div>
+</article><article class="card">
+<div class="label">Sign - No Stopping</div>
+<div class="subtext"><span class="tag">Road Signs</span> · No stopping. Do not stop or park in the signed area, even briefly, unless directed by police or traffic control.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="sign--no-stopping" href="#" onclick="openSignPlaceholder('Sign - No Stopping'); return false;">View Sign</a>
+</div>
+</article><article class="card">
+<div class="label">Sign - Parking</div>
+<div class="subtext"><span class="tag">Parking</span> · Parking permitted where signed, subject to any time or condition restrictions.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="sign--parking" href="#" onclick="openSignPlaceholder('Sign - Parking'); return false;">View Sign</a>
+</div>
+</article><article class="card">
+<div class="label">Sign - Parking 60 mins between 8am - 8pm</div>
+<div class="subtext"><span class="tag">Parking</span> · Parking is limited to 60 minutes during the signed period. Check whether payment or display rules apply.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="sign--parking-60-mins-between-8am--8pm" href="#" onclick="openSignPlaceholder('Sign - Parking 60 mins between 8am - 8pm'); return false;">View Sign</a>
+</div>
+</article></details>
+</section>
+<section class="section">
+<details>
+<summary class="section-title">⚠️ Awareness &amp; Road Environment</summary>
+<article class="card">
+<div class="label">Railway Crossings</div>
+<div class="subtext"><span class="tag">Railway Crossings</span> · Stop, check both directions, and proceed only when safe at railway crossings.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="railway-crossings" href="#" onclick="openSignPlaceholder('Railway Crossings'); return false;">View Sign</a>
+</div>
+</article></details>
+</section>
+<section class="section">
+<details>
+<summary class="section-title">💳 Toll Roads</summary>
+<article class="card">
+<div class="label">ETC Lanes</div>
+<div class="subtext"><span class="tag">Tolls &amp; ETC</span> · Do not enter ETC-only toll lanes unless the vehicle has an ETC card/device fitted and active. Use general/cash/credit lanes if unsure.</div>
+<div class="card-footer">
+<a class="link-pill placeholder-pill" data-sign="tolls--etc-lanes" href="#" onclick="openSignPlaceholder('ETC Lanes'); return false;">View Sign</a>
+</div>
+</article></details>
+</section>
+<div class="bottom-home">
+<a class="pill-button" href="https://jp-gjn-2026-may.trekworks.org/" style="color:#93c5fd;">
       ← Back to Trip Home
     </a>
-  </div>
-
-  <footer>
+</div>
+<footer>
     For hire car booking details, see <a href="https://jp-gjn-2026-may.trekworks.org/hire-car.html">Hire Car</a>.
     For flight details, see
     <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.
-    <br class="desktop-only">
+    <br class="desktop-only"/>
     For airport references, see
     <a href="https://jp-gjn-2026-may.trekworks.org/airports.html">Airports</a>.
   </footer>
-
 </main>
-
-<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Sign preview">
-  <div class="modal-shell">
-    <div class="modal-header">
-      <div class="modal-title" id="modalTitle">Loading…</div>
-      <a class="modal-open" id="modalOpen" href="#" target="_blank" rel="noopener">Open</a>
-      <button class="modal-close" onclick="closeModal()" aria-label="Close">X Close</button>
-    </div>
-    <iframe class="modal-frame" id="modalFrame" title="External content"></iframe>
-  </div>
+<div aria-label="Sign preview" aria-modal="true" class="modal-overlay" id="modalOverlay" role="dialog">
+<div class="modal-shell">
+<div class="modal-header">
+<div class="modal-title" id="modalTitle">Loading…</div>
+<a class="modal-open" href="#" id="modalOpen" rel="noopener" target="_blank">Open</a>
+<button aria-label="Close" class="modal-close" onclick="closeModal()">X Close</button>
 </div>
-
+<iframe class="modal-frame" id="modalFrame" title="External content"></iframe>
+</div>
+</div>
+<div class="map-modal" id="mapModal">
+<div class="map-modal-header">
+<div class="map-modal-title">Get Help Nearby</div>
+<button class="map-modal-close" onclick="closeMapModal()">X Close</button>
+</div>
+<iframe id="mapFrame" loading="lazy" src="" title="Nearby help map"></iframe>
+</div>
 <div class="offline-overlay" id="offlineOverlay">
-  <div class="offline-box">
-    <h2>You’re offline</h2>
-    <p>
-      This content requires an internet connection.<br>
+<div class="offline-box">
+<h2>You’re offline</h2>
+<p>
+      This content requires an internet connection.<br/>
       You can continue using other parts of the app while offline.
     </p>
-    <button onclick="closeOffline()">OK</button>
-  </div>
+<button onclick="closeOffline()">OK</button>
 </div>
-
+</div>
 <script>
 function openDrivePreview(previewUrl, title, viewUrl) {
   verifyConnectivity()
@@ -607,7 +656,11 @@ function openDrivePreview(previewUrl, title, viewUrl) {
 }
 
 function openSignPlaceholder(title) {
-  alert('Google Drive image URL pending for: ' + title);
+  verifyConnectivity()
+    .then(function () {
+      alert('Google Drive image URL pending for: ' + title);
+    })
+    .catch(showOffline);
 }
 
 function closeModal() {
@@ -621,6 +674,7 @@ function closeModal() {
 document.addEventListener('keydown', function (event) {
   if (event.key === 'Escape') {
     closeModal();
+    closeMapModal();
     closeOffline();
   }
 });
@@ -661,7 +715,60 @@ function showOffline() {
 function closeOffline() {
   document.getElementById('offlineOverlay').style.display = 'none';
 }
-</script>
 
+function openEmergencyPhrase() {
+  document.getElementById('emergencyModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeEmergencyModal() {
+  document.getElementById('emergencyModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+
+function openMapModal(url) {
+  verifyConnectivity()
+    .then(function () {
+      document.getElementById('mapFrame').src = url;
+      document.getElementById('mapModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    })
+    .catch(showOffline);
+}
+
+function closeMapModal() {
+  document.getElementById('mapFrame').src = '';
+  document.getElementById('mapModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function handleExternal(url) {
+  verifyConnectivity()
+    .then(function () {
+      window.location.href = 'external.html?url=' + encodeURIComponent(url);
+    })
+    .catch(showOffline);
+}
+</script>
+<div class="modal-overlay" id="emergencyModal">
+<div class="modal-shell">
+<div class="modal-header">
+<div class="modal-title">Emergency Phrase</div>
+<button class="modal-close" onclick="closeEmergencyModal()">X Close</button>
+</div>
+<div style="padding:20px; color:#f5f7ff; line-height:1.6;">
+<div style="margin-bottom:16px;">
+<strong>English</strong><br/>
+        Please call an ambulance (119).<br/>
+        Please call the police (110).
+      </div>
+<div>
+<strong>Japanese</strong><br/>
+        救急車を呼んでください（119）<br/>
+        警察を呼んでください（110）
+      </div>
+</div>
+</div>
+</div>
 </body>
 </html>
