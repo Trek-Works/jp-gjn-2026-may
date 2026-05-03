@@ -627,12 +627,18 @@ function openWhatsApp() {
     .then(function () {
       const appUrl = 'whatsapp://send?phone=819082903579';
       const webUrl = 'https://wa.me/819082903579';
+      const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-      window.location.href = appUrl;
-
-      setTimeout(function () {
-        window.location.href = webUrl;
-      }, 900);
+      if (isMobile) {
+        // Mobile: open app, fallback to web
+        window.location.href = appUrl;
+        setTimeout(function () {
+          window.location.href = webUrl;
+        }, 900);
+      } else {
+        // Desktop: open in new window/tab (no iframe, no modal)
+        window.open(webUrl, '_blank', 'noopener');
+      }
     })
     .catch(showOffline);
 }
