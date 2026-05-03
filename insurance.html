@@ -103,16 +103,23 @@
       margin-bottom: 14px;
     }
 
-    .card {
+    .card,
+    .detail-card {
       background: transparent;
       border-radius: var(--radius-lg);
-      padding: 10px 20px 14px;
+      padding: 14px 20px 16px;
       border: 1px solid var(--border-soft);
       box-shadow: var(--shadow-soft);
       margin-top: 14px;
     }
 
-    .label {
+    .hero-card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(8, 13, 27, 0.92));
+      border: 1px solid rgba(147, 197, 253, 0.25);
+    }
+
+    .label,
+    .detail-title {
       font-size: 15px;
       font-weight: 600;
       color: #93c5fd;
@@ -122,6 +129,87 @@
       font-size: 13px;
       color: var(--text-soft);
       margin-top: 4px;
+      line-height: 1.45;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .mini {
+      border: 1px solid rgba(75, 85, 99, 0.75);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: rgba(2, 6, 23, 0.42);
+    }
+
+    .mini .k {
+      color: #93c5fd;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 3px;
+    }
+
+    .mini .v {
+      color: #f5f7ff;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .timeline {
+      margin-top: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .step-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(79, 140, 255, 0.15);
+      border: 1px solid rgba(147, 197, 253, 0.25);
+      color: #93c5fd;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .step strong {
+      color: #f5f7ff;
+      font-size: 13px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .step span {
+      color: var(--text-soft);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .note-box {
+      margin-top: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      background: rgba(245, 158, 11, 0.08);
+      color: #fef3c7;
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height: 1.4;
     }
 
     .card-footer {
@@ -134,13 +222,20 @@
     .link-pill {
       border-radius: var(--radius-pill);
       border: 1px solid #4b5563;
-      padding: 4px 10px;
+      padding: 5px 11px;
       font-size: 11px;
       text-decoration: none;
       color: #e5e7eb;
       background: #020617;
       white-space: nowrap;
       flex: 0 0 auto;
+      cursor: pointer;
+    }
+
+    .link-pill:hover,
+    .pill-button:hover {
+      border-color: #93c5fd;
+      color: #bfdbfe;
     }
 
     details summary {
@@ -164,8 +259,14 @@
       transform: rotate(90deg);
     }
 
+    .pre-footer-toolbar {
+      display: flex;
+      justify-content: center;
+      margin-top: 42px;
+    }
+
     footer {
-      margin-top: 56px;
+      margin-top: 22px;
       text-align: center;
       font-size: 12px;
       color: var(--text-soft);
@@ -180,28 +281,80 @@
       display: inline;
     }
 
-    @media (max-width: 640px) {
-      .desktop-only {
-        display: none;
-      }
+    .site-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 18px;
+    }
 
-      .subtitle {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2px;
-        text-align: center;
-      }
+    .site-modal {
+      width: min(1100px, 100%);
+      height: min(760px, 92vh);
+      background: #020617;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 22px 65px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+    }
 
-      .card-footer {
-        flex-wrap: wrap;
-        gap: 6px;
-      }
+    .site-modal-header {
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 10px 8px 14px;
+      background: rgba(15, 23, 42, 0.98);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
 
-      .card-footer .link-pill {
-        flex: 1 1 calc(50% - 6px);
-        text-align: center;
-      }
+    .site-modal-title {
+      font-size: 13px;
+      color: #e5e7eb;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .site-modal-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+
+    .site-modal-actions a,
+    .site-modal-actions button {
+      border-radius: 999px;
+      border: 1px solid #475569;
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 12px;
+      padding: 5px 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .site-modal-actions button {
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .site-modal iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
     }
 
     .offline-overlay {
@@ -211,7 +364,7 @@
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 9999;
+      z-index: 10001;
     }
 
     .offline-box {
@@ -251,6 +404,46 @@
       font-size: 14px;
       cursor: pointer;
     }
+
+    @media (max-width: 640px) {
+      .desktop-only {
+        display: none;
+      }
+
+      .subtitle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        text-align: center;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-footer {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .card-footer .link-pill {
+        flex: 1 1 calc(50% - 6px);
+        text-align: center;
+      }
+
+      .site-overlay {
+        padding: 0;
+      }
+
+      .site-modal {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+      }
+    }
   </style>
 </head>
 
@@ -261,8 +454,8 @@
     <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
     <h1 class="title">Insurance</h1>
     <p class="subtitle">
-      <span>Travel insurance placeholders for Japan trip</span>
-      <span>(14 May 2026 → 29 May 2026)</span>
+      <span>Travel insurance and emergency references for Japan trip</span>
+      <span>(14 May 2026 → 30 May 2026)</span>
     </p>
 
     <div class="toolbar">
@@ -272,47 +465,163 @@
     </div>
   </div>
 
-<!-- REPLACE ONLY THIS SECTION -->
+  <section class="section">
+    <div class="section-title">🛡️ Travel Insurance Summary</div>
 
-<section class="section">
-  <div class="section-title" style="padding-left:22px;">🛡️ Insurance Records — Placeholder Set</div>
+    <article class="card hero-card">
+      <div class="label">insure4less — Excel Plus</div>
+      <div class="subtext">
+        Single-trip travel insurance for Japan, issued by Chase Underwriting Solutions Pty Ltd under Lloyd’s binding authority.
+      </div>
 
-  <article class="card">
-    <div class="label">Travel Insurance</div>
-    <div class="subtext">Placeholder section for the primary travel insurance provider, period of cover and high-level reference details.</div>
-    <div class="card-footer">
-      <a class="link-pill" href="#" onclick="return false;">Provider record</a>
-      <a class="link-pill" href="#" onclick="return false;">Cover period</a>
-    </div>
-  </article>
+      <div class="grid">
+        <div class="mini">
+          <div class="k">Certificate</div>
+          <div class="v">TI-251025-0005</div>
+        </div>
+        <div class="mini">
+          <div class="k">Travellers</div>
+          <div class="v">Gavin Nucifora and Sema Hasanoglu</div>
+        </div>
+        <div class="mini">
+          <div class="k">Cover Period</div>
+          <div class="v">14 May 2026 → 30 May 2026</div>
+        </div>
+        <div class="mini">
+          <div class="k">Area / Trip Type</div>
+          <div class="v">Asia · Single trip · Return</div>
+        </div>
+        <div class="mini">
+          <div class="k">Excess</div>
+          <div class="v">$200</div>
+        </div>
+        <div class="mini">
+          <div class="k">Premium Paid</div>
+          <div class="v">$223.79</div>
+        </div>
+      </div>
 
-  <article class="card">
-    <div class="label">Certificates</div>
-    <div class="subtext">Placeholder section for certificate files, policy confirmations and saved traveller copies.</div>
-    <div class="card-footer">
-      <a class="link-pill" href="#" onclick="return false;">Certificate copy</a>
-      <a class="link-pill" href="#" onclick="return false;">Traveller copy</a>
-    </div>
-  </article>
+      <div class="card-footer">
+        <a class="link-pill" href="#" onclick="openModal('Travel Insurance Certificate.pdf', 'Travel Insurance Certificate'); return false;">Certificate PDF</a>
+        <a class="link-pill" href="#" onclick="openModal('Travel Insurance PDS v4.6.pdf', 'Travel Insurance PDS v4.6'); return false;">PDS / Policy Wording</a>
+        <a class="link-pill" href="#" onclick="openModal('https://www.insure4less.com.au', 'insure4less'); return false;">insure4less Website</a>
+      </div>
+    </article>
+  </section>
 
-  <article class="card">
-    <div class="label">Policies</div>
-    <div class="subtext">Placeholder section for policy wording, inclusions, exclusions and emergency contact information.</div>
-    <div class="card-footer">
-      <a class="link-pill" href="#" onclick="return false;">Policy wording</a>
-      <a class="link-pill" href="#" onclick="return false;">Emergency contacts</a>
-    </div>
-  </article>
+  <section class="section">
+    <div class="section-title">🚨 Emergency and Claims</div>
 
-  <article class="card">
-    <div class="label">Contract Details</div>
-    <div class="subtext">Placeholder section for policy number, issue details, contract notes and claim reference fields.</div>
-    <div class="card-footer">
-      <a class="link-pill" href="#" onclick="return false;">Policy number</a>
-      <a class="link-pill" href="#" onclick="return false;">Claim reference</a>
-    </div>
-  </article>
-</section>
+    <article class="detail-card">
+      <div class="detail-title">24/7 Overseas Medical Emergency</div>
+      <div class="timeline">
+        <div class="step">
+          <div class="step-icon">1</div>
+          <div><strong>Medical emergency assistance</strong><span>Global 24 Advisory & Assistance: <strong>+61 (0) 2 9312 5168</strong></span></div>
+        </div>
+        <div class="step">
+          <div class="step-icon">2</div>
+          <div><strong>Email assistance</strong><span>assistance@global24.com.au</span></div>
+        </div>
+        <div class="step">
+          <div class="step-icon">3</div>
+          <div><strong>Have certificate ready</strong><span>Use certificate number <strong>TI-251025-0005</strong> when contacting assistance or claims.</span></div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="link-pill" href="tel:+61293125168">Call Global 24</a>
+        <a class="link-pill" href="mailto:assistance@global24.com.au">Email Assistance</a>
+        <a class="link-pill" href="#" onclick="openModal('Travel Insurance Certificate.pdf#page=4', 'Medical Emergency Card'); return false;">Emergency Card</a>
+      </div>
+    </article>
+
+    <article class="detail-card">
+      <div class="detail-title">Claims and General Enquiries</div>
+      <div class="timeline">
+        <div class="step">
+          <div class="step-icon">C</div>
+          <div><strong>Travel insurance claims</strong><span>Email: claims@insure4less.com.au · Phone: <strong>+61 (0) 3 8866 0781</strong></span></div>
+        </div>
+        <div class="step">
+          <div class="step-icon">G</div>
+          <div><strong>General enquiries</strong><span>Email: travel@insure4less.com.au · Phone: <strong>+61 (0) 7 3303 0801</strong></span></div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="link-pill" href="mailto:claims@insure4less.com.au">Email Claims</a>
+        <a class="link-pill" href="tel:+61388660781">Call Claims</a>
+        <a class="link-pill" href="mailto:travel@insure4less.com.au">Email General Enquiries</a>
+        <a class="link-pill" href="#" onclick="openModal('https://www.insure4less.com.au', 'Manage / Extend Policy'); return false;">Manage Policy</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-title">📋 Key Cover Snapshot</div>
+
+    <article class="detail-card">
+      <div class="detail-title">Excel Plus Benefit Limits</div>
+      <div class="grid">
+        <div class="mini">
+          <div class="k">Overseas Emergency Medical</div>
+          <div class="v">Unlimited</div>
+        </div>
+        <div class="mini">
+          <div class="k">Cancellation / Curtailment</div>
+          <div class="v">$10,000 per person</div>
+        </div>
+        <div class="mini">
+          <div class="k">Baggage / Personal Effects</div>
+          <div class="v">$5,000 per person</div>
+        </div>
+        <div class="mini">
+          <div class="k">Car Rental Excess Waiver</div>
+          <div class="v">$6,000 per person</div>
+        </div>
+        <div class="mini">
+          <div class="k">Personal Liability</div>
+          <div class="v">$7,500,000 per person</div>
+        </div>
+        <div class="mini">
+          <div class="k">COVID-19 Extension</div>
+          <div class="v">Emergency medical cover if positively diagnosed overseas</div>
+        </div>
+      </div>
+      <div class="note-box">
+        ⚠️ This page is a travel-reference summary only. Use the Certificate and PDS/Policy Wording for full terms, conditions, exclusions and claim requirements.
+      </div>
+      <div class="card-footer">
+        <a class="link-pill" href="#" onclick="openModal('Travel Insurance PDS v4.6.pdf#page=10', 'Schedule of Cover'); return false;">Schedule of Cover</a>
+        <a class="link-pill" href="#" onclick="openModal('Travel Insurance PDS v4.6.pdf#page=19', 'Car Rental Excess Waiver'); return false;">Car Rental Excess</a>
+        <a class="link-pill" href="#" onclick="openModal('Travel Insurance PDS v4.6.pdf#page=20', 'General Exclusions'); return false;">General Exclusions</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-title">✅ Travel Use Notes</div>
+
+    <article class="detail-card">
+      <div class="timeline">
+        <div class="step">
+          <div class="step-icon">📄</div>
+          <div><strong>Before departure</strong><span>Save the Certificate and PDS offline and keep the certificate number available on each phone.</span></div>
+        </div>
+        <div class="step">
+          <div class="step-icon">🚗</div>
+          <div><strong>For Okinawa hire car</strong><span>Keep this page linked with the Hire Car card, particularly the car rental excess waiver and claims contact details.</span></div>
+        </div>
+        <div class="step">
+          <div class="step-icon">🏥</div>
+          <div><strong>For medical events</strong><span>Call Global 24 for medical emergencies and follow the claim procedure in the PDS.</span></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <div class="pre-footer-toolbar">
+    <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button">← Back to Trip Home</a>
+  </div>
 
   <footer>
     For border entry steps, see <a href="https://jp-gjn-2026-may.trekworks.org/immigration-and-customs.html">Immigration and Customs</a>.
@@ -327,6 +636,19 @@
 
 </main>
 
+<div class="site-overlay" id="siteOverlay" onclick="overlayClick(event)">
+  <div class="site-modal">
+    <div class="site-modal-header">
+      <div class="site-modal-title" id="siteModalTitle">External Link</div>
+      <div class="site-modal-actions">
+        <a id="siteModalOpenNew" href="#" target="_blank" rel="noopener">Open</a>
+        <button type="button" aria-label="Close" onclick="closeModal()">×</button>
+      </div>
+    </div>
+    <iframe id="siteFrame" title="Site viewer"></iframe>
+  </div>
+</div>
+
 <div class="offline-overlay" id="offlineOverlay">
   <div class="offline-box">
     <h2>You’re offline</h2>
@@ -339,23 +661,45 @@
 </div>
 
 <script>
-function handleExternal(url) {
+function openModal(url, title) {
   verifyConnectivity()
     .then(function () {
-      window.location.href = 'external.html?url=' + encodeURIComponent(url);
+      const safeUrl = url || '#';
+      document.getElementById('siteModalTitle').textContent = title || safeUrl;
+      document.getElementById('siteModalOpenNew').href = safeUrl;
+      document.getElementById('siteFrame').src = safeUrl;
+      document.getElementById('siteOverlay').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     })
     .catch(showOffline);
 }
 
+function closeModal() {
+  document.getElementById('siteFrame').src = 'about:blank';
+  document.getElementById('siteOverlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function overlayClick(event) {
+  if (event.target && event.target.id === 'siteOverlay') {
+    closeModal();
+  }
+}
+
 function verifyConnectivity() {
   return new Promise(function (resolve, reject) {
+    if (!navigator.onLine) {
+      reject();
+      return;
+    }
+
     const controller = new AbortController();
     const timeout = setTimeout(function () {
       controller.abort();
       reject();
-    }, 800);
+    }, 900);
 
-      fetch('external.html', {
+    fetch('external.html', {
       cache: 'no-store',
       signal: controller.signal
     })
@@ -377,6 +721,13 @@ function showOffline() {
 function closeOffline() {
   document.getElementById('offlineOverlay').style.display = 'none';
 }
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') {
+    closeModal();
+    closeOffline();
+  }
+});
 </script>
 
 </body>
