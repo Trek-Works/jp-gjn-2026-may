@@ -369,6 +369,88 @@
       font-size: 14px;
       cursor: pointer;
     }
+
+
+    /* ===== Standard Trip Modal - aligned to Hire Car index ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.88);
+      display: none;
+      flex-direction: column;
+      z-index: 9998;
+    }
+
+    .modal-shell {
+      width: 100%;
+      height: 100%;
+      background: #020617;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      height: 52px;
+      min-height: 52px;
+      background: #0b1020;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      color: #f9fafb;
+      font-size: 14px;
+    }
+
+    .modal-title {
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-right: 12px;
+      flex: 1 1 auto;
+    }
+
+    .modal-open {
+      display: none;
+    }
+
+    .modal-close {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: #020617;
+      color: #f9fafb;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .modal-frame {
+      width: 100%;
+      height: calc(100vh - 52px);
+      border: 0;
+      background: #020617;
+    }
+
+    .modal-launch {
+      display: none;
+    }
+
+    @media (max-width: 640px) {
+      .modal-shell {
+        height: 100%;
+        width: 100%;
+      }
+
+      .modal-header {
+        height: 48px;
+      }
+
+      .modal-open {
+        display: none;
+      }
+    }
 </style>
 </head>
 <body>
@@ -390,15 +472,15 @@
 <div class="label">QR Codes</div>
 <div class="subtext">Saved QR code copies for immigration clearance and customs declaration. Use these at arrival if requested.</div>
 <div class="card-footer">
-<button class="link-pill green" data-provider="Google Drive" data-title="QR Code · Gavin" data-url="https://drive.google.com/file/d/1MZj2wFw-Eo0fgMygWKox2Y2Vs3MCyO83/view?usp=sharing">▦ QR Code · Gavin</button>
-<button class="link-pill green" data-provider="Google Drive" data-title="QR Code · Sema" data-url="https://drive.google.com/file/d/1xcPLuC_xwRGRKQbyRn2wc67a1REjmI04/view?usp=sharing">▦ QR Code · Sema</button>
+<button class="link-pill green" data-external-url="https://drive.google.com/file/d/1MZj2wFw-Eo0fgMygWKox2Y2Vs3MCyO83/view?usp=sharing" data-launch-mode="false" data-provider="Google Drive" data-title="QR Code · Gavin" data-url="https://drive.google.com/file/d/1MZj2wFw-Eo0fgMygWKox2Y2Vs3MCyO83/preview">▦ QR Code · Gavin</button>
+<button class="link-pill green" data-external-url="https://drive.google.com/file/d/1xcPLuC_xwRGRKQbyRn2wc67a1REjmI04/view?usp=sharing" data-launch-mode="false" data-provider="Google Drive" data-title="QR Code · Sema" data-url="https://drive.google.com/file/d/1xcPLuC_xwRGRKQbyRn2wc67a1REjmI04/preview">▦ QR Code · Sema</button>
 </div>
 </article>
 <article class="card">
 <div class="label">Visit Japan Web</div>
 <div class="subtext">Login access for checking planned entry/return records and displaying online QR codes if mobile data is available.</div>
 <div class="card-footer">
-<button class="link-pill blue" data-provider="Visit Japan Web" data-title="Visit Japan Web Login" data-url="https://www.vjw.digital.go.jp/main/#/vjwplo001">Visit Japan Web Login</button>
+<button class="link-pill blue" data-external-url="https://www.vjw.digital.go.jp/main/#/vjwplo001" data-launch-mode="true" data-provider="Visit Japan Web" data-title="Visit Japan Web Login" data-url="https://www.vjw.digital.go.jp/main/#/vjwplo001">Visit Japan Web Login</button>
 </div>
 </article>
 <article class="card">
@@ -437,7 +519,7 @@
 <div class="label">Tax-free QR Code Info</div>
 <div class="subtext">Reference note for tax-free shopping setup after arrival. The passport entry permission stamp may be required.</div>
 <div class="card-footer">
-<button class="link-pill gold" data-title="Tax-free QR Code Info" data-url="Instructions.pdf">Tax-free QR Code Info</button>
+<button class="link-pill gold" data-external-url="Instructions.pdf" data-launch-mode="false" data-title="Tax-free QR Code Info" data-url="Instructions.pdf">Tax-free QR Code Info</button>
 </div>
 </article>
 </section>
@@ -461,27 +543,21 @@
 <iframe id="modalFrame" title="Modal content"></iframe>
 </div>
 </div>
-<div class="launch-modal-overlay" id="launchModalOverlay">
-<div aria-labelledby="launchModalTitle" aria-modal="true" class="launch-modal" role="dialog">
-<div class="launch-modal-header">
-<div class="launch-modal-kicker">Immigration and Customs link</div>
-<div class="launch-modal-title" id="launchModalTitle">Immigration and Customs Link</div>
+
+
+<div aria-label="Site preview" aria-modal="true" class="modal-overlay" id="modalOverlay" role="dialog">
+<div class="modal-shell">
+<div class="modal-header">
+<div class="modal-title" id="modalTitle">Loading…</div>
+<a class="modal-open" href="#" id="modalOpen" rel="noopener" target="_blank">Open</a>
+<button aria-label="Close" class="modal-close" onclick="closeModal()">X Close</button>
 </div>
-<div class="launch-modal-body">
-<div class="launch-field">
-<div class="launch-field-label">Link</div>
-<div class="launch-field-value" id="launchLinkName">Immigration and Customs Link</div>
-</div>
-<div class="launch-field">
-<div class="launch-field-label">Provider</div>
-<div class="launch-field-value" id="launchProviderName">External website</div>
-</div>
-<div class="launch-modal-note">
-        This website may block embedded modal pages, require Google account access, or require Visit Japan Web authentication. Use the button below to open the link while keeping this Immigration and Customs page available behind it.
-      </div>
-<div class="launch-modal-actions">
-<a class="launch-action-button" href="#" id="launchOpenButton" rel="noopener noreferrer" target="_blank">Open Link</a>
-<button class="launch-close-button" onclick="closeLaunchModal()" type="button">X Close</button>
+<iframe class="modal-frame" id="modalFrame" title="External content"></iframe>
+<div class="modal-launch" id="modalLaunch">
+<div class="launch-card">
+<h2 id="launchTitle">Open site</h2>
+<p>This site may block embedded views. Use the button below if the page does not load inside the trip card.</p>
+<a href="#" id="launchLink" rel="noopener" target="_blank">Open in new tab</a>
 </div>
 </div>
 </div>
@@ -494,36 +570,47 @@
 </div>
 </div>
 <script>
-function handleLaunchPage(url, title, provider) {
+function openModal(url, title, externalUrl, launchMode) {
   verifyConnectivity()
     .then(function () {
-      openLaunchModal(url, title || 'Immigration and Customs Link', provider || 'External website');
+      const overlay = document.getElementById('modalOverlay');
+      const frame = document.getElementById('modalFrame');
+      const modalTitle = document.getElementById('modalTitle');
+      const openLink = document.getElementById('modalOpen');
+      const targetUrl = externalUrl || url;
+
+      modalTitle.textContent = title || 'Preview';
+      openLink.href = targetUrl;
+
+      if (launchMode) {
+        frame.src = 'external.html?url=' + encodeURIComponent(targetUrl);
+      } else {
+        frame.src = url;
+      }
+
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     })
     .catch(showOffline);
 }
 
-function openLaunchModal(url, title, provider) {
-  const overlay = document.getElementById('launchModalOverlay');
-  const titleEl = document.getElementById('launchModalTitle');
-  const linkNameEl = document.getElementById('launchLinkName');
-  const providerEl = document.getElementById('launchProviderName');
-  const openButton = document.getElementById('launchOpenButton');
-
-  titleEl.textContent = title || 'Immigration and Customs Link';
-  linkNameEl.textContent = title || 'Immigration and Customs Link';
-  providerEl.textContent = provider || 'External website';
-  openButton.href = url;
-  openButton.textContent = 'Open ' + (title || 'Link');
-  overlay.style.display = 'flex';
-}
-
-function closeLaunchModal() {
-  const overlay = document.getElementById('launchModalOverlay');
-  const openButton = document.getElementById('launchOpenButton');
-
+function closeModal() {
+  const overlay = document.getElementById('modalOverlay');
+  const frame = document.getElementById('modalFrame');
   overlay.style.display = 'none';
-  openButton.href = '#';
+  frame.removeAttribute('src');
+  document.body.style.overflow = '';
 }
+
+document.querySelectorAll('[data-url]').forEach(function (item) {
+  item.addEventListener('click', function () {
+    const url = item.getAttribute('data-url');
+    const title = item.getAttribute('data-title') || 'Preview';
+    const externalUrl = item.getAttribute('data-external-url') || url;
+    const launchMode = item.getAttribute('data-launch-mode') === 'true';
+    openModal(url, title, externalUrl, launchMode);
+  });
+});
 
 function verifyConnectivity() {
   return new Promise(function (resolve, reject) {
@@ -556,18 +643,16 @@ function closeOffline() {
   document.getElementById('offlineOverlay').style.display = 'none';
 }
 
-document.querySelectorAll('[data-url]').forEach(function (item) {
-  item.addEventListener('click', function () {
-    const url = item.getAttribute('data-url');
-    const title = item.getAttribute('data-title') || 'Immigration and Customs Link';
-    const provider = item.getAttribute('data-provider') || 'External website';
-    handleLaunchPage(url, title, provider);
-  });
-});
-
 document.addEventListener('keydown', function (event) {
   if (event.key === 'Escape') {
-    closeLaunchModal();
+    closeModal();
+    closeOffline();
+  }
+});
+
+document.getElementById('modalOverlay').addEventListener('click', function (event) {
+  if (event.target.id === 'modalOverlay') {
+    closeModal();
   }
 });
 </script></body>
