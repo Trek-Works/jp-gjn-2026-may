@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Immigration and Customs – JP GJN-2026-May</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <style>
+<meta charset="utf-8"/>
+<title>Immigration and Customs – JP GJN-2026-May</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style>
     :root {
       --bg: #050814;
       --bg-elevated: #0b1020;
@@ -21,15 +21,11 @@
       --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.45);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       min-height: 100vh;
-      font-family: system-ui, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
@@ -37,54 +33,20 @@
       justify-content: center;
     }
 
-    .page {
-      max-width: 920px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 36px 18px 56px;
-    }
+    .page { max-width: 920px; width: 100%; margin: 0 auto; padding: 36px 18px 56px; }
+    .page-header { text-align: center; }
+    .page-header .toolbar { justify-content: center; }
 
-    .page-header {
-      text-align: center;
-    }
+    .breadcrumb { text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--text-soft); margin-bottom: 6px; }
+    .title { font-size: 30px; font-weight: 700; }
+    .subtitle { margin-top: 4px; font-size: 12px; color: var(--text-soft); text-transform: uppercase; }
 
-    .page-header .toolbar {
-      justify-content: center;
-    }
-
-    .breadcrumb {
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 12px;
-      color: var(--text-soft);
-      margin-bottom: 6px;
-    }
-
-    .title {
-      font-size: 30px;
-      font-weight: 700;
-    }
-
-    .subtitle {
-      margin-top: 4px;
-      font-size: 12px;
-      color: var(--text-soft);
-      text-transform: uppercase;
-    }
-
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 18px 0 26px;
-      align-items: center;
-    }
-
+    .toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 26px; align-items: center; }
     .pill-button {
       border-radius: var(--radius-pill);
       border: 1px solid #374151;
       background: rgba(15, 23, 42, 0.9);
-      color: var(--text-main);
+      color: #93c5fd;
       font-size: 13px;
       padding: 6px 14px;
       text-decoration: none;
@@ -93,44 +55,25 @@
       gap: 6px;
     }
 
-    .section {
-      margin-top: 42px;
-    }
-
-    .section-title {
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
+    .section { margin-top: 42px; }
+    .section-title { font-size: 17px; font-weight: 600; margin-bottom: 14px; padding-left: 22px; }
 
     .card {
       background: transparent;
       border-radius: var(--radius-lg);
-      padding: 10px 20px 14px;
+      padding: 14px 20px 16px;
       border: 1px solid var(--border-soft);
       box-shadow: var(--shadow-soft);
       margin-top: 14px;
     }
 
-    .label {
-      font-size: 15px;
-      font-weight: 600;
-      color: #93c5fd;
-    }
+    .label { font-size: 15px; font-weight: 600; color: #93c5fd; }
+    .subtext { font-size: 13px; color: var(--text-soft); margin-top: 4px; line-height: 1.45; }
+    .detail-grid { display: grid; grid-template-columns: 170px 1fr; gap: 6px 14px; margin-top: 12px; font-size: 13px; }
+    .detail-grid .key { color: var(--text-soft); }
+    .detail-grid .value { color: var(--text-main); font-weight: 600; }
 
-    .subtext {
-      font-size: 13px;
-      color: var(--text-soft);
-      margin-top: 4px;
-    }
-
-    .card-footer {
-      margin-top: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
+    .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
     .link-pill {
       border-radius: var(--radius-pill);
       border: 1px solid #4b5563;
@@ -141,73 +84,252 @@
       background: #020617;
       white-space: nowrap;
       flex: 0 0 auto;
-    }
-
-    details summary {
-      list-style: none;
       cursor: pointer;
-      position: relative;
-      padding-left: 22px;
     }
+    .link-pill.blue { border-color: rgba(79,140,255,.75); color: #bfdbfe; background: rgba(79,140,255,.12); }
+    .link-pill.green { border-color: rgba(74,222,128,.75); color: #dcfce7; background: rgba(34,197,94,.14); }
+    .link-pill.gold { border-color: rgba(245,158,11,.7); color: #fde68a; background: rgba(245,158,11,.12); }
 
-    details summary::before {
-      content: "▶";
+    .info-line { margin-top: 10px; padding: 10px 12px; border-left: 3px solid var(--accent); border-radius: 10px; background: var(--accent-soft); font-size: 13px; color: #dbeafe; line-height: 1.45; }
+
+    footer { margin-top: 56px; text-align: center; font-size: 12px; color: var(--text-soft); }
+    footer a { color: var(--accent); text-decoration: none; }
+    .bottom-back { margin: 46px 0 -28px; display: flex; justify-content: center; }
+    .desktop-only { display: inline; }
+
+    .modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.72); display: none; z-index: 8000; }
+    .modal.open { display: block; }
+    .modal-box {
       position: absolute;
-      left: 0;
-      top: 2px;
-      font-size: 13px;
-      color: var(--text-soft);
-      transition: transform 0.2s ease;
+      inset: 24px;
+      max-width: 1180px;
+      margin: auto;
+      background: #061122;
+      border: 1px solid #2a6095;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-head { min-height: 52px; background: #0a57a3; color: white; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-weight: 800; }
+    .modal-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 12px; }
+    .close { border: 0; background: rgba(255,255,255,.16); color: white; border-radius: 999px; width: 34px; height: 34px; font-size: 22px; cursor: pointer; }
+    .modal iframe { width: 100%; height: 100%; border: 0; background: white; flex: 1; }
+    .launch { padding: 28px; color: #eaf3ff; }
+    .launch h3 { margin-top: 0; }
+    .launch p { color: #b5bed5; line-height: 1.5; margin-top: 10px; }
+    .launch a { margin-top: 16px; display: inline-flex; }
+
+    .offline-overlay { position: fixed; inset: 0; background: rgba(5, 6, 11, 0.88); display: none; align-items: center; justify-content: center; z-index: 9999; }
+    .offline-box { max-width: 420px; margin: 20px; padding: 20px 22px; background: linear-gradient(145deg, #111827, #181b26); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; box-shadow: 0 18px 45px rgba(0,0,0,.65); text-align: center; }
+    .offline-box h2 { margin: 0 0 10px; font-size: 20px; }
+    .offline-box p { margin: 0 0 16px; font-size: 14px; color: #b5bed5; line-height: 1.4; }
+    .offline-box button { padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.08); background: rgba(78,168,255,.15); color: #4ea8ff; font-size: 14px; cursor: pointer; }
+
+    @media (max-width: 640px) {
+      .desktop-only { display: none; }
+      .subtitle { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; }
+      .card-footer { flex-wrap: wrap; gap: 6px; }
+      .card-footer .link-pill { flex: 1 1 calc(50% - 6px); text-align: center; }
+      .detail-grid { grid-template-columns: 1fr; gap: 2px; }
+      .detail-grid .value { margin-bottom: 6px; }
+      .modal-box { inset: 10px; }
+    }
+  
+
+    /* ===== Site Modal ===== */
+    .site-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5,6,11,0.92);
+      display: none;
+      z-index: 9998;
+      padding: 14px;
     }
 
-    details[open] summary::before {
-      transform: rotate(90deg);
+    .site-modal.is-open {
+      display: flex;
+      flex-direction: column;
     }
 
-    footer {
-      margin-top: 56px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--text-soft);
+    .site-modal-shell {
+      width: 100%;
+      height: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      background: #020617;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.75);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
+    .site-modal-header {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      background: #0b1020;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
     }
 
-    .desktop-only {
-      display: inline;
+    .site-modal-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f9fafb;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .site-modal-close {
+      border: 1px solid #374151;
+      background: #020617;
+      color: #e5e7eb;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .site-modal-frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
     }
 
     @media (max-width: 640px) {
-      .desktop-only {
-        display: none;
+      .site-modal {
+        padding: 0;
       }
 
-      .subtitle {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2px;
-        text-align: center;
-      }
-
-      .card-footer {
-        flex-wrap: wrap;
-        gap: 6px;
-      }
-
-      .card-footer .link-pill {
-        flex: 1 1 calc(50% - 6px);
-        text-align: center;
+      .site-modal-shell {
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
       }
     }
 
+    /* ===== Launch Page Modal ===== */
+    .launch-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 11, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 18px;
+    }
+
+    .launch-modal {
+      width: min(560px, 100%);
+      background: #0b1020;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+      overflow: hidden;
+    }
+
+    .launch-modal-header {
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .launch-modal-kicker {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .launch-modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .launch-modal-body {
+      padding: 16px 18px 18px;
+    }
+
+    .launch-field {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      background: #050814;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .launch-field-label {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .launch-field-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      overflow-wrap: anywhere;
+    }
+
+    .launch-modal-note {
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--text-soft);
+      margin: 16px 0;
+    }
+
+    .launch-modal-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .launch-action-button,
+    .launch-close-button {
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      padding: 9px 14px;
+      font-size: 13px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .launch-action-button {
+      background: rgba(79, 140, 255, 0.15);
+      color: #93c5fd;
+    }
+
+    .launch-close-button {
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 640px) {
+      .launch-modal-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== Offline Overlay ===== */
     .offline-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(5, 6, 11, 0.88);
+      background: rgba(5,6,11,0.88);
       display: none;
       align-items: center;
       justify-content: center;
@@ -218,16 +340,12 @@
       max-width: 420px;
       margin: 20px;
       padding: 20px 22px;
-      background: linear-gradient(
-        145deg,
-        var(--bg-card, #11141f),
-        var(--bg-soft, #181b26)
-      );
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(145deg,var(--bg-card, #11141f),var(--bg-soft, #181b26));
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 18px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.65);
       text-align: center;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     }
 
     .offline-box h2 {
@@ -245,104 +363,166 @@
     .offline-box button {
       padding: 8px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(78, 168, 255, 0.15);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(78,168,255,0.15);
       color: #4ea8ff;
       font-size: 14px;
       cursor: pointer;
     }
-  </style>
+</style>
 </head>
-
 <body>
 <main class="page">
-
-  <div class="page-header">
-    <div class="breadcrumb">GJN-2026-May · Japan Trip</div>
-    <h1 class="title">Immigration and Customs</h1>
-    <p class="subtitle">
-      <span>Border entry and customs placeholders for Japan trip</span>
-      <span>(14 May 2026 → 29 May 2026)</span>
-    </p>
-
-    <div class="toolbar">
-      <a href="https://jp-gjn-2026-may.trekworks.org/" class="pill-button" style="color:#93c5fd;">
-        ← Back to Trip Home
-      </a>
-    </div>
-  </div>
-
-<section class="section">
-  <div class="section-title" style="padding-left:22px;">🛂 Border Entry — Placeholder Set</div>
-
-  <article class="card">
-    <div class="label">Entry Applications</div>
-    <div class="subtext">Placeholder section for entry applications and pre-arrival forms.</div>
-    <div class="card-footer">
-      <a class="link-pill" href="#" onclick="return false;">Primary application</a>
-      <a class="link-pill" href="#" onclick="return false;">Traveller details</a>
-    </div>
-  </article>
-
-  <article class="card">
-    <div class="label">Declarations</div>
-    <div class="subtext">Placeholder section for customs declarations and arrival submission links.</div>
-    <div class="card-footer">
-      <a class="link-pill" href="#" onclick="return false;">Customs declaration</a>
-      <a class="link-pill" href="#" onclick="return false;">Arrival declaration</a>
-    </div>
-  </article>
-
-  <article class="card">
-    <div class="label">Procedures</div>
-    <div class="subtext">Placeholder section for arrival sequence, processing steps and traveller notes.</div>
-    <div class="card-footer">
-      <a class="link-pill" href="#" onclick="return false;">Arrival procedure</a>
-      <a class="link-pill" href="#" onclick="return false;">Departure procedure</a>
-    </div>
-  </article>
-
-  <article class="card">
-    <div class="label">QR Codes</div>
-    <div class="subtext">Placeholder section for saved border QR codes and backup copies.</div>
-    <div class="card-footer">
-      <a class="link-pill" href="#" onclick="return false;">Immigration QR</a>
-      <a class="link-pill" href="#" onclick="return false;">Customs QR</a>
-    </div>
-  </article>
-</section>
-
-  <footer>
-    For airport references, see <a href="https://jp-gjn-2026-may.trekworks.org/airports.html">Airports</a>.
-    For flight details, see
-    <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.
-    <br class="desktop-only">
-    For mobile connectivity, see
-    <a href="https://jp-gjn-2026-may.trekworks.org/data-and-esim.html">Data and eSIM</a>.
-    For policy records, see
-    <a href="https://jp-gjn-2026-may.trekworks.org/insurance.html">Insurance</a>.
-  </footer>
-
-</main>
-
-<div class="offline-overlay" id="offlineOverlay">
-  <div class="offline-box">
-    <h2>You’re offline</h2>
-    <p>
-      This content requires an internet connection.<br>
-      You can continue using other parts of the app while offline.
-    </p>
-    <button onclick="closeOffline()">OK</button>
-  </div>
+<div class="page-header">
+<div class="breadcrumb">GJN-2026-May · Japan Trip</div>
+<h1 class="title">Immigration and Customs</h1>
+<p class="subtitle">
+<span>Visit Japan Web reference card for Japan trip</span>
+<span>(14 May 2026 → 30 May 2026)</span>
+</p>
+<div class="toolbar">
+<a class="pill-button" href="https://jp-gjn-2026-may.trekworks.org/">← Back to Trip Home</a>
 </div>
-
+</div>
+<section class="section">
+<div class="section-title">🛂 Visit Japan Web — Entry Reference Set</div>
+<article class="card">
+<div class="label">QR Codes</div>
+<div class="subtext">Saved QR code copies for immigration clearance and customs declaration. Use these at arrival if requested.</div>
+<div class="card-footer">
+<button class="link-pill green" data-provider="Google Drive" data-title="QR Code · Gavin" data-url="https://drive.google.com/file/d/1MZj2wFw-Eo0fgMygWKox2Y2Vs3MCyO83/view?usp=sharing">▦ QR Code · Gavin</button>
+<button class="link-pill green" data-provider="Google Drive" data-title="QR Code · Sema" data-url="https://drive.google.com/file/d/1xcPLuC_xwRGRKQbyRn2wc67a1REjmI04/view?usp=sharing">▦ QR Code · Sema</button>
+</div>
+</article>
+<article class="card">
+<div class="label">Visit Japan Web</div>
+<div class="subtext">Login access for checking planned entry/return records and displaying online QR codes if mobile data is available.</div>
+<div class="card-footer">
+<button class="link-pill blue" data-provider="Visit Japan Web" data-title="Visit Japan Web Login" data-url="https://www.vjw.digital.go.jp/main/#/vjwplo001">Visit Japan Web Login</button>
+</div>
+</article>
+<article class="card">
+<div class="label">Planned Entry/Return</div>
+<div class="subtext">Core arrival details recorded in Visit Japan Web.</div>
+<div class="detail-grid">
+<div class="key">Trip name</div><div class="value">Japan 2026</div>
+<div class="key">Arrival date</div><div class="value">2026/05/14</div>
+<div class="key">Airline</div><div class="value">JQ : JETSTAR AIRWAYS (JST)</div>
+<div class="key">Flight number</div><div class="value">13</div>
+<div class="key">Point of embarkation</div><div class="value">SYDNEY</div>
+</div>
+</article>
+<article class="card">
+<div class="label">Address in Japan</div>
+<div class="subtext">First accommodation entered for contact information in Japan.</div>
+<div class="detail-grid">
+<div class="key">Postal code</div><div class="value">5420083</div>
+<div class="key">Prefecture</div><div class="value">OSAKA FU</div>
+<div class="key">City</div><div class="value">OSAKA SHI CHUO KU</div>
+<div class="key">Address</div><div class="value">2-2-5 HIGASHISHINSAIBASHI</div>
+<div class="key">Hotel</div><div class="value">CANDEO HOTELS OSAKA NAMBA</div>
+<div class="key">Phone</div><div class="value">81662122200</div>
+</div>
+</article>
+<article class="card">
+<div class="label">Entry Declaration Summary</div>
+<div class="subtext">Declaration settings and trip intent recorded for immigration clearance and customs declaration.</div>
+<div class="detail-grid">
+<div class="key">Purpose of visit</div><div class="value">Tourism</div>
+<div class="key">Intended stay</div><div class="value">16 days</div>
+</div>
+<div class="info-line"><b>Arrival note:</b> keep the QR code PDFs saved offline before departure in case Visit Japan Web or mobile data is unavailable at the airport.</div>
+</article>
+<article class="card">
+<div class="label">Tax-free QR Code Info</div>
+<div class="subtext">Reference note for tax-free shopping setup after arrival. The passport entry permission stamp may be required.</div>
+<div class="card-footer">
+<button class="link-pill gold" data-title="Tax-free QR Code Info" data-url="Instructions.pdf">Tax-free QR Code Info</button>
+</div>
+</article>
+</section>
+<div class="bottom-back">
+<a class="pill-button" href="https://jp-gjn-2026-may.trekworks.org/">← Back to Trip Home</a>
+</div>
+<footer>
+    For airport references, see <a href="https://jp-gjn-2026-may.trekworks.org/airports.html">Airports</a>.
+    For flight details, see <a href="https://jp-gjn-2026-may.trekworks.org/flights.html">Flights</a>.
+    <br class="desktop-only"/>
+    For mobile connectivity, see <a href="https://jp-gjn-2026-may.trekworks.org/data-and-esim.html">Data and eSIM</a>.
+    For policy records, see <a href="https://jp-gjn-2026-may.trekworks.org/insurance.html">Insurance</a>.
+  </footer>
+</main>
+<div aria-hidden="true" class="modal" id="modal">
+<div class="modal-box">
+<div class="modal-head">
+<div class="modal-title" id="modalTitle">Document</div>
+<button aria-label="Close" class="close" onclick="closeModal()" type="button">×</button>
+</div>
+<iframe id="modalFrame" title="Modal content"></iframe>
+</div>
+</div>
+<div class="launch-modal-overlay" id="launchModalOverlay">
+<div aria-labelledby="launchModalTitle" aria-modal="true" class="launch-modal" role="dialog">
+<div class="launch-modal-header">
+<div class="launch-modal-kicker">Immigration and Customs link</div>
+<div class="launch-modal-title" id="launchModalTitle">Immigration and Customs Link</div>
+</div>
+<div class="launch-modal-body">
+<div class="launch-field">
+<div class="launch-field-label">Link</div>
+<div class="launch-field-value" id="launchLinkName">Immigration and Customs Link</div>
+</div>
+<div class="launch-field">
+<div class="launch-field-label">Provider</div>
+<div class="launch-field-value" id="launchProviderName">External website</div>
+</div>
+<div class="launch-modal-note">
+        This website may block embedded modal pages, require Google account access, or require Visit Japan Web authentication. Use the button below to open the link while keeping this Immigration and Customs page available behind it.
+      </div>
+<div class="launch-modal-actions">
+<a class="launch-action-button" href="#" id="launchOpenButton" rel="noopener noreferrer" target="_blank">Open Link</a>
+<button class="launch-close-button" onclick="closeLaunchModal()" type="button">X Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class="offline-overlay" id="offlineOverlay">
+<div class="offline-box">
+<h2>You’re offline</h2>
+<p>This content requires an internet connection.<br/>You can continue using other parts of the app while offline.</p>
+<button onclick="closeOffline()">OK</button>
+</div>
+</div>
 <script>
-function handleExternal(url) {
+function handleLaunchPage(url, title, provider) {
   verifyConnectivity()
     .then(function () {
-      window.location.href = 'external.html?url=' + encodeURIComponent(url);
+      openLaunchModal(url, title || 'Immigration and Customs Link', provider || 'External website');
     })
     .catch(showOffline);
+}
+
+function openLaunchModal(url, title, provider) {
+  const overlay = document.getElementById('launchModalOverlay');
+  const titleEl = document.getElementById('launchModalTitle');
+  const linkNameEl = document.getElementById('launchLinkName');
+  const providerEl = document.getElementById('launchProviderName');
+  const openButton = document.getElementById('launchOpenButton');
+
+  titleEl.textContent = title || 'Immigration and Customs Link';
+  linkNameEl.textContent = title || 'Immigration and Customs Link';
+  providerEl.textContent = provider || 'External website';
+  openButton.href = url;
+  openButton.textContent = 'Open ' + (title || 'Link');
+  overlay.style.display = 'flex';
+}
+
+function closeLaunchModal() {
+  const overlay = document.getElementById('launchModalOverlay');
+  const openButton = document.getElementById('launchOpenButton');
+
+  overlay.style.display = 'none';
+  openButton.href = '#';
 }
 
 function verifyConnectivity() {
@@ -375,7 +555,20 @@ function showOffline() {
 function closeOffline() {
   document.getElementById('offlineOverlay').style.display = 'none';
 }
-</script>
 
-</body>
+document.querySelectorAll('[data-url]').forEach(function (item) {
+  item.addEventListener('click', function () {
+    const url = item.getAttribute('data-url');
+    const title = item.getAttribute('data-title') || 'Immigration and Customs Link';
+    const provider = item.getAttribute('data-provider') || 'External website';
+    handleLaunchPage(url, title, provider);
+  });
+});
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') {
+    closeLaunchModal();
+  }
+});
+</script></body>
 </html>
