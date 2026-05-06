@@ -573,7 +573,88 @@ function openModal(url, title, externalUrl, launchMode) {
       openLink.href = targetUrl;
 
       if (launchMode) {
-        frame.src = 'external.html?url=' + encodeURIComponent(targetUrl);
+        closeModal();
+
+        const launchOverlay = document.createElement('div');
+        launchOverlay.id = 'tempLaunchOverlay';
+        launchOverlay.style.position = 'fixed';
+        launchOverlay.style.inset = '0';
+        launchOverlay.style.background = 'rgba(5,6,11,0.88)';
+        launchOverlay.style.display = 'flex';
+        launchOverlay.style.alignItems = 'center';
+        launchOverlay.style.justifyContent = 'center';
+        launchOverlay.style.zIndex = '10000';
+
+        launchOverlay.innerHTML = `
+          <div style="
+            width:min(520px,92%);
+            background:#0b1020;
+            border:1px solid rgba(255,255,255,0.12);
+            border-radius:18px;
+            padding:24px;
+            color:#f5f7ff;
+            font-family:system-ui,sans-serif;
+            box-shadow:0 18px 45px rgba(0,0,0,.65);
+          ">
+            <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9ca3af;margin-bottom:6px;">
+              External Website
+            </div>
+
+            <div style="font-size:22px;font-weight:700;margin-bottom:14px;">
+              ${title}
+            </div>
+
+            <div style="
+              border:1px solid rgba(255,255,255,.08);
+              border-radius:12px;
+              background:#050814;
+              padding:12px;
+              margin-bottom:16px;
+            ">
+              <div style="font-size:12px;color:#9ca3af;margin-bottom:6px;">Website</div>
+              <div style="font-size:14px;font-weight:600;overflow-wrap:anywhere;">
+                ${targetUrl}
+              </div>
+            </div>
+
+            <div style="font-size:14px;line-height:1.45;color:#b5bed5;margin-bottom:18px;">
+              Visit Japan Web blocks embedded viewing inside trip card modals.
+              Use the button below to open the site directly.
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <a href="${targetUrl}" target="_blank" rel="noopener"
+                 style="
+                   text-decoration:none;
+                   text-align:center;
+                   padding:10px 14px;
+                   border-radius:999px;
+                   background:rgba(79,140,255,.15);
+                   border:1px solid rgba(79,140,255,.55);
+                   color:#bfdbfe;
+                   font-weight:600;
+                 ">
+                 Open Visit Japan Web
+              </a>
+
+              <button onclick="document.getElementById('tempLaunchOverlay').remove()"
+                 style="
+                   padding:10px 14px;
+                   border-radius:999px;
+                   background:#020617;
+                   border:1px solid rgba(255,255,255,.12);
+                   color:#e5e7eb;
+                   cursor:pointer;
+                   font-weight:600;
+                 ">
+                 Close
+              </button>
+            </div>
+          </div>
+        `;
+
+        document.body.appendChild(launchOverlay);
+        return;
       } else {
         frame.src = url;
       }
