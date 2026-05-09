@@ -199,6 +199,28 @@
       margin-bottom: 10px;
     }
 
+
+    /* Activities metadata aligned to Accommodation index */
+    .activity-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-top: 6px;
+      margin-bottom: 10px;
+    }
+
+    .activity-meta-row .label {
+      font-weight: 500;
+      color: #d1d5db !important;
+      margin-right: 4px;
+    }
+
+    .activity-meta-row .meta-value {
+      color: var(--text-soft);
+    }
+
     /* Accommodation metadata contract */
     .meta-label {
       font-weight: 500;
@@ -343,7 +365,8 @@
       }
 
       /* Meta rows (Dates/Base, Base/Nights, Optional meta) — align with Accommodation */
-      .meta-row {
+      .meta-row,
+      .activity-meta-row {
         flex-direction: column;
         gap: 6px;
       }
@@ -454,30 +477,13 @@
 <div class="card-inner">
 <div class="card-header">
 <div>
-<div class="card-title">
-          Planned Activities
-         </div>
+<div class="card-title" style="color:#93c5fd;">Suggested Activities</div>
 </div>
 </div>
-<div class="meta-row">
-<div style="color:#f5f7ff;">
-<span class="label" style="color:#93c5fd;">
-          Dates:
-         </span>
-         14 → 17 May
-        </div>
-<div style="color:#f5f7ff;">
-<span class="label" style="color:#93c5fd;">
-          Base:
-         </span>
-         Namba
-        </div>
-<div style="color:#f5f7ff;">
-<span class="label" style="color:#93c5fd;">
-          Nights:
-         </span>
-         3
-        </div>
+<div class="activity-meta-row">
+<div><span class="label">Dates:</span> <span class="meta-value">14 → 17 May</span></div>
+<div><span class="label">Base:</span> <span class="meta-value">Namba</span></div>
+<div><span class="label">Nights:</span> <span class="meta-value">3</span></div>
 </div>
 <ul class="planned-list">
 <li>
@@ -650,78 +656,15 @@
 <div class="card-inner">
 <div class="card-header">
 <div>
-<div class="card-title">
-          Planned Activities
-         </div>
+<div class="card-title" style="color:#93c5fd;">Suggested Activities</div>
 </div>
 </div>
-<div class="meta-row">
-<div style="color:#f5f7ff;">
-<span class="label" style="color:#93c5fd;">
-          Dates:
-         </span>
-         17 → 22 May
-        </div>
-<div style="color:#f5f7ff;">
-<span class="label" style="color:#93c5fd;">
-          Base:
-         </span>
-         Yomitan
-        </div>
-<div style="color:#f5f7ff;">
-<span class="label" style="color:#93c5fd;">
-          Nights:
-         </span>
-         5
-        </div>
+<div class="activity-meta-row">
+<div><span class="label">Dates:</span> <span class="meta-value">17 → 22 May</span></div>
+<div><span class="label">Base:</span> <span class="meta-value">Yomitan</span></div>
+<div><span class="label">Nights:</span> <span class="meta-value">5</span></div>
 </div>
-<ul class="planned-list">
-<li>
-<strong>
-          17 May (Sun)
-         </strong>
-         — Arrive 5:00 PM → Limousine Bus 5:40 PM (¥730 ~83 min) → Hotel Nikko Alivila 7:03 PM.
-        </li>
-<li>
-<strong>
-          17 May (Sun)
-         </strong>
-         — If arrival after 5:40 PM → Go Taxi (¥11,500 ~70 min) → Hotel Nikko Alivila 7:00 PM.
-        </li>
-<li>
-<strong>
-          18 May (Mon)
-         </strong>
-         — Shuri Castle, Chura Sun Beach,
-                  Tsuboya Pottery Street.
-        </li>
-<li>
-<strong>
-          19 May (Tue)
-         </strong>
-         — Northern drive: Churaumi
-                  Aquarium, Cape Manzamo, Nago Pineapple Park.
-        </li>
-<li>
-<strong>
-          20 May (Wed)
-         </strong>
-         — Kerama Islands (Zamami /
-                  Tokashiki) for snorkelling &amp; island time.
-        </li>
-<li>
-<strong>
-          21 May (Thu)
-         </strong>
-         — Free day
-        </li>
-<li>
-<strong>
-          22 May (Fri)
-         </strong>
-         — Depart 8:30 AM → Limousine Bus 8:50 AM (¥730 ~83 min) → Naha Airport 10:33 AM → Flight 1:35 PM.
-        </li>
-</ul>
+<ul class="planned-list"><li><strong>17 May (Sun)</strong> — Arrive 5:00 PM → Hire Car → Hotel Nikko Alivila (70 mins)</li><li><strong>18 May (Mon)</strong> — Shuri Castle, Chura Sun Beach, Tsuboya Pottery Street.</li><li><strong>19 May (Tue)</strong> — Northern drive: Churaumi Aquarium, Cape Manzamo, Nago Pineapple Park.</li><li><strong>20 May (Wed)</strong> — Kerama Islands (Zamami / Tokashiki) for snorkelling &amp; island time.</li><li><strong>21 May (Thu)</strong> — Free day</li><li><strong>22 May (Fri)</strong> — Depart 9:30 AM → Hire Car → Naha Airport 10:40 AM (70 mins) → Flight 1:35 PM</li></ul>
 </div>
 </div>
 <details class="card">
@@ -835,6 +778,48 @@
          View Map
         </a>
 </div>
+<div class="divider"></div>
+<div class="card-header">
+<div>
+<div class="card-title">Limousine Bus → Hotel Nikko Alivila</div>
+<div class="card-meta">Airport transfer option before 5:40 PM arrival cutoff</div>
+</div>
+</div>
+<div class="meta-row">
+<div style="color:#f5f7ff;"><span class="label" style="color:#93c5fd;">Cost / time:</span> ¥730 · ~83 min</div>
+<div style="color:#f5f7ff;"><span class="label" style="color:#93c5fd;">Available:</span> 11:42 AM → 5:40 PM</div>
+</div>
+<div class="card-footer">
+<a class="link-pill" href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
+</div>
+<div class="divider"></div>
+<div class="card-header">
+<div>
+<div class="card-title">Limousine Bus → Naha Airport</div>
+<div class="card-meta">Airport transfer option before 8:50 AM departure cutoff</div>
+</div>
+</div>
+<div class="meta-row">
+<div style="color:#f5f7ff;"><span class="label" style="color:#93c5fd;">Cost / time:</span> ¥730 · ~83 min</div>
+<div style="color:#f5f7ff;"><span class="label" style="color:#93c5fd;">Available:</span> 8:50 AM → 10:50 AM</div>
+</div>
+<div class="card-footer">
+<a class="link-pill" href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
+</div>
+<div class="divider"></div>
+<div class="card-header">
+<div>
+<div class="card-title">Go Taxi → Hotel Nikko Alivila</div>
+<div class="card-meta">Direct airport transfer backup option</div>
+</div>
+</div>
+<div class="meta-row">
+<div style="color:#f5f7ff;"><span class="label" style="color:#93c5fd;">Estimated fare:</span> ¥11,500 · ~70 min</div>
+<div style="color:#f5f7ff;"><span class="label" style="color:#93c5fd;">Availability:</span> Anytime</div>
+</div>
+<div class="card-footer">
+<a class="link-pill" href="#" onclick="handleExternal('https://go.goinc.jp/lp/inbound'); return false;">Go Taxi</a>
+</div>
 </div>
 </details>
 </div>
@@ -853,30 +838,13 @@
 <div class="card-inner">
 <div class="card-header">
 <div>
-<div class="card-title">
-          Planned Activities
-         </div>
+<div class="card-title" style="color:#93c5fd;">Suggested Activities</div>
 </div>
 </div>
-<div class="meta-row">
-<div style="color:#f5f7ff;">
-<span class="label" style="color:#93c5fd;">
-          Dates:
-         </span>
-         22 → 27 May
-        </div>
-<div style="color:#f5f7ff;">
-<span class="label" style="color:#93c5fd;">
-          Base:
-         </span>
-         Fukuoka (Hakata Station and Nakasu)
-        </div>
-<div style="color:#f5f7ff;">
-<span class="label" style="color:#93c5fd;">
-          Nights:
-         </span>
-         5
-        </div>
+<div class="activity-meta-row">
+<div><span class="label">Dates:</span> <span class="meta-value">22 → 27 May</span></div>
+<div><span class="label">Base:</span> <span class="meta-value">Fukuoka (Hakata Station and Nakasu)</span></div>
+<div><span class="label">Nights:</span> <span class="meta-value">5</span></div>
 </div>
 <ul class="planned-list">
 <li>
@@ -1025,30 +993,13 @@
 <div class="card-inner">
 <div class="card-header">
 <div>
-<div class="card-title">
-          Planned Activities
-         </div>
+<div class="card-title" style="color:#93c5fd;">Suggested Activities</div>
 </div>
 </div>
-<div class="meta-row">
-<div style="color:#f5f7ff;">
-<span class="label" style="color:#93c5fd;">
-          Dates:
-         </span>
-         27 → 29 May
-        </div>
-<div style="color:#f5f7ff;">
-<span class="label" style="color:#93c5fd;">
-          Base:
-         </span>
-         Hommachi
-        </div>
-<div style="color:#f5f7ff;">
-<span class="label" style="color:#93c5fd;">
-          Nights:
-         </span>
-         3
-        </div>
+<div class="activity-meta-row">
+<div><span class="label">Dates:</span> <span class="meta-value">27 → 29 May</span></div>
+<div><span class="label">Base:</span> <span class="meta-value">Hommachi</span></div>
+<div><span class="label">Nights:</span> <span class="meta-value">3</span></div>
 </div>
 <ul class="planned-list">
 <li>
