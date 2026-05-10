@@ -1040,14 +1040,109 @@ function closeWebsiteBrowser() {
 }
 
 
-function openExternalBrowser(title, url) {
+function openExternalBrowser(title, url, launchMode) {
   verifyConnectivity()
     .then(function () {
-      document.getElementById('websiteBrowserTitle').textContent = title || 'External Link';
-      document.getElementById('websiteBrowserFrame').src = 'external.html?url=' + encodeURIComponent(url);
+      const browserTitle = document.getElementById('websiteBrowserTitle');
+      const frame = document.getElementById('websiteBrowserFrame');
+
+      browserTitle.textContent = title || 'External Link';
+
+      if (launchMode) {
+        const safeTitle = escapeHtml(title || 'Open link');
+        const safeUrl = escapeHtml(url);
+        frame.srcdoc = `
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style>
+              * { box-sizing: border-box; }
+              body {
+                margin: 0;
+                min-height: 100vh;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+                color: #f9fafb;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 18px;
+              }
+              .launch-card {
+                width: min(520px, 100%);
+                background: linear-gradient(145deg, #0b1020, #111827);
+                border: 1px solid rgba(255,255,255,0.12);
+                border-radius: 22px;
+                box-shadow: 0 18px 45px rgba(0,0,0,0.65);
+                padding: 20px;
+                text-align: center;
+              }
+              h1 {
+                margin: 0 0 10px;
+                font-size: 20px;
+                line-height: 1.25;
+              }
+              p {
+                margin: 0 0 16px;
+                color: #b5bed5;
+                font-size: 14px;
+                line-height: 1.45;
+              }
+              .url {
+                margin: 0 0 16px;
+                padding: 10px 12px;
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 14px;
+                background: rgba(2,6,23,0.55);
+                color: #9ca3af;
+                font-size: 12px;
+                overflow-wrap: anywhere;
+                text-align: left;
+              }
+              a {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                border-radius: 999px;
+                border: 1px solid rgba(147,197,253,0.45);
+                background: rgba(37,99,235,0.12);
+                color: #93c5fd;
+                padding: 10px 14px;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 600;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="launch-card">
+              <h1>${safeTitle}</h1>
+              <p>This reservation page is opened directly because the booking provider blocks embedded views.</p>
+              <div class="url">${safeUrl}</div>
+              <a href="${safeUrl}" target="_blank" rel="noopener">Open Online Reservation</a>
+            </div>
+          </body>
+          </html>`;
+      } else {
+        frame.removeAttribute('srcdoc');
+        frame.src = 'external.html?url=' + encodeURIComponent(url);
+      }
+
       document.getElementById('websiteBrowserModal').style.display = 'flex';
     })
     .catch(showOffline);
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 let currentReservationUrl = '';
@@ -1078,7 +1173,8 @@ function openReservationExternal() {
   if (currentReservationUrl) {
     openExternalBrowser(
       'Online Reservation — ' + (document.getElementById('reservationModalTitle').textContent || 'Reservation'),
-      currentReservationUrl
+      currentReservationUrl,
+      true
     );
     closeReservationHub();
   }
@@ -1088,7 +1184,8 @@ function openHotelExternal() {
   if (currentHotelUrl) {
     openExternalBrowser(
       'Hotel Website — ' + (document.getElementById('reservationModalTitle').textContent || 'Hotel Website'),
-      currentHotelUrl
+      currentHotelUrl,
+      false
     );
     closeReservationHub();
   }
