@@ -504,6 +504,47 @@
 
     .modal-launch {
       display: none;
+      flex: 1 1 auto;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: #020617;
+    }
+
+    .launch-card {
+      width: min(560px, 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(79, 140, 255, 0.14), rgba(15, 22, 41, 0.92));
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+      padding: 22px;
+      text-align: center;
+    }
+
+    .launch-card h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #f5f7ff;
+    }
+
+    .launch-card p {
+      margin: 0 0 18px;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #b5bed5;
+    }
+
+    .launch-card a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(147, 197, 253, 0.55);
+      background: rgba(79, 140, 255, 0.16);
+      color: #bfdbfe;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 16px;
     }
 
     .map-modal {
@@ -697,7 +738,7 @@
 <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Umeda%20Sky%20Building%20Kuchu%20Teien%20Observatory%20Osaka%20Japan&amp;output=embed', 'View Map'); return false;">
          View Map
         </a>
-<a class="link-pill" href="#" onclick="openModal('https://www.klook.com/en-US/activity/35861-umeda-sky-building-kuchu-teien-observatory-ticket/?source_channel=googlettd&amp;_language=en&amp;_currency=AUD&amp;_activity_id=35861&amp;package_id=110718', 'Booking', 'https://www.klook.com/en-US/activity/35861-umeda-sky-building-kuchu-teien-observatory-ticket/?source_channel=googlettd&amp;_language=en&amp;_currency=AUD&amp;_activity_id=35861&amp;package_id=110718', true); return false;">
+<a class="link-pill" href="#" onclick="openLaunchModal('https://www.klook.com/en-US/activity/35861-umeda-sky-building-kuchu-teien-observatory-ticket/?source_channel=googlettd&amp;_language=en&amp;_currency=AUD&amp;_activity_id=35861&amp;package_id=110718', 'Umeda Sky Building Booking'); return false;">
          Booking
         </a>
 </div>
@@ -845,7 +886,7 @@
 <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Cape%20Zanpa%20Lighthouse%20Yomitan%20Okinawa%20Japan&amp;output=embed', 'View Map'); return false;">
          View Map
         </a>
-<a class="link-pill" href="#" onclick="openModal('https://www.klook.com/en-US/activity/184264-okinawa-sunsettour-naminoue-shrine-american-village-illumination/', 'Booking', 'https://www.klook.com/en-US/activity/184264-okinawa-sunsettour-naminoue-shrine-american-village-illumination/', true); return false;">
+<a class="link-pill" href="#" onclick="openLaunchModal('https://www.klook.com/en-US/activity/184264-okinawa-sunsettour-naminoue-shrine-american-village-illumination/', 'Cape Zanpa Booking'); return false;">
          Booking
         </a>
 </div>
@@ -880,7 +921,7 @@
 <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Blue%20Cave%20Onna%20Okinawa%20Japan&amp;output=embed', 'View Map'); return false;">
          View Map
         </a>
-<a class="link-pill" href="#" onclick="openModal('https://www.klook.com/en-US/activity/30585-blue-cave-snorkeling-diving-experience-okinawa/?spm=SearchResult.SearchResult_LIST&amp;clickId=7928709049', 'Booking', 'https://www.klook.com/en-US/activity/30585-blue-cave-snorkeling-diving-experience-okinawa/?spm=SearchResult.SearchResult_LIST&amp;clickId=7928709049', true); return false;">
+<a class="link-pill" href="#" onclick="openLaunchModal('https://www.klook.com/en-US/activity/30585-blue-cave-snorkeling-diving-experience-okinawa/?spm=SearchResult.SearchResult_LIST&amp;clickId=7928709049', 'Blue Cave Booking'); return false;">
          Booking
         </a>
 </div>
@@ -1110,7 +1151,7 @@
 <a class="link-pill" href="#" onclick="openMapModal('https://www.google.com/maps?q=Nakasu%20Kawabata%20Fukuoka%20Japan&amp;output=embed', 'View Map'); return false;">
          View Map
         </a>
-<a class="link-pill" href="#" onclick="openModal('https://www.klook.com/en-US/activity/78047-fukuoka-night-tour-yatai-dinner/', 'Booking', 'https://www.klook.com/en-US/activity/78047-fukuoka-night-tour-yatai-dinner/', true); return false;">
+<a class="link-pill" href="#" onclick="openLaunchModal('https://www.klook.com/en-US/activity/78047-fukuoka-night-tour-yatai-dinner/', 'Nakasu Kawabata Night Walk Booking'); return false;">
          Booking
         </a>
 </div>
@@ -1310,6 +1351,32 @@ function closeMapModal() {
   document.body.style.overflow = '';
 }
 
+function openLaunchModal(url, title) {
+  verifyConnectivity()
+    .then(function () {
+      const overlay = document.getElementById('modalOverlay');
+      const frame = document.getElementById('modalFrame');
+      const modalTitle = document.getElementById('modalTitle');
+      const openLink = document.getElementById('modalOpen');
+      const launch = document.getElementById('modalLaunch');
+      const launchTitle = document.getElementById('launchTitle');
+      const launchLink = document.getElementById('launchLink');
+
+      modalTitle.textContent = title || 'Open booking';
+      openLink.href = url;
+      launchTitle.textContent = title || 'Open booking';
+      launchLink.href = url;
+      launchLink.textContent = 'Open booking site';
+
+      frame.removeAttribute('src');
+      frame.style.display = 'none';
+      launch.style.display = 'flex';
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    })
+    .catch(showOffline);
+}
+
 function openModal(url, title, externalUrl, launchMode) {
   verifyConnectivity()
     .then(function () {
@@ -1321,6 +1388,10 @@ function openModal(url, title, externalUrl, launchMode) {
 
       modalTitle.textContent = title || 'Preview';
       openLink.href = targetUrl;
+
+      const launch = document.getElementById('modalLaunch');
+      launch.style.display = 'none';
+      frame.style.display = 'block';
 
       if (launchMode) {
         frame.src = 'external.html?url=' + encodeURIComponent(targetUrl);
@@ -1337,8 +1408,11 @@ function openModal(url, title, externalUrl, launchMode) {
 function closeModal() {
   const overlay = document.getElementById('modalOverlay');
   const frame = document.getElementById('modalFrame');
+  const launch = document.getElementById('modalLaunch');
   overlay.style.display = 'none';
   frame.removeAttribute('src');
+  frame.style.display = 'block';
+  launch.style.display = 'none';
   document.body.style.overflow = '';
 }
 
