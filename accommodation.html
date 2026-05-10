@@ -1044,7 +1044,7 @@ function openExternalBrowser(title, url) {
   verifyConnectivity()
     .then(function () {
       document.getElementById('websiteBrowserTitle').textContent = title || 'External Link';
-      document.getElementById('websiteBrowserFrame').src = url;
+      document.getElementById('websiteBrowserFrame').src = 'external.html?url=' + encodeURIComponent(url);
       document.getElementById('websiteBrowserModal').style.display = 'flex';
     })
     .catch(showOffline);
@@ -1078,7 +1078,7 @@ function openReservationExternal() {
   if (currentReservationUrl) {
     openExternalBrowser(
       'Online Reservation — ' + (document.getElementById('reservationModalTitle').textContent || 'Reservation'),
-      'external.html?url=' + encodeURIComponent(currentReservationUrl)
+      currentReservationUrl
     );
     closeReservationHub();
   }
@@ -1086,7 +1086,11 @@ function openReservationExternal() {
 
 function openHotelExternal() {
   if (currentHotelUrl) {
-    handleExternal(currentHotelUrl);
+    openExternalBrowser(
+      'Hotel Website — ' + (document.getElementById('reservationModalTitle').textContent || 'Hotel Website'),
+      currentHotelUrl
+    );
+    closeReservationHub();
   }
 }
 
