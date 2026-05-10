@@ -721,6 +721,11 @@ document.getElementById('modalOverlay').addEventListener('click', function (even
 
 function verifyConnectivity() {
   return new Promise(function (resolve, reject) {
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+      reject();
+      return;
+    }
+
     const controller = new AbortController();
     const timeout = setTimeout(function () {
       controller.abort();
@@ -731,8 +736,12 @@ function verifyConnectivity() {
       cache: 'no-store',
       signal: controller.signal
     })
-      .then(function () {
+      .then(function (response) {
         clearTimeout(timeout);
+        if (response && response.ok === false) {
+          reject();
+          return;
+        }
         resolve();
       })
       .catch(function () {
@@ -783,6 +792,15 @@ function handleExternal(url) {
     })
     .catch(showOffline);
 }
+
+
+// Prevent href="#" pills from jumping to the top if an offline check or modal launch fails.
+document.addEventListener('click', function (event) {
+  const hashPill = event.target.closest && event.target.closest('a[href="#"]');
+  if (hashPill) {
+    event.preventDefault();
+  }
+}, true);
 </script>
 <div class="modal-overlay" id="emergencyModal">
 <div class="modal-shell">

@@ -688,7 +688,7 @@ function overlayClick(event) {
 
 function verifyConnectivity() {
   return new Promise(function (resolve, reject) {
-    if (!navigator.onLine) {
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
       reject();
       return;
     }
@@ -697,14 +697,18 @@ function verifyConnectivity() {
     const timeout = setTimeout(function () {
       controller.abort();
       reject();
-    }, 900);
+    }, 800);
 
     fetch('external.html', {
       cache: 'no-store',
       signal: controller.signal
     })
-      .then(function () {
+      .then(function (response) {
         clearTimeout(timeout);
+        if (response && response.ok === false) {
+          reject();
+          return;
+        }
         resolve();
       })
       .catch(function () {
@@ -728,6 +732,15 @@ document.addEventListener('keydown', function (event) {
     closeOffline();
   }
 });
+
+
+// Prevent href="#" pills from jumping to the top if an offline check or modal launch fails.
+document.addEventListener('click', function (event) {
+  const hashPill = event.target.closest && event.target.closest('a[href="#"]');
+  if (hashPill) {
+    event.preventDefault();
+  }
+}, true);
 </script>
 
 </body>

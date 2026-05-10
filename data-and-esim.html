@@ -648,6 +648,11 @@ function handleExternal(url) {
 
 function verifyConnectivity() {
   return new Promise(function (resolve, reject) {
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+      reject();
+      return;
+    }
+
     const controller = new AbortController();
     const timeout = setTimeout(function () {
       controller.abort();
@@ -658,8 +663,12 @@ function verifyConnectivity() {
       cache: 'no-store',
       signal: controller.signal
     })
-      .then(function () {
+      .then(function (response) {
         clearTimeout(timeout);
+        if (response && response.ok === false) {
+          reject();
+          return;
+        }
         resolve();
       })
       .catch(function () {
@@ -676,6 +685,15 @@ function showOffline() {
 function closeOffline() {
   document.getElementById('offlineOverlay').style.display = 'none';
 }
+
+
+// Prevent href="#" pills from jumping to the top if an offline check or modal launch fails.
+document.addEventListener('click', function (event) {
+  const hashPill = event.target.closest && event.target.closest('a[href="#"]');
+  if (hashPill) {
+    event.preventDefault();
+  }
+}, true);
 </script>
 
 </body>
