@@ -199,28 +199,6 @@
       margin-bottom: 10px;
     }
 
-
-    /* Activities metadata aligned to Accommodation index */
-    .activity-meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      font-size: 13px;
-      color: var(--text-soft);
-      margin-top: 6px;
-      margin-bottom: 10px;
-    }
-
-    .activity-meta-row .label {
-      font-weight: 500;
-      color: #d1d5db !important;
-      margin-right: 4px;
-    }
-
-    .activity-meta-row .meta-value {
-      color: var(--text-soft);
-    }
-
     /* Accommodation metadata contract */
     .meta-label {
       font-weight: 500;
@@ -365,8 +343,7 @@
       }
 
       /* Meta rows (Dates/Base, Base/Nights, Optional meta) — align with Accommodation */
-      .meta-row,
-      .activity-meta-row {
+      .meta-row {
         flex-direction: column;
         gap: 6px;
       }
@@ -438,88 +415,6 @@
       font-size: 14px;
       cursor: pointer;
     }
-
-
-    /* ===== External Link Modal ===== */
-
-    .external-modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(5, 6, 11, 0.88);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9998;
-      padding: 16px;
-    }
-
-    .external-modal {
-      width: min(960px, 100%);
-      height: min(760px, 92vh);
-      background: #050814;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 18px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .external-modal-header {
-      min-height: 46px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 14px;
-      background: #0b1020;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .external-modal-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: #f5f7ff;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .external-modal-close {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(15, 23, 42, 0.9);
-      color: #f5f7ff;
-      font-size: 18px;
-      line-height: 1;
-      cursor: pointer;
-      flex: 0 0 auto;
-    }
-
-    .external-modal-frame {
-      width: 100%;
-      flex: 1 1 auto;
-      border: 0;
-      background: #020617;
-    }
-
-    @media (max-width: 640px) {
-      .external-modal-overlay {
-        padding: 0;
-        align-items: stretch;
-      }
-
-      .external-modal {
-        width: 100%;
-        height: 100vh;
-        max-height: 100vh;
-        border-radius: 0;
-        border-left: 0;
-        border-right: 0;
-      }
-    }
   </style>
 </head>
 <body>
@@ -559,13 +454,30 @@
 <div class="card-inner">
 <div class="card-header">
 <div>
-<div class="card-title" style="color:#93c5fd;">Suggested Activities</div>
+<div class="card-title">
+          Planned Activities
+         </div>
 </div>
 </div>
-<div class="activity-meta-row">
-<div><span class="label">Dates:</span> <span class="meta-value">14 → 17 May</span></div>
-<div><span class="label">Base:</span> <span class="meta-value">Namba</span></div>
-<div><span class="label">Nights:</span> <span class="meta-value">3</span></div>
+<div class="meta-row">
+<div style="color:#f5f7ff;">
+<span class="label" style="color:#93c5fd;">
+          Dates:
+         </span>
+         14 → 17 May
+        </div>
+<div style="color:#f5f7ff;">
+<span class="label" style="color:#93c5fd;">
+          Base:
+         </span>
+         Namba
+        </div>
+<div style="color:#f5f7ff;">
+<span class="label" style="color:#93c5fd;">
+          Nights:
+         </span>
+         3
+        </div>
 </div>
 <ul class="planned-list">
 <li>
@@ -738,15 +650,78 @@
 <div class="card-inner">
 <div class="card-header">
 <div>
-<div class="card-title" style="color:#93c5fd;">Suggested Activities</div>
+<div class="card-title">
+          Planned Activities
+         </div>
 </div>
 </div>
-<div class="activity-meta-row">
-<div><span class="label">Dates:</span> <span class="meta-value">17 → 22 May</span></div>
-<div><span class="label">Base:</span> <span class="meta-value">Yomitan</span></div>
-<div><span class="label">Nights:</span> <span class="meta-value">5</span></div>
+<div class="meta-row">
+<div style="color:#f5f7ff;">
+<span class="label" style="color:#93c5fd;">
+          Dates:
+         </span>
+         17 → 22 May
+        </div>
+<div style="color:#f5f7ff;">
+<span class="label" style="color:#93c5fd;">
+          Base:
+         </span>
+         Yomitan
+        </div>
+<div style="color:#f5f7ff;">
+<span class="label" style="color:#93c5fd;">
+          Nights:
+         </span>
+         5
+        </div>
 </div>
-<ul class="planned-list"><li><strong>17 May (Sun)</strong> — Arrive 5:00 PM → Hire Car → Hotel Nikko Alivila (70 mins)</li><li><strong>18 May (Mon)</strong> — Shuri Castle, Chura Sun Beach, Tsuboya Pottery Street.</li><li><strong>19 May (Tue)</strong> — Northern drive: Churaumi Aquarium, Cape Manzamo, Nago Pineapple Park.</li><li><strong>20 May (Wed)</strong> — Kerama Islands (Zamami / Tokashiki) for snorkelling &amp; island time.</li><li><strong>21 May (Thu)</strong> — Free day</li><li><strong>22 May (Fri)</strong> — Depart 9:30 AM → Hire Car → Naha Airport 10:40 AM (70 mins) → Flight 1:35 PM</li></ul>
+<ul class="planned-list">
+<li>
+<strong>
+          17 May (Sun)
+         </strong>
+         — Arrive 5:00 PM → Limousine Bus 5:40 PM (¥730 ~83 min) → Hotel Nikko Alivila 7:03 PM.
+        </li>
+<li>
+<strong>
+          17 May (Sun)
+         </strong>
+         — If arrival after 5:40 PM → Go Taxi (¥11,500 ~70 min) → Hotel Nikko Alivila 7:00 PM.
+        </li>
+<li>
+<strong>
+          18 May (Mon)
+         </strong>
+         — Shuri Castle, Chura Sun Beach,
+                  Tsuboya Pottery Street.
+        </li>
+<li>
+<strong>
+          19 May (Tue)
+         </strong>
+         — Northern drive: Churaumi
+                  Aquarium, Cape Manzamo, Nago Pineapple Park.
+        </li>
+<li>
+<strong>
+          20 May (Wed)
+         </strong>
+         — Kerama Islands (Zamami /
+                  Tokashiki) for snorkelling &amp; island time.
+        </li>
+<li>
+<strong>
+          21 May (Thu)
+         </strong>
+         — Free day
+        </li>
+<li>
+<strong>
+          22 May (Fri)
+         </strong>
+         — Depart 8:30 AM → Limousine Bus 8:50 AM (¥730 ~83 min) → Naha Airport 10:33 AM → Flight 1:35 PM.
+        </li>
+</ul>
 </div>
 </div>
 <details class="card">
@@ -860,48 +835,6 @@
          View Map
         </a>
 </div>
-<div class="divider"></div>
-<div class="card-header">
-<div>
-<div class="card-title">Limousine Bus → Hotel Nikko Alivila</div>
-<div class="card-meta">Airport transfer option before 5:40 PM arrival cutoff</div>
-</div>
-</div>
-<div class="meta-row">
-<div style="color:#f5f7ff;"><span class="label" style="color:#93c5fd;">Cost / time:</span> ¥730 · ~83 min</div>
-<div style="color:#f5f7ff;"><span class="label" style="color:#93c5fd;">Available:</span> 11:42 AM → 5:40 PM</div>
-</div>
-<div class="card-footer">
-<a class="link-pill" href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
-</div>
-<div class="divider"></div>
-<div class="card-header">
-<div>
-<div class="card-title">Limousine Bus → Naha Airport</div>
-<div class="card-meta">Airport transfer option before 8:50 AM departure cutoff</div>
-</div>
-</div>
-<div class="meta-row">
-<div style="color:#f5f7ff;"><span class="label" style="color:#93c5fd;">Cost / time:</span> ¥730 · ~83 min</div>
-<div style="color:#f5f7ff;"><span class="label" style="color:#93c5fd;">Available:</span> 8:50 AM → 10:50 AM</div>
-</div>
-<div class="card-footer">
-<a class="link-pill" href="https://jp-gjn-2026-may.trekworks.org/airport-limousine-bus.html">Airport Limousine Bus</a>
-</div>
-<div class="divider"></div>
-<div class="card-header">
-<div>
-<div class="card-title">Go Taxi → Hotel Nikko Alivila</div>
-<div class="card-meta">Direct airport transfer backup option</div>
-</div>
-</div>
-<div class="meta-row">
-<div style="color:#f5f7ff;"><span class="label" style="color:#93c5fd;">Estimated fare:</span> ¥11,500 · ~70 min</div>
-<div style="color:#f5f7ff;"><span class="label" style="color:#93c5fd;">Availability:</span> Anytime</div>
-</div>
-<div class="card-footer">
-<a class="link-pill" href="#" onclick="handleExternal('https://go.goinc.jp/lp/inbound'); return false;">Go Taxi</a>
-</div>
 </div>
 </details>
 </div>
@@ -920,13 +853,30 @@
 <div class="card-inner">
 <div class="card-header">
 <div>
-<div class="card-title" style="color:#93c5fd;">Suggested Activities</div>
+<div class="card-title">
+          Planned Activities
+         </div>
 </div>
 </div>
-<div class="activity-meta-row">
-<div><span class="label">Dates:</span> <span class="meta-value">22 → 27 May</span></div>
-<div><span class="label">Base:</span> <span class="meta-value">Fukuoka (Hakata Station and Nakasu)</span></div>
-<div><span class="label">Nights:</span> <span class="meta-value">5</span></div>
+<div class="meta-row">
+<div style="color:#f5f7ff;">
+<span class="label" style="color:#93c5fd;">
+          Dates:
+         </span>
+         22 → 27 May
+        </div>
+<div style="color:#f5f7ff;">
+<span class="label" style="color:#93c5fd;">
+          Base:
+         </span>
+         Fukuoka (Hakata Station and Nakasu)
+        </div>
+<div style="color:#f5f7ff;">
+<span class="label" style="color:#93c5fd;">
+          Nights:
+         </span>
+         5
+        </div>
 </div>
 <ul class="planned-list">
 <li>
@@ -1075,13 +1025,30 @@
 <div class="card-inner">
 <div class="card-header">
 <div>
-<div class="card-title" style="color:#93c5fd;">Suggested Activities</div>
+<div class="card-title">
+          Planned Activities
+         </div>
 </div>
 </div>
-<div class="activity-meta-row">
-<div><span class="label">Dates:</span> <span class="meta-value">27 → 29 May</span></div>
-<div><span class="label">Base:</span> <span class="meta-value">Hommachi</span></div>
-<div><span class="label">Nights:</span> <span class="meta-value">3</span></div>
+<div class="meta-row">
+<div style="color:#f5f7ff;">
+<span class="label" style="color:#93c5fd;">
+          Dates:
+         </span>
+         27 → 29 May
+        </div>
+<div style="color:#f5f7ff;">
+<span class="label" style="color:#93c5fd;">
+          Base:
+         </span>
+         Hommachi
+        </div>
+<div style="color:#f5f7ff;">
+<span class="label" style="color:#93c5fd;">
+          Nights:
+         </span>
+         3
+        </div>
 </div>
 <ul class="planned-list">
 <li>
@@ -1193,16 +1160,6 @@
     .
    </footer>
 </div>
-
-<div class="external-modal-overlay" id="externalModalOverlay" onclick="if (event.target === this) closeExternalModal();">
-<div class="external-modal" role="dialog" aria-modal="true" aria-labelledby="externalModalTitle">
-<div class="external-modal-header">
-<div class="external-modal-title" id="externalModalTitle">External link</div>
-<button class="external-modal-close" onclick="closeExternalModal()" aria-label="Close">×</button>
-</div>
-<iframe class="external-modal-frame" id="externalModalFrame" title="External content"></iframe>
-</div>
-</div>
 <div class="offline-overlay" id="offlineOverlay">
 <div class="offline-box">
 <h2>
@@ -1219,46 +1176,14 @@
 </div>
 </div>
 <script>
-   function handleExternal(url, label) {
-    var activeLabel = label;
-
-    if (!activeLabel && document.activeElement) {
-      activeLabel = document.activeElement.textContent.trim();
-    }
-
+   function handleExternal(url) {
     verifyConnectivity()
       .then(function () {
-        openExternalModal(url, activeLabel || "External link");
+        window.location.href =
+          "external.html?url=" + encodeURIComponent(url);
       })
       .catch(showOffline);
   }
-
-  function openExternalModal(url, title) {
-    var overlay = document.getElementById("externalModalOverlay");
-    var frame = document.getElementById("externalModalFrame");
-    var titleEl = document.getElementById("externalModalTitle");
-
-    titleEl.textContent = title;
-    frame.src = "external.html?url=" + encodeURIComponent(url);
-    overlay.style.display = "flex";
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeExternalModal() {
-    var overlay = document.getElementById("externalModalOverlay");
-    var frame = document.getElementById("externalModalFrame");
-
-    overlay.style.display = "none";
-    frame.src = "about:blank";
-    document.body.style.overflow = "";
-  }
-
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      closeExternalModal();
-      closeOffline();
-    }
-  });
 
   function verifyConnectivity() {
     return new Promise(function (resolve, reject) {
