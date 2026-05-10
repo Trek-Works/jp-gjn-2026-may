@@ -1076,7 +1076,11 @@ function closeReservationHub() {
 
 function openReservationExternal() {
   if (currentReservationUrl) {
-    handleExternal(currentReservationUrl);
+    openExternalBrowser(
+      'Online Reservation — ' + (document.getElementById('reservationModalTitle').textContent || 'Reservation'),
+      'external.html?url=' + encodeURIComponent(currentReservationUrl)
+    );
+    closeReservationHub();
   }
 }
 
